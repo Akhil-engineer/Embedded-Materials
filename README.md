@@ -16,28 +16,3 @@ Each topic has folders for **Programs** and **Materials** (PDFs, software, notes
 
 
 
-## How to Use
-
-1. Clone the repository:  
-```bash
-git clone https://github.com/YourUsername/Embedded-Materials.git
-```
-
-2. Go to the folder you need:  
-```bash
-cd Embedded-Materials/Basics/C
-```
-
-3. Start exploring the programs and learning materials.
-
----
-
-## Contributions
-
-You can add programs, PDFs, notes, or software in the relevant folders to help others learn.
-
----
-
-## License
-
-For educational use. Please give credit if you use the materials.
