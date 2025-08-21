@@ -14,32 +14,7 @@ This repository is a collection of programs, PDFs, software, notes, and datashee
 
 Each topic has folders for **Programs** and **Materials** (PDFs, software, notes, datasheets).
 
----
 
-## Folder Structure (Simplified)
-
-```
-Basics/
- ├─ C/
- │   ├─ Programs
- │   └─ Materials
- ├─ C++/
- ├─ Python/
-PIC/
-ARM/
-AVR/
-Arduino/
-ESP/
-RTOS/
- ├─ FreeRTOS/
- └─ Micrium/
-Linux/
-IoT/
- ├─ Firebase/
- └─ ThingSpeak/
-```
-
----
 
 ## How to Use
 
