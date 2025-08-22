@@ -1,0 +1,483 @@
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccH8TTij.s 			page 1
+
+
+   1               		.file	"mailbox.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.text
+  10               	.global	main
+  11               		.type	main, @function
+  12               	main:
+  13               	/* prologue: frame size=0 */
+  14 0000 CF93      		push r28
+  15 0002 DF93      		push r29
+  16 0004 CDB7      		in r28,__SP_L__
+  17 0006 DEB7      		in r29,__SP_H__
+  18               	/* prologue end (size=4) */
+  19 0008 E7E2      		ldi r30,lo8(39)
+  20 000a F0E0      		ldi r31,hi8(39)
+  21 000c 1082      		st Z,__zero_reg__
+  22 000e E6E2      		ldi r30,lo8(38)
+  23 0010 F0E0      		ldi r31,hi8(38)
+  24 0012 87E8      		ldi r24,lo8(-121)
+  25 0014 8083      		st Z,r24
+  26 0016 E9E2      		ldi r30,lo8(41)
+  27 0018 F0E0      		ldi r31,hi8(41)
+  28 001a 87E6      		ldi r24,lo8(103)
+  29 001c 8083      		st Z,r24
+  30 001e EBE2      		ldi r30,lo8(43)
+  31 0020 F0E0      		ldi r31,hi8(43)
+  32 0022 1082      		st Z,__zero_reg__
+  33 0024 EAE2      		ldi r30,lo8(42)
+  34 0026 F0E0      		ldi r31,hi8(42)
+  35 0028 88E1      		ldi r24,lo8(24)
+  36 002a 8083      		st Z,r24
+  37 002c E5E9      		ldi r30,lo8(149)
+  38 002e F0E0      		ldi r31,hi8(149)
+  39 0030 86E0      		ldi r24,lo8(6)
+  40 0032 8083      		st Z,r24
+  41 0034 E3E5      		ldi r30,lo8(83)
+  42 0036 F0E0      		ldi r31,hi8(83)
+  43 0038 87E0      		ldi r24,lo8(7)
+  44 003a 8083      		st Z,r24
+  45 003c E7E5      		ldi r30,lo8(87)
+  46 003e F0E0      		ldi r31,hi8(87)
+  47 0040 81E0      		ldi r24,lo8(1)
+  48 0042 8083      		st Z,r24
+  49 0044 0E94 0000 		call OSInit
+  50 0048 80E0      		ldi r24,lo8(s1+127)
+  51 004a 90E0      		ldi r25,hi8(s1+127)
+  52 004c E0E0      		ldi r30,lo8(gs(adc1))
+  53 004e F0E0      		ldi r31,hi8(gs(adc1))
+  54 0050 24E0      		ldi r18,lo8(4)
+  55 0052 AC01      		movw r20,r24
+  56 0054 6FEF      		ldi r22,lo8(255)
+  57 0056 70E0      		ldi r23,hi8(255)
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccH8TTij.s 			page 2
+
+
+  58 0058 CF01      		movw r24,r30
+  59 005a 0E94 0000 		call OSTaskCreate
+  60 005e 80E0      		ldi r24,lo8(s2+127)
+  61 0060 90E0      		ldi r25,hi8(s2+127)
+  62 0062 E0E0      		ldi r30,lo8(gs(adc2))
+  63 0064 F0E0      		ldi r31,hi8(gs(adc2))
+  64 0066 25E0      		ldi r18,lo8(5)
+  65 0068 AC01      		movw r20,r24
+  66 006a 6FEF      		ldi r22,lo8(255)
+  67 006c 70E0      		ldi r23,hi8(255)
+  68 006e CF01      		movw r24,r30
+  69 0070 0E94 0000 		call OSTaskCreate
+  70 0074 80E0      		ldi r24,lo8(s3+127)
+  71 0076 90E0      		ldi r25,hi8(s3+127)
+  72 0078 E0E0      		ldi r30,lo8(gs(uart))
+  73 007a F0E0      		ldi r31,hi8(gs(uart))
+  74 007c 26E0      		ldi r18,lo8(6)
+  75 007e AC01      		movw r20,r24
+  76 0080 6FEF      		ldi r22,lo8(255)
+  77 0082 70E0      		ldi r23,hi8(255)
+  78 0084 CF01      		movw r24,r30
+  79 0086 0E94 0000 		call OSTaskCreate
+  80 008a 81E0      		ldi r24,lo8(1)
+  81 008c 90E0      		ldi r25,hi8(1)
+  82 008e 0E94 0000 		call OSMboxCreate
+  83 0092 9093 0000 		sts (maildata1)+1,r25
+  84 0096 8093 0000 		sts maildata1,r24
+  85 009a 81E0      		ldi r24,lo8(1)
+  86 009c 90E0      		ldi r25,hi8(1)
+  87 009e 0E94 0000 		call OSMboxCreate
+  88 00a2 9093 0000 		sts (maildata2)+1,r25
+  89 00a6 8093 0000 		sts maildata2,r24
+  90 00aa 0E94 0000 		call OSStart
+  91               	/* epilogue: frame size=0 */
+  92 00ae DF91      		pop r29
+  93 00b0 CF91      		pop r28
+  94 00b2 0895      		ret
+  95               	/* epilogue end (size=3) */
+  96               	/* function main size 90 (83) */
+  97               		.size	main, .-main
+  98               		.data
+  99               	.LC0:
+ 100 0000 6164 6331 		.string	"adc1=%d\r"
+ 100      3D25 640D 
+ 100      00
+ 101               		.text
+ 102               	.global	adc1
+ 103               		.type	adc1, @function
+ 104               	adc1:
+ 105               	/* prologue: frame size=20 */
+ 106 00b4 CF93      		push r28
+ 107 00b6 DF93      		push r29
+ 108 00b8 CDB7      		in r28,__SP_L__
+ 109 00ba DEB7      		in r29,__SP_H__
+ 110 00bc 6497      		sbiw r28,20
+ 111 00be 0FB6      		in __tmp_reg__,__SREG__
+ 112 00c0 F894      		cli
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccH8TTij.s 			page 3
+
+
+ 113 00c2 DEBF      		out __SP_H__,r29
+ 114 00c4 0FBE      		out __SREG__,__tmp_reg__
+ 115 00c6 CDBF      		out __SP_L__,r28
+ 116               	/* prologue end (size=10) */
+ 117               	.L4:
+ 118 00c8 E7E2      		ldi r30,lo8(39)
+ 119 00ca F0E0      		ldi r31,hi8(39)
+ 120 00cc 1082      		st Z,__zero_reg__
+ 121 00ce A6E2      		ldi r26,lo8(38)
+ 122 00d0 B0E0      		ldi r27,hi8(38)
+ 123 00d2 E6E2      		ldi r30,lo8(38)
+ 124 00d4 F0E0      		ldi r31,hi8(38)
+ 125 00d6 8081      		ld r24,Z
+ 126 00d8 8064      		ori r24,lo8(64)
+ 127 00da 8C93      		st X,r24
+ 128               	.L5:
+ 129 00dc E6E2      		ldi r30,lo8(38)
+ 130 00de F0E0      		ldi r31,hi8(38)
+ 131 00e0 8081      		ld r24,Z
+ 132 00e2 882F      		mov r24,r24
+ 133 00e4 90E0      		ldi r25,lo8(0)
+ 134 00e6 8074      		andi r24,lo8(64)
+ 135 00e8 9070      		andi r25,hi8(64)
+ 136 00ea 0097      		sbiw r24,0
+ 137 00ec 01F4      		brne .L5
+ 138 00ee E4E2      		ldi r30,lo8(36)
+ 139 00f0 F0E0      		ldi r31,hi8(36)
+ 140 00f2 8081      		ld r24,Z
+ 141 00f4 282F      		mov r18,r24
+ 142 00f6 30E0      		ldi r19,lo8(0)
+ 143 00f8 E5E2      		ldi r30,lo8(37)
+ 144 00fa F0E0      		ldi r31,hi8(37)
+ 145 00fc 8081      		ld r24,Z
+ 146 00fe 882F      		mov r24,r24
+ 147 0100 90E0      		ldi r25,lo8(0)
+ 148 0102 982F      		mov r25,r24
+ 149 0104 8827      		clr r24
+ 150 0106 822B      		or r24,r18
+ 151 0108 932B      		or r25,r19
+ 152 010a 9093 0000 		sts (result)+1,r25
+ 153 010e 8093 0000 		sts result,r24
+ 154 0112 8091 0000 		lds r24,result
+ 155 0116 9091 0000 		lds r25,(result)+1
+ 156 011a 9F93      		push r25
+ 157 011c 8F93      		push r24
+ 158 011e 80E0      		ldi r24,lo8(.LC0)
+ 159 0120 90E0      		ldi r25,hi8(.LC0)
+ 160 0122 9F93      		push r25
+ 161 0124 8F93      		push r24
+ 162 0126 CE01      		movw r24,r28
+ 163 0128 0196      		adiw r24,1
+ 164 012a 9F93      		push r25
+ 165 012c 8F93      		push r24
+ 166 012e 0E94 0000 		call sprintf
+ 167 0132 8DB7      		in r24,__SP_L__
+ 168 0134 9EB7      		in r25,__SP_H__
+ 169 0136 0696      		adiw r24,6
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccH8TTij.s 			page 4
+
+
+ 170 0138 0FB6      		in __tmp_reg__,__SREG__
+ 171 013a F894      		cli
+ 172 013c 9EBF      		out __SP_H__,r25
+ 173 013e 0FBE      		out __SREG__,__tmp_reg__
+ 174 0140 8DBF      		out __SP_L__,r24
+ 175 0142 2091 0000 		lds r18,maildata1
+ 176 0146 3091 0000 		lds r19,(maildata1)+1
+ 177 014a CE01      		movw r24,r28
+ 178 014c 0196      		adiw r24,1
+ 179 014e BC01      		movw r22,r24
+ 180 0150 C901      		movw r24,r18
+ 181 0152 0E94 0000 		call OSMboxPost
+ 182 0156 8DE3      		ldi r24,lo8(61)
+ 183 0158 90E0      		ldi r25,hi8(61)
+ 184 015a 0E94 0000 		call OSTimeDly
+ 185 015e 00C0      		rjmp .L4
+ 186               	/* epilogue: frame size=20 */
+ 187               	/* epilogue: noreturn */
+ 188               	/* epilogue end (size=0) */
+ 189               	/* function adc1 size 86 (76) */
+ 190               		.size	adc1, .-adc1
+ 191               		.data
+ 192               	.LC1:
+ 193 0009 6164 6332 		.string	"adc2=%d\r"
+ 193      3D25 640D 
+ 193      00
+ 194               		.text
+ 195               	.global	adc2
+ 196               		.type	adc2, @function
+ 197               	adc2:
+ 198               	/* prologue: frame size=20 */
+ 199 0160 CF93      		push r28
+ 200 0162 DF93      		push r29
+ 201 0164 CDB7      		in r28,__SP_L__
+ 202 0166 DEB7      		in r29,__SP_H__
+ 203 0168 6497      		sbiw r28,20
+ 204 016a 0FB6      		in __tmp_reg__,__SREG__
+ 205 016c F894      		cli
+ 206 016e DEBF      		out __SP_H__,r29
+ 207 0170 0FBE      		out __SREG__,__tmp_reg__
+ 208 0172 CDBF      		out __SP_L__,r28
+ 209               	/* prologue end (size=10) */
+ 210               	.L9:
+ 211 0174 E7E2      		ldi r30,lo8(39)
+ 212 0176 F0E0      		ldi r31,hi8(39)
+ 213 0178 81E0      		ldi r24,lo8(1)
+ 214 017a 8083      		st Z,r24
+ 215 017c A6E2      		ldi r26,lo8(38)
+ 216 017e B0E0      		ldi r27,hi8(38)
+ 217 0180 E6E2      		ldi r30,lo8(38)
+ 218 0182 F0E0      		ldi r31,hi8(38)
+ 219 0184 8081      		ld r24,Z
+ 220 0186 8064      		ori r24,lo8(64)
+ 221 0188 8C93      		st X,r24
+ 222               	.L10:
+ 223 018a E6E2      		ldi r30,lo8(38)
+ 224 018c F0E0      		ldi r31,hi8(38)
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccH8TTij.s 			page 5
+
+
+ 225 018e 8081      		ld r24,Z
+ 226 0190 882F      		mov r24,r24
+ 227 0192 90E0      		ldi r25,lo8(0)
+ 228 0194 8074      		andi r24,lo8(64)
+ 229 0196 9070      		andi r25,hi8(64)
+ 230 0198 0097      		sbiw r24,0
+ 231 019a 01F4      		brne .L10
+ 232 019c E4E2      		ldi r30,lo8(36)
+ 233 019e F0E0      		ldi r31,hi8(36)
+ 234 01a0 8081      		ld r24,Z
+ 235 01a2 282F      		mov r18,r24
+ 236 01a4 30E0      		ldi r19,lo8(0)
+ 237 01a6 E5E2      		ldi r30,lo8(37)
+ 238 01a8 F0E0      		ldi r31,hi8(37)
+ 239 01aa 8081      		ld r24,Z
+ 240 01ac 882F      		mov r24,r24
+ 241 01ae 90E0      		ldi r25,lo8(0)
+ 242 01b0 982F      		mov r25,r24
+ 243 01b2 8827      		clr r24
+ 244 01b4 822B      		or r24,r18
+ 245 01b6 932B      		or r25,r19
+ 246 01b8 9093 0000 		sts (result)+1,r25
+ 247 01bc 8093 0000 		sts result,r24
+ 248 01c0 8091 0000 		lds r24,result
+ 249 01c4 9091 0000 		lds r25,(result)+1
+ 250 01c8 9F93      		push r25
+ 251 01ca 8F93      		push r24
+ 252 01cc 80E0      		ldi r24,lo8(.LC1)
+ 253 01ce 90E0      		ldi r25,hi8(.LC1)
+ 254 01d0 9F93      		push r25
+ 255 01d2 8F93      		push r24
+ 256 01d4 CE01      		movw r24,r28
+ 257 01d6 0196      		adiw r24,1
+ 258 01d8 9F93      		push r25
+ 259 01da 8F93      		push r24
+ 260 01dc 0E94 0000 		call sprintf
+ 261 01e0 8DB7      		in r24,__SP_L__
+ 262 01e2 9EB7      		in r25,__SP_H__
+ 263 01e4 0696      		adiw r24,6
+ 264 01e6 0FB6      		in __tmp_reg__,__SREG__
+ 265 01e8 F894      		cli
+ 266 01ea 9EBF      		out __SP_H__,r25
+ 267 01ec 0FBE      		out __SREG__,__tmp_reg__
+ 268 01ee 8DBF      		out __SP_L__,r24
+ 269 01f0 2091 0000 		lds r18,maildata2
+ 270 01f4 3091 0000 		lds r19,(maildata2)+1
+ 271 01f8 CE01      		movw r24,r28
+ 272 01fa 0196      		adiw r24,1
+ 273 01fc BC01      		movw r22,r24
+ 274 01fe C901      		movw r24,r18
+ 275 0200 0E94 0000 		call OSMboxPost
+ 276 0204 8DE3      		ldi r24,lo8(61)
+ 277 0206 90E0      		ldi r25,hi8(61)
+ 278 0208 0E94 0000 		call OSTimeDly
+ 279 020c 00C0      		rjmp .L9
+ 280               	/* epilogue: frame size=20 */
+ 281               	/* epilogue: noreturn */
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccH8TTij.s 			page 6
+
+
+ 282               	/* epilogue end (size=0) */
+ 283               	/* function adc2 size 87 (77) */
+ 284               		.size	adc2, .-adc2
+ 285               	.global	uart
+ 286               		.type	uart, @function
+ 287               	uart:
+ 288               	/* prologue: frame size=6 */
+ 289 020e CF93      		push r28
+ 290 0210 DF93      		push r29
+ 291 0212 CDB7      		in r28,__SP_L__
+ 292 0214 DEB7      		in r29,__SP_H__
+ 293 0216 2697      		sbiw r28,6
+ 294 0218 0FB6      		in __tmp_reg__,__SREG__
+ 295 021a F894      		cli
+ 296 021c DEBF      		out __SP_H__,r29
+ 297 021e 0FBE      		out __SREG__,__tmp_reg__
+ 298 0220 CDBF      		out __SP_L__,r28
+ 299               	/* prologue end (size=10) */
+ 300               	.L14:
+ 301 0222 8091 0000 		lds r24,err
+ 302 0226 9091 0000 		lds r25,(err)+1
+ 303 022a 2091 0000 		lds r18,maildata1
+ 304 022e 3091 0000 		lds r19,(maildata1)+1
+ 305 0232 AC01      		movw r20,r24
+ 306 0234 60E0      		ldi r22,lo8(0)
+ 307 0236 70E0      		ldi r23,hi8(0)
+ 308 0238 C901      		movw r24,r18
+ 309 023a 0E94 0000 		call OSMboxPend
+ 310 023e 9E83      		std Y+6,r25
+ 311 0240 8D83      		std Y+5,r24
+ 312 0242 1A82      		std Y+2,__zero_reg__
+ 313 0244 1982      		std Y+1,__zero_reg__
+ 314 0246 00C0      		rjmp .L15
+ 315               	.L16:
+ 316 0248 ACE2      		ldi r26,lo8(44)
+ 317 024a B0E0      		ldi r27,hi8(44)
+ 318 024c 8981      		ldd r24,Y+1
+ 319 024e 9A81      		ldd r25,Y+2
+ 320 0250 9C01      		movw r18,r24
+ 321 0252 8D81      		ldd r24,Y+5
+ 322 0254 9E81      		ldd r25,Y+6
+ 323 0256 F901      		movw r30,r18
+ 324 0258 E80F      		add r30,r24
+ 325 025a F91F      		adc r31,r25
+ 326 025c 8081      		ld r24,Z
+ 327 025e 8C93      		st X,r24
+ 328               	.L17:
+ 329 0260 EBE2      		ldi r30,lo8(43)
+ 330 0262 F0E0      		ldi r31,hi8(43)
+ 331 0264 8081      		ld r24,Z
+ 332 0266 882F      		mov r24,r24
+ 333 0268 90E0      		ldi r25,lo8(0)
+ 334 026a 8072      		andi r24,lo8(32)
+ 335 026c 9070      		andi r25,hi8(32)
+ 336 026e 0097      		sbiw r24,0
+ 337 0270 01F0      		breq .L17
+ 338 0272 8981      		ldd r24,Y+1
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccH8TTij.s 			page 7
+
+
+ 339 0274 9A81      		ldd r25,Y+2
+ 340 0276 0196      		adiw r24,1
+ 341 0278 9A83      		std Y+2,r25
+ 342 027a 8983      		std Y+1,r24
+ 343               	.L15:
+ 344 027c 8981      		ldd r24,Y+1
+ 345 027e 9A81      		ldd r25,Y+2
+ 346 0280 9C01      		movw r18,r24
+ 347 0282 8D81      		ldd r24,Y+5
+ 348 0284 9E81      		ldd r25,Y+6
+ 349 0286 F901      		movw r30,r18
+ 350 0288 E80F      		add r30,r24
+ 351 028a F91F      		adc r31,r25
+ 352 028c 8081      		ld r24,Z
+ 353 028e 8823      		tst r24
+ 354 0290 01F4      		brne .L16
+ 355 0292 8091 0000 		lds r24,err
+ 356 0296 9091 0000 		lds r25,(err)+1
+ 357 029a 2091 0000 		lds r18,maildata2
+ 358 029e 3091 0000 		lds r19,(maildata2)+1
+ 359 02a2 AC01      		movw r20,r24
+ 360 02a4 60E0      		ldi r22,lo8(0)
+ 361 02a6 70E0      		ldi r23,hi8(0)
+ 362 02a8 C901      		movw r24,r18
+ 363 02aa 0E94 0000 		call OSMboxPend
+ 364 02ae 9C83      		std Y+4,r25
+ 365 02b0 8B83      		std Y+3,r24
+ 366 02b2 1A82      		std Y+2,__zero_reg__
+ 367 02b4 1982      		std Y+1,__zero_reg__
+ 368 02b6 00C0      		rjmp .L20
+ 369               	.L21:
+ 370 02b8 ACE2      		ldi r26,lo8(44)
+ 371 02ba B0E0      		ldi r27,hi8(44)
+ 372 02bc 8981      		ldd r24,Y+1
+ 373 02be 9A81      		ldd r25,Y+2
+ 374 02c0 9C01      		movw r18,r24
+ 375 02c2 8B81      		ldd r24,Y+3
+ 376 02c4 9C81      		ldd r25,Y+4
+ 377 02c6 F901      		movw r30,r18
+ 378 02c8 E80F      		add r30,r24
+ 379 02ca F91F      		adc r31,r25
+ 380 02cc 8081      		ld r24,Z
+ 381 02ce 8C93      		st X,r24
+ 382               	.L22:
+ 383 02d0 EBE2      		ldi r30,lo8(43)
+ 384 02d2 F0E0      		ldi r31,hi8(43)
+ 385 02d4 8081      		ld r24,Z
+ 386 02d6 882F      		mov r24,r24
+ 387 02d8 90E0      		ldi r25,lo8(0)
+ 388 02da 8072      		andi r24,lo8(32)
+ 389 02dc 9070      		andi r25,hi8(32)
+ 390 02de 0097      		sbiw r24,0
+ 391 02e0 01F0      		breq .L22
+ 392 02e2 8981      		ldd r24,Y+1
+ 393 02e4 9A81      		ldd r25,Y+2
+ 394 02e6 0196      		adiw r24,1
+ 395 02e8 9A83      		std Y+2,r25
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccH8TTij.s 			page 8
+
+
+ 396 02ea 8983      		std Y+1,r24
+ 397               	.L20:
+ 398 02ec 8981      		ldd r24,Y+1
+ 399 02ee 9A81      		ldd r25,Y+2
+ 400 02f0 9C01      		movw r18,r24
+ 401 02f2 8B81      		ldd r24,Y+3
+ 402 02f4 9C81      		ldd r25,Y+4
+ 403 02f6 F901      		movw r30,r18
+ 404 02f8 E80F      		add r30,r24
+ 405 02fa F91F      		adc r31,r25
+ 406 02fc 8081      		ld r24,Z
+ 407 02fe 8823      		tst r24
+ 408 0300 01F4      		brne .L21
+ 409 0302 00C0      		rjmp .L14
+ 410               	/* epilogue: frame size=6 */
+ 411               	/* epilogue: noreturn */
+ 412               	/* epilogue end (size=0) */
+ 413               	/* function uart size 123 (113) */
+ 414               		.size	uart, .-uart
+ 415               		.comm s1,128,1
+ 416               		.comm s2,128,1
+ 417               		.comm s3,128,1
+ 418               		.comm maildata1,2,1
+ 419               		.comm maildata2,2,1
+ 420               		.comm err,2,1
+ 421               		.comm result,2,1
+ 422               	/* File "mailbox.c": code  386 = 0x0182 ( 349), prologues  34, epilogues   3 */
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccH8TTij.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 mailbox.c
+C:\Users\hp\AppData\Local\Temp/ccH8TTij.s:2      *ABS*:0000003f __SREG__
+C:\Users\hp\AppData\Local\Temp/ccH8TTij.s:3      *ABS*:0000003e __SP_H__
+C:\Users\hp\AppData\Local\Temp/ccH8TTij.s:4      *ABS*:0000003d __SP_L__
+C:\Users\hp\AppData\Local\Temp/ccH8TTij.s:5      *ABS*:00000000 __tmp_reg__
+C:\Users\hp\AppData\Local\Temp/ccH8TTij.s:6      *ABS*:00000001 __zero_reg__
+C:\Users\hp\AppData\Local\Temp/ccH8TTij.s:12     .text:00000000 main
+                            *COM*:00000080 s1
+C:\Users\hp\AppData\Local\Temp/ccH8TTij.s:104    .text:000000b4 adc1
+                            *COM*:00000080 s2
+C:\Users\hp\AppData\Local\Temp/ccH8TTij.s:197    .text:00000160 adc2
+                            *COM*:00000080 s3
+C:\Users\hp\AppData\Local\Temp/ccH8TTij.s:287    .text:0000020e uart
+                            *COM*:00000002 maildata1
+                            *COM*:00000002 maildata2
+                            *COM*:00000002 result
+                            *COM*:00000002 err
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+OSInit
+OSTaskCreate
+OSMboxCreate
+OSStart
+sprintf
+OSMboxPost
+OSTimeDly
+OSMboxPend

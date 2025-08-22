@@ -1,0 +1,497 @@
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s 			page 1
+
+
+   1               		.file	"i2c.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.text
+  10               	.global	start
+  11               		.type	start, @function
+  12               	start:
+  13               	/* prologue: frame size=0 */
+  14 0000 CF93      		push r28
+  15 0002 DF93      		push r29
+  16 0004 CDB7      		in r28,__SP_L__
+  17 0006 DEB7      		in r29,__SP_H__
+  18               	/* prologue end (size=4) */
+  19 0008 E4E7      		ldi r30,lo8(116)
+  20 000a F0E0      		ldi r31,hi8(116)
+  21 000c 84EA      		ldi r24,lo8(-92)
+  22 000e 8083      		st Z,r24
+  23               	.L2:
+  24 0010 E4E7      		ldi r30,lo8(116)
+  25 0012 F0E0      		ldi r31,hi8(116)
+  26 0014 8081      		ld r24,Z
+  27 0016 8823      		tst r24
+  28 0018 04F4      		brge .L2
+  29               	/* epilogue: frame size=0 */
+  30 001a DF91      		pop r29
+  31 001c CF91      		pop r28
+  32 001e 0895      		ret
+  33               	/* epilogue end (size=3) */
+  34               	/* function start size 16 (9) */
+  35               		.size	start, .-start
+  36               	.global	stop
+  37               		.type	stop, @function
+  38               	stop:
+  39               	/* prologue: frame size=0 */
+  40 0020 CF93      		push r28
+  41 0022 DF93      		push r29
+  42 0024 CDB7      		in r28,__SP_L__
+  43 0026 DEB7      		in r29,__SP_H__
+  44               	/* prologue end (size=4) */
+  45 0028 E4E7      		ldi r30,lo8(116)
+  46 002a F0E0      		ldi r31,hi8(116)
+  47 002c 84E9      		ldi r24,lo8(-108)
+  48 002e 8083      		st Z,r24
+  49               	/* epilogue: frame size=0 */
+  50 0030 DF91      		pop r29
+  51 0032 CF91      		pop r28
+  52 0034 0895      		ret
+  53               	/* epilogue end (size=3) */
+  54               	/* function stop size 11 (4) */
+  55               		.size	stop, .-stop
+  56               	.global	ack
+  57               		.type	ack, @function
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s 			page 2
+
+
+  58               	ack:
+  59               	/* prologue: frame size=0 */
+  60 0036 CF93      		push r28
+  61 0038 DF93      		push r29
+  62 003a CDB7      		in r28,__SP_L__
+  63 003c DEB7      		in r29,__SP_H__
+  64               	/* prologue end (size=4) */
+  65 003e E4E7      		ldi r30,lo8(116)
+  66 0040 F0E0      		ldi r31,hi8(116)
+  67 0042 84EC      		ldi r24,lo8(-60)
+  68 0044 8083      		st Z,r24
+  69               	.L8:
+  70 0046 E4E7      		ldi r30,lo8(116)
+  71 0048 F0E0      		ldi r31,hi8(116)
+  72 004a 8081      		ld r24,Z
+  73 004c 8823      		tst r24
+  74 004e 04F4      		brge .L8
+  75 0050 E3E7      		ldi r30,lo8(115)
+  76 0052 F0E0      		ldi r31,hi8(115)
+  77 0054 8081      		ld r24,Z
+  78 0056 8093 0000 		sts temp,r24
+  79               	/* epilogue: frame size=0 */
+  80 005a DF91      		pop r29
+  81 005c CF91      		pop r28
+  82 005e 0895      		ret
+  83               	/* epilogue end (size=3) */
+  84               	/* function ack size 21 (14) */
+  85               		.size	ack, .-ack
+  86               	.global	nack
+  87               		.type	nack, @function
+  88               	nack:
+  89               	/* prologue: frame size=0 */
+  90 0060 CF93      		push r28
+  91 0062 DF93      		push r29
+  92 0064 CDB7      		in r28,__SP_L__
+  93 0066 DEB7      		in r29,__SP_H__
+  94               	/* prologue end (size=4) */
+  95 0068 E4E7      		ldi r30,lo8(116)
+  96 006a F0E0      		ldi r31,hi8(116)
+  97 006c 84E8      		ldi r24,lo8(-124)
+  98 006e 8083      		st Z,r24
+  99               	.L12:
+ 100 0070 E4E7      		ldi r30,lo8(116)
+ 101 0072 F0E0      		ldi r31,hi8(116)
+ 102 0074 8081      		ld r24,Z
+ 103 0076 8823      		tst r24
+ 104 0078 04F4      		brge .L12
+ 105 007a E3E7      		ldi r30,lo8(115)
+ 106 007c F0E0      		ldi r31,hi8(115)
+ 107 007e 8081      		ld r24,Z
+ 108 0080 8093 0000 		sts temp,r24
+ 109               	/* epilogue: frame size=0 */
+ 110 0084 DF91      		pop r29
+ 111 0086 CF91      		pop r28
+ 112 0088 0895      		ret
+ 113               	/* epilogue end (size=3) */
+ 114               	/* function nack size 21 (14) */
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s 			page 3
+
+
+ 115               		.size	nack, .-nack
+ 116               	.global	send
+ 117               		.type	send, @function
+ 118               	send:
+ 119               	/* prologue: frame size=1 */
+ 120 008a CF93      		push r28
+ 121 008c DF93      		push r29
+ 122 008e CDB7      		in r28,__SP_L__
+ 123 0090 DEB7      		in r29,__SP_H__
+ 124 0092 2197      		sbiw r28,1
+ 125 0094 0FB6      		in __tmp_reg__,__SREG__
+ 126 0096 F894      		cli
+ 127 0098 DEBF      		out __SP_H__,r29
+ 128 009a 0FBE      		out __SREG__,__tmp_reg__
+ 129 009c CDBF      		out __SP_L__,r28
+ 130               	/* prologue end (size=10) */
+ 131 009e 8983      		std Y+1,r24
+ 132 00a0 E3E7      		ldi r30,lo8(115)
+ 133 00a2 F0E0      		ldi r31,hi8(115)
+ 134 00a4 8981      		ldd r24,Y+1
+ 135 00a6 8083      		st Z,r24
+ 136 00a8 E4E7      		ldi r30,lo8(116)
+ 137 00aa F0E0      		ldi r31,hi8(116)
+ 138 00ac 84E8      		ldi r24,lo8(-124)
+ 139 00ae 8083      		st Z,r24
+ 140               	.L16:
+ 141 00b0 E4E7      		ldi r30,lo8(116)
+ 142 00b2 F0E0      		ldi r31,hi8(116)
+ 143 00b4 8081      		ld r24,Z
+ 144 00b6 8823      		tst r24
+ 145 00b8 04F4      		brge .L16
+ 146               	/* epilogue: frame size=1 */
+ 147 00ba 2196      		adiw r28,1
+ 148 00bc 0FB6      		in __tmp_reg__,__SREG__
+ 149 00be F894      		cli
+ 150 00c0 DEBF      		out __SP_H__,r29
+ 151 00c2 0FBE      		out __SREG__,__tmp_reg__
+ 152 00c4 CDBF      		out __SP_L__,r28
+ 153 00c6 DF91      		pop r29
+ 154 00c8 CF91      		pop r28
+ 155 00ca 0895      		ret
+ 156               	/* epilogue end (size=9) */
+ 157               	/* function send size 33 (14) */
+ 158               		.size	send, .-send
+ 159               	.global	restart
+ 160               		.type	restart, @function
+ 161               	restart:
+ 162               	/* prologue: frame size=0 */
+ 163 00cc CF93      		push r28
+ 164 00ce DF93      		push r29
+ 165 00d0 CDB7      		in r28,__SP_L__
+ 166 00d2 DEB7      		in r29,__SP_H__
+ 167               	/* prologue end (size=4) */
+ 168 00d4 E4E7      		ldi r30,lo8(116)
+ 169 00d6 F0E0      		ldi r31,hi8(116)
+ 170 00d8 84EA      		ldi r24,lo8(-92)
+ 171 00da 8083      		st Z,r24
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s 			page 4
+
+
+ 172               	.L20:
+ 173 00dc E4E7      		ldi r30,lo8(116)
+ 174 00de F0E0      		ldi r31,hi8(116)
+ 175 00e0 8081      		ld r24,Z
+ 176 00e2 8823      		tst r24
+ 177 00e4 04F4      		brge .L20
+ 178               	/* epilogue: frame size=0 */
+ 179 00e6 DF91      		pop r29
+ 180 00e8 CF91      		pop r28
+ 181 00ea 0895      		ret
+ 182               	/* epilogue end (size=3) */
+ 183               	/* function restart size 16 (9) */
+ 184               		.size	restart, .-restart
+ 185               	.global	main
+ 186               		.type	main, @function
+ 187               	main:
+ 188               	/* prologue: frame size=0 */
+ 189 00ec CF93      		push r28
+ 190 00ee DF93      		push r29
+ 191 00f0 CDB7      		in r28,__SP_L__
+ 192 00f2 DEB7      		in r29,__SP_H__
+ 193               	/* prologue end (size=4) */
+ 194 00f4 E9E2      		ldi r30,lo8(41)
+ 195 00f6 F0E0      		ldi r31,hi8(41)
+ 196 00f8 87E6      		ldi r24,lo8(103)
+ 197 00fa 8083      		st Z,r24
+ 198 00fc EBE2      		ldi r30,lo8(43)
+ 199 00fe F0E0      		ldi r31,hi8(43)
+ 200 0100 1082      		st Z,__zero_reg__
+ 201 0102 EAE2      		ldi r30,lo8(42)
+ 202 0104 F0E0      		ldi r31,hi8(42)
+ 203 0106 88E1      		ldi r24,lo8(24)
+ 204 0108 8083      		st Z,r24
+ 205 010a E5E9      		ldi r30,lo8(149)
+ 206 010c F0E0      		ldi r31,hi8(149)
+ 207 010e 86E0      		ldi r24,lo8(6)
+ 208 0110 8083      		st Z,r24
+ 209 0112 E3E5      		ldi r30,lo8(83)
+ 210 0114 F0E0      		ldi r31,hi8(83)
+ 211 0116 87E0      		ldi r24,lo8(7)
+ 212 0118 8083      		st Z,r24
+ 213 011a E7E5      		ldi r30,lo8(87)
+ 214 011c F0E0      		ldi r31,hi8(87)
+ 215 011e 81E0      		ldi r24,lo8(1)
+ 216 0120 8083      		st Z,r24
+ 217 0122 E0E7      		ldi r30,lo8(112)
+ 218 0124 F0E0      		ldi r31,hi8(112)
+ 219 0126 82E1      		ldi r24,lo8(18)
+ 220 0128 8083      		st Z,r24
+ 221 012a 0E94 0000 		call OSInit
+ 222 012e 80E0      		ldi r24,lo8(s1+127)
+ 223 0130 90E0      		ldi r25,hi8(s1+127)
+ 224 0132 E0E0      		ldi r30,lo8(gs(write))
+ 225 0134 F0E0      		ldi r31,hi8(gs(write))
+ 226 0136 24E0      		ldi r18,lo8(4)
+ 227 0138 AC01      		movw r20,r24
+ 228 013a 6FEF      		ldi r22,lo8(255)
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s 			page 5
+
+
+ 229 013c 70E0      		ldi r23,hi8(255)
+ 230 013e CF01      		movw r24,r30
+ 231 0140 0E94 0000 		call OSTaskCreate
+ 232 0144 80E0      		ldi r24,lo8(s2+127)
+ 233 0146 90E0      		ldi r25,hi8(s2+127)
+ 234 0148 E0E0      		ldi r30,lo8(gs(read))
+ 235 014a F0E0      		ldi r31,hi8(gs(read))
+ 236 014c 25E0      		ldi r18,lo8(5)
+ 237 014e AC01      		movw r20,r24
+ 238 0150 6FEF      		ldi r22,lo8(255)
+ 239 0152 70E0      		ldi r23,hi8(255)
+ 240 0154 CF01      		movw r24,r30
+ 241 0156 0E94 0000 		call OSTaskCreate
+ 242 015a 80E0      		ldi r24,lo8(s3+127)
+ 243 015c 90E0      		ldi r25,hi8(s3+127)
+ 244 015e E0E0      		ldi r30,lo8(gs(uart))
+ 245 0160 F0E0      		ldi r31,hi8(gs(uart))
+ 246 0162 26E0      		ldi r18,lo8(6)
+ 247 0164 AC01      		movw r20,r24
+ 248 0166 6FEF      		ldi r22,lo8(255)
+ 249 0168 70E0      		ldi r23,hi8(255)
+ 250 016a CF01      		movw r24,r30
+ 251 016c 0E94 0000 		call OSTaskCreate
+ 252 0170 0E94 0000 		call OSStart
+ 253               	/* epilogue: frame size=0 */
+ 254 0174 DF91      		pop r29
+ 255 0176 CF91      		pop r28
+ 256 0178 0895      		ret
+ 257               	/* epilogue end (size=3) */
+ 258               	/* function main size 71 (64) */
+ 259               		.size	main, .-main
+ 260               	.global	write
+ 261               		.type	write, @function
+ 262               	write:
+ 263               	/* prologue: frame size=0 */
+ 264 017a CF93      		push r28
+ 265 017c DF93      		push r29
+ 266 017e CDB7      		in r28,__SP_L__
+ 267 0180 DEB7      		in r29,__SP_H__
+ 268               	/* prologue end (size=4) */
+ 269               	.L26:
+ 270 0182 0E94 0000 		call start
+ 271 0186 80ED      		ldi r24,lo8(-48)
+ 272 0188 0E94 0000 		call send
+ 273 018c 80E0      		ldi r24,lo8(0)
+ 274 018e 0E94 0000 		call send
+ 275 0192 89E2      		ldi r24,lo8(41)
+ 276 0194 0E94 0000 		call send
+ 277 0198 86E0      		ldi r24,lo8(6)
+ 278 019a 0E94 0000 		call send
+ 279 019e 84E0      		ldi r24,lo8(4)
+ 280 01a0 0E94 0000 		call send
+ 281 01a4 0E94 0000 		call stop
+ 282 01a8 85E0      		ldi r24,lo8(5)
+ 283 01aa 0E94 0000 		call OSTaskResume
+ 284 01ae 84E0      		ldi r24,lo8(4)
+ 285 01b0 0E94 0000 		call OSTaskSuspend
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s 			page 6
+
+
+ 286 01b4 00C0      		rjmp .L26
+ 287               	/* epilogue: frame size=0 */
+ 288               	/* epilogue: noreturn */
+ 289               	/* epilogue end (size=0) */
+ 290               	/* function write size 30 (26) */
+ 291               		.size	write, .-write
+ 292               		.data
+ 293               	.LC0:
+ 294 0000 2578 3A25 		.string	"%x:%x:%x \r"
+ 294      783A 2578 
+ 294      200D 00
+ 295               		.text
+ 296               	.global	read
+ 297               		.type	read, @function
+ 298               	read:
+ 299               	/* prologue: frame size=0 */
+ 300 01b6 CF93      		push r28
+ 301 01b8 DF93      		push r29
+ 302 01ba CDB7      		in r28,__SP_L__
+ 303 01bc DEB7      		in r29,__SP_H__
+ 304               	/* prologue end (size=4) */
+ 305               	.L29:
+ 306 01be 0E94 0000 		call start
+ 307 01c2 80ED      		ldi r24,lo8(-48)
+ 308 01c4 0E94 0000 		call send
+ 309 01c8 80E0      		ldi r24,lo8(0)
+ 310 01ca 0E94 0000 		call send
+ 311 01ce 0E94 0000 		call restart
+ 312 01d2 81ED      		ldi r24,lo8(-47)
+ 313 01d4 0E94 0000 		call send
+ 314 01d8 0E94 0000 		call ack
+ 315 01dc 8091 0000 		lds r24,temp
+ 316 01e0 8093 0000 		sts sec,r24
+ 317 01e4 0E94 0000 		call ack
+ 318 01e8 8091 0000 		lds r24,temp
+ 319 01ec 8093 0000 		sts min,r24
+ 320 01f0 0E94 0000 		call nack
+ 321 01f4 8091 0000 		lds r24,temp
+ 322 01f8 8093 0000 		sts hr,r24
+ 323 01fc 0E94 0000 		call stop
+ 324 0200 8091 0000 		lds r24,sec
+ 325 0204 482F      		mov r20,r24
+ 326 0206 50E0      		ldi r21,lo8(0)
+ 327 0208 8091 0000 		lds r24,min
+ 328 020c 282F      		mov r18,r24
+ 329 020e 30E0      		ldi r19,lo8(0)
+ 330 0210 8091 0000 		lds r24,hr
+ 331 0214 882F      		mov r24,r24
+ 332 0216 90E0      		ldi r25,lo8(0)
+ 333 0218 5F93      		push r21
+ 334 021a 4F93      		push r20
+ 335 021c 3F93      		push r19
+ 336 021e 2F93      		push r18
+ 337 0220 9F93      		push r25
+ 338 0222 8F93      		push r24
+ 339 0224 80E0      		ldi r24,lo8(.LC0)
+ 340 0226 90E0      		ldi r25,hi8(.LC0)
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s 			page 7
+
+
+ 341 0228 9F93      		push r25
+ 342 022a 8F93      		push r24
+ 343 022c 80E0      		ldi r24,lo8(a)
+ 344 022e 90E0      		ldi r25,hi8(a)
+ 345 0230 9F93      		push r25
+ 346 0232 8F93      		push r24
+ 347 0234 0E94 0000 		call sprintf
+ 348 0238 8DB7      		in r24,__SP_L__
+ 349 023a 9EB7      		in r25,__SP_H__
+ 350 023c 0A96      		adiw r24,10
+ 351 023e 0FB6      		in __tmp_reg__,__SREG__
+ 352 0240 F894      		cli
+ 353 0242 9EBF      		out __SP_H__,r25
+ 354 0244 0FBE      		out __SREG__,__tmp_reg__
+ 355 0246 8DBF      		out __SP_L__,r24
+ 356 0248 86E0      		ldi r24,lo8(6)
+ 357 024a 0E94 0000 		call OSTaskResume
+ 358 024e 85E0      		ldi r24,lo8(5)
+ 359 0250 0E94 0000 		call OSTaskSuspend
+ 360 0254 00C0      		rjmp .L29
+ 361               	/* epilogue: frame size=0 */
+ 362               	/* epilogue: noreturn */
+ 363               	/* epilogue end (size=0) */
+ 364               	/* function read size 80 (76) */
+ 365               		.size	read, .-read
+ 366               	.global	uart
+ 367               		.type	uart, @function
+ 368               	uart:
+ 369               	/* prologue: frame size=2 */
+ 370 0256 CF93      		push r28
+ 371 0258 DF93      		push r29
+ 372 025a CDB7      		in r28,__SP_L__
+ 373 025c DEB7      		in r29,__SP_H__
+ 374 025e 2297      		sbiw r28,2
+ 375 0260 0FB6      		in __tmp_reg__,__SREG__
+ 376 0262 F894      		cli
+ 377 0264 DEBF      		out __SP_H__,r29
+ 378 0266 0FBE      		out __SREG__,__tmp_reg__
+ 379 0268 CDBF      		out __SP_L__,r28
+ 380               	/* prologue end (size=10) */
+ 381               	.L32:
+ 382 026a 1A82      		std Y+2,__zero_reg__
+ 383 026c 1982      		std Y+1,__zero_reg__
+ 384 026e 00C0      		rjmp .L33
+ 385               	.L34:
+ 386 0270 ACE2      		ldi r26,lo8(44)
+ 387 0272 B0E0      		ldi r27,hi8(44)
+ 388 0274 8981      		ldd r24,Y+1
+ 389 0276 9A81      		ldd r25,Y+2
+ 390 0278 FC01      		movw r30,r24
+ 391 027a E050      		subi r30,lo8(-(a))
+ 392 027c F040      		sbci r31,hi8(-(a))
+ 393 027e 8081      		ld r24,Z
+ 394 0280 8C93      		st X,r24
+ 395               	.L35:
+ 396 0282 EBE2      		ldi r30,lo8(43)
+ 397 0284 F0E0      		ldi r31,hi8(43)
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s 			page 8
+
+
+ 398 0286 8081      		ld r24,Z
+ 399 0288 882F      		mov r24,r24
+ 400 028a 90E0      		ldi r25,lo8(0)
+ 401 028c 8072      		andi r24,lo8(32)
+ 402 028e 9070      		andi r25,hi8(32)
+ 403 0290 0097      		sbiw r24,0
+ 404 0292 01F0      		breq .L35
+ 405 0294 8981      		ldd r24,Y+1
+ 406 0296 9A81      		ldd r25,Y+2
+ 407 0298 0196      		adiw r24,1
+ 408 029a 9A83      		std Y+2,r25
+ 409 029c 8983      		std Y+1,r24
+ 410               	.L33:
+ 411 029e 8981      		ldd r24,Y+1
+ 412 02a0 9A81      		ldd r25,Y+2
+ 413 02a2 FC01      		movw r30,r24
+ 414 02a4 E050      		subi r30,lo8(-(a))
+ 415 02a6 F040      		sbci r31,hi8(-(a))
+ 416 02a8 8081      		ld r24,Z
+ 417 02aa 8823      		tst r24
+ 418 02ac 01F4      		brne .L34
+ 419 02ae 00C0      		rjmp .L32
+ 420               	/* epilogue: frame size=2 */
+ 421               	/* epilogue: noreturn */
+ 422               	/* epilogue end (size=0) */
+ 423               	/* function uart size 45 (35) */
+ 424               		.size	uart, .-uart
+ 425               		.comm s1,128,1
+ 426               		.comm s2,128,1
+ 427               		.comm s3,128,1
+ 428               		.comm temp,1,1
+ 429               		.comm hr,1,1
+ 430               		.comm min,1,1
+ 431               		.comm sec,1,1
+ 432               		.comm a,30,1
+ 433               	/* File "i2c.c": code  344 = 0x0158 ( 265), prologues  52, epilogues  27 */
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 i2c.c
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:2      *ABS*:0000003f __SREG__
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:3      *ABS*:0000003e __SP_H__
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:4      *ABS*:0000003d __SP_L__
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:5      *ABS*:00000000 __tmp_reg__
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:6      *ABS*:00000001 __zero_reg__
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:12     .text:00000000 start
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:38     .text:00000020 stop
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:58     .text:00000036 ack
+                            *COM*:00000001 temp
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:88     .text:00000060 nack
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:118    .text:0000008a send
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:161    .text:000000cc restart
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:187    .text:000000ec main
+                            *COM*:00000080 s1
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:262    .text:0000017a write
+                            *COM*:00000080 s2
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:298    .text:000001b6 read
+                            *COM*:00000080 s3
+C:\Users\hp\AppData\Local\Temp/ccVIdgqt.s:368    .text:00000256 uart
+                            *COM*:00000001 sec
+                            *COM*:00000001 min
+                            *COM*:00000001 hr
+                            *COM*:0000001e a
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+OSInit
+OSTaskCreate
+OSStart
+OSTaskResume
+OSTaskSuspend
+sprintf

@@ -1,0 +1,478 @@
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s 			page 1
+
+
+   1               		.file	"mutex.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               	.global	a
+  10               		.data
+  11               		.type	a, @object
+  12               		.size	a, 45
+  13               	a:
+  14 0000 6865 6C6C 		.string	"hello how are you alphabets a b c d e f g h\r"
+  14      6F20 686F 
+  14      7720 6172 
+  14      6520 796F 
+  14      7520 616C 
+  15               	.global	b
+  16               		.type	b, @object
+  17               		.size	b, 11
+  18               	b:
+  19 002d 6920 616D 		.string	"i am fine\r"
+  19      2066 696E 
+  19      650D 00
+  20               	.global	c
+  21               		.type	c, @object
+  22               		.size	c, 15
+  23               	c:
+  24 0038 676F 6F64 		.string	"good morning \r"
+  24      206D 6F72 
+  24      6E69 6E67 
+  24      200D 00
+  25               		.text
+  26               	.global	txt
+  27               		.type	txt, @function
+  28               	txt:
+  29               	/* prologue: frame size=18 */
+  30 0000 CF93      		push r28
+  31 0002 DF93      		push r29
+  32 0004 CDB7      		in r28,__SP_L__
+  33 0006 DEB7      		in r29,__SP_H__
+  34 0008 6297      		sbiw r28,18
+  35 000a 0FB6      		in __tmp_reg__,__SREG__
+  36 000c F894      		cli
+  37 000e DEBF      		out __SP_H__,r29
+  38 0010 0FBE      		out __SREG__,__tmp_reg__
+  39 0012 CDBF      		out __SP_L__,r28
+  40               	/* prologue end (size=10) */
+  41 0014 9A8B      		std Y+18,r25
+  42 0016 898B      		std Y+17,r24
+  43 0018 188A      		std Y+16,__zero_reg__
+  44 001a 1F86      		std Y+15,__zero_reg__
+  45 001c 00C0      		rjmp .L2
+  46               	.L3:
+  47 001e ACE2      		ldi r26,lo8(44)
+  48 0020 B0E0      		ldi r27,hi8(44)
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s 			page 2
+
+
+  49 0022 8F85      		ldd r24,Y+15
+  50 0024 9889      		ldd r25,Y+16
+  51 0026 9C01      		movw r18,r24
+  52 0028 8989      		ldd r24,Y+17
+  53 002a 9A89      		ldd r25,Y+18
+  54 002c F901      		movw r30,r18
+  55 002e E80F      		add r30,r24
+  56 0030 F91F      		adc r31,r25
+  57 0032 8081      		ld r24,Z
+  58 0034 8C93      		st X,r24
+  59               	.L4:
+  60 0036 EBE2      		ldi r30,lo8(43)
+  61 0038 F0E0      		ldi r31,hi8(43)
+  62 003a 8081      		ld r24,Z
+  63 003c 882F      		mov r24,r24
+  64 003e 90E0      		ldi r25,lo8(0)
+  65 0040 8072      		andi r24,lo8(32)
+  66 0042 9070      		andi r25,hi8(32)
+  67 0044 0097      		sbiw r24,0
+  68 0046 01F0      		breq .L4
+  69 0048 80E0      		ldi r24,lo8(0x42c80000)
+  70 004a 90E0      		ldi r25,hi8(0x42c80000)
+  71 004c A8EC      		ldi r26,hlo8(0x42c80000)
+  72 004e B2E4      		ldi r27,hhi8(0x42c80000)
+  73 0050 8B87      		std Y+11,r24
+  74 0052 9C87      		std Y+12,r25
+  75 0054 AD87      		std Y+13,r26
+  76 0056 BE87      		std Y+14,r27
+  77 0058 20E0      		ldi r18,lo8(0x437a0000)
+  78 005a 30E0      		ldi r19,hi8(0x437a0000)
+  79 005c 4AE7      		ldi r20,hlo8(0x437a0000)
+  80 005e 53E4      		ldi r21,hhi8(0x437a0000)
+  81 0060 6B85      		ldd r22,Y+11
+  82 0062 7C85      		ldd r23,Y+12
+  83 0064 8D85      		ldd r24,Y+13
+  84 0066 9E85      		ldd r25,Y+14
+  85 0068 0E94 0000 		call __mulsf3
+  86 006c DC01      		movw r26,r24
+  87 006e CB01      		movw r24,r22
+  88 0070 8F83      		std Y+7,r24
+  89 0072 9887      		std Y+8,r25
+  90 0074 A987      		std Y+9,r26
+  91 0076 BA87      		std Y+10,r27
+  92 0078 20E0      		ldi r18,lo8(0x3f800000)
+  93 007a 30E0      		ldi r19,hi8(0x3f800000)
+  94 007c 40E8      		ldi r20,hlo8(0x3f800000)
+  95 007e 5FE3      		ldi r21,hhi8(0x3f800000)
+  96 0080 6F81      		ldd r22,Y+7
+  97 0082 7885      		ldd r23,Y+8
+  98 0084 8985      		ldd r24,Y+9
+  99 0086 9A85      		ldd r25,Y+10
+ 100 0088 0E94 0000 		call __ltsf2
+ 101 008c 8823      		tst r24
+ 102 008e 04F0      		brlt .L8
+ 103 0090 00C0      		rjmp .L6
+ 104               	.L8:
+ 105 0092 81E0      		ldi r24,lo8(1)
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s 			page 3
+
+
+ 106 0094 90E0      		ldi r25,hi8(1)
+ 107 0096 9E83      		std Y+6,r25
+ 108 0098 8D83      		std Y+5,r24
+ 109 009a 00C0      		rjmp .L9
+ 110               	.L6:
+ 111 009c 20E0      		ldi r18,lo8(0x477fff00)
+ 112 009e 3FEF      		ldi r19,hi8(0x477fff00)
+ 113 00a0 4FE7      		ldi r20,hlo8(0x477fff00)
+ 114 00a2 57E4      		ldi r21,hhi8(0x477fff00)
+ 115 00a4 6F81      		ldd r22,Y+7
+ 116 00a6 7885      		ldd r23,Y+8
+ 117 00a8 8985      		ldd r24,Y+9
+ 118 00aa 9A85      		ldd r25,Y+10
+ 119 00ac 0E94 0000 		call __gtsf2
+ 120 00b0 1816      		cp __zero_reg__,r24
+ 121 00b2 04F0      		brlt .L12
+ 122 00b4 00C0      		rjmp .L10
+ 123               	.L12:
+ 124 00b6 20E0      		ldi r18,lo8(0x41200000)
+ 125 00b8 30E0      		ldi r19,hi8(0x41200000)
+ 126 00ba 40E2      		ldi r20,hlo8(0x41200000)
+ 127 00bc 51E4      		ldi r21,hhi8(0x41200000)
+ 128 00be 6B85      		ldd r22,Y+11
+ 129 00c0 7C85      		ldd r23,Y+12
+ 130 00c2 8D85      		ldd r24,Y+13
+ 131 00c4 9E85      		ldd r25,Y+14
+ 132 00c6 0E94 0000 		call __mulsf3
+ 133 00ca DC01      		movw r26,r24
+ 134 00cc CB01      		movw r24,r22
+ 135 00ce BC01      		movw r22,r24
+ 136 00d0 CD01      		movw r24,r26
+ 137 00d2 0E94 0000 		call __fixunssfsi
+ 138 00d6 DC01      		movw r26,r24
+ 139 00d8 CB01      		movw r24,r22
+ 140 00da 9E83      		std Y+6,r25
+ 141 00dc 8D83      		std Y+5,r24
+ 142 00de 00C0      		rjmp .L13
+ 143               	.L14:
+ 144 00e0 89E1      		ldi r24,lo8(25)
+ 145 00e2 90E0      		ldi r25,hi8(25)
+ 146 00e4 9C83      		std Y+4,r25
+ 147 00e6 8B83      		std Y+3,r24
+ 148 00e8 8B81      		ldd r24,Y+3
+ 149 00ea 9C81      		ldd r25,Y+4
+ 150               	/* #APP */
+ 151 00ec 0197      		1: sbiw r24,1
+ 152 00ee 01F4      		brne 1b
+ 153               	/* #NOAPP */
+ 154 00f0 9C83      		std Y+4,r25
+ 155 00f2 8B83      		std Y+3,r24
+ 156 00f4 8D81      		ldd r24,Y+5
+ 157 00f6 9E81      		ldd r25,Y+6
+ 158 00f8 0197      		sbiw r24,1
+ 159 00fa 9E83      		std Y+6,r25
+ 160 00fc 8D83      		std Y+5,r24
+ 161               	.L13:
+ 162 00fe 8D81      		ldd r24,Y+5
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s 			page 4
+
+
+ 163 0100 9E81      		ldd r25,Y+6
+ 164 0102 0097      		sbiw r24,0
+ 165 0104 01F4      		brne .L14
+ 166 0106 00C0      		rjmp .L16
+ 167               	.L10:
+ 168 0108 6F81      		ldd r22,Y+7
+ 169 010a 7885      		ldd r23,Y+8
+ 170 010c 8985      		ldd r24,Y+9
+ 171 010e 9A85      		ldd r25,Y+10
+ 172 0110 0E94 0000 		call __fixunssfsi
+ 173 0114 DC01      		movw r26,r24
+ 174 0116 CB01      		movw r24,r22
+ 175 0118 9E83      		std Y+6,r25
+ 176 011a 8D83      		std Y+5,r24
+ 177               	.L9:
+ 178 011c 8D81      		ldd r24,Y+5
+ 179 011e 9E81      		ldd r25,Y+6
+ 180 0120 9A83      		std Y+2,r25
+ 181 0122 8983      		std Y+1,r24
+ 182 0124 8981      		ldd r24,Y+1
+ 183 0126 9A81      		ldd r25,Y+2
+ 184               	/* #APP */
+ 185 0128 0197      		1: sbiw r24,1
+ 186 012a 01F4      		brne 1b
+ 187               	/* #NOAPP */
+ 188 012c 9A83      		std Y+2,r25
+ 189 012e 8983      		std Y+1,r24
+ 190               	.L16:
+ 191 0130 8F85      		ldd r24,Y+15
+ 192 0132 9889      		ldd r25,Y+16
+ 193 0134 0196      		adiw r24,1
+ 194 0136 988B      		std Y+16,r25
+ 195 0138 8F87      		std Y+15,r24
+ 196               	.L2:
+ 197 013a 8F85      		ldd r24,Y+15
+ 198 013c 9889      		ldd r25,Y+16
+ 199 013e 9C01      		movw r18,r24
+ 200 0140 8989      		ldd r24,Y+17
+ 201 0142 9A89      		ldd r25,Y+18
+ 202 0144 F901      		movw r30,r18
+ 203 0146 E80F      		add r30,r24
+ 204 0148 F91F      		adc r31,r25
+ 205 014a 8081      		ld r24,Z
+ 206 014c 8823      		tst r24
+ 207 014e 01F0      		breq .+2
+ 208 0150 00C0      		rjmp .L3
+ 209               	/* epilogue: frame size=18 */
+ 210 0152 6296      		adiw r28,18
+ 211 0154 0FB6      		in __tmp_reg__,__SREG__
+ 212 0156 F894      		cli
+ 213 0158 DEBF      		out __SP_H__,r29
+ 214 015a 0FBE      		out __SREG__,__tmp_reg__
+ 215 015c CDBF      		out __SP_L__,r28
+ 216 015e DF91      		pop r29
+ 217 0160 CF91      		pop r28
+ 218 0162 0895      		ret
+ 219               	/* epilogue end (size=9) */
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s 			page 5
+
+
+ 220               	/* function txt size 182 (163) */
+ 221               		.size	txt, .-txt
+ 222               	.global	t1
+ 223               		.type	t1, @function
+ 224               	t1:
+ 225               	/* prologue: frame size=0 */
+ 226 0164 CF93      		push r28
+ 227 0166 DF93      		push r29
+ 228 0168 CDB7      		in r28,__SP_L__
+ 229 016a DEB7      		in r29,__SP_H__
+ 230               	/* prologue end (size=4) */
+ 231               	.L20:
+ 232 016c 8091 0000 		lds r24,err
+ 233 0170 9091 0000 		lds r25,(err)+1
+ 234 0174 2091 0000 		lds r18,event
+ 235 0178 3091 0000 		lds r19,(event)+1
+ 236 017c AC01      		movw r20,r24
+ 237 017e 60E0      		ldi r22,lo8(0)
+ 238 0180 70E0      		ldi r23,hi8(0)
+ 239 0182 C901      		movw r24,r18
+ 240 0184 0E94 0000 		call OSMutexPend
+ 241 0188 80E0      		ldi r24,lo8(a)
+ 242 018a 90E0      		ldi r25,hi8(a)
+ 243 018c 0E94 0000 		call txt
+ 244 0190 8091 0000 		lds r24,event
+ 245 0194 9091 0000 		lds r25,(event)+1
+ 246 0198 0E94 0000 		call OSMutexPost
+ 247 019c 81E0      		ldi r24,lo8(1)
+ 248 019e 90E0      		ldi r25,hi8(1)
+ 249 01a0 0E94 0000 		call OSTimeDly
+ 250 01a4 00C0      		rjmp .L20
+ 251               	/* epilogue: frame size=0 */
+ 252               	/* epilogue: noreturn */
+ 253               	/* epilogue end (size=0) */
+ 254               	/* function t1 size 33 (29) */
+ 255               		.size	t1, .-t1
+ 256               	.global	t2
+ 257               		.type	t2, @function
+ 258               	t2:
+ 259               	/* prologue: frame size=0 */
+ 260 01a6 CF93      		push r28
+ 261 01a8 DF93      		push r29
+ 262 01aa CDB7      		in r28,__SP_L__
+ 263 01ac DEB7      		in r29,__SP_H__
+ 264               	/* prologue end (size=4) */
+ 265               	.L23:
+ 266 01ae 8091 0000 		lds r24,err
+ 267 01b2 9091 0000 		lds r25,(err)+1
+ 268 01b6 2091 0000 		lds r18,event
+ 269 01ba 3091 0000 		lds r19,(event)+1
+ 270 01be AC01      		movw r20,r24
+ 271 01c0 60E0      		ldi r22,lo8(0)
+ 272 01c2 70E0      		ldi r23,hi8(0)
+ 273 01c4 C901      		movw r24,r18
+ 274 01c6 0E94 0000 		call OSMutexPend
+ 275 01ca 80E0      		ldi r24,lo8(b)
+ 276 01cc 90E0      		ldi r25,hi8(b)
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s 			page 6
+
+
+ 277 01ce 0E94 0000 		call txt
+ 278 01d2 8091 0000 		lds r24,event
+ 279 01d6 9091 0000 		lds r25,(event)+1
+ 280 01da 0E94 0000 		call OSMutexPost
+ 281 01de 81E0      		ldi r24,lo8(1)
+ 282 01e0 90E0      		ldi r25,hi8(1)
+ 283 01e2 0E94 0000 		call OSTimeDly
+ 284 01e6 00C0      		rjmp .L23
+ 285               	/* epilogue: frame size=0 */
+ 286               	/* epilogue: noreturn */
+ 287               	/* epilogue end (size=0) */
+ 288               	/* function t2 size 33 (29) */
+ 289               		.size	t2, .-t2
+ 290               	.global	t3
+ 291               		.type	t3, @function
+ 292               	t3:
+ 293               	/* prologue: frame size=0 */
+ 294 01e8 CF93      		push r28
+ 295 01ea DF93      		push r29
+ 296 01ec CDB7      		in r28,__SP_L__
+ 297 01ee DEB7      		in r29,__SP_H__
+ 298               	/* prologue end (size=4) */
+ 299               	.L26:
+ 300 01f0 8091 0000 		lds r24,err
+ 301 01f4 9091 0000 		lds r25,(err)+1
+ 302 01f8 2091 0000 		lds r18,event
+ 303 01fc 3091 0000 		lds r19,(event)+1
+ 304 0200 AC01      		movw r20,r24
+ 305 0202 60E0      		ldi r22,lo8(0)
+ 306 0204 70E0      		ldi r23,hi8(0)
+ 307 0206 C901      		movw r24,r18
+ 308 0208 0E94 0000 		call OSMutexPend
+ 309 020c 80E0      		ldi r24,lo8(c)
+ 310 020e 90E0      		ldi r25,hi8(c)
+ 311 0210 0E94 0000 		call txt
+ 312 0214 8091 0000 		lds r24,event
+ 313 0218 9091 0000 		lds r25,(event)+1
+ 314 021c 0E94 0000 		call OSMutexPost
+ 315 0220 81E0      		ldi r24,lo8(1)
+ 316 0222 90E0      		ldi r25,hi8(1)
+ 317 0224 0E94 0000 		call OSTimeDly
+ 318 0228 00C0      		rjmp .L26
+ 319               	/* epilogue: frame size=0 */
+ 320               	/* epilogue: noreturn */
+ 321               	/* epilogue end (size=0) */
+ 322               	/* function t3 size 33 (29) */
+ 323               		.size	t3, .-t3
+ 324               	.global	main
+ 325               		.type	main, @function
+ 326               	main:
+ 327               	/* prologue: frame size=0 */
+ 328 022a CF93      		push r28
+ 329 022c DF93      		push r29
+ 330 022e CDB7      		in r28,__SP_L__
+ 331 0230 DEB7      		in r29,__SP_H__
+ 332               	/* prologue end (size=4) */
+ 333 0232 EBE2      		ldi r30,lo8(43)
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s 			page 7
+
+
+ 334 0234 F0E0      		ldi r31,hi8(43)
+ 335 0236 1082      		st Z,__zero_reg__
+ 336 0238 EAE2      		ldi r30,lo8(42)
+ 337 023a F0E0      		ldi r31,hi8(42)
+ 338 023c 88E1      		ldi r24,lo8(24)
+ 339 023e 8083      		st Z,r24
+ 340 0240 E5E9      		ldi r30,lo8(149)
+ 341 0242 F0E0      		ldi r31,hi8(149)
+ 342 0244 86E0      		ldi r24,lo8(6)
+ 343 0246 8083      		st Z,r24
+ 344 0248 E9E2      		ldi r30,lo8(41)
+ 345 024a F0E0      		ldi r31,hi8(41)
+ 346 024c 87E6      		ldi r24,lo8(103)
+ 347 024e 8083      		st Z,r24
+ 348 0250 E3E5      		ldi r30,lo8(83)
+ 349 0252 F0E0      		ldi r31,hi8(83)
+ 350 0254 87E0      		ldi r24,lo8(7)
+ 351 0256 8083      		st Z,r24
+ 352 0258 E7E5      		ldi r30,lo8(87)
+ 353 025a F0E0      		ldi r31,hi8(87)
+ 354 025c 81E0      		ldi r24,lo8(1)
+ 355 025e 8083      		st Z,r24
+ 356 0260 0E94 0000 		call OSInit
+ 357 0264 80E0      		ldi r24,lo8(s1+127)
+ 358 0266 90E0      		ldi r25,hi8(s1+127)
+ 359 0268 E0E0      		ldi r30,lo8(gs(t1))
+ 360 026a F0E0      		ldi r31,hi8(gs(t1))
+ 361 026c 25E0      		ldi r18,lo8(5)
+ 362 026e AC01      		movw r20,r24
+ 363 0270 6FEF      		ldi r22,lo8(255)
+ 364 0272 70E0      		ldi r23,hi8(255)
+ 365 0274 CF01      		movw r24,r30
+ 366 0276 0E94 0000 		call OSTaskCreate
+ 367 027a 80E0      		ldi r24,lo8(s2+127)
+ 368 027c 90E0      		ldi r25,hi8(s2+127)
+ 369 027e E0E0      		ldi r30,lo8(gs(t2))
+ 370 0280 F0E0      		ldi r31,hi8(gs(t2))
+ 371 0282 26E0      		ldi r18,lo8(6)
+ 372 0284 AC01      		movw r20,r24
+ 373 0286 6FEF      		ldi r22,lo8(255)
+ 374 0288 70E0      		ldi r23,hi8(255)
+ 375 028a CF01      		movw r24,r30
+ 376 028c 0E94 0000 		call OSTaskCreate
+ 377 0290 80E0      		ldi r24,lo8(s3+127)
+ 378 0292 90E0      		ldi r25,hi8(s3+127)
+ 379 0294 E0E0      		ldi r30,lo8(gs(t3))
+ 380 0296 F0E0      		ldi r31,hi8(gs(t3))
+ 381 0298 27E0      		ldi r18,lo8(7)
+ 382 029a AC01      		movw r20,r24
+ 383 029c 6FEF      		ldi r22,lo8(255)
+ 384 029e 70E0      		ldi r23,hi8(255)
+ 385 02a0 CF01      		movw r24,r30
+ 386 02a2 0E94 0000 		call OSTaskCreate
+ 387 02a6 8091 0000 		lds r24,err
+ 388 02aa 9091 0000 		lds r25,(err)+1
+ 389 02ae BC01      		movw r22,r24
+ 390 02b0 84E0      		ldi r24,lo8(4)
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s 			page 8
+
+
+ 391 02b2 0E94 0000 		call OSMutexCreate
+ 392 02b6 9093 0000 		sts (event)+1,r25
+ 393 02ba 8093 0000 		sts event,r24
+ 394 02be 0E94 0000 		call OSStart
+ 395               	/* epilogue: frame size=0 */
+ 396 02c2 DF91      		pop r29
+ 397 02c4 CF91      		pop r28
+ 398 02c6 0895      		ret
+ 399               	/* epilogue end (size=3) */
+ 400               	/* function main size 79 (72) */
+ 401               		.size	main, .-main
+ 402               		.comm s1,128,1
+ 403               		.comm s2,128,1
+ 404               		.comm s3,128,1
+ 405               		.comm event,2,1
+ 406               		.comm err,2,1
+ 407               	/* File "mutex.c": code  360 = 0x0168 ( 322), prologues  26, epilogues  12 */
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 mutex.c
+C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s:2      *ABS*:0000003f __SREG__
+C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s:3      *ABS*:0000003e __SP_H__
+C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s:4      *ABS*:0000003d __SP_L__
+C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s:5      *ABS*:00000000 __tmp_reg__
+C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s:6      *ABS*:00000001 __zero_reg__
+C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s:13     .data:00000000 a
+C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s:18     .data:0000002d b
+C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s:23     .data:00000038 c
+C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s:28     .text:00000000 txt
+C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s:224    .text:00000164 t1
+                            *COM*:00000002 err
+                            *COM*:00000002 event
+C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s:258    .text:000001a6 t2
+C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s:292    .text:000001e8 t3
+C:\Users\QISAdmin\AppData\Local\Temp/cc5aT2yk.s:326    .text:0000022a main
+                            *COM*:00000080 s1
+                            *COM*:00000080 s2
+                            *COM*:00000080 s3
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__mulsf3
+__ltsf2
+__gtsf2
+__fixunssfsi
+OSMutexPend
+OSMutexPost
+OSTimeDly
+OSInit
+OSTaskCreate
+OSMutexCreate
+OSStart
