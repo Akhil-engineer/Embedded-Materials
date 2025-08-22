@@ -1,0 +1,276 @@
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s 			page 1
+
+
+   1               		.file	"semaphore.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               	.global	a
+  10               		.data
+  11               		.type	a, @object
+  12               		.size	a, 21
+  13               	a:
+  14 0000 6865 6C6C 		.string	"helloo how are you\r\n"
+  14      6F6F 2068 
+  14      6F77 2061 
+  14      7265 2079 
+  14      6F75 0D0A 
+  15               	.global	d
+  16               		.type	d, @object
+  17               		.size	d, 16
+  18               	d:
+  19 0015 6869 2061 		.string	"hi am fine....\r"
+  19      6D20 6669 
+  19      6E65 2E2E 
+  19      2E2E 0D00 
+  20               		.text
+  21               	.global	main
+  22               		.type	main, @function
+  23               	main:
+  24               	/* prologue: frame size=0 */
+  25 0000 CF93      		push r28
+  26 0002 DF93      		push r29
+  27 0004 CDB7      		in r28,__SP_L__
+  28 0006 DEB7      		in r29,__SP_H__
+  29               	/* prologue end (size=4) */
+  30 0008 E9E2      		ldi r30,lo8(41)
+  31 000a F0E0      		ldi r31,hi8(41)
+  32 000c 87E6      		ldi r24,lo8(103)
+  33 000e 8083      		st Z,r24
+  34 0010 EBE2      		ldi r30,lo8(43)
+  35 0012 F0E0      		ldi r31,hi8(43)
+  36 0014 1082      		st Z,__zero_reg__
+  37 0016 EAE2      		ldi r30,lo8(42)
+  38 0018 F0E0      		ldi r31,hi8(42)
+  39 001a 88E1      		ldi r24,lo8(24)
+  40 001c 8083      		st Z,r24
+  41 001e E5E9      		ldi r30,lo8(149)
+  42 0020 F0E0      		ldi r31,hi8(149)
+  43 0022 86E0      		ldi r24,lo8(6)
+  44 0024 8083      		st Z,r24
+  45 0026 E3E5      		ldi r30,lo8(83)
+  46 0028 F0E0      		ldi r31,hi8(83)
+  47 002a 87E0      		ldi r24,lo8(7)
+  48 002c 8083      		st Z,r24
+  49 002e E7E5      		ldi r30,lo8(87)
+  50 0030 F0E0      		ldi r31,hi8(87)
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s 			page 2
+
+
+  51 0032 81E0      		ldi r24,lo8(1)
+  52 0034 8083      		st Z,r24
+  53 0036 0E94 0000 		call OSInit
+  54 003a 80E0      		ldi r24,lo8(s1+127)
+  55 003c 90E0      		ldi r25,hi8(s1+127)
+  56 003e E0E0      		ldi r30,lo8(gs(uart1))
+  57 0040 F0E0      		ldi r31,hi8(gs(uart1))
+  58 0042 24E0      		ldi r18,lo8(4)
+  59 0044 AC01      		movw r20,r24
+  60 0046 6FEF      		ldi r22,lo8(255)
+  61 0048 70E0      		ldi r23,hi8(255)
+  62 004a CF01      		movw r24,r30
+  63 004c 0E94 0000 		call OSTaskCreate
+  64 0050 80E0      		ldi r24,lo8(s2+127)
+  65 0052 90E0      		ldi r25,hi8(s2+127)
+  66 0054 E0E0      		ldi r30,lo8(gs(uart2))
+  67 0056 F0E0      		ldi r31,hi8(gs(uart2))
+  68 0058 25E0      		ldi r18,lo8(5)
+  69 005a AC01      		movw r20,r24
+  70 005c 6FEF      		ldi r22,lo8(255)
+  71 005e 70E0      		ldi r23,hi8(255)
+  72 0060 CF01      		movw r24,r30
+  73 0062 0E94 0000 		call OSTaskCreate
+  74 0066 80E0      		ldi r24,lo8(0)
+  75 0068 90E0      		ldi r25,hi8(0)
+  76 006a 0E94 0000 		call OSSemCreate
+  77 006e 9093 0000 		sts (maildata1)+1,r25
+  78 0072 8093 0000 		sts maildata1,r24
+  79 0076 0E94 0000 		call OSStart
+  80               	/* epilogue: frame size=0 */
+  81 007a DF91      		pop r29
+  82 007c CF91      		pop r28
+  83 007e 0895      		ret
+  84               	/* epilogue end (size=3) */
+  85               	/* function main size 64 (57) */
+  86               		.size	main, .-main
+  87               	.global	uart1
+  88               		.type	uart1, @function
+  89               	uart1:
+  90               	/* prologue: frame size=2 */
+  91 0080 CF93      		push r28
+  92 0082 DF93      		push r29
+  93 0084 CDB7      		in r28,__SP_L__
+  94 0086 DEB7      		in r29,__SP_H__
+  95 0088 2297      		sbiw r28,2
+  96 008a 0FB6      		in __tmp_reg__,__SREG__
+  97 008c F894      		cli
+  98 008e DEBF      		out __SP_H__,r29
+  99 0090 0FBE      		out __SREG__,__tmp_reg__
+ 100 0092 CDBF      		out __SP_L__,r28
+ 101               	/* prologue end (size=10) */
+ 102               	.L4:
+ 103 0094 8091 0000 		lds r24,err
+ 104 0098 9091 0000 		lds r25,(err)+1
+ 105 009c 2091 0000 		lds r18,maildata1
+ 106 00a0 3091 0000 		lds r19,(maildata1)+1
+ 107 00a4 AC01      		movw r20,r24
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s 			page 3
+
+
+ 108 00a6 60E0      		ldi r22,lo8(0)
+ 109 00a8 70E0      		ldi r23,hi8(0)
+ 110 00aa C901      		movw r24,r18
+ 111 00ac 0E94 0000 		call OSSemPend
+ 112 00b0 1A82      		std Y+2,__zero_reg__
+ 113 00b2 1982      		std Y+1,__zero_reg__
+ 114 00b4 00C0      		rjmp .L5
+ 115               	.L6:
+ 116 00b6 ACE2      		ldi r26,lo8(44)
+ 117 00b8 B0E0      		ldi r27,hi8(44)
+ 118 00ba 8981      		ldd r24,Y+1
+ 119 00bc 9A81      		ldd r25,Y+2
+ 120 00be FC01      		movw r30,r24
+ 121 00c0 E050      		subi r30,lo8(-(a))
+ 122 00c2 F040      		sbci r31,hi8(-(a))
+ 123 00c4 8081      		ld r24,Z
+ 124 00c6 8C93      		st X,r24
+ 125               	.L7:
+ 126 00c8 EBE2      		ldi r30,lo8(43)
+ 127 00ca F0E0      		ldi r31,hi8(43)
+ 128 00cc 8081      		ld r24,Z
+ 129 00ce 882F      		mov r24,r24
+ 130 00d0 90E0      		ldi r25,lo8(0)
+ 131 00d2 8072      		andi r24,lo8(32)
+ 132 00d4 9070      		andi r25,hi8(32)
+ 133 00d6 0097      		sbiw r24,0
+ 134 00d8 01F0      		breq .L7
+ 135 00da 8981      		ldd r24,Y+1
+ 136 00dc 9A81      		ldd r25,Y+2
+ 137 00de 0196      		adiw r24,1
+ 138 00e0 9A83      		std Y+2,r25
+ 139 00e2 8983      		std Y+1,r24
+ 140               	.L5:
+ 141 00e4 8981      		ldd r24,Y+1
+ 142 00e6 9A81      		ldd r25,Y+2
+ 143 00e8 FC01      		movw r30,r24
+ 144 00ea E050      		subi r30,lo8(-(a))
+ 145 00ec F040      		sbci r31,hi8(-(a))
+ 146 00ee 8081      		ld r24,Z
+ 147 00f0 8823      		tst r24
+ 148 00f2 01F4      		brne .L6
+ 149 00f4 81E0      		ldi r24,lo8(1)
+ 150 00f6 90E0      		ldi r25,hi8(1)
+ 151 00f8 0E94 0000 		call OSTimeDly
+ 152 00fc 00C0      		rjmp .L4
+ 153               	/* epilogue: frame size=2 */
+ 154               	/* epilogue: noreturn */
+ 155               	/* epilogue end (size=0) */
+ 156               	/* function uart1 size 63 (53) */
+ 157               		.size	uart1, .-uart1
+ 158               	.global	uart2
+ 159               		.type	uart2, @function
+ 160               	uart2:
+ 161               	/* prologue: frame size=2 */
+ 162 00fe CF93      		push r28
+ 163 0100 DF93      		push r29
+ 164 0102 CDB7      		in r28,__SP_L__
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s 			page 4
+
+
+ 165 0104 DEB7      		in r29,__SP_H__
+ 166 0106 2297      		sbiw r28,2
+ 167 0108 0FB6      		in __tmp_reg__,__SREG__
+ 168 010a F894      		cli
+ 169 010c DEBF      		out __SP_H__,r29
+ 170 010e 0FBE      		out __SREG__,__tmp_reg__
+ 171 0110 CDBF      		out __SP_L__,r28
+ 172               	/* prologue end (size=10) */
+ 173               	.L12:
+ 174 0112 1A82      		std Y+2,__zero_reg__
+ 175 0114 1982      		std Y+1,__zero_reg__
+ 176 0116 00C0      		rjmp .L13
+ 177               	.L14:
+ 178 0118 ACE2      		ldi r26,lo8(44)
+ 179 011a B0E0      		ldi r27,hi8(44)
+ 180 011c 8981      		ldd r24,Y+1
+ 181 011e 9A81      		ldd r25,Y+2
+ 182 0120 FC01      		movw r30,r24
+ 183 0122 E050      		subi r30,lo8(-(d))
+ 184 0124 F040      		sbci r31,hi8(-(d))
+ 185 0126 8081      		ld r24,Z
+ 186 0128 8C93      		st X,r24
+ 187               	.L15:
+ 188 012a EBE2      		ldi r30,lo8(43)
+ 189 012c F0E0      		ldi r31,hi8(43)
+ 190 012e 8081      		ld r24,Z
+ 191 0130 882F      		mov r24,r24
+ 192 0132 90E0      		ldi r25,lo8(0)
+ 193 0134 8072      		andi r24,lo8(32)
+ 194 0136 9070      		andi r25,hi8(32)
+ 195 0138 0097      		sbiw r24,0
+ 196 013a 01F0      		breq .L15
+ 197 013c 8981      		ldd r24,Y+1
+ 198 013e 9A81      		ldd r25,Y+2
+ 199 0140 0196      		adiw r24,1
+ 200 0142 9A83      		std Y+2,r25
+ 201 0144 8983      		std Y+1,r24
+ 202               	.L13:
+ 203 0146 8981      		ldd r24,Y+1
+ 204 0148 9A81      		ldd r25,Y+2
+ 205 014a FC01      		movw r30,r24
+ 206 014c E050      		subi r30,lo8(-(d))
+ 207 014e F040      		sbci r31,hi8(-(d))
+ 208 0150 8081      		ld r24,Z
+ 209 0152 8823      		tst r24
+ 210 0154 01F4      		brne .L14
+ 211 0156 8091 0000 		lds r24,maildata1
+ 212 015a 9091 0000 		lds r25,(maildata1)+1
+ 213 015e 0E94 0000 		call OSSemPost
+ 214 0162 00C0      		rjmp .L12
+ 215               	/* epilogue: frame size=2 */
+ 216               	/* epilogue: noreturn */
+ 217               	/* epilogue end (size=0) */
+ 218               	/* function uart2 size 51 (41) */
+ 219               		.size	uart2, .-uart2
+ 220               		.comm s1,128,1
+ 221               		.comm s2,128,1
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s 			page 5
+
+
+ 222               		.comm maildata1,2,1
+ 223               		.comm err,2,1
+ 224               	/* File "semaphore.c": code  178 = 0x00b2 ( 151), prologues  24, epilogues   3 */
+GAS LISTING C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 semaphore.c
+C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s:2      *ABS*:0000003f __SREG__
+C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s:3      *ABS*:0000003e __SP_H__
+C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s:4      *ABS*:0000003d __SP_L__
+C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s:5      *ABS*:00000000 __tmp_reg__
+C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s:6      *ABS*:00000001 __zero_reg__
+C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s:13     .data:00000000 a
+C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s:18     .data:00000015 d
+C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s:23     .text:00000000 main
+                            *COM*:00000080 s1
+C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s:89     .text:00000080 uart1
+                            *COM*:00000080 s2
+C:\Users\QISAdmin\AppData\Local\Temp/ccOoKubs.s:160    .text:000000fe uart2
+                            *COM*:00000002 maildata1
+                            *COM*:00000002 err
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+OSInit
+OSTaskCreate
+OSSemCreate
+OSStart
+OSSemPend
+OSTimeDly
+OSSemPost

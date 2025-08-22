@@ -1,0 +1,4821 @@
+
+semaphore.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000012e  00800100  00002850  000028c4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00002850  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000353  0080022e  0000297e  000029f2  2**0
+                  ALLOC
+  3 .stab         00000798  00000000  00000000  000029f4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      000000dc  00000000  00000000  0000318c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 46 00 	jmp	0x8c	; 0x8c <__ctors_end>
+       4:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+       8:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+       c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      10:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      14:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      18:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      1c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      20:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      24:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      28:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      2c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      30:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      34:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      38:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      3c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      40:	0c 94 83 13 	jmp	0x2706	; 0x2706 <OSTickISR>
+      44:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      48:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      4c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      50:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      54:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      58:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      5c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      60:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      64:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      68:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      6c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      70:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      74:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      78:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      7c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      80:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      84:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      88:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+
+0000008c <__ctors_end>:
+      8c:	11 24       	eor	r1, r1
+      8e:	1f be       	out	0x3f, r1	; 63
+      90:	cf ef       	ldi	r28, 0xFF	; 255
+      92:	d0 e1       	ldi	r29, 0x10	; 16
+      94:	de bf       	out	0x3e, r29	; 62
+      96:	cd bf       	out	0x3d, r28	; 61
+
+00000098 <__do_copy_data>:
+      98:	12 e0       	ldi	r17, 0x02	; 2
+      9a:	a0 e0       	ldi	r26, 0x00	; 0
+      9c:	b1 e0       	ldi	r27, 0x01	; 1
+      9e:	e0 e5       	ldi	r30, 0x50	; 80
+      a0:	f8 e2       	ldi	r31, 0x28	; 40
+      a2:	00 e0       	ldi	r16, 0x00	; 0
+      a4:	0b bf       	out	0x3b, r16	; 59
+      a6:	02 c0       	rjmp	.+4      	; 0xac <__do_copy_data+0x14>
+      a8:	07 90       	elpm	r0, Z+
+      aa:	0d 92       	st	X+, r0
+      ac:	ae 32       	cpi	r26, 0x2E	; 46
+      ae:	b1 07       	cpc	r27, r17
+      b0:	d9 f7       	brne	.-10     	; 0xa8 <__do_copy_data+0x10>
+
+000000b2 <__do_clear_bss>:
+      b2:	15 e0       	ldi	r17, 0x05	; 5
+      b4:	ae e2       	ldi	r26, 0x2E	; 46
+      b6:	b2 e0       	ldi	r27, 0x02	; 2
+      b8:	01 c0       	rjmp	.+2      	; 0xbc <.do_clear_bss_start>
+
+000000ba <.do_clear_bss_loop>:
+      ba:	1d 92       	st	X+, r1
+
+000000bc <.do_clear_bss_start>:
+      bc:	a1 38       	cpi	r26, 0x81	; 129
+      be:	b1 07       	cpc	r27, r17
+      c0:	e1 f7       	brne	.-8      	; 0xba <.do_clear_bss_loop>
+      c2:	0e 94 67 00 	call	0xce	; 0xce <main>
+      c6:	0c 94 27 14 	jmp	0x284e	; 0x284e <_exit>
+
+000000ca <__bad_interrupt>:
+      ca:	0c 94 00 00 	jmp	0	; 0x0 <__heap_end>
+
+000000ce <main>:
+      ce:	cf 93       	push	r28
+      d0:	df 93       	push	r29
+      d2:	cd b7       	in	r28, 0x3d	; 61
+      d4:	de b7       	in	r29, 0x3e	; 62
+      d6:	e9 e2       	ldi	r30, 0x29	; 41
+      d8:	f0 e0       	ldi	r31, 0x00	; 0
+      da:	87 e6       	ldi	r24, 0x67	; 103
+      dc:	80 83       	st	Z, r24
+      de:	eb e2       	ldi	r30, 0x2B	; 43
+      e0:	f0 e0       	ldi	r31, 0x00	; 0
+      e2:	10 82       	st	Z, r1
+      e4:	ea e2       	ldi	r30, 0x2A	; 42
+      e6:	f0 e0       	ldi	r31, 0x00	; 0
+      e8:	88 e1       	ldi	r24, 0x18	; 24
+      ea:	80 83       	st	Z, r24
+      ec:	e5 e9       	ldi	r30, 0x95	; 149
+      ee:	f0 e0       	ldi	r31, 0x00	; 0
+      f0:	86 e0       	ldi	r24, 0x06	; 6
+      f2:	80 83       	st	Z, r24
+      f4:	e3 e5       	ldi	r30, 0x53	; 83
+      f6:	f0 e0       	ldi	r31, 0x00	; 0
+      f8:	87 e0       	ldi	r24, 0x07	; 7
+      fa:	80 83       	st	Z, r24
+      fc:	e7 e5       	ldi	r30, 0x57	; 87
+      fe:	f0 e0       	ldi	r31, 0x00	; 0
+     100:	81 e0       	ldi	r24, 0x01	; 1
+     102:	80 83       	st	Z, r24
+     104:	0e 94 d6 02 	call	0x5ac	; 0x5ac <OSInit>
+     108:	8d ea       	ldi	r24, 0xAD	; 173
+     10a:	92 e0       	ldi	r25, 0x02	; 2
+     10c:	e7 ea       	ldi	r30, 0xA7	; 167
+     10e:	f0 e0       	ldi	r31, 0x00	; 0
+     110:	24 e0       	ldi	r18, 0x04	; 4
+     112:	ac 01       	movw	r20, r24
+     114:	6f ef       	ldi	r22, 0xFF	; 255
+     116:	70 e0       	ldi	r23, 0x00	; 0
+     118:	cf 01       	movw	r24, r30
+     11a:	0e 94 af 0e 	call	0x1d5e	; 0x1d5e <OSTaskCreate>
+     11e:	81 e3       	ldi	r24, 0x31	; 49
+     120:	93 e0       	ldi	r25, 0x03	; 3
+     122:	e6 ee       	ldi	r30, 0xE6	; 230
+     124:	f0 e0       	ldi	r31, 0x00	; 0
+     126:	25 e0       	ldi	r18, 0x05	; 5
+     128:	ac 01       	movw	r20, r24
+     12a:	6f ef       	ldi	r22, 0xFF	; 255
+     12c:	70 e0       	ldi	r23, 0x00	; 0
+     12e:	cf 01       	movw	r24, r30
+     130:	0e 94 af 0e 	call	0x1d5e	; 0x1d5e <OSTaskCreate>
+     134:	80 e0       	ldi	r24, 0x00	; 0
+     136:	90 e0       	ldi	r25, 0x00	; 0
+     138:	0e 94 a9 0d 	call	0x1b52	; 0x1b52 <OSSemCreate>
+     13c:	90 93 af 02 	sts	0x02AF, r25
+     140:	80 93 ae 02 	sts	0x02AE, r24
+     144:	0e 94 a7 03 	call	0x74e	; 0x74e <OSStart>
+     148:	df 91       	pop	r29
+     14a:	cf 91       	pop	r28
+     14c:	08 95       	ret
+
+0000014e <uart1>:
+     14e:	cf 93       	push	r28
+     150:	df 93       	push	r29
+     152:	cd b7       	in	r28, 0x3d	; 61
+     154:	de b7       	in	r29, 0x3e	; 62
+     156:	22 97       	sbiw	r28, 0x02	; 2
+     158:	0f b6       	in	r0, 0x3f	; 63
+     15a:	f8 94       	cli
+     15c:	de bf       	out	0x3e, r29	; 62
+     15e:	0f be       	out	0x3f, r0	; 63
+     160:	cd bf       	out	0x3d, r28	; 61
+     162:	80 91 b0 02 	lds	r24, 0x02B0
+     166:	90 91 b1 02 	lds	r25, 0x02B1
+     16a:	20 91 ae 02 	lds	r18, 0x02AE
+     16e:	30 91 af 02 	lds	r19, 0x02AF
+     172:	ac 01       	movw	r20, r24
+     174:	60 e0       	ldi	r22, 0x00	; 0
+     176:	70 e0       	ldi	r23, 0x00	; 0
+     178:	c9 01       	movw	r24, r18
+     17a:	0e 94 f9 0d 	call	0x1bf2	; 0x1bf2 <OSSemPend>
+     17e:	1a 82       	std	Y+2, r1	; 0x02
+     180:	19 82       	std	Y+1, r1	; 0x01
+     182:	17 c0       	rjmp	.+46     	; 0x1b2 <uart1+0x64>
+     184:	ac e2       	ldi	r26, 0x2C	; 44
+     186:	b0 e0       	ldi	r27, 0x00	; 0
+     188:	89 81       	ldd	r24, Y+1	; 0x01
+     18a:	9a 81       	ldd	r25, Y+2	; 0x02
+     18c:	fc 01       	movw	r30, r24
+     18e:	e0 50       	subi	r30, 0x00	; 0
+     190:	ff 4f       	sbci	r31, 0xFF	; 255
+     192:	80 81       	ld	r24, Z
+     194:	8c 93       	st	X, r24
+     196:	eb e2       	ldi	r30, 0x2B	; 43
+     198:	f0 e0       	ldi	r31, 0x00	; 0
+     19a:	80 81       	ld	r24, Z
+     19c:	88 2f       	mov	r24, r24
+     19e:	90 e0       	ldi	r25, 0x00	; 0
+     1a0:	80 72       	andi	r24, 0x20	; 32
+     1a2:	90 70       	andi	r25, 0x00	; 0
+     1a4:	00 97       	sbiw	r24, 0x00	; 0
+     1a6:	b9 f3       	breq	.-18     	; 0x196 <uart1+0x48>
+     1a8:	89 81       	ldd	r24, Y+1	; 0x01
+     1aa:	9a 81       	ldd	r25, Y+2	; 0x02
+     1ac:	01 96       	adiw	r24, 0x01	; 1
+     1ae:	9a 83       	std	Y+2, r25	; 0x02
+     1b0:	89 83       	std	Y+1, r24	; 0x01
+     1b2:	89 81       	ldd	r24, Y+1	; 0x01
+     1b4:	9a 81       	ldd	r25, Y+2	; 0x02
+     1b6:	fc 01       	movw	r30, r24
+     1b8:	e0 50       	subi	r30, 0x00	; 0
+     1ba:	ff 4f       	sbci	r31, 0xFF	; 255
+     1bc:	80 81       	ld	r24, Z
+     1be:	88 23       	and	r24, r24
+     1c0:	09 f7       	brne	.-62     	; 0x184 <uart1+0x36>
+     1c2:	81 e0       	ldi	r24, 0x01	; 1
+     1c4:	90 e0       	ldi	r25, 0x00	; 0
+     1c6:	0e 94 88 11 	call	0x2310	; 0x2310 <OSTimeDly>
+     1ca:	cb cf       	rjmp	.-106    	; 0x162 <uart1+0x14>
+
+000001cc <uart2>:
+     1cc:	cf 93       	push	r28
+     1ce:	df 93       	push	r29
+     1d0:	cd b7       	in	r28, 0x3d	; 61
+     1d2:	de b7       	in	r29, 0x3e	; 62
+     1d4:	22 97       	sbiw	r28, 0x02	; 2
+     1d6:	0f b6       	in	r0, 0x3f	; 63
+     1d8:	f8 94       	cli
+     1da:	de bf       	out	0x3e, r29	; 62
+     1dc:	0f be       	out	0x3f, r0	; 63
+     1de:	cd bf       	out	0x3d, r28	; 61
+     1e0:	1a 82       	std	Y+2, r1	; 0x02
+     1e2:	19 82       	std	Y+1, r1	; 0x01
+     1e4:	17 c0       	rjmp	.+46     	; 0x214 <uart2+0x48>
+     1e6:	ac e2       	ldi	r26, 0x2C	; 44
+     1e8:	b0 e0       	ldi	r27, 0x00	; 0
+     1ea:	89 81       	ldd	r24, Y+1	; 0x01
+     1ec:	9a 81       	ldd	r25, Y+2	; 0x02
+     1ee:	fc 01       	movw	r30, r24
+     1f0:	eb 5e       	subi	r30, 0xEB	; 235
+     1f2:	fe 4f       	sbci	r31, 0xFE	; 254
+     1f4:	80 81       	ld	r24, Z
+     1f6:	8c 93       	st	X, r24
+     1f8:	eb e2       	ldi	r30, 0x2B	; 43
+     1fa:	f0 e0       	ldi	r31, 0x00	; 0
+     1fc:	80 81       	ld	r24, Z
+     1fe:	88 2f       	mov	r24, r24
+     200:	90 e0       	ldi	r25, 0x00	; 0
+     202:	80 72       	andi	r24, 0x20	; 32
+     204:	90 70       	andi	r25, 0x00	; 0
+     206:	00 97       	sbiw	r24, 0x00	; 0
+     208:	b9 f3       	breq	.-18     	; 0x1f8 <uart2+0x2c>
+     20a:	89 81       	ldd	r24, Y+1	; 0x01
+     20c:	9a 81       	ldd	r25, Y+2	; 0x02
+     20e:	01 96       	adiw	r24, 0x01	; 1
+     210:	9a 83       	std	Y+2, r25	; 0x02
+     212:	89 83       	std	Y+1, r24	; 0x01
+     214:	89 81       	ldd	r24, Y+1	; 0x01
+     216:	9a 81       	ldd	r25, Y+2	; 0x02
+     218:	fc 01       	movw	r30, r24
+     21a:	eb 5e       	subi	r30, 0xEB	; 235
+     21c:	fe 4f       	sbci	r31, 0xFE	; 254
+     21e:	80 81       	ld	r24, Z
+     220:	88 23       	and	r24, r24
+     222:	09 f7       	brne	.-62     	; 0x1e6 <uart2+0x1a>
+     224:	80 91 ae 02 	lds	r24, 0x02AE
+     228:	90 91 af 02 	lds	r25, 0x02AF
+     22c:	0e 94 6b 0e 	call	0x1cd6	; 0x1cd6 <OSSemPost>
+     230:	d7 cf       	rjmp	.-82     	; 0x1e0 <uart2+0x14>
+
+00000232 <OSTaskStkInit>:
+     232:	cf 93       	push	r28
+     234:	df 93       	push	r29
+     236:	cd b7       	in	r28, 0x3d	; 61
+     238:	de b7       	in	r29, 0x3e	; 62
+     23a:	2c 97       	sbiw	r28, 0x0c	; 12
+     23c:	0f b6       	in	r0, 0x3f	; 63
+     23e:	f8 94       	cli
+     240:	de bf       	out	0x3e, r29	; 62
+     242:	0f be       	out	0x3f, r0	; 63
+     244:	cd bf       	out	0x3d, r28	; 61
+     246:	9e 83       	std	Y+6, r25	; 0x06
+     248:	8d 83       	std	Y+5, r24	; 0x05
+     24a:	78 87       	std	Y+8, r23	; 0x08
+     24c:	6f 83       	std	Y+7, r22	; 0x07
+     24e:	5a 87       	std	Y+10, r21	; 0x0a
+     250:	49 87       	std	Y+9, r20	; 0x09
+     252:	3c 87       	std	Y+12, r19	; 0x0c
+     254:	2b 87       	std	Y+11, r18	; 0x0b
+     256:	89 85       	ldd	r24, Y+9	; 0x09
+     258:	9a 85       	ldd	r25, Y+10	; 0x0a
+     25a:	9c 83       	std	Y+4, r25	; 0x04
+     25c:	8b 83       	std	Y+3, r24	; 0x03
+     25e:	8d 81       	ldd	r24, Y+5	; 0x05
+     260:	9e 81       	ldd	r25, Y+6	; 0x06
+     262:	9a 83       	std	Y+2, r25	; 0x02
+     264:	89 83       	std	Y+1, r24	; 0x01
+     266:	89 81       	ldd	r24, Y+1	; 0x01
+     268:	eb 81       	ldd	r30, Y+3	; 0x03
+     26a:	fc 81       	ldd	r31, Y+4	; 0x04
+     26c:	80 83       	st	Z, r24
+     26e:	8b 81       	ldd	r24, Y+3	; 0x03
+     270:	9c 81       	ldd	r25, Y+4	; 0x04
+     272:	01 97       	sbiw	r24, 0x01	; 1
+     274:	9c 83       	std	Y+4, r25	; 0x04
+     276:	8b 83       	std	Y+3, r24	; 0x03
+     278:	89 81       	ldd	r24, Y+1	; 0x01
+     27a:	9a 81       	ldd	r25, Y+2	; 0x02
+     27c:	89 2f       	mov	r24, r25
+     27e:	99 27       	eor	r25, r25
+     280:	eb 81       	ldd	r30, Y+3	; 0x03
+     282:	fc 81       	ldd	r31, Y+4	; 0x04
+     284:	80 83       	st	Z, r24
+     286:	8b 81       	ldd	r24, Y+3	; 0x03
+     288:	9c 81       	ldd	r25, Y+4	; 0x04
+     28a:	01 97       	sbiw	r24, 0x01	; 1
+     28c:	9c 83       	std	Y+4, r25	; 0x04
+     28e:	8b 83       	std	Y+3, r24	; 0x03
+     290:	eb 81       	ldd	r30, Y+3	; 0x03
+     292:	fc 81       	ldd	r31, Y+4	; 0x04
+     294:	10 82       	st	Z, r1
+     296:	8b 81       	ldd	r24, Y+3	; 0x03
+     298:	9c 81       	ldd	r25, Y+4	; 0x04
+     29a:	01 97       	sbiw	r24, 0x01	; 1
+     29c:	9c 83       	std	Y+4, r25	; 0x04
+     29e:	8b 83       	std	Y+3, r24	; 0x03
+     2a0:	eb 81       	ldd	r30, Y+3	; 0x03
+     2a2:	fc 81       	ldd	r31, Y+4	; 0x04
+     2a4:	10 82       	st	Z, r1
+     2a6:	8b 81       	ldd	r24, Y+3	; 0x03
+     2a8:	9c 81       	ldd	r25, Y+4	; 0x04
+     2aa:	01 97       	sbiw	r24, 0x01	; 1
+     2ac:	9c 83       	std	Y+4, r25	; 0x04
+     2ae:	8b 83       	std	Y+3, r24	; 0x03
+     2b0:	eb 81       	ldd	r30, Y+3	; 0x03
+     2b2:	fc 81       	ldd	r31, Y+4	; 0x04
+     2b4:	10 82       	st	Z, r1
+     2b6:	8b 81       	ldd	r24, Y+3	; 0x03
+     2b8:	9c 81       	ldd	r25, Y+4	; 0x04
+     2ba:	01 97       	sbiw	r24, 0x01	; 1
+     2bc:	9c 83       	std	Y+4, r25	; 0x04
+     2be:	8b 83       	std	Y+3, r24	; 0x03
+     2c0:	eb 81       	ldd	r30, Y+3	; 0x03
+     2c2:	fc 81       	ldd	r31, Y+4	; 0x04
+     2c4:	10 82       	st	Z, r1
+     2c6:	8b 81       	ldd	r24, Y+3	; 0x03
+     2c8:	9c 81       	ldd	r25, Y+4	; 0x04
+     2ca:	01 97       	sbiw	r24, 0x01	; 1
+     2cc:	9c 83       	std	Y+4, r25	; 0x04
+     2ce:	8b 83       	std	Y+3, r24	; 0x03
+     2d0:	eb 81       	ldd	r30, Y+3	; 0x03
+     2d2:	fc 81       	ldd	r31, Y+4	; 0x04
+     2d4:	10 82       	st	Z, r1
+     2d6:	8b 81       	ldd	r24, Y+3	; 0x03
+     2d8:	9c 81       	ldd	r25, Y+4	; 0x04
+     2da:	01 97       	sbiw	r24, 0x01	; 1
+     2dc:	9c 83       	std	Y+4, r25	; 0x04
+     2de:	8b 83       	std	Y+3, r24	; 0x03
+     2e0:	eb 81       	ldd	r30, Y+3	; 0x03
+     2e2:	fc 81       	ldd	r31, Y+4	; 0x04
+     2e4:	10 82       	st	Z, r1
+     2e6:	8b 81       	ldd	r24, Y+3	; 0x03
+     2e8:	9c 81       	ldd	r25, Y+4	; 0x04
+     2ea:	01 97       	sbiw	r24, 0x01	; 1
+     2ec:	9c 83       	std	Y+4, r25	; 0x04
+     2ee:	8b 83       	std	Y+3, r24	; 0x03
+     2f0:	eb 81       	ldd	r30, Y+3	; 0x03
+     2f2:	fc 81       	ldd	r31, Y+4	; 0x04
+     2f4:	10 82       	st	Z, r1
+     2f6:	8b 81       	ldd	r24, Y+3	; 0x03
+     2f8:	9c 81       	ldd	r25, Y+4	; 0x04
+     2fa:	01 97       	sbiw	r24, 0x01	; 1
+     2fc:	9c 83       	std	Y+4, r25	; 0x04
+     2fe:	8b 83       	std	Y+3, r24	; 0x03
+     300:	eb 81       	ldd	r30, Y+3	; 0x03
+     302:	fc 81       	ldd	r31, Y+4	; 0x04
+     304:	10 82       	st	Z, r1
+     306:	8b 81       	ldd	r24, Y+3	; 0x03
+     308:	9c 81       	ldd	r25, Y+4	; 0x04
+     30a:	01 97       	sbiw	r24, 0x01	; 1
+     30c:	9c 83       	std	Y+4, r25	; 0x04
+     30e:	8b 83       	std	Y+3, r24	; 0x03
+     310:	eb 81       	ldd	r30, Y+3	; 0x03
+     312:	fc 81       	ldd	r31, Y+4	; 0x04
+     314:	10 82       	st	Z, r1
+     316:	8b 81       	ldd	r24, Y+3	; 0x03
+     318:	9c 81       	ldd	r25, Y+4	; 0x04
+     31a:	01 97       	sbiw	r24, 0x01	; 1
+     31c:	9c 83       	std	Y+4, r25	; 0x04
+     31e:	8b 83       	std	Y+3, r24	; 0x03
+     320:	eb 81       	ldd	r30, Y+3	; 0x03
+     322:	fc 81       	ldd	r31, Y+4	; 0x04
+     324:	10 82       	st	Z, r1
+     326:	8b 81       	ldd	r24, Y+3	; 0x03
+     328:	9c 81       	ldd	r25, Y+4	; 0x04
+     32a:	01 97       	sbiw	r24, 0x01	; 1
+     32c:	9c 83       	std	Y+4, r25	; 0x04
+     32e:	8b 83       	std	Y+3, r24	; 0x03
+     330:	eb 81       	ldd	r30, Y+3	; 0x03
+     332:	fc 81       	ldd	r31, Y+4	; 0x04
+     334:	10 82       	st	Z, r1
+     336:	8b 81       	ldd	r24, Y+3	; 0x03
+     338:	9c 81       	ldd	r25, Y+4	; 0x04
+     33a:	01 97       	sbiw	r24, 0x01	; 1
+     33c:	9c 83       	std	Y+4, r25	; 0x04
+     33e:	8b 83       	std	Y+3, r24	; 0x03
+     340:	eb 81       	ldd	r30, Y+3	; 0x03
+     342:	fc 81       	ldd	r31, Y+4	; 0x04
+     344:	10 82       	st	Z, r1
+     346:	8b 81       	ldd	r24, Y+3	; 0x03
+     348:	9c 81       	ldd	r25, Y+4	; 0x04
+     34a:	01 97       	sbiw	r24, 0x01	; 1
+     34c:	9c 83       	std	Y+4, r25	; 0x04
+     34e:	8b 83       	std	Y+3, r24	; 0x03
+     350:	eb 81       	ldd	r30, Y+3	; 0x03
+     352:	fc 81       	ldd	r31, Y+4	; 0x04
+     354:	10 82       	st	Z, r1
+     356:	8b 81       	ldd	r24, Y+3	; 0x03
+     358:	9c 81       	ldd	r25, Y+4	; 0x04
+     35a:	01 97       	sbiw	r24, 0x01	; 1
+     35c:	9c 83       	std	Y+4, r25	; 0x04
+     35e:	8b 83       	std	Y+3, r24	; 0x03
+     360:	eb 81       	ldd	r30, Y+3	; 0x03
+     362:	fc 81       	ldd	r31, Y+4	; 0x04
+     364:	10 82       	st	Z, r1
+     366:	8b 81       	ldd	r24, Y+3	; 0x03
+     368:	9c 81       	ldd	r25, Y+4	; 0x04
+     36a:	01 97       	sbiw	r24, 0x01	; 1
+     36c:	9c 83       	std	Y+4, r25	; 0x04
+     36e:	8b 83       	std	Y+3, r24	; 0x03
+     370:	eb 81       	ldd	r30, Y+3	; 0x03
+     372:	fc 81       	ldd	r31, Y+4	; 0x04
+     374:	10 82       	st	Z, r1
+     376:	8b 81       	ldd	r24, Y+3	; 0x03
+     378:	9c 81       	ldd	r25, Y+4	; 0x04
+     37a:	01 97       	sbiw	r24, 0x01	; 1
+     37c:	9c 83       	std	Y+4, r25	; 0x04
+     37e:	8b 83       	std	Y+3, r24	; 0x03
+     380:	eb 81       	ldd	r30, Y+3	; 0x03
+     382:	fc 81       	ldd	r31, Y+4	; 0x04
+     384:	10 82       	st	Z, r1
+     386:	8b 81       	ldd	r24, Y+3	; 0x03
+     388:	9c 81       	ldd	r25, Y+4	; 0x04
+     38a:	01 97       	sbiw	r24, 0x01	; 1
+     38c:	9c 83       	std	Y+4, r25	; 0x04
+     38e:	8b 83       	std	Y+3, r24	; 0x03
+     390:	eb 81       	ldd	r30, Y+3	; 0x03
+     392:	fc 81       	ldd	r31, Y+4	; 0x04
+     394:	10 82       	st	Z, r1
+     396:	8b 81       	ldd	r24, Y+3	; 0x03
+     398:	9c 81       	ldd	r25, Y+4	; 0x04
+     39a:	01 97       	sbiw	r24, 0x01	; 1
+     39c:	9c 83       	std	Y+4, r25	; 0x04
+     39e:	8b 83       	std	Y+3, r24	; 0x03
+     3a0:	eb 81       	ldd	r30, Y+3	; 0x03
+     3a2:	fc 81       	ldd	r31, Y+4	; 0x04
+     3a4:	10 82       	st	Z, r1
+     3a6:	8b 81       	ldd	r24, Y+3	; 0x03
+     3a8:	9c 81       	ldd	r25, Y+4	; 0x04
+     3aa:	01 97       	sbiw	r24, 0x01	; 1
+     3ac:	9c 83       	std	Y+4, r25	; 0x04
+     3ae:	8b 83       	std	Y+3, r24	; 0x03
+     3b0:	eb 81       	ldd	r30, Y+3	; 0x03
+     3b2:	fc 81       	ldd	r31, Y+4	; 0x04
+     3b4:	10 82       	st	Z, r1
+     3b6:	8b 81       	ldd	r24, Y+3	; 0x03
+     3b8:	9c 81       	ldd	r25, Y+4	; 0x04
+     3ba:	01 97       	sbiw	r24, 0x01	; 1
+     3bc:	9c 83       	std	Y+4, r25	; 0x04
+     3be:	8b 83       	std	Y+3, r24	; 0x03
+     3c0:	eb 81       	ldd	r30, Y+3	; 0x03
+     3c2:	fc 81       	ldd	r31, Y+4	; 0x04
+     3c4:	10 82       	st	Z, r1
+     3c6:	8b 81       	ldd	r24, Y+3	; 0x03
+     3c8:	9c 81       	ldd	r25, Y+4	; 0x04
+     3ca:	01 97       	sbiw	r24, 0x01	; 1
+     3cc:	9c 83       	std	Y+4, r25	; 0x04
+     3ce:	8b 83       	std	Y+3, r24	; 0x03
+     3d0:	eb 81       	ldd	r30, Y+3	; 0x03
+     3d2:	fc 81       	ldd	r31, Y+4	; 0x04
+     3d4:	10 82       	st	Z, r1
+     3d6:	8b 81       	ldd	r24, Y+3	; 0x03
+     3d8:	9c 81       	ldd	r25, Y+4	; 0x04
+     3da:	01 97       	sbiw	r24, 0x01	; 1
+     3dc:	9c 83       	std	Y+4, r25	; 0x04
+     3de:	8b 83       	std	Y+3, r24	; 0x03
+     3e0:	eb 81       	ldd	r30, Y+3	; 0x03
+     3e2:	fc 81       	ldd	r31, Y+4	; 0x04
+     3e4:	10 82       	st	Z, r1
+     3e6:	8b 81       	ldd	r24, Y+3	; 0x03
+     3e8:	9c 81       	ldd	r25, Y+4	; 0x04
+     3ea:	01 97       	sbiw	r24, 0x01	; 1
+     3ec:	9c 83       	std	Y+4, r25	; 0x04
+     3ee:	8b 83       	std	Y+3, r24	; 0x03
+     3f0:	eb 81       	ldd	r30, Y+3	; 0x03
+     3f2:	fc 81       	ldd	r31, Y+4	; 0x04
+     3f4:	10 82       	st	Z, r1
+     3f6:	8b 81       	ldd	r24, Y+3	; 0x03
+     3f8:	9c 81       	ldd	r25, Y+4	; 0x04
+     3fa:	01 97       	sbiw	r24, 0x01	; 1
+     3fc:	9c 83       	std	Y+4, r25	; 0x04
+     3fe:	8b 83       	std	Y+3, r24	; 0x03
+     400:	eb 81       	ldd	r30, Y+3	; 0x03
+     402:	fc 81       	ldd	r31, Y+4	; 0x04
+     404:	10 82       	st	Z, r1
+     406:	8b 81       	ldd	r24, Y+3	; 0x03
+     408:	9c 81       	ldd	r25, Y+4	; 0x04
+     40a:	01 97       	sbiw	r24, 0x01	; 1
+     40c:	9c 83       	std	Y+4, r25	; 0x04
+     40e:	8b 83       	std	Y+3, r24	; 0x03
+     410:	8f 81       	ldd	r24, Y+7	; 0x07
+     412:	98 85       	ldd	r25, Y+8	; 0x08
+     414:	9a 83       	std	Y+2, r25	; 0x02
+     416:	89 83       	std	Y+1, r24	; 0x01
+     418:	89 81       	ldd	r24, Y+1	; 0x01
+     41a:	eb 81       	ldd	r30, Y+3	; 0x03
+     41c:	fc 81       	ldd	r31, Y+4	; 0x04
+     41e:	80 83       	st	Z, r24
+     420:	8b 81       	ldd	r24, Y+3	; 0x03
+     422:	9c 81       	ldd	r25, Y+4	; 0x04
+     424:	01 97       	sbiw	r24, 0x01	; 1
+     426:	9c 83       	std	Y+4, r25	; 0x04
+     428:	8b 83       	std	Y+3, r24	; 0x03
+     42a:	89 81       	ldd	r24, Y+1	; 0x01
+     42c:	9a 81       	ldd	r25, Y+2	; 0x02
+     42e:	89 2f       	mov	r24, r25
+     430:	99 27       	eor	r25, r25
+     432:	eb 81       	ldd	r30, Y+3	; 0x03
+     434:	fc 81       	ldd	r31, Y+4	; 0x04
+     436:	80 83       	st	Z, r24
+     438:	8b 81       	ldd	r24, Y+3	; 0x03
+     43a:	9c 81       	ldd	r25, Y+4	; 0x04
+     43c:	01 97       	sbiw	r24, 0x01	; 1
+     43e:	9c 83       	std	Y+4, r25	; 0x04
+     440:	8b 83       	std	Y+3, r24	; 0x03
+     442:	eb 81       	ldd	r30, Y+3	; 0x03
+     444:	fc 81       	ldd	r31, Y+4	; 0x04
+     446:	10 82       	st	Z, r1
+     448:	8b 81       	ldd	r24, Y+3	; 0x03
+     44a:	9c 81       	ldd	r25, Y+4	; 0x04
+     44c:	01 97       	sbiw	r24, 0x01	; 1
+     44e:	9c 83       	std	Y+4, r25	; 0x04
+     450:	8b 83       	std	Y+3, r24	; 0x03
+     452:	eb 81       	ldd	r30, Y+3	; 0x03
+     454:	fc 81       	ldd	r31, Y+4	; 0x04
+     456:	10 82       	st	Z, r1
+     458:	8b 81       	ldd	r24, Y+3	; 0x03
+     45a:	9c 81       	ldd	r25, Y+4	; 0x04
+     45c:	01 97       	sbiw	r24, 0x01	; 1
+     45e:	9c 83       	std	Y+4, r25	; 0x04
+     460:	8b 83       	std	Y+3, r24	; 0x03
+     462:	eb 81       	ldd	r30, Y+3	; 0x03
+     464:	fc 81       	ldd	r31, Y+4	; 0x04
+     466:	10 82       	st	Z, r1
+     468:	8b 81       	ldd	r24, Y+3	; 0x03
+     46a:	9c 81       	ldd	r25, Y+4	; 0x04
+     46c:	01 97       	sbiw	r24, 0x01	; 1
+     46e:	9c 83       	std	Y+4, r25	; 0x04
+     470:	8b 83       	std	Y+3, r24	; 0x03
+     472:	eb 81       	ldd	r30, Y+3	; 0x03
+     474:	fc 81       	ldd	r31, Y+4	; 0x04
+     476:	10 82       	st	Z, r1
+     478:	8b 81       	ldd	r24, Y+3	; 0x03
+     47a:	9c 81       	ldd	r25, Y+4	; 0x04
+     47c:	01 97       	sbiw	r24, 0x01	; 1
+     47e:	9c 83       	std	Y+4, r25	; 0x04
+     480:	8b 83       	std	Y+3, r24	; 0x03
+     482:	eb 81       	ldd	r30, Y+3	; 0x03
+     484:	fc 81       	ldd	r31, Y+4	; 0x04
+     486:	10 82       	st	Z, r1
+     488:	8b 81       	ldd	r24, Y+3	; 0x03
+     48a:	9c 81       	ldd	r25, Y+4	; 0x04
+     48c:	01 97       	sbiw	r24, 0x01	; 1
+     48e:	9c 83       	std	Y+4, r25	; 0x04
+     490:	8b 83       	std	Y+3, r24	; 0x03
+     492:	eb 81       	ldd	r30, Y+3	; 0x03
+     494:	fc 81       	ldd	r31, Y+4	; 0x04
+     496:	10 82       	st	Z, r1
+     498:	8b 81       	ldd	r24, Y+3	; 0x03
+     49a:	9c 81       	ldd	r25, Y+4	; 0x04
+     49c:	01 97       	sbiw	r24, 0x01	; 1
+     49e:	9c 83       	std	Y+4, r25	; 0x04
+     4a0:	8b 83       	std	Y+3, r24	; 0x03
+     4a2:	eb 81       	ldd	r30, Y+3	; 0x03
+     4a4:	fc 81       	ldd	r31, Y+4	; 0x04
+     4a6:	10 82       	st	Z, r1
+     4a8:	8b 81       	ldd	r24, Y+3	; 0x03
+     4aa:	9c 81       	ldd	r25, Y+4	; 0x04
+     4ac:	01 97       	sbiw	r24, 0x01	; 1
+     4ae:	9c 83       	std	Y+4, r25	; 0x04
+     4b0:	8b 83       	std	Y+3, r24	; 0x03
+     4b2:	eb 81       	ldd	r30, Y+3	; 0x03
+     4b4:	fc 81       	ldd	r31, Y+4	; 0x04
+     4b6:	80 e8       	ldi	r24, 0x80	; 128
+     4b8:	80 83       	st	Z, r24
+     4ba:	8b 81       	ldd	r24, Y+3	; 0x03
+     4bc:	9c 81       	ldd	r25, Y+4	; 0x04
+     4be:	01 97       	sbiw	r24, 0x01	; 1
+     4c0:	9c 83       	std	Y+4, r25	; 0x04
+     4c2:	8b 83       	std	Y+3, r24	; 0x03
+     4c4:	8b 81       	ldd	r24, Y+3	; 0x03
+     4c6:	9c 81       	ldd	r25, Y+4	; 0x04
+     4c8:	2c 96       	adiw	r28, 0x0c	; 12
+     4ca:	0f b6       	in	r0, 0x3f	; 63
+     4cc:	f8 94       	cli
+     4ce:	de bf       	out	0x3e, r29	; 62
+     4d0:	0f be       	out	0x3f, r0	; 63
+     4d2:	cd bf       	out	0x3d, r28	; 61
+     4d4:	df 91       	pop	r29
+     4d6:	cf 91       	pop	r28
+     4d8:	08 95       	ret
+
+000004da <OSTaskCreateHook>:
+     4da:	cf 93       	push	r28
+     4dc:	df 93       	push	r29
+     4de:	cd b7       	in	r28, 0x3d	; 61
+     4e0:	de b7       	in	r29, 0x3e	; 62
+     4e2:	22 97       	sbiw	r28, 0x02	; 2
+     4e4:	0f b6       	in	r0, 0x3f	; 63
+     4e6:	f8 94       	cli
+     4e8:	de bf       	out	0x3e, r29	; 62
+     4ea:	0f be       	out	0x3f, r0	; 63
+     4ec:	cd bf       	out	0x3d, r28	; 61
+     4ee:	9a 83       	std	Y+2, r25	; 0x02
+     4f0:	89 83       	std	Y+1, r24	; 0x01
+     4f2:	22 96       	adiw	r28, 0x02	; 2
+     4f4:	0f b6       	in	r0, 0x3f	; 63
+     4f6:	f8 94       	cli
+     4f8:	de bf       	out	0x3e, r29	; 62
+     4fa:	0f be       	out	0x3f, r0	; 63
+     4fc:	cd bf       	out	0x3d, r28	; 61
+     4fe:	df 91       	pop	r29
+     500:	cf 91       	pop	r28
+     502:	08 95       	ret
+
+00000504 <OSTaskDelHook>:
+     504:	cf 93       	push	r28
+     506:	df 93       	push	r29
+     508:	cd b7       	in	r28, 0x3d	; 61
+     50a:	de b7       	in	r29, 0x3e	; 62
+     50c:	22 97       	sbiw	r28, 0x02	; 2
+     50e:	0f b6       	in	r0, 0x3f	; 63
+     510:	f8 94       	cli
+     512:	de bf       	out	0x3e, r29	; 62
+     514:	0f be       	out	0x3f, r0	; 63
+     516:	cd bf       	out	0x3d, r28	; 61
+     518:	9a 83       	std	Y+2, r25	; 0x02
+     51a:	89 83       	std	Y+1, r24	; 0x01
+     51c:	22 96       	adiw	r28, 0x02	; 2
+     51e:	0f b6       	in	r0, 0x3f	; 63
+     520:	f8 94       	cli
+     522:	de bf       	out	0x3e, r29	; 62
+     524:	0f be       	out	0x3f, r0	; 63
+     526:	cd bf       	out	0x3d, r28	; 61
+     528:	df 91       	pop	r29
+     52a:	cf 91       	pop	r28
+     52c:	08 95       	ret
+
+0000052e <OSTaskSwHook>:
+     52e:	cf 93       	push	r28
+     530:	df 93       	push	r29
+     532:	cd b7       	in	r28, 0x3d	; 61
+     534:	de b7       	in	r29, 0x3e	; 62
+     536:	df 91       	pop	r29
+     538:	cf 91       	pop	r28
+     53a:	08 95       	ret
+
+0000053c <OSTaskStatHook>:
+     53c:	cf 93       	push	r28
+     53e:	df 93       	push	r29
+     540:	cd b7       	in	r28, 0x3d	; 61
+     542:	de b7       	in	r29, 0x3e	; 62
+     544:	df 91       	pop	r29
+     546:	cf 91       	pop	r28
+     548:	08 95       	ret
+
+0000054a <OSTimeTickHook>:
+     54a:	cf 93       	push	r28
+     54c:	df 93       	push	r29
+     54e:	cd b7       	in	r28, 0x3d	; 61
+     550:	de b7       	in	r29, 0x3e	; 62
+     552:	df 91       	pop	r29
+     554:	cf 91       	pop	r28
+     556:	08 95       	ret
+
+00000558 <OSInitHookBegin>:
+     558:	cf 93       	push	r28
+     55a:	df 93       	push	r29
+     55c:	cd b7       	in	r28, 0x3d	; 61
+     55e:	de b7       	in	r29, 0x3e	; 62
+     560:	df 91       	pop	r29
+     562:	cf 91       	pop	r28
+     564:	08 95       	ret
+
+00000566 <OSInitHookEnd>:
+     566:	cf 93       	push	r28
+     568:	df 93       	push	r29
+     56a:	cd b7       	in	r28, 0x3d	; 61
+     56c:	de b7       	in	r29, 0x3e	; 62
+     56e:	df 91       	pop	r29
+     570:	cf 91       	pop	r28
+     572:	08 95       	ret
+
+00000574 <OSTaskIdleHook>:
+     574:	cf 93       	push	r28
+     576:	df 93       	push	r29
+     578:	cd b7       	in	r28, 0x3d	; 61
+     57a:	de b7       	in	r29, 0x3e	; 62
+     57c:	df 91       	pop	r29
+     57e:	cf 91       	pop	r28
+     580:	08 95       	ret
+
+00000582 <OSTCBInitHook>:
+     582:	cf 93       	push	r28
+     584:	df 93       	push	r29
+     586:	cd b7       	in	r28, 0x3d	; 61
+     588:	de b7       	in	r29, 0x3e	; 62
+     58a:	22 97       	sbiw	r28, 0x02	; 2
+     58c:	0f b6       	in	r0, 0x3f	; 63
+     58e:	f8 94       	cli
+     590:	de bf       	out	0x3e, r29	; 62
+     592:	0f be       	out	0x3f, r0	; 63
+     594:	cd bf       	out	0x3d, r28	; 61
+     596:	9a 83       	std	Y+2, r25	; 0x02
+     598:	89 83       	std	Y+1, r24	; 0x01
+     59a:	22 96       	adiw	r28, 0x02	; 2
+     59c:	0f b6       	in	r0, 0x3f	; 63
+     59e:	f8 94       	cli
+     5a0:	de bf       	out	0x3e, r29	; 62
+     5a2:	0f be       	out	0x3f, r0	; 63
+     5a4:	cd bf       	out	0x3d, r28	; 61
+     5a6:	df 91       	pop	r29
+     5a8:	cf 91       	pop	r28
+     5aa:	08 95       	ret
+
+000005ac <OSInit>:
+     5ac:	cf 93       	push	r28
+     5ae:	df 93       	push	r29
+     5b0:	cd b7       	in	r28, 0x3d	; 61
+     5b2:	de b7       	in	r29, 0x3e	; 62
+     5b4:	0e 94 ac 02 	call	0x558	; 0x558 <OSInitHookBegin>
+     5b8:	0e 94 b1 06 	call	0xd62	; 0xd62 <OS_InitMisc>
+     5bc:	0e 94 d0 06 	call	0xda0	; 0xda0 <OS_InitRdyList>
+     5c0:	0e 94 2e 07 	call	0xe5c	; 0xe5c <OS_InitTCBList>
+     5c4:	0e 94 69 06 	call	0xcd2	; 0xcd2 <OS_InitEventList>
+     5c8:	0e 94 0a 07 	call	0xe14	; 0xe14 <OS_InitTaskIdle>
+     5cc:	0e 94 1c 07 	call	0xe38	; 0xe38 <OS_InitTaskStat>
+     5d0:	0e 94 b3 02 	call	0x566	; 0x566 <OSInitHookEnd>
+     5d4:	df 91       	pop	r29
+     5d6:	cf 91       	pop	r28
+     5d8:	08 95       	ret
+
+000005da <OSIntEnter>:
+     5da:	cf 93       	push	r28
+     5dc:	df 93       	push	r29
+     5de:	cd b7       	in	r28, 0x3d	; 61
+     5e0:	de b7       	in	r29, 0x3e	; 62
+     5e2:	80 91 33 03 	lds	r24, 0x0333
+     5e6:	81 30       	cpi	r24, 0x01	; 1
+     5e8:	49 f4       	brne	.+18     	; 0x5fc <OSIntEnter+0x22>
+     5ea:	80 91 d0 03 	lds	r24, 0x03D0
+     5ee:	8f 3f       	cpi	r24, 0xFF	; 255
+     5f0:	29 f0       	breq	.+10     	; 0x5fc <OSIntEnter+0x22>
+     5f2:	80 91 d0 03 	lds	r24, 0x03D0
+     5f6:	8f 5f       	subi	r24, 0xFF	; 255
+     5f8:	80 93 d0 03 	sts	0x03D0, r24
+     5fc:	df 91       	pop	r29
+     5fe:	cf 91       	pop	r28
+     600:	08 95       	ret
+
+00000602 <OSIntExit>:
+     602:	cf 93       	push	r28
+     604:	df 93       	push	r29
+     606:	cd b7       	in	r28, 0x3d	; 61
+     608:	de b7       	in	r29, 0x3e	; 62
+     60a:	80 91 33 03 	lds	r24, 0x0333
+     60e:	81 30       	cpi	r24, 0x01	; 1
+     610:	09 f0       	breq	.+2      	; 0x614 <OSIntExit+0x12>
+     612:	60 c0       	rjmp	.+192    	; 0x6d4 <OSIntExit+0xd2>
+     614:	f8 94       	cli
+     616:	80 91 d0 03 	lds	r24, 0x03D0
+     61a:	88 23       	and	r24, r24
+     61c:	29 f0       	breq	.+10     	; 0x628 <OSIntExit+0x26>
+     61e:	80 91 d0 03 	lds	r24, 0x03D0
+     622:	81 50       	subi	r24, 0x01	; 1
+     624:	80 93 d0 03 	sts	0x03D0, r24
+     628:	80 91 d0 03 	lds	r24, 0x03D0
+     62c:	88 23       	and	r24, r24
+     62e:	09 f0       	breq	.+2      	; 0x632 <OSIntExit+0x30>
+     630:	50 c0       	rjmp	.+160    	; 0x6d2 <OSIntExit+0xd0>
+     632:	80 91 32 03 	lds	r24, 0x0332
+     636:	88 23       	and	r24, r24
+     638:	09 f0       	breq	.+2      	; 0x63c <OSIntExit+0x3a>
+     63a:	4b c0       	rjmp	.+150    	; 0x6d2 <OSIntExit+0xd0>
+     63c:	80 91 ca 03 	lds	r24, 0x03CA
+     640:	88 2f       	mov	r24, r24
+     642:	90 e0       	ldi	r25, 0x00	; 0
+     644:	fc 01       	movw	r30, r24
+     646:	e3 5d       	subi	r30, 0xD3	; 211
+     648:	fe 4f       	sbci	r31, 0xFE	; 254
+     64a:	80 81       	ld	r24, Z
+     64c:	80 93 cf 03 	sts	0x03CF, r24
+     650:	80 91 cf 03 	lds	r24, 0x03CF
+     654:	28 2f       	mov	r18, r24
+     656:	22 0f       	add	r18, r18
+     658:	22 0f       	add	r18, r18
+     65a:	22 0f       	add	r18, r18
+     65c:	80 91 cf 03 	lds	r24, 0x03CF
+     660:	88 2f       	mov	r24, r24
+     662:	90 e0       	ldi	r25, 0x00	; 0
+     664:	fc 01       	movw	r30, r24
+     666:	e5 53       	subi	r30, 0x35	; 53
+     668:	fc 4f       	sbci	r31, 0xFC	; 252
+     66a:	80 81       	ld	r24, Z
+     66c:	88 2f       	mov	r24, r24
+     66e:	90 e0       	ldi	r25, 0x00	; 0
+     670:	fc 01       	movw	r30, r24
+     672:	e3 5d       	subi	r30, 0xD3	; 211
+     674:	fe 4f       	sbci	r31, 0xFE	; 254
+     676:	80 81       	ld	r24, Z
+     678:	82 0f       	add	r24, r18
+     67a:	80 93 38 03 	sts	0x0338, r24
+     67e:	90 91 38 03 	lds	r25, 0x0338
+     682:	80 91 39 03 	lds	r24, 0x0339
+     686:	98 17       	cp	r25, r24
+     688:	21 f1       	breq	.+72     	; 0x6d2 <OSIntExit+0xd0>
+     68a:	80 91 38 03 	lds	r24, 0x0338
+     68e:	88 2f       	mov	r24, r24
+     690:	90 e0       	ldi	r25, 0x00	; 0
+     692:	88 0f       	add	r24, r24
+     694:	99 1f       	adc	r25, r25
+     696:	fc 01       	movw	r30, r24
+     698:	ed 59       	subi	r30, 0x9D	; 157
+     69a:	fa 4f       	sbci	r31, 0xFA	; 250
+     69c:	80 81       	ld	r24, Z
+     69e:	91 81       	ldd	r25, Z+1	; 0x01
+     6a0:	90 93 c9 03 	sts	0x03C9, r25
+     6a4:	80 93 c8 03 	sts	0x03C8, r24
+     6a8:	80 91 bc 03 	lds	r24, 0x03BC
+     6ac:	90 91 bd 03 	lds	r25, 0x03BD
+     6b0:	a0 91 be 03 	lds	r26, 0x03BE
+     6b4:	b0 91 bf 03 	lds	r27, 0x03BF
+     6b8:	01 96       	adiw	r24, 0x01	; 1
+     6ba:	a1 1d       	adc	r26, r1
+     6bc:	b1 1d       	adc	r27, r1
+     6be:	80 93 bc 03 	sts	0x03BC, r24
+     6c2:	90 93 bd 03 	sts	0x03BD, r25
+     6c6:	a0 93 be 03 	sts	0x03BE, r26
+     6ca:	b0 93 bf 03 	sts	0x03BF, r27
+     6ce:	0e 94 4c 13 	call	0x2698	; 0x2698 <OSIntCtxSw>
+     6d2:	78 94       	sei
+     6d4:	df 91       	pop	r29
+     6d6:	cf 91       	pop	r28
+     6d8:	08 95       	ret
+
+000006da <OSSchedLock>:
+     6da:	cf 93       	push	r28
+     6dc:	df 93       	push	r29
+     6de:	cd b7       	in	r28, 0x3d	; 61
+     6e0:	de b7       	in	r29, 0x3e	; 62
+     6e2:	80 91 33 03 	lds	r24, 0x0333
+     6e6:	81 30       	cpi	r24, 0x01	; 1
+     6e8:	59 f4       	brne	.+22     	; 0x700 <OSSchedLock+0x26>
+     6ea:	f8 94       	cli
+     6ec:	80 91 32 03 	lds	r24, 0x0332
+     6f0:	8f 3f       	cpi	r24, 0xFF	; 255
+     6f2:	29 f0       	breq	.+10     	; 0x6fe <OSSchedLock+0x24>
+     6f4:	80 91 32 03 	lds	r24, 0x0332
+     6f8:	8f 5f       	subi	r24, 0xFF	; 255
+     6fa:	80 93 32 03 	sts	0x0332, r24
+     6fe:	78 94       	sei
+     700:	df 91       	pop	r29
+     702:	cf 91       	pop	r28
+     704:	08 95       	ret
+
+00000706 <OSSchedUnlock>:
+     706:	cf 93       	push	r28
+     708:	df 93       	push	r29
+     70a:	cd b7       	in	r28, 0x3d	; 61
+     70c:	de b7       	in	r29, 0x3e	; 62
+     70e:	80 91 33 03 	lds	r24, 0x0333
+     712:	81 30       	cpi	r24, 0x01	; 1
+     714:	c9 f4       	brne	.+50     	; 0x748 <OSSchedUnlock+0x42>
+     716:	f8 94       	cli
+     718:	80 91 32 03 	lds	r24, 0x0332
+     71c:	88 23       	and	r24, r24
+     71e:	99 f0       	breq	.+38     	; 0x746 <OSSchedUnlock+0x40>
+     720:	80 91 32 03 	lds	r24, 0x0332
+     724:	81 50       	subi	r24, 0x01	; 1
+     726:	80 93 32 03 	sts	0x0332, r24
+     72a:	80 91 32 03 	lds	r24, 0x0332
+     72e:	88 23       	and	r24, r24
+     730:	41 f4       	brne	.+16     	; 0x742 <OSSchedUnlock+0x3c>
+     732:	80 91 d0 03 	lds	r24, 0x03D0
+     736:	88 23       	and	r24, r24
+     738:	21 f4       	brne	.+8      	; 0x742 <OSSchedUnlock+0x3c>
+     73a:	78 94       	sei
+     73c:	0e 94 81 07 	call	0xf02	; 0xf02 <OS_Sched>
+     740:	03 c0       	rjmp	.+6      	; 0x748 <OSSchedUnlock+0x42>
+     742:	78 94       	sei
+     744:	01 c0       	rjmp	.+2      	; 0x748 <OSSchedUnlock+0x42>
+     746:	78 94       	sei
+     748:	df 91       	pop	r29
+     74a:	cf 91       	pop	r28
+     74c:	08 95       	ret
+
+0000074e <OSStart>:
+     74e:	cf 93       	push	r28
+     750:	df 93       	push	r29
+     752:	cd b7       	in	r28, 0x3d	; 61
+     754:	de b7       	in	r29, 0x3e	; 62
+     756:	22 97       	sbiw	r28, 0x02	; 2
+     758:	0f b6       	in	r0, 0x3f	; 63
+     75a:	f8 94       	cli
+     75c:	de bf       	out	0x3e, r29	; 62
+     75e:	0f be       	out	0x3f, r0	; 63
+     760:	cd bf       	out	0x3d, r28	; 61
+     762:	80 91 33 03 	lds	r24, 0x0333
+     766:	88 23       	and	r24, r24
+     768:	e9 f5       	brne	.+122    	; 0x7e4 <OSStart+0x96>
+     76a:	80 91 ca 03 	lds	r24, 0x03CA
+     76e:	88 2f       	mov	r24, r24
+     770:	90 e0       	ldi	r25, 0x00	; 0
+     772:	fc 01       	movw	r30, r24
+     774:	e3 5d       	subi	r30, 0xD3	; 211
+     776:	fe 4f       	sbci	r31, 0xFE	; 254
+     778:	80 81       	ld	r24, Z
+     77a:	8a 83       	std	Y+2, r24	; 0x02
+     77c:	8a 81       	ldd	r24, Y+2	; 0x02
+     77e:	88 2f       	mov	r24, r24
+     780:	90 e0       	ldi	r25, 0x00	; 0
+     782:	fc 01       	movw	r30, r24
+     784:	e5 53       	subi	r30, 0x35	; 53
+     786:	fc 4f       	sbci	r31, 0xFC	; 252
+     788:	80 81       	ld	r24, Z
+     78a:	88 2f       	mov	r24, r24
+     78c:	90 e0       	ldi	r25, 0x00	; 0
+     78e:	fc 01       	movw	r30, r24
+     790:	e3 5d       	subi	r30, 0xD3	; 211
+     792:	fe 4f       	sbci	r31, 0xFE	; 254
+     794:	80 81       	ld	r24, Z
+     796:	89 83       	std	Y+1, r24	; 0x01
+     798:	8a 81       	ldd	r24, Y+2	; 0x02
+     79a:	98 2f       	mov	r25, r24
+     79c:	99 0f       	add	r25, r25
+     79e:	99 0f       	add	r25, r25
+     7a0:	99 0f       	add	r25, r25
+     7a2:	89 81       	ldd	r24, Y+1	; 0x01
+     7a4:	89 0f       	add	r24, r25
+     7a6:	80 93 38 03 	sts	0x0338, r24
+     7aa:	80 91 38 03 	lds	r24, 0x0338
+     7ae:	80 93 39 03 	sts	0x0339, r24
+     7b2:	80 91 38 03 	lds	r24, 0x0338
+     7b6:	88 2f       	mov	r24, r24
+     7b8:	90 e0       	ldi	r25, 0x00	; 0
+     7ba:	88 0f       	add	r24, r24
+     7bc:	99 1f       	adc	r25, r25
+     7be:	fc 01       	movw	r30, r24
+     7c0:	ed 59       	subi	r30, 0x9D	; 157
+     7c2:	fa 4f       	sbci	r31, 0xFA	; 250
+     7c4:	80 81       	ld	r24, Z
+     7c6:	91 81       	ldd	r25, Z+1	; 0x01
+     7c8:	90 93 c9 03 	sts	0x03C9, r25
+     7cc:	80 93 c8 03 	sts	0x03C8, r24
+     7d0:	80 91 c8 03 	lds	r24, 0x03C8
+     7d4:	90 91 c9 03 	lds	r25, 0x03C9
+     7d8:	90 93 d2 03 	sts	0x03D2, r25
+     7dc:	80 93 d1 03 	sts	0x03D1, r24
+     7e0:	0e 94 b5 12 	call	0x256a	; 0x256a <OSStartHighRdy>
+     7e4:	22 96       	adiw	r28, 0x02	; 2
+     7e6:	0f b6       	in	r0, 0x3f	; 63
+     7e8:	f8 94       	cli
+     7ea:	de bf       	out	0x3e, r29	; 62
+     7ec:	0f be       	out	0x3f, r0	; 63
+     7ee:	cd bf       	out	0x3d, r28	; 61
+     7f0:	df 91       	pop	r29
+     7f2:	cf 91       	pop	r28
+     7f4:	08 95       	ret
+
+000007f6 <OSStatInit>:
+     7f6:	cf 93       	push	r28
+     7f8:	df 93       	push	r29
+     7fa:	cd b7       	in	r28, 0x3d	; 61
+     7fc:	de b7       	in	r29, 0x3e	; 62
+     7fe:	82 e0       	ldi	r24, 0x02	; 2
+     800:	90 e0       	ldi	r25, 0x00	; 0
+     802:	0e 94 88 11 	call	0x2310	; 0x2310 <OSTimeDly>
+     806:	f8 94       	cli
+     808:	10 92 34 03 	sts	0x0334, r1
+     80c:	10 92 35 03 	sts	0x0335, r1
+     810:	10 92 36 03 	sts	0x0336, r1
+     814:	10 92 37 03 	sts	0x0337, r1
+     818:	78 94       	sei
+     81a:	8d e3       	ldi	r24, 0x3D	; 61
+     81c:	90 e0       	ldi	r25, 0x00	; 0
+     81e:	0e 94 88 11 	call	0x2310	; 0x2310 <OSTimeDly>
+     822:	f8 94       	cli
+     824:	80 91 34 03 	lds	r24, 0x0334
+     828:	90 91 35 03 	lds	r25, 0x0335
+     82c:	a0 91 36 03 	lds	r26, 0x0336
+     830:	b0 91 37 03 	lds	r27, 0x0337
+     834:	80 93 c0 03 	sts	0x03C0, r24
+     838:	90 93 c1 03 	sts	0x03C1, r25
+     83c:	a0 93 c2 03 	sts	0x03C2, r26
+     840:	b0 93 c3 03 	sts	0x03C3, r27
+     844:	81 e0       	ldi	r24, 0x01	; 1
+     846:	80 93 62 05 	sts	0x0562, r24
+     84a:	78 94       	sei
+     84c:	df 91       	pop	r29
+     84e:	cf 91       	pop	r28
+     850:	08 95       	ret
+
+00000852 <OSTimeTick>:
+     852:	cf 93       	push	r28
+     854:	df 93       	push	r29
+     856:	cd b7       	in	r28, 0x3d	; 61
+     858:	de b7       	in	r29, 0x3e	; 62
+     85a:	22 97       	sbiw	r28, 0x02	; 2
+     85c:	0f b6       	in	r0, 0x3f	; 63
+     85e:	f8 94       	cli
+     860:	de bf       	out	0x3e, r29	; 62
+     862:	0f be       	out	0x3f, r0	; 63
+     864:	cd bf       	out	0x3d, r28	; 61
+     866:	0e 94 a5 02 	call	0x54a	; 0x54a <OSTimeTickHook>
+     86a:	80 91 33 03 	lds	r24, 0x0333
+     86e:	81 30       	cpi	r24, 0x01	; 1
+     870:	09 f0       	breq	.+2      	; 0x874 <OSTimeTick+0x22>
+     872:	58 c0       	rjmp	.+176    	; 0x924 <OSTimeTick+0xd2>
+     874:	80 91 3a 03 	lds	r24, 0x033A
+     878:	90 91 3b 03 	lds	r25, 0x033B
+     87c:	9a 83       	std	Y+2, r25	; 0x02
+     87e:	89 83       	std	Y+1, r24	; 0x01
+     880:	4b c0       	rjmp	.+150    	; 0x918 <OSTimeTick+0xc6>
+     882:	f8 94       	cli
+     884:	e9 81       	ldd	r30, Y+1	; 0x01
+     886:	fa 81       	ldd	r31, Y+2	; 0x02
+     888:	82 85       	ldd	r24, Z+10	; 0x0a
+     88a:	93 85       	ldd	r25, Z+11	; 0x0b
+     88c:	00 97       	sbiw	r24, 0x00	; 0
+     88e:	e9 f1       	breq	.+122    	; 0x90a <OSTimeTick+0xb8>
+     890:	e9 81       	ldd	r30, Y+1	; 0x01
+     892:	fa 81       	ldd	r31, Y+2	; 0x02
+     894:	82 85       	ldd	r24, Z+10	; 0x0a
+     896:	93 85       	ldd	r25, Z+11	; 0x0b
+     898:	01 97       	sbiw	r24, 0x01	; 1
+     89a:	e9 81       	ldd	r30, Y+1	; 0x01
+     89c:	fa 81       	ldd	r31, Y+2	; 0x02
+     89e:	93 87       	std	Z+11, r25	; 0x0b
+     8a0:	82 87       	std	Z+10, r24	; 0x0a
+     8a2:	e9 81       	ldd	r30, Y+1	; 0x01
+     8a4:	fa 81       	ldd	r31, Y+2	; 0x02
+     8a6:	82 85       	ldd	r24, Z+10	; 0x0a
+     8a8:	93 85       	ldd	r25, Z+11	; 0x0b
+     8aa:	00 97       	sbiw	r24, 0x00	; 0
+     8ac:	71 f5       	brne	.+92     	; 0x90a <OSTimeTick+0xb8>
+     8ae:	e9 81       	ldd	r30, Y+1	; 0x01
+     8b0:	fa 81       	ldd	r31, Y+2	; 0x02
+     8b2:	84 85       	ldd	r24, Z+12	; 0x0c
+     8b4:	88 2f       	mov	r24, r24
+     8b6:	90 e0       	ldi	r25, 0x00	; 0
+     8b8:	88 70       	andi	r24, 0x08	; 8
+     8ba:	90 70       	andi	r25, 0x00	; 0
+     8bc:	00 97       	sbiw	r24, 0x00	; 0
+     8be:	f9 f4       	brne	.+62     	; 0x8fe <OSTimeTick+0xac>
+     8c0:	e9 81       	ldd	r30, Y+1	; 0x01
+     8c2:	fa 81       	ldd	r31, Y+2	; 0x02
+     8c4:	91 89       	ldd	r25, Z+17	; 0x11
+     8c6:	80 91 ca 03 	lds	r24, 0x03CA
+     8ca:	89 2b       	or	r24, r25
+     8cc:	80 93 ca 03 	sts	0x03CA, r24
+     8d0:	e9 81       	ldd	r30, Y+1	; 0x01
+     8d2:	fa 81       	ldd	r31, Y+2	; 0x02
+     8d4:	87 85       	ldd	r24, Z+15	; 0x0f
+     8d6:	28 2f       	mov	r18, r24
+     8d8:	30 e0       	ldi	r19, 0x00	; 0
+     8da:	e9 81       	ldd	r30, Y+1	; 0x01
+     8dc:	fa 81       	ldd	r31, Y+2	; 0x02
+     8de:	87 85       	ldd	r24, Z+15	; 0x0f
+     8e0:	88 2f       	mov	r24, r24
+     8e2:	90 e0       	ldi	r25, 0x00	; 0
+     8e4:	fc 01       	movw	r30, r24
+     8e6:	e5 53       	subi	r30, 0x35	; 53
+     8e8:	fc 4f       	sbci	r31, 0xFC	; 252
+     8ea:	90 81       	ld	r25, Z
+     8ec:	e9 81       	ldd	r30, Y+1	; 0x01
+     8ee:	fa 81       	ldd	r31, Y+2	; 0x02
+     8f0:	80 89       	ldd	r24, Z+16	; 0x10
+     8f2:	89 2b       	or	r24, r25
+     8f4:	f9 01       	movw	r30, r18
+     8f6:	e5 53       	subi	r30, 0x35	; 53
+     8f8:	fc 4f       	sbci	r31, 0xFC	; 252
+     8fa:	80 83       	st	Z, r24
+     8fc:	06 c0       	rjmp	.+12     	; 0x90a <OSTimeTick+0xb8>
+     8fe:	e9 81       	ldd	r30, Y+1	; 0x01
+     900:	fa 81       	ldd	r31, Y+2	; 0x02
+     902:	81 e0       	ldi	r24, 0x01	; 1
+     904:	90 e0       	ldi	r25, 0x00	; 0
+     906:	93 87       	std	Z+11, r25	; 0x0b
+     908:	82 87       	std	Z+10, r24	; 0x0a
+     90a:	e9 81       	ldd	r30, Y+1	; 0x01
+     90c:	fa 81       	ldd	r31, Y+2	; 0x02
+     90e:	82 81       	ldd	r24, Z+2	; 0x02
+     910:	93 81       	ldd	r25, Z+3	; 0x03
+     912:	9a 83       	std	Y+2, r25	; 0x02
+     914:	89 83       	std	Y+1, r24	; 0x01
+     916:	78 94       	sei
+     918:	e9 81       	ldd	r30, Y+1	; 0x01
+     91a:	fa 81       	ldd	r31, Y+2	; 0x02
+     91c:	85 85       	ldd	r24, Z+13	; 0x0d
+     91e:	8c 30       	cpi	r24, 0x0C	; 12
+     920:	09 f0       	breq	.+2      	; 0x924 <OSTimeTick+0xd2>
+     922:	af cf       	rjmp	.-162    	; 0x882 <OSTimeTick+0x30>
+     924:	22 96       	adiw	r28, 0x02	; 2
+     926:	0f b6       	in	r0, 0x3f	; 63
+     928:	f8 94       	cli
+     92a:	de bf       	out	0x3e, r29	; 62
+     92c:	0f be       	out	0x3f, r0	; 63
+     92e:	cd bf       	out	0x3d, r28	; 61
+     930:	df 91       	pop	r29
+     932:	cf 91       	pop	r28
+     934:	08 95       	ret
+
+00000936 <OSVersion>:
+     936:	cf 93       	push	r28
+     938:	df 93       	push	r29
+     93a:	cd b7       	in	r28, 0x3d	; 61
+     93c:	de b7       	in	r29, 0x3e	; 62
+     93e:	8c ef       	ldi	r24, 0xFC	; 252
+     940:	90 e0       	ldi	r25, 0x00	; 0
+     942:	df 91       	pop	r29
+     944:	cf 91       	pop	r28
+     946:	08 95       	ret
+
+00000948 <OS_Dummy>:
+     948:	cf 93       	push	r28
+     94a:	df 93       	push	r29
+     94c:	cd b7       	in	r28, 0x3d	; 61
+     94e:	de b7       	in	r29, 0x3e	; 62
+     950:	df 91       	pop	r29
+     952:	cf 91       	pop	r28
+     954:	08 95       	ret
+
+00000956 <OS_EventTaskRdy>:
+     956:	cf 93       	push	r28
+     958:	df 93       	push	r29
+     95a:	cd b7       	in	r28, 0x3d	; 61
+     95c:	de b7       	in	r29, 0x3e	; 62
+     95e:	2c 97       	sbiw	r28, 0x0c	; 12
+     960:	0f b6       	in	r0, 0x3f	; 63
+     962:	f8 94       	cli
+     964:	de bf       	out	0x3e, r29	; 62
+     966:	0f be       	out	0x3f, r0	; 63
+     968:	cd bf       	out	0x3d, r28	; 61
+     96a:	99 87       	std	Y+9, r25	; 0x09
+     96c:	88 87       	std	Y+8, r24	; 0x08
+     96e:	7b 87       	std	Y+11, r23	; 0x0b
+     970:	6a 87       	std	Y+10, r22	; 0x0a
+     972:	4c 87       	std	Y+12, r20	; 0x0c
+     974:	e8 85       	ldd	r30, Y+8	; 0x08
+     976:	f9 85       	ldd	r31, Y+9	; 0x09
+     978:	81 81       	ldd	r24, Z+1	; 0x01
+     97a:	88 2f       	mov	r24, r24
+     97c:	90 e0       	ldi	r25, 0x00	; 0
+     97e:	fc 01       	movw	r30, r24
+     980:	e3 5d       	subi	r30, 0xD3	; 211
+     982:	fe 4f       	sbci	r31, 0xFE	; 254
+     984:	80 81       	ld	r24, Z
+     986:	8c 83       	std	Y+4, r24	; 0x04
+     988:	8c 81       	ldd	r24, Y+4	; 0x04
+     98a:	88 2f       	mov	r24, r24
+     98c:	90 e0       	ldi	r25, 0x00	; 0
+     98e:	fc 01       	movw	r30, r24
+     990:	eb 5d       	subi	r30, 0xDB	; 219
+     992:	fe 4f       	sbci	r31, 0xFE	; 254
+     994:	80 81       	ld	r24, Z
+     996:	8a 83       	std	Y+2, r24	; 0x02
+     998:	8c 81       	ldd	r24, Y+4	; 0x04
+     99a:	28 2f       	mov	r18, r24
+     99c:	30 e0       	ldi	r19, 0x00	; 0
+     99e:	88 85       	ldd	r24, Y+8	; 0x08
+     9a0:	99 85       	ldd	r25, Y+9	; 0x09
+     9a2:	82 0f       	add	r24, r18
+     9a4:	93 1f       	adc	r25, r19
+     9a6:	fc 01       	movw	r30, r24
+     9a8:	36 96       	adiw	r30, 0x06	; 6
+     9aa:	80 81       	ld	r24, Z
+     9ac:	88 2f       	mov	r24, r24
+     9ae:	90 e0       	ldi	r25, 0x00	; 0
+     9b0:	fc 01       	movw	r30, r24
+     9b2:	e3 5d       	subi	r30, 0xD3	; 211
+     9b4:	fe 4f       	sbci	r31, 0xFE	; 254
+     9b6:	80 81       	ld	r24, Z
+     9b8:	8d 83       	std	Y+5, r24	; 0x05
+     9ba:	8d 81       	ldd	r24, Y+5	; 0x05
+     9bc:	88 2f       	mov	r24, r24
+     9be:	90 e0       	ldi	r25, 0x00	; 0
+     9c0:	fc 01       	movw	r30, r24
+     9c2:	eb 5d       	subi	r30, 0xDB	; 219
+     9c4:	fe 4f       	sbci	r31, 0xFE	; 254
+     9c6:	80 81       	ld	r24, Z
+     9c8:	8b 83       	std	Y+3, r24	; 0x03
+     9ca:	8c 81       	ldd	r24, Y+4	; 0x04
+     9cc:	98 2f       	mov	r25, r24
+     9ce:	99 0f       	add	r25, r25
+     9d0:	99 0f       	add	r25, r25
+     9d2:	99 0f       	add	r25, r25
+     9d4:	8d 81       	ldd	r24, Y+5	; 0x05
+     9d6:	89 0f       	add	r24, r25
+     9d8:	89 83       	std	Y+1, r24	; 0x01
+     9da:	8c 81       	ldd	r24, Y+4	; 0x04
+     9dc:	48 2f       	mov	r20, r24
+     9de:	50 e0       	ldi	r21, 0x00	; 0
+     9e0:	8c 81       	ldd	r24, Y+4	; 0x04
+     9e2:	28 2f       	mov	r18, r24
+     9e4:	30 e0       	ldi	r19, 0x00	; 0
+     9e6:	88 85       	ldd	r24, Y+8	; 0x08
+     9e8:	99 85       	ldd	r25, Y+9	; 0x09
+     9ea:	82 0f       	add	r24, r18
+     9ec:	93 1f       	adc	r25, r19
+     9ee:	fc 01       	movw	r30, r24
+     9f0:	36 96       	adiw	r30, 0x06	; 6
+     9f2:	80 81       	ld	r24, Z
+     9f4:	98 2f       	mov	r25, r24
+     9f6:	8b 81       	ldd	r24, Y+3	; 0x03
+     9f8:	80 95       	com	r24
+     9fa:	89 23       	and	r24, r25
+     9fc:	28 2f       	mov	r18, r24
+     9fe:	88 85       	ldd	r24, Y+8	; 0x08
+     a00:	99 85       	ldd	r25, Y+9	; 0x09
+     a02:	84 0f       	add	r24, r20
+     a04:	95 1f       	adc	r25, r21
+     a06:	fc 01       	movw	r30, r24
+     a08:	36 96       	adiw	r30, 0x06	; 6
+     a0a:	20 83       	st	Z, r18
+     a0c:	88 85       	ldd	r24, Y+8	; 0x08
+     a0e:	99 85       	ldd	r25, Y+9	; 0x09
+     a10:	84 0f       	add	r24, r20
+     a12:	95 1f       	adc	r25, r21
+     a14:	fc 01       	movw	r30, r24
+     a16:	36 96       	adiw	r30, 0x06	; 6
+     a18:	80 81       	ld	r24, Z
+     a1a:	88 23       	and	r24, r24
+     a1c:	51 f4       	brne	.+20     	; 0xa32 <OS_EventTaskRdy+0xdc>
+     a1e:	e8 85       	ldd	r30, Y+8	; 0x08
+     a20:	f9 85       	ldd	r31, Y+9	; 0x09
+     a22:	81 81       	ldd	r24, Z+1	; 0x01
+     a24:	98 2f       	mov	r25, r24
+     a26:	8a 81       	ldd	r24, Y+2	; 0x02
+     a28:	80 95       	com	r24
+     a2a:	89 23       	and	r24, r25
+     a2c:	e8 85       	ldd	r30, Y+8	; 0x08
+     a2e:	f9 85       	ldd	r31, Y+9	; 0x09
+     a30:	81 83       	std	Z+1, r24	; 0x01
+     a32:	89 81       	ldd	r24, Y+1	; 0x01
+     a34:	88 2f       	mov	r24, r24
+     a36:	90 e0       	ldi	r25, 0x00	; 0
+     a38:	88 0f       	add	r24, r24
+     a3a:	99 1f       	adc	r25, r25
+     a3c:	fc 01       	movw	r30, r24
+     a3e:	ed 59       	subi	r30, 0x9D	; 157
+     a40:	fa 4f       	sbci	r31, 0xFA	; 250
+     a42:	80 81       	ld	r24, Z
+     a44:	91 81       	ldd	r25, Z+1	; 0x01
+     a46:	9f 83       	std	Y+7, r25	; 0x07
+     a48:	8e 83       	std	Y+6, r24	; 0x06
+     a4a:	ee 81       	ldd	r30, Y+6	; 0x06
+     a4c:	ff 81       	ldd	r31, Y+7	; 0x07
+     a4e:	13 86       	std	Z+11, r1	; 0x0b
+     a50:	12 86       	std	Z+10, r1	; 0x0a
+     a52:	ee 81       	ldd	r30, Y+6	; 0x06
+     a54:	ff 81       	ldd	r31, Y+7	; 0x07
+     a56:	17 82       	std	Z+7, r1	; 0x07
+     a58:	16 82       	std	Z+6, r1	; 0x06
+     a5a:	ee 81       	ldd	r30, Y+6	; 0x06
+     a5c:	ff 81       	ldd	r31, Y+7	; 0x07
+     a5e:	8a 85       	ldd	r24, Y+10	; 0x0a
+     a60:	9b 85       	ldd	r25, Y+11	; 0x0b
+     a62:	91 87       	std	Z+9, r25	; 0x09
+     a64:	80 87       	std	Z+8, r24	; 0x08
+     a66:	ee 81       	ldd	r30, Y+6	; 0x06
+     a68:	ff 81       	ldd	r31, Y+7	; 0x07
+     a6a:	84 85       	ldd	r24, Z+12	; 0x0c
+     a6c:	98 2f       	mov	r25, r24
+     a6e:	8c 85       	ldd	r24, Y+12	; 0x0c
+     a70:	80 95       	com	r24
+     a72:	89 23       	and	r24, r25
+     a74:	ee 81       	ldd	r30, Y+6	; 0x06
+     a76:	ff 81       	ldd	r31, Y+7	; 0x07
+     a78:	84 87       	std	Z+12, r24	; 0x0c
+     a7a:	ee 81       	ldd	r30, Y+6	; 0x06
+     a7c:	ff 81       	ldd	r31, Y+7	; 0x07
+     a7e:	84 85       	ldd	r24, Z+12	; 0x0c
+     a80:	88 23       	and	r24, r24
+     a82:	b1 f4       	brne	.+44     	; 0xab0 <OS_EventTaskRdy+0x15a>
+     a84:	90 91 ca 03 	lds	r25, 0x03CA
+     a88:	8a 81       	ldd	r24, Y+2	; 0x02
+     a8a:	89 2b       	or	r24, r25
+     a8c:	80 93 ca 03 	sts	0x03CA, r24
+     a90:	8c 81       	ldd	r24, Y+4	; 0x04
+     a92:	28 2f       	mov	r18, r24
+     a94:	30 e0       	ldi	r19, 0x00	; 0
+     a96:	8c 81       	ldd	r24, Y+4	; 0x04
+     a98:	88 2f       	mov	r24, r24
+     a9a:	90 e0       	ldi	r25, 0x00	; 0
+     a9c:	fc 01       	movw	r30, r24
+     a9e:	e5 53       	subi	r30, 0x35	; 53
+     aa0:	fc 4f       	sbci	r31, 0xFC	; 252
+     aa2:	90 81       	ld	r25, Z
+     aa4:	8b 81       	ldd	r24, Y+3	; 0x03
+     aa6:	89 2b       	or	r24, r25
+     aa8:	f9 01       	movw	r30, r18
+     aaa:	e5 53       	subi	r30, 0x35	; 53
+     aac:	fc 4f       	sbci	r31, 0xFC	; 252
+     aae:	80 83       	st	Z, r24
+     ab0:	89 81       	ldd	r24, Y+1	; 0x01
+     ab2:	88 2f       	mov	r24, r24
+     ab4:	90 e0       	ldi	r25, 0x00	; 0
+     ab6:	2c 96       	adiw	r28, 0x0c	; 12
+     ab8:	0f b6       	in	r0, 0x3f	; 63
+     aba:	f8 94       	cli
+     abc:	de bf       	out	0x3e, r29	; 62
+     abe:	0f be       	out	0x3f, r0	; 63
+     ac0:	cd bf       	out	0x3d, r28	; 61
+     ac2:	df 91       	pop	r29
+     ac4:	cf 91       	pop	r28
+     ac6:	08 95       	ret
+
+00000ac8 <OS_EventTaskWait>:
+     ac8:	cf 93       	push	r28
+     aca:	df 93       	push	r29
+     acc:	cd b7       	in	r28, 0x3d	; 61
+     ace:	de b7       	in	r29, 0x3e	; 62
+     ad0:	22 97       	sbiw	r28, 0x02	; 2
+     ad2:	0f b6       	in	r0, 0x3f	; 63
+     ad4:	f8 94       	cli
+     ad6:	de bf       	out	0x3e, r29	; 62
+     ad8:	0f be       	out	0x3f, r0	; 63
+     ada:	cd bf       	out	0x3d, r28	; 61
+     adc:	9a 83       	std	Y+2, r25	; 0x02
+     ade:	89 83       	std	Y+1, r24	; 0x01
+     ae0:	e0 91 d1 03 	lds	r30, 0x03D1
+     ae4:	f0 91 d2 03 	lds	r31, 0x03D2
+     ae8:	89 81       	ldd	r24, Y+1	; 0x01
+     aea:	9a 81       	ldd	r25, Y+2	; 0x02
+     aec:	97 83       	std	Z+7, r25	; 0x07
+     aee:	86 83       	std	Z+6, r24	; 0x06
+     af0:	e0 91 d1 03 	lds	r30, 0x03D1
+     af4:	f0 91 d2 03 	lds	r31, 0x03D2
+     af8:	87 85       	ldd	r24, Z+15	; 0x0f
+     afa:	28 2f       	mov	r18, r24
+     afc:	30 e0       	ldi	r19, 0x00	; 0
+     afe:	e0 91 d1 03 	lds	r30, 0x03D1
+     b02:	f0 91 d2 03 	lds	r31, 0x03D2
+     b06:	87 85       	ldd	r24, Z+15	; 0x0f
+     b08:	88 2f       	mov	r24, r24
+     b0a:	90 e0       	ldi	r25, 0x00	; 0
+     b0c:	fc 01       	movw	r30, r24
+     b0e:	e5 53       	subi	r30, 0x35	; 53
+     b10:	fc 4f       	sbci	r31, 0xFC	; 252
+     b12:	80 81       	ld	r24, Z
+     b14:	98 2f       	mov	r25, r24
+     b16:	e0 91 d1 03 	lds	r30, 0x03D1
+     b1a:	f0 91 d2 03 	lds	r31, 0x03D2
+     b1e:	80 89       	ldd	r24, Z+16	; 0x10
+     b20:	80 95       	com	r24
+     b22:	89 23       	and	r24, r25
+     b24:	f9 01       	movw	r30, r18
+     b26:	e5 53       	subi	r30, 0x35	; 53
+     b28:	fc 4f       	sbci	r31, 0xFC	; 252
+     b2a:	80 83       	st	Z, r24
+     b2c:	f9 01       	movw	r30, r18
+     b2e:	e5 53       	subi	r30, 0x35	; 53
+     b30:	fc 4f       	sbci	r31, 0xFC	; 252
+     b32:	80 81       	ld	r24, Z
+     b34:	88 23       	and	r24, r24
+     b36:	61 f4       	brne	.+24     	; 0xb50 <OS_EventTaskWait+0x88>
+     b38:	e0 91 d1 03 	lds	r30, 0x03D1
+     b3c:	f0 91 d2 03 	lds	r31, 0x03D2
+     b40:	81 89       	ldd	r24, Z+17	; 0x11
+     b42:	98 2f       	mov	r25, r24
+     b44:	90 95       	com	r25
+     b46:	80 91 ca 03 	lds	r24, 0x03CA
+     b4a:	89 23       	and	r24, r25
+     b4c:	80 93 ca 03 	sts	0x03CA, r24
+     b50:	e0 91 d1 03 	lds	r30, 0x03D1
+     b54:	f0 91 d2 03 	lds	r31, 0x03D2
+     b58:	87 85       	ldd	r24, Z+15	; 0x0f
+     b5a:	48 2f       	mov	r20, r24
+     b5c:	50 e0       	ldi	r21, 0x00	; 0
+     b5e:	e0 91 d1 03 	lds	r30, 0x03D1
+     b62:	f0 91 d2 03 	lds	r31, 0x03D2
+     b66:	87 85       	ldd	r24, Z+15	; 0x0f
+     b68:	28 2f       	mov	r18, r24
+     b6a:	30 e0       	ldi	r19, 0x00	; 0
+     b6c:	89 81       	ldd	r24, Y+1	; 0x01
+     b6e:	9a 81       	ldd	r25, Y+2	; 0x02
+     b70:	82 0f       	add	r24, r18
+     b72:	93 1f       	adc	r25, r19
+     b74:	fc 01       	movw	r30, r24
+     b76:	36 96       	adiw	r30, 0x06	; 6
+     b78:	90 81       	ld	r25, Z
+     b7a:	e0 91 d1 03 	lds	r30, 0x03D1
+     b7e:	f0 91 d2 03 	lds	r31, 0x03D2
+     b82:	80 89       	ldd	r24, Z+16	; 0x10
+     b84:	29 2f       	mov	r18, r25
+     b86:	28 2b       	or	r18, r24
+     b88:	89 81       	ldd	r24, Y+1	; 0x01
+     b8a:	9a 81       	ldd	r25, Y+2	; 0x02
+     b8c:	84 0f       	add	r24, r20
+     b8e:	95 1f       	adc	r25, r21
+     b90:	fc 01       	movw	r30, r24
+     b92:	36 96       	adiw	r30, 0x06	; 6
+     b94:	20 83       	st	Z, r18
+     b96:	e9 81       	ldd	r30, Y+1	; 0x01
+     b98:	fa 81       	ldd	r31, Y+2	; 0x02
+     b9a:	91 81       	ldd	r25, Z+1	; 0x01
+     b9c:	e0 91 d1 03 	lds	r30, 0x03D1
+     ba0:	f0 91 d2 03 	lds	r31, 0x03D2
+     ba4:	81 89       	ldd	r24, Z+17	; 0x11
+     ba6:	89 2b       	or	r24, r25
+     ba8:	e9 81       	ldd	r30, Y+1	; 0x01
+     baa:	fa 81       	ldd	r31, Y+2	; 0x02
+     bac:	81 83       	std	Z+1, r24	; 0x01
+     bae:	22 96       	adiw	r28, 0x02	; 2
+     bb0:	0f b6       	in	r0, 0x3f	; 63
+     bb2:	f8 94       	cli
+     bb4:	de bf       	out	0x3e, r29	; 62
+     bb6:	0f be       	out	0x3f, r0	; 63
+     bb8:	cd bf       	out	0x3d, r28	; 61
+     bba:	df 91       	pop	r29
+     bbc:	cf 91       	pop	r28
+     bbe:	08 95       	ret
+
+00000bc0 <OS_EventTO>:
+     bc0:	cf 93       	push	r28
+     bc2:	df 93       	push	r29
+     bc4:	cd b7       	in	r28, 0x3d	; 61
+     bc6:	de b7       	in	r29, 0x3e	; 62
+     bc8:	22 97       	sbiw	r28, 0x02	; 2
+     bca:	0f b6       	in	r0, 0x3f	; 63
+     bcc:	f8 94       	cli
+     bce:	de bf       	out	0x3e, r29	; 62
+     bd0:	0f be       	out	0x3f, r0	; 63
+     bd2:	cd bf       	out	0x3d, r28	; 61
+     bd4:	9a 83       	std	Y+2, r25	; 0x02
+     bd6:	89 83       	std	Y+1, r24	; 0x01
+     bd8:	e0 91 d1 03 	lds	r30, 0x03D1
+     bdc:	f0 91 d2 03 	lds	r31, 0x03D2
+     be0:	87 85       	ldd	r24, Z+15	; 0x0f
+     be2:	48 2f       	mov	r20, r24
+     be4:	50 e0       	ldi	r21, 0x00	; 0
+     be6:	e0 91 d1 03 	lds	r30, 0x03D1
+     bea:	f0 91 d2 03 	lds	r31, 0x03D2
+     bee:	87 85       	ldd	r24, Z+15	; 0x0f
+     bf0:	28 2f       	mov	r18, r24
+     bf2:	30 e0       	ldi	r19, 0x00	; 0
+     bf4:	89 81       	ldd	r24, Y+1	; 0x01
+     bf6:	9a 81       	ldd	r25, Y+2	; 0x02
+     bf8:	82 0f       	add	r24, r18
+     bfa:	93 1f       	adc	r25, r19
+     bfc:	fc 01       	movw	r30, r24
+     bfe:	36 96       	adiw	r30, 0x06	; 6
+     c00:	80 81       	ld	r24, Z
+     c02:	98 2f       	mov	r25, r24
+     c04:	e0 91 d1 03 	lds	r30, 0x03D1
+     c08:	f0 91 d2 03 	lds	r31, 0x03D2
+     c0c:	80 89       	ldd	r24, Z+16	; 0x10
+     c0e:	80 95       	com	r24
+     c10:	89 23       	and	r24, r25
+     c12:	28 2f       	mov	r18, r24
+     c14:	89 81       	ldd	r24, Y+1	; 0x01
+     c16:	9a 81       	ldd	r25, Y+2	; 0x02
+     c18:	84 0f       	add	r24, r20
+     c1a:	95 1f       	adc	r25, r21
+     c1c:	fc 01       	movw	r30, r24
+     c1e:	36 96       	adiw	r30, 0x06	; 6
+     c20:	20 83       	st	Z, r18
+     c22:	89 81       	ldd	r24, Y+1	; 0x01
+     c24:	9a 81       	ldd	r25, Y+2	; 0x02
+     c26:	84 0f       	add	r24, r20
+     c28:	95 1f       	adc	r25, r21
+     c2a:	fc 01       	movw	r30, r24
+     c2c:	36 96       	adiw	r30, 0x06	; 6
+     c2e:	80 81       	ld	r24, Z
+     c30:	88 23       	and	r24, r24
+     c32:	71 f4       	brne	.+28     	; 0xc50 <OS_EventTO+0x90>
+     c34:	e9 81       	ldd	r30, Y+1	; 0x01
+     c36:	fa 81       	ldd	r31, Y+2	; 0x02
+     c38:	81 81       	ldd	r24, Z+1	; 0x01
+     c3a:	98 2f       	mov	r25, r24
+     c3c:	e0 91 d1 03 	lds	r30, 0x03D1
+     c40:	f0 91 d2 03 	lds	r31, 0x03D2
+     c44:	81 89       	ldd	r24, Z+17	; 0x11
+     c46:	80 95       	com	r24
+     c48:	89 23       	and	r24, r25
+     c4a:	e9 81       	ldd	r30, Y+1	; 0x01
+     c4c:	fa 81       	ldd	r31, Y+2	; 0x02
+     c4e:	81 83       	std	Z+1, r24	; 0x01
+     c50:	e0 91 d1 03 	lds	r30, 0x03D1
+     c54:	f0 91 d2 03 	lds	r31, 0x03D2
+     c58:	14 86       	std	Z+12, r1	; 0x0c
+     c5a:	e0 91 d1 03 	lds	r30, 0x03D1
+     c5e:	f0 91 d2 03 	lds	r31, 0x03D2
+     c62:	17 82       	std	Z+7, r1	; 0x07
+     c64:	16 82       	std	Z+6, r1	; 0x06
+     c66:	22 96       	adiw	r28, 0x02	; 2
+     c68:	0f b6       	in	r0, 0x3f	; 63
+     c6a:	f8 94       	cli
+     c6c:	de bf       	out	0x3e, r29	; 62
+     c6e:	0f be       	out	0x3f, r0	; 63
+     c70:	cd bf       	out	0x3d, r28	; 61
+     c72:	df 91       	pop	r29
+     c74:	cf 91       	pop	r28
+     c76:	08 95       	ret
+
+00000c78 <OS_EventWaitListInit>:
+     c78:	cf 93       	push	r28
+     c7a:	df 93       	push	r29
+     c7c:	cd b7       	in	r28, 0x3d	; 61
+     c7e:	de b7       	in	r29, 0x3e	; 62
+     c80:	24 97       	sbiw	r28, 0x04	; 4
+     c82:	0f b6       	in	r0, 0x3f	; 63
+     c84:	f8 94       	cli
+     c86:	de bf       	out	0x3e, r29	; 62
+     c88:	0f be       	out	0x3f, r0	; 63
+     c8a:	cd bf       	out	0x3d, r28	; 61
+     c8c:	9c 83       	std	Y+4, r25	; 0x04
+     c8e:	8b 83       	std	Y+3, r24	; 0x03
+     c90:	eb 81       	ldd	r30, Y+3	; 0x03
+     c92:	fc 81       	ldd	r31, Y+4	; 0x04
+     c94:	11 82       	std	Z+1, r1	; 0x01
+     c96:	8b 81       	ldd	r24, Y+3	; 0x03
+     c98:	9c 81       	ldd	r25, Y+4	; 0x04
+     c9a:	06 96       	adiw	r24, 0x06	; 6
+     c9c:	9a 83       	std	Y+2, r25	; 0x02
+     c9e:	89 83       	std	Y+1, r24	; 0x01
+     ca0:	e9 81       	ldd	r30, Y+1	; 0x01
+     ca2:	fa 81       	ldd	r31, Y+2	; 0x02
+     ca4:	10 82       	st	Z, r1
+     ca6:	89 81       	ldd	r24, Y+1	; 0x01
+     ca8:	9a 81       	ldd	r25, Y+2	; 0x02
+     caa:	01 96       	adiw	r24, 0x01	; 1
+     cac:	9a 83       	std	Y+2, r25	; 0x02
+     cae:	89 83       	std	Y+1, r24	; 0x01
+     cb0:	e9 81       	ldd	r30, Y+1	; 0x01
+     cb2:	fa 81       	ldd	r31, Y+2	; 0x02
+     cb4:	10 82       	st	Z, r1
+     cb6:	89 81       	ldd	r24, Y+1	; 0x01
+     cb8:	9a 81       	ldd	r25, Y+2	; 0x02
+     cba:	01 96       	adiw	r24, 0x01	; 1
+     cbc:	9a 83       	std	Y+2, r25	; 0x02
+     cbe:	89 83       	std	Y+1, r24	; 0x01
+     cc0:	24 96       	adiw	r28, 0x04	; 4
+     cc2:	0f b6       	in	r0, 0x3f	; 63
+     cc4:	f8 94       	cli
+     cc6:	de bf       	out	0x3e, r29	; 62
+     cc8:	0f be       	out	0x3f, r0	; 63
+     cca:	cd bf       	out	0x3d, r28	; 61
+     ccc:	df 91       	pop	r29
+     cce:	cf 91       	pop	r28
+     cd0:	08 95       	ret
+
+00000cd2 <OS_InitEventList>:
+     cd2:	cf 93       	push	r28
+     cd4:	df 93       	push	r29
+     cd6:	cd b7       	in	r28, 0x3d	; 61
+     cd8:	de b7       	in	r29, 0x3e	; 62
+     cda:	26 97       	sbiw	r28, 0x06	; 6
+     cdc:	0f b6       	in	r0, 0x3f	; 63
+     cde:	f8 94       	cli
+     ce0:	de bf       	out	0x3e, r29	; 62
+     ce2:	0f be       	out	0x3f, r0	; 63
+     ce4:	cd bf       	out	0x3d, r28	; 61
+     ce6:	83 e5       	ldi	r24, 0x53	; 83
+     ce8:	94 e0       	ldi	r25, 0x04	; 4
+     cea:	9c 83       	std	Y+4, r25	; 0x04
+     cec:	8b 83       	std	Y+3, r24	; 0x03
+     cee:	8b e5       	ldi	r24, 0x5B	; 91
+     cf0:	94 e0       	ldi	r25, 0x04	; 4
+     cf2:	9a 83       	std	Y+2, r25	; 0x02
+     cf4:	89 83       	std	Y+1, r24	; 0x01
+     cf6:	1e 82       	std	Y+6, r1	; 0x06
+     cf8:	1d 82       	std	Y+5, r1	; 0x05
+     cfa:	18 c0       	rjmp	.+48     	; 0xd2c <OS_InitEventList+0x5a>
+     cfc:	eb 81       	ldd	r30, Y+3	; 0x03
+     cfe:	fc 81       	ldd	r31, Y+4	; 0x04
+     d00:	10 82       	st	Z, r1
+     d02:	eb 81       	ldd	r30, Y+3	; 0x03
+     d04:	fc 81       	ldd	r31, Y+4	; 0x04
+     d06:	89 81       	ldd	r24, Y+1	; 0x01
+     d08:	9a 81       	ldd	r25, Y+2	; 0x02
+     d0a:	95 83       	std	Z+5, r25	; 0x05
+     d0c:	84 83       	std	Z+4, r24	; 0x04
+     d0e:	8b 81       	ldd	r24, Y+3	; 0x03
+     d10:	9c 81       	ldd	r25, Y+4	; 0x04
+     d12:	08 96       	adiw	r24, 0x08	; 8
+     d14:	9c 83       	std	Y+4, r25	; 0x04
+     d16:	8b 83       	std	Y+3, r24	; 0x03
+     d18:	89 81       	ldd	r24, Y+1	; 0x01
+     d1a:	9a 81       	ldd	r25, Y+2	; 0x02
+     d1c:	08 96       	adiw	r24, 0x08	; 8
+     d1e:	9a 83       	std	Y+2, r25	; 0x02
+     d20:	89 83       	std	Y+1, r24	; 0x01
+     d22:	8d 81       	ldd	r24, Y+5	; 0x05
+     d24:	9e 81       	ldd	r25, Y+6	; 0x06
+     d26:	01 96       	adiw	r24, 0x01	; 1
+     d28:	9e 83       	std	Y+6, r25	; 0x06
+     d2a:	8d 83       	std	Y+5, r24	; 0x05
+     d2c:	8d 81       	ldd	r24, Y+5	; 0x05
+     d2e:	9e 81       	ldd	r25, Y+6	; 0x06
+     d30:	82 30       	cpi	r24, 0x02	; 2
+     d32:	91 05       	cpc	r25, r1
+     d34:	18 f3       	brcs	.-58     	; 0xcfc <OS_InitEventList+0x2a>
+     d36:	eb 81       	ldd	r30, Y+3	; 0x03
+     d38:	fc 81       	ldd	r31, Y+4	; 0x04
+     d3a:	10 82       	st	Z, r1
+     d3c:	eb 81       	ldd	r30, Y+3	; 0x03
+     d3e:	fc 81       	ldd	r31, Y+4	; 0x04
+     d40:	15 82       	std	Z+5, r1	; 0x05
+     d42:	14 82       	std	Z+4, r1	; 0x04
+     d44:	83 e5       	ldi	r24, 0x53	; 83
+     d46:	94 e0       	ldi	r25, 0x04	; 4
+     d48:	90 93 ce 03 	sts	0x03CE, r25
+     d4c:	80 93 cd 03 	sts	0x03CD, r24
+     d50:	26 96       	adiw	r28, 0x06	; 6
+     d52:	0f b6       	in	r0, 0x3f	; 63
+     d54:	f8 94       	cli
+     d56:	de bf       	out	0x3e, r29	; 62
+     d58:	0f be       	out	0x3f, r0	; 63
+     d5a:	cd bf       	out	0x3d, r28	; 61
+     d5c:	df 91       	pop	r29
+     d5e:	cf 91       	pop	r28
+     d60:	08 95       	ret
+
+00000d62 <OS_InitMisc>:
+     d62:	cf 93       	push	r28
+     d64:	df 93       	push	r29
+     d66:	cd b7       	in	r28, 0x3d	; 61
+     d68:	de b7       	in	r29, 0x3e	; 62
+     d6a:	10 92 d0 03 	sts	0x03D0, r1
+     d6e:	10 92 32 03 	sts	0x0332, r1
+     d72:	10 92 c7 03 	sts	0x03C7, r1
+     d76:	10 92 33 03 	sts	0x0333, r1
+     d7a:	10 92 bc 03 	sts	0x03BC, r1
+     d7e:	10 92 bd 03 	sts	0x03BD, r1
+     d82:	10 92 be 03 	sts	0x03BE, r1
+     d86:	10 92 bf 03 	sts	0x03BF, r1
+     d8a:	10 92 34 03 	sts	0x0334, r1
+     d8e:	10 92 35 03 	sts	0x0335, r1
+     d92:	10 92 36 03 	sts	0x0336, r1
+     d96:	10 92 37 03 	sts	0x0337, r1
+     d9a:	df 91       	pop	r29
+     d9c:	cf 91       	pop	r28
+     d9e:	08 95       	ret
+
+00000da0 <OS_InitRdyList>:
+     da0:	cf 93       	push	r28
+     da2:	df 93       	push	r29
+     da4:	cd b7       	in	r28, 0x3d	; 61
+     da6:	de b7       	in	r29, 0x3e	; 62
+     da8:	24 97       	sbiw	r28, 0x04	; 4
+     daa:	0f b6       	in	r0, 0x3f	; 63
+     dac:	f8 94       	cli
+     dae:	de bf       	out	0x3e, r29	; 62
+     db0:	0f be       	out	0x3f, r0	; 63
+     db2:	cd bf       	out	0x3d, r28	; 61
+     db4:	10 92 ca 03 	sts	0x03CA, r1
+     db8:	8b ec       	ldi	r24, 0xCB	; 203
+     dba:	93 e0       	ldi	r25, 0x03	; 3
+     dbc:	9a 83       	std	Y+2, r25	; 0x02
+     dbe:	89 83       	std	Y+1, r24	; 0x01
+     dc0:	1c 82       	std	Y+4, r1	; 0x04
+     dc2:	1b 82       	std	Y+3, r1	; 0x03
+     dc4:	0d c0       	rjmp	.+26     	; 0xde0 <OS_InitRdyList+0x40>
+     dc6:	e9 81       	ldd	r30, Y+1	; 0x01
+     dc8:	fa 81       	ldd	r31, Y+2	; 0x02
+     dca:	10 82       	st	Z, r1
+     dcc:	89 81       	ldd	r24, Y+1	; 0x01
+     dce:	9a 81       	ldd	r25, Y+2	; 0x02
+     dd0:	01 96       	adiw	r24, 0x01	; 1
+     dd2:	9a 83       	std	Y+2, r25	; 0x02
+     dd4:	89 83       	std	Y+1, r24	; 0x01
+     dd6:	8b 81       	ldd	r24, Y+3	; 0x03
+     dd8:	9c 81       	ldd	r25, Y+4	; 0x04
+     dda:	01 96       	adiw	r24, 0x01	; 1
+     ddc:	9c 83       	std	Y+4, r25	; 0x04
+     dde:	8b 83       	std	Y+3, r24	; 0x03
+     de0:	8b 81       	ldd	r24, Y+3	; 0x03
+     de2:	9c 81       	ldd	r25, Y+4	; 0x04
+     de4:	82 30       	cpi	r24, 0x02	; 2
+     de6:	91 05       	cpc	r25, r1
+     de8:	70 f3       	brcs	.-36     	; 0xdc6 <OS_InitRdyList+0x26>
+     dea:	10 92 39 03 	sts	0x0339, r1
+     dee:	10 92 38 03 	sts	0x0338, r1
+     df2:	10 92 c9 03 	sts	0x03C9, r1
+     df6:	10 92 c8 03 	sts	0x03C8, r1
+     dfa:	10 92 d2 03 	sts	0x03D2, r1
+     dfe:	10 92 d1 03 	sts	0x03D1, r1
+     e02:	24 96       	adiw	r28, 0x04	; 4
+     e04:	0f b6       	in	r0, 0x3f	; 63
+     e06:	f8 94       	cli
+     e08:	de bf       	out	0x3e, r29	; 62
+     e0a:	0f be       	out	0x3f, r0	; 63
+     e0c:	cd bf       	out	0x3d, r28	; 61
+     e0e:	df 91       	pop	r29
+     e10:	cf 91       	pop	r28
+     e12:	08 95       	ret
+
+00000e14 <OS_InitTaskIdle>:
+     e14:	cf 93       	push	r28
+     e16:	df 93       	push	r29
+     e18:	cd b7       	in	r28, 0x3d	; 61
+     e1a:	de b7       	in	r29, 0x3e	; 62
+     e1c:	82 e5       	ldi	r24, 0x52	; 82
+     e1e:	94 e0       	ldi	r25, 0x04	; 4
+     e20:	e8 ee       	ldi	r30, 0xE8	; 232
+     e22:	f7 e0       	ldi	r31, 0x07	; 7
+     e24:	2c e0       	ldi	r18, 0x0C	; 12
+     e26:	ac 01       	movw	r20, r24
+     e28:	60 e0       	ldi	r22, 0x00	; 0
+     e2a:	70 e0       	ldi	r23, 0x00	; 0
+     e2c:	cf 01       	movw	r24, r30
+     e2e:	0e 94 af 0e 	call	0x1d5e	; 0x1d5e <OSTaskCreate>
+     e32:	df 91       	pop	r29
+     e34:	cf 91       	pop	r28
+     e36:	08 95       	ret
+
+00000e38 <OS_InitTaskStat>:
+     e38:	cf 93       	push	r28
+     e3a:	df 93       	push	r29
+     e3c:	cd b7       	in	r28, 0x3d	; 61
+     e3e:	de b7       	in	r29, 0x3e	; 62
+     e40:	8b eb       	ldi	r24, 0xBB	; 187
+     e42:	93 e0       	ldi	r25, 0x03	; 3
+     e44:	ec e0       	ldi	r30, 0x0C	; 12
+     e46:	f8 e0       	ldi	r31, 0x08	; 8
+     e48:	2b e0       	ldi	r18, 0x0B	; 11
+     e4a:	ac 01       	movw	r20, r24
+     e4c:	60 e0       	ldi	r22, 0x00	; 0
+     e4e:	70 e0       	ldi	r23, 0x00	; 0
+     e50:	cf 01       	movw	r24, r30
+     e52:	0e 94 af 0e 	call	0x1d5e	; 0x1d5e <OSTaskCreate>
+     e56:	df 91       	pop	r29
+     e58:	cf 91       	pop	r28
+     e5a:	08 95       	ret
+
+00000e5c <OS_InitTCBList>:
+     e5c:	cf 93       	push	r28
+     e5e:	df 93       	push	r29
+     e60:	cd b7       	in	r28, 0x3d	; 61
+     e62:	de b7       	in	r29, 0x3e	; 62
+     e64:	25 97       	sbiw	r28, 0x05	; 5
+     e66:	0f b6       	in	r0, 0x3f	; 63
+     e68:	f8 94       	cli
+     e6a:	de bf       	out	0x3e, r29	; 62
+     e6c:	0f be       	out	0x3f, r0	; 63
+     e6e:	cd bf       	out	0x3d, r28	; 61
+     e70:	10 92 3b 03 	sts	0x033B, r1
+     e74:	10 92 3a 03 	sts	0x033A, r1
+     e78:	1d 82       	std	Y+5, r1	; 0x05
+     e7a:	0d c0       	rjmp	.+26     	; 0xe96 <OS_InitTCBList+0x3a>
+     e7c:	8d 81       	ldd	r24, Y+5	; 0x05
+     e7e:	88 2f       	mov	r24, r24
+     e80:	90 e0       	ldi	r25, 0x00	; 0
+     e82:	88 0f       	add	r24, r24
+     e84:	99 1f       	adc	r25, r25
+     e86:	fc 01       	movw	r30, r24
+     e88:	ed 59       	subi	r30, 0x9D	; 157
+     e8a:	fa 4f       	sbci	r31, 0xFA	; 250
+     e8c:	11 82       	std	Z+1, r1	; 0x01
+     e8e:	10 82       	st	Z, r1
+     e90:	8d 81       	ldd	r24, Y+5	; 0x05
+     e92:	8f 5f       	subi	r24, 0xFF	; 255
+     e94:	8d 83       	std	Y+5, r24	; 0x05
+     e96:	8d 81       	ldd	r24, Y+5	; 0x05
+     e98:	8d 30       	cpi	r24, 0x0D	; 13
+     e9a:	80 f3       	brcs	.-32     	; 0xe7c <OS_InitTCBList+0x20>
+     e9c:	8b e6       	ldi	r24, 0x6B	; 107
+     e9e:	94 e0       	ldi	r25, 0x04	; 4
+     ea0:	9c 83       	std	Y+4, r25	; 0x04
+     ea2:	8b 83       	std	Y+3, r24	; 0x03
+     ea4:	8e e7       	ldi	r24, 0x7E	; 126
+     ea6:	94 e0       	ldi	r25, 0x04	; 4
+     ea8:	9a 83       	std	Y+2, r25	; 0x02
+     eaa:	89 83       	std	Y+1, r24	; 0x01
+     eac:	1d 82       	std	Y+5, r1	; 0x05
+     eae:	13 c0       	rjmp	.+38     	; 0xed6 <OS_InitTCBList+0x7a>
+     eb0:	eb 81       	ldd	r30, Y+3	; 0x03
+     eb2:	fc 81       	ldd	r31, Y+4	; 0x04
+     eb4:	89 81       	ldd	r24, Y+1	; 0x01
+     eb6:	9a 81       	ldd	r25, Y+2	; 0x02
+     eb8:	93 83       	std	Z+3, r25	; 0x03
+     eba:	82 83       	std	Z+2, r24	; 0x02
+     ebc:	8b 81       	ldd	r24, Y+3	; 0x03
+     ebe:	9c 81       	ldd	r25, Y+4	; 0x04
+     ec0:	43 96       	adiw	r24, 0x13	; 19
+     ec2:	9c 83       	std	Y+4, r25	; 0x04
+     ec4:	8b 83       	std	Y+3, r24	; 0x03
+     ec6:	89 81       	ldd	r24, Y+1	; 0x01
+     ec8:	9a 81       	ldd	r25, Y+2	; 0x02
+     eca:	43 96       	adiw	r24, 0x13	; 19
+     ecc:	9a 83       	std	Y+2, r25	; 0x02
+     ece:	89 83       	std	Y+1, r24	; 0x01
+     ed0:	8d 81       	ldd	r24, Y+5	; 0x05
+     ed2:	8f 5f       	subi	r24, 0xFF	; 255
+     ed4:	8d 83       	std	Y+5, r24	; 0x05
+     ed6:	8d 81       	ldd	r24, Y+5	; 0x05
+     ed8:	8c 30       	cpi	r24, 0x0C	; 12
+     eda:	50 f3       	brcs	.-44     	; 0xeb0 <OS_InitTCBList+0x54>
+     edc:	eb 81       	ldd	r30, Y+3	; 0x03
+     ede:	fc 81       	ldd	r31, Y+4	; 0x04
+     ee0:	13 82       	std	Z+3, r1	; 0x03
+     ee2:	12 82       	std	Z+2, r1	; 0x02
+     ee4:	8b e6       	ldi	r24, 0x6B	; 107
+     ee6:	94 e0       	ldi	r25, 0x04	; 4
+     ee8:	90 93 c5 03 	sts	0x03C5, r25
+     eec:	80 93 c4 03 	sts	0x03C4, r24
+     ef0:	25 96       	adiw	r28, 0x05	; 5
+     ef2:	0f b6       	in	r0, 0x3f	; 63
+     ef4:	f8 94       	cli
+     ef6:	de bf       	out	0x3e, r29	; 62
+     ef8:	0f be       	out	0x3f, r0	; 63
+     efa:	cd bf       	out	0x3d, r28	; 61
+     efc:	df 91       	pop	r29
+     efe:	cf 91       	pop	r28
+     f00:	08 95       	ret
+
+00000f02 <OS_Sched>:
+     f02:	cf 93       	push	r28
+     f04:	df 93       	push	r29
+     f06:	cd b7       	in	r28, 0x3d	; 61
+     f08:	de b7       	in	r29, 0x3e	; 62
+     f0a:	21 97       	sbiw	r28, 0x01	; 1
+     f0c:	0f b6       	in	r0, 0x3f	; 63
+     f0e:	f8 94       	cli
+     f10:	de bf       	out	0x3e, r29	; 62
+     f12:	0f be       	out	0x3f, r0	; 63
+     f14:	cd bf       	out	0x3d, r28	; 61
+     f16:	f8 94       	cli
+     f18:	80 91 d0 03 	lds	r24, 0x03D0
+     f1c:	88 23       	and	r24, r24
+     f1e:	09 f0       	breq	.+2      	; 0xf22 <OS_Sched+0x20>
+     f20:	4d c0       	rjmp	.+154    	; 0xfbc <OS_Sched+0xba>
+     f22:	80 91 32 03 	lds	r24, 0x0332
+     f26:	88 23       	and	r24, r24
+     f28:	09 f0       	breq	.+2      	; 0xf2c <OS_Sched+0x2a>
+     f2a:	48 c0       	rjmp	.+144    	; 0xfbc <OS_Sched+0xba>
+     f2c:	80 91 ca 03 	lds	r24, 0x03CA
+     f30:	88 2f       	mov	r24, r24
+     f32:	90 e0       	ldi	r25, 0x00	; 0
+     f34:	fc 01       	movw	r30, r24
+     f36:	e3 5d       	subi	r30, 0xD3	; 211
+     f38:	fe 4f       	sbci	r31, 0xFE	; 254
+     f3a:	80 81       	ld	r24, Z
+     f3c:	89 83       	std	Y+1, r24	; 0x01
+     f3e:	89 81       	ldd	r24, Y+1	; 0x01
+     f40:	28 2f       	mov	r18, r24
+     f42:	22 0f       	add	r18, r18
+     f44:	22 0f       	add	r18, r18
+     f46:	22 0f       	add	r18, r18
+     f48:	89 81       	ldd	r24, Y+1	; 0x01
+     f4a:	88 2f       	mov	r24, r24
+     f4c:	90 e0       	ldi	r25, 0x00	; 0
+     f4e:	fc 01       	movw	r30, r24
+     f50:	e5 53       	subi	r30, 0x35	; 53
+     f52:	fc 4f       	sbci	r31, 0xFC	; 252
+     f54:	80 81       	ld	r24, Z
+     f56:	88 2f       	mov	r24, r24
+     f58:	90 e0       	ldi	r25, 0x00	; 0
+     f5a:	fc 01       	movw	r30, r24
+     f5c:	e3 5d       	subi	r30, 0xD3	; 211
+     f5e:	fe 4f       	sbci	r31, 0xFE	; 254
+     f60:	80 81       	ld	r24, Z
+     f62:	82 0f       	add	r24, r18
+     f64:	80 93 38 03 	sts	0x0338, r24
+     f68:	90 91 38 03 	lds	r25, 0x0338
+     f6c:	80 91 39 03 	lds	r24, 0x0339
+     f70:	98 17       	cp	r25, r24
+     f72:	21 f1       	breq	.+72     	; 0xfbc <OS_Sched+0xba>
+     f74:	80 91 38 03 	lds	r24, 0x0338
+     f78:	88 2f       	mov	r24, r24
+     f7a:	90 e0       	ldi	r25, 0x00	; 0
+     f7c:	88 0f       	add	r24, r24
+     f7e:	99 1f       	adc	r25, r25
+     f80:	fc 01       	movw	r30, r24
+     f82:	ed 59       	subi	r30, 0x9D	; 157
+     f84:	fa 4f       	sbci	r31, 0xFA	; 250
+     f86:	80 81       	ld	r24, Z
+     f88:	91 81       	ldd	r25, Z+1	; 0x01
+     f8a:	90 93 c9 03 	sts	0x03C9, r25
+     f8e:	80 93 c8 03 	sts	0x03C8, r24
+     f92:	80 91 bc 03 	lds	r24, 0x03BC
+     f96:	90 91 bd 03 	lds	r25, 0x03BD
+     f9a:	a0 91 be 03 	lds	r26, 0x03BE
+     f9e:	b0 91 bf 03 	lds	r27, 0x03BF
+     fa2:	01 96       	adiw	r24, 0x01	; 1
+     fa4:	a1 1d       	adc	r26, r1
+     fa6:	b1 1d       	adc	r27, r1
+     fa8:	80 93 bc 03 	sts	0x03BC, r24
+     fac:	90 93 bd 03 	sts	0x03BD, r25
+     fb0:	a0 93 be 03 	sts	0x03BE, r26
+     fb4:	b0 93 bf 03 	sts	0x03BF, r27
+     fb8:	0e 94 e9 12 	call	0x25d2	; 0x25d2 <OSCtxSw>
+     fbc:	78 94       	sei
+     fbe:	21 96       	adiw	r28, 0x01	; 1
+     fc0:	0f b6       	in	r0, 0x3f	; 63
+     fc2:	f8 94       	cli
+     fc4:	de bf       	out	0x3e, r29	; 62
+     fc6:	0f be       	out	0x3f, r0	; 63
+     fc8:	cd bf       	out	0x3d, r28	; 61
+     fca:	df 91       	pop	r29
+     fcc:	cf 91       	pop	r28
+     fce:	08 95       	ret
+
+00000fd0 <OS_TaskIdle>:
+     fd0:	cf 93       	push	r28
+     fd2:	df 93       	push	r29
+     fd4:	cd b7       	in	r28, 0x3d	; 61
+     fd6:	de b7       	in	r29, 0x3e	; 62
+     fd8:	22 97       	sbiw	r28, 0x02	; 2
+     fda:	0f b6       	in	r0, 0x3f	; 63
+     fdc:	f8 94       	cli
+     fde:	de bf       	out	0x3e, r29	; 62
+     fe0:	0f be       	out	0x3f, r0	; 63
+     fe2:	cd bf       	out	0x3d, r28	; 61
+     fe4:	9a 83       	std	Y+2, r25	; 0x02
+     fe6:	89 83       	std	Y+1, r24	; 0x01
+     fe8:	f8 94       	cli
+     fea:	80 91 34 03 	lds	r24, 0x0334
+     fee:	90 91 35 03 	lds	r25, 0x0335
+     ff2:	a0 91 36 03 	lds	r26, 0x0336
+     ff6:	b0 91 37 03 	lds	r27, 0x0337
+     ffa:	01 96       	adiw	r24, 0x01	; 1
+     ffc:	a1 1d       	adc	r26, r1
+     ffe:	b1 1d       	adc	r27, r1
+    1000:	80 93 34 03 	sts	0x0334, r24
+    1004:	90 93 35 03 	sts	0x0335, r25
+    1008:	a0 93 36 03 	sts	0x0336, r26
+    100c:	b0 93 37 03 	sts	0x0337, r27
+    1010:	78 94       	sei
+    1012:	0e 94 ba 02 	call	0x574	; 0x574 <OSTaskIdleHook>
+    1016:	e8 cf       	rjmp	.-48     	; 0xfe8 <OS_TaskIdle+0x18>
+
+00001018 <OS_TaskStat>:
+    1018:	cf 93       	push	r28
+    101a:	df 93       	push	r29
+    101c:	cd b7       	in	r28, 0x3d	; 61
+    101e:	de b7       	in	r29, 0x3e	; 62
+    1020:	2b 97       	sbiw	r28, 0x0b	; 11
+    1022:	0f b6       	in	r0, 0x3f	; 63
+    1024:	f8 94       	cli
+    1026:	de bf       	out	0x3e, r29	; 62
+    1028:	0f be       	out	0x3f, r0	; 63
+    102a:	cd bf       	out	0x3d, r28	; 61
+    102c:	9b 87       	std	Y+11, r25	; 0x0b
+    102e:	8a 87       	std	Y+10, r24	; 0x0a
+    1030:	04 c0       	rjmp	.+8      	; 0x103a <OS_TaskStat+0x22>
+    1032:	8a e7       	ldi	r24, 0x7A	; 122
+    1034:	90 e0       	ldi	r25, 0x00	; 0
+    1036:	0e 94 88 11 	call	0x2310	; 0x2310 <OSTimeDly>
+    103a:	80 91 62 05 	lds	r24, 0x0562
+    103e:	88 23       	and	r24, r24
+    1040:	c1 f3       	breq	.-16     	; 0x1032 <OS_TaskStat+0x1a>
+    1042:	80 91 c0 03 	lds	r24, 0x03C0
+    1046:	90 91 c1 03 	lds	r25, 0x03C1
+    104a:	a0 91 c2 03 	lds	r26, 0x03C2
+    104e:	b0 91 c3 03 	lds	r27, 0x03C3
+    1052:	24 e6       	ldi	r18, 0x64	; 100
+    1054:	30 e0       	ldi	r19, 0x00	; 0
+    1056:	40 e0       	ldi	r20, 0x00	; 0
+    1058:	50 e0       	ldi	r21, 0x00	; 0
+    105a:	bc 01       	movw	r22, r24
+    105c:	cd 01       	movw	r24, r26
+    105e:	0e 94 05 14 	call	0x280a	; 0x280a <__udivmodsi4>
+    1062:	da 01       	movw	r26, r20
+    1064:	c9 01       	movw	r24, r18
+    1066:	8a 83       	std	Y+2, r24	; 0x02
+    1068:	9b 83       	std	Y+3, r25	; 0x03
+    106a:	ac 83       	std	Y+4, r26	; 0x04
+    106c:	bd 83       	std	Y+5, r27	; 0x05
+    106e:	f8 94       	cli
+    1070:	80 91 34 03 	lds	r24, 0x0334
+    1074:	90 91 35 03 	lds	r25, 0x0335
+    1078:	a0 91 36 03 	lds	r26, 0x0336
+    107c:	b0 91 37 03 	lds	r27, 0x0337
+    1080:	80 93 7d 05 	sts	0x057D, r24
+    1084:	90 93 7e 05 	sts	0x057E, r25
+    1088:	a0 93 7f 05 	sts	0x057F, r26
+    108c:	b0 93 80 05 	sts	0x0580, r27
+    1090:	80 91 34 03 	lds	r24, 0x0334
+    1094:	90 91 35 03 	lds	r25, 0x0335
+    1098:	a0 91 36 03 	lds	r26, 0x0336
+    109c:	b0 91 37 03 	lds	r27, 0x0337
+    10a0:	8e 83       	std	Y+6, r24	; 0x06
+    10a2:	9f 83       	std	Y+7, r25	; 0x07
+    10a4:	a8 87       	std	Y+8, r26	; 0x08
+    10a6:	b9 87       	std	Y+9, r27	; 0x09
+    10a8:	10 92 34 03 	sts	0x0334, r1
+    10ac:	10 92 35 03 	sts	0x0335, r1
+    10b0:	10 92 36 03 	sts	0x0336, r1
+    10b4:	10 92 37 03 	sts	0x0337, r1
+    10b8:	78 94       	sei
+    10ba:	8a 81       	ldd	r24, Y+2	; 0x02
+    10bc:	9b 81       	ldd	r25, Y+3	; 0x03
+    10be:	ac 81       	ldd	r26, Y+4	; 0x04
+    10c0:	bd 81       	ldd	r27, Y+5	; 0x05
+    10c2:	00 97       	sbiw	r24, 0x00	; 0
+    10c4:	a1 05       	cpc	r26, r1
+    10c6:	b1 05       	cpc	r27, r1
+    10c8:	e1 f0       	breq	.+56     	; 0x1102 <__stack+0x3>
+    10ca:	8e 81       	ldd	r24, Y+6	; 0x06
+    10cc:	9f 81       	ldd	r25, Y+7	; 0x07
+    10ce:	a8 85       	ldd	r26, Y+8	; 0x08
+    10d0:	b9 85       	ldd	r27, Y+9	; 0x09
+    10d2:	2a 81       	ldd	r18, Y+2	; 0x02
+    10d4:	3b 81       	ldd	r19, Y+3	; 0x03
+    10d6:	4c 81       	ldd	r20, Y+4	; 0x04
+    10d8:	5d 81       	ldd	r21, Y+5	; 0x05
+    10da:	bc 01       	movw	r22, r24
+    10dc:	cd 01       	movw	r24, r26
+    10de:	0e 94 05 14 	call	0x280a	; 0x280a <__udivmodsi4>
+    10e2:	da 01       	movw	r26, r20
+    10e4:	c9 01       	movw	r24, r18
+    10e6:	98 2f       	mov	r25, r24
+    10e8:	84 e6       	ldi	r24, 0x64	; 100
+    10ea:	89 1b       	sub	r24, r25
+    10ec:	89 83       	std	Y+1, r24	; 0x01
+    10ee:	89 81       	ldd	r24, Y+1	; 0x01
+    10f0:	88 23       	and	r24, r24
+    10f2:	24 f0       	brlt	.+8      	; 0x10fc <OS_TaskStat+0xe4>
+    10f4:	89 81       	ldd	r24, Y+1	; 0x01
+    10f6:	80 93 c6 03 	sts	0x03C6, r24
+    10fa:	1b c0       	rjmp	.+54     	; 0x1132 <__stack+0x33>
+    10fc:	10 92 c6 03 	sts	0x03C6, r1
+    1100:	18 c0       	rjmp	.+48     	; 0x1132 <__stack+0x33>
+    1102:	10 92 c6 03 	sts	0x03C6, r1
+    1106:	80 91 c0 03 	lds	r24, 0x03C0
+    110a:	90 91 c1 03 	lds	r25, 0x03C1
+    110e:	a0 91 c2 03 	lds	r26, 0x03C2
+    1112:	b0 91 c3 03 	lds	r27, 0x03C3
+    1116:	24 e6       	ldi	r18, 0x64	; 100
+    1118:	30 e0       	ldi	r19, 0x00	; 0
+    111a:	40 e0       	ldi	r20, 0x00	; 0
+    111c:	50 e0       	ldi	r21, 0x00	; 0
+    111e:	bc 01       	movw	r22, r24
+    1120:	cd 01       	movw	r24, r26
+    1122:	0e 94 05 14 	call	0x280a	; 0x280a <__udivmodsi4>
+    1126:	da 01       	movw	r26, r20
+    1128:	c9 01       	movw	r24, r18
+    112a:	8a 83       	std	Y+2, r24	; 0x02
+    112c:	9b 83       	std	Y+3, r25	; 0x03
+    112e:	ac 83       	std	Y+4, r26	; 0x04
+    1130:	bd 83       	std	Y+5, r27	; 0x05
+    1132:	0e 94 9e 02 	call	0x53c	; 0x53c <OSTaskStatHook>
+    1136:	8d e3       	ldi	r24, 0x3D	; 61
+    1138:	90 e0       	ldi	r25, 0x00	; 0
+    113a:	0e 94 88 11 	call	0x2310	; 0x2310 <OSTimeDly>
+    113e:	97 cf       	rjmp	.-210    	; 0x106e <OS_TaskStat+0x56>
+
+00001140 <OS_TCBInit>:
+    1140:	af 92       	push	r10
+    1142:	bf 92       	push	r11
+    1144:	cf 92       	push	r12
+    1146:	df 92       	push	r13
+    1148:	ef 92       	push	r14
+    114a:	ff 92       	push	r15
+    114c:	0f 93       	push	r16
+    114e:	1f 93       	push	r17
+    1150:	cf 93       	push	r28
+    1152:	df 93       	push	r29
+    1154:	cd b7       	in	r28, 0x3d	; 61
+    1156:	de b7       	in	r29, 0x3e	; 62
+    1158:	63 97       	sbiw	r28, 0x13	; 19
+    115a:	0f b6       	in	r0, 0x3f	; 63
+    115c:	f8 94       	cli
+    115e:	de bf       	out	0x3e, r29	; 62
+    1160:	0f be       	out	0x3f, r0	; 63
+    1162:	cd bf       	out	0x3d, r28	; 61
+    1164:	8b 83       	std	Y+3, r24	; 0x03
+    1166:	7d 83       	std	Y+5, r23	; 0x05
+    1168:	6c 83       	std	Y+4, r22	; 0x04
+    116a:	5f 83       	std	Y+7, r21	; 0x07
+    116c:	4e 83       	std	Y+6, r20	; 0x06
+    116e:	39 87       	std	Y+9, r19	; 0x09
+    1170:	28 87       	std	Y+8, r18	; 0x08
+    1172:	ea 86       	std	Y+10, r14	; 0x0a
+    1174:	fb 86       	std	Y+11, r15	; 0x0b
+    1176:	0c 87       	std	Y+12, r16	; 0x0c
+    1178:	1d 87       	std	Y+13, r17	; 0x0d
+    117a:	df 86       	std	Y+15, r13	; 0x0f
+    117c:	ce 86       	std	Y+14, r12	; 0x0e
+    117e:	b9 8a       	std	Y+17, r11	; 0x11
+    1180:	a8 8a       	std	Y+16, r10	; 0x10
+    1182:	f8 94       	cli
+    1184:	80 91 c4 03 	lds	r24, 0x03C4
+    1188:	90 91 c5 03 	lds	r25, 0x03C5
+    118c:	9a 83       	std	Y+2, r25	; 0x02
+    118e:	89 83       	std	Y+1, r24	; 0x01
+    1190:	89 81       	ldd	r24, Y+1	; 0x01
+    1192:	9a 81       	ldd	r25, Y+2	; 0x02
+    1194:	00 97       	sbiw	r24, 0x00	; 0
+    1196:	09 f4       	brne	.+2      	; 0x119a <OS_TCBInit+0x5a>
+    1198:	a0 c0       	rjmp	.+320    	; 0x12da <OS_TCBInit+0x19a>
+    119a:	e9 81       	ldd	r30, Y+1	; 0x01
+    119c:	fa 81       	ldd	r31, Y+2	; 0x02
+    119e:	82 81       	ldd	r24, Z+2	; 0x02
+    11a0:	93 81       	ldd	r25, Z+3	; 0x03
+    11a2:	90 93 c5 03 	sts	0x03C5, r25
+    11a6:	80 93 c4 03 	sts	0x03C4, r24
+    11aa:	78 94       	sei
+    11ac:	e9 81       	ldd	r30, Y+1	; 0x01
+    11ae:	fa 81       	ldd	r31, Y+2	; 0x02
+    11b0:	8c 81       	ldd	r24, Y+4	; 0x04
+    11b2:	9d 81       	ldd	r25, Y+5	; 0x05
+    11b4:	91 83       	std	Z+1, r25	; 0x01
+    11b6:	80 83       	st	Z, r24
+    11b8:	e9 81       	ldd	r30, Y+1	; 0x01
+    11ba:	fa 81       	ldd	r31, Y+2	; 0x02
+    11bc:	8b 81       	ldd	r24, Y+3	; 0x03
+    11be:	85 87       	std	Z+13, r24	; 0x0d
+    11c0:	e9 81       	ldd	r30, Y+1	; 0x01
+    11c2:	fa 81       	ldd	r31, Y+2	; 0x02
+    11c4:	14 86       	std	Z+12, r1	; 0x0c
+    11c6:	e9 81       	ldd	r30, Y+1	; 0x01
+    11c8:	fa 81       	ldd	r31, Y+2	; 0x02
+    11ca:	13 86       	std	Z+11, r1	; 0x0b
+    11cc:	12 86       	std	Z+10, r1	; 0x0a
+    11ce:	e9 81       	ldd	r30, Y+1	; 0x01
+    11d0:	fa 81       	ldd	r31, Y+2	; 0x02
+    11d2:	12 8a       	std	Z+18, r1	; 0x12
+    11d4:	8b 81       	ldd	r24, Y+3	; 0x03
+    11d6:	86 95       	lsr	r24
+    11d8:	86 95       	lsr	r24
+    11da:	86 95       	lsr	r24
+    11dc:	e9 81       	ldd	r30, Y+1	; 0x01
+    11de:	fa 81       	ldd	r31, Y+2	; 0x02
+    11e0:	87 87       	std	Z+15, r24	; 0x0f
+    11e2:	e9 81       	ldd	r30, Y+1	; 0x01
+    11e4:	fa 81       	ldd	r31, Y+2	; 0x02
+    11e6:	87 85       	ldd	r24, Z+15	; 0x0f
+    11e8:	88 2f       	mov	r24, r24
+    11ea:	90 e0       	ldi	r25, 0x00	; 0
+    11ec:	fc 01       	movw	r30, r24
+    11ee:	eb 5d       	subi	r30, 0xDB	; 219
+    11f0:	fe 4f       	sbci	r31, 0xFE	; 254
+    11f2:	80 81       	ld	r24, Z
+    11f4:	e9 81       	ldd	r30, Y+1	; 0x01
+    11f6:	fa 81       	ldd	r31, Y+2	; 0x02
+    11f8:	81 8b       	std	Z+17, r24	; 0x11
+    11fa:	8b 81       	ldd	r24, Y+3	; 0x03
+    11fc:	87 70       	andi	r24, 0x07	; 7
+    11fe:	e9 81       	ldd	r30, Y+1	; 0x01
+    1200:	fa 81       	ldd	r31, Y+2	; 0x02
+    1202:	86 87       	std	Z+14, r24	; 0x0e
+    1204:	e9 81       	ldd	r30, Y+1	; 0x01
+    1206:	fa 81       	ldd	r31, Y+2	; 0x02
+    1208:	86 85       	ldd	r24, Z+14	; 0x0e
+    120a:	88 2f       	mov	r24, r24
+    120c:	90 e0       	ldi	r25, 0x00	; 0
+    120e:	fc 01       	movw	r30, r24
+    1210:	eb 5d       	subi	r30, 0xDB	; 219
+    1212:	fe 4f       	sbci	r31, 0xFE	; 254
+    1214:	80 81       	ld	r24, Z
+    1216:	e9 81       	ldd	r30, Y+1	; 0x01
+    1218:	fa 81       	ldd	r31, Y+2	; 0x02
+    121a:	80 8b       	std	Z+16, r24	; 0x10
+    121c:	e9 81       	ldd	r30, Y+1	; 0x01
+    121e:	fa 81       	ldd	r31, Y+2	; 0x02
+    1220:	17 82       	std	Z+7, r1	; 0x07
+    1222:	16 82       	std	Z+6, r1	; 0x06
+    1224:	e9 81       	ldd	r30, Y+1	; 0x01
+    1226:	fa 81       	ldd	r31, Y+2	; 0x02
+    1228:	11 86       	std	Z+9, r1	; 0x09
+    122a:	10 86       	std	Z+8, r1	; 0x08
+    122c:	89 81       	ldd	r24, Y+1	; 0x01
+    122e:	9a 81       	ldd	r25, Y+2	; 0x02
+    1230:	0e 94 c1 02 	call	0x582	; 0x582 <OSTCBInitHook>
+    1234:	89 81       	ldd	r24, Y+1	; 0x01
+    1236:	9a 81       	ldd	r25, Y+2	; 0x02
+    1238:	0e 94 6d 02 	call	0x4da	; 0x4da <OSTaskCreateHook>
+    123c:	f8 94       	cli
+    123e:	8b 81       	ldd	r24, Y+3	; 0x03
+    1240:	88 2f       	mov	r24, r24
+    1242:	90 e0       	ldi	r25, 0x00	; 0
+    1244:	88 0f       	add	r24, r24
+    1246:	99 1f       	adc	r25, r25
+    1248:	fc 01       	movw	r30, r24
+    124a:	ed 59       	subi	r30, 0x9D	; 157
+    124c:	fa 4f       	sbci	r31, 0xFA	; 250
+    124e:	89 81       	ldd	r24, Y+1	; 0x01
+    1250:	9a 81       	ldd	r25, Y+2	; 0x02
+    1252:	91 83       	std	Z+1, r25	; 0x01
+    1254:	80 83       	st	Z, r24
+    1256:	80 91 3a 03 	lds	r24, 0x033A
+    125a:	90 91 3b 03 	lds	r25, 0x033B
+    125e:	e9 81       	ldd	r30, Y+1	; 0x01
+    1260:	fa 81       	ldd	r31, Y+2	; 0x02
+    1262:	93 83       	std	Z+3, r25	; 0x03
+    1264:	82 83       	std	Z+2, r24	; 0x02
+    1266:	e9 81       	ldd	r30, Y+1	; 0x01
+    1268:	fa 81       	ldd	r31, Y+2	; 0x02
+    126a:	15 82       	std	Z+5, r1	; 0x05
+    126c:	14 82       	std	Z+4, r1	; 0x04
+    126e:	80 91 3a 03 	lds	r24, 0x033A
+    1272:	90 91 3b 03 	lds	r25, 0x033B
+    1276:	00 97       	sbiw	r24, 0x00	; 0
+    1278:	41 f0       	breq	.+16     	; 0x128a <OS_TCBInit+0x14a>
+    127a:	e0 91 3a 03 	lds	r30, 0x033A
+    127e:	f0 91 3b 03 	lds	r31, 0x033B
+    1282:	89 81       	ldd	r24, Y+1	; 0x01
+    1284:	9a 81       	ldd	r25, Y+2	; 0x02
+    1286:	95 83       	std	Z+5, r25	; 0x05
+    1288:	84 83       	std	Z+4, r24	; 0x04
+    128a:	89 81       	ldd	r24, Y+1	; 0x01
+    128c:	9a 81       	ldd	r25, Y+2	; 0x02
+    128e:	90 93 3b 03 	sts	0x033B, r25
+    1292:	80 93 3a 03 	sts	0x033A, r24
+    1296:	e9 81       	ldd	r30, Y+1	; 0x01
+    1298:	fa 81       	ldd	r31, Y+2	; 0x02
+    129a:	91 89       	ldd	r25, Z+17	; 0x11
+    129c:	80 91 ca 03 	lds	r24, 0x03CA
+    12a0:	89 2b       	or	r24, r25
+    12a2:	80 93 ca 03 	sts	0x03CA, r24
+    12a6:	e9 81       	ldd	r30, Y+1	; 0x01
+    12a8:	fa 81       	ldd	r31, Y+2	; 0x02
+    12aa:	87 85       	ldd	r24, Z+15	; 0x0f
+    12ac:	28 2f       	mov	r18, r24
+    12ae:	30 e0       	ldi	r19, 0x00	; 0
+    12b0:	e9 81       	ldd	r30, Y+1	; 0x01
+    12b2:	fa 81       	ldd	r31, Y+2	; 0x02
+    12b4:	87 85       	ldd	r24, Z+15	; 0x0f
+    12b6:	88 2f       	mov	r24, r24
+    12b8:	90 e0       	ldi	r25, 0x00	; 0
+    12ba:	fc 01       	movw	r30, r24
+    12bc:	e5 53       	subi	r30, 0x35	; 53
+    12be:	fc 4f       	sbci	r31, 0xFC	; 252
+    12c0:	90 81       	ld	r25, Z
+    12c2:	e9 81       	ldd	r30, Y+1	; 0x01
+    12c4:	fa 81       	ldd	r31, Y+2	; 0x02
+    12c6:	80 89       	ldd	r24, Z+16	; 0x10
+    12c8:	89 2b       	or	r24, r25
+    12ca:	f9 01       	movw	r30, r18
+    12cc:	e5 53       	subi	r30, 0x35	; 53
+    12ce:	fc 4f       	sbci	r31, 0xFC	; 252
+    12d0:	80 83       	st	Z, r24
+    12d2:	78 94       	sei
+    12d4:	1b 8a       	std	Y+19, r1	; 0x13
+    12d6:	1a 8a       	std	Y+18, r1	; 0x12
+    12d8:	05 c0       	rjmp	.+10     	; 0x12e4 <OS_TCBInit+0x1a4>
+    12da:	78 94       	sei
+    12dc:	86 e4       	ldi	r24, 0x46	; 70
+    12de:	90 e0       	ldi	r25, 0x00	; 0
+    12e0:	9b 8b       	std	Y+19, r25	; 0x13
+    12e2:	8a 8b       	std	Y+18, r24	; 0x12
+    12e4:	8a 89       	ldd	r24, Y+18	; 0x12
+    12e6:	9b 89       	ldd	r25, Y+19	; 0x13
+    12e8:	63 96       	adiw	r28, 0x13	; 19
+    12ea:	0f b6       	in	r0, 0x3f	; 63
+    12ec:	f8 94       	cli
+    12ee:	de bf       	out	0x3e, r29	; 62
+    12f0:	0f be       	out	0x3f, r0	; 63
+    12f2:	cd bf       	out	0x3d, r28	; 61
+    12f4:	df 91       	pop	r29
+    12f6:	cf 91       	pop	r28
+    12f8:	1f 91       	pop	r17
+    12fa:	0f 91       	pop	r16
+    12fc:	ff 90       	pop	r15
+    12fe:	ef 90       	pop	r14
+    1300:	df 90       	pop	r13
+    1302:	cf 90       	pop	r12
+    1304:	bf 90       	pop	r11
+    1306:	af 90       	pop	r10
+    1308:	08 95       	ret
+
+0000130a <OSMboxCreate>:
+    130a:	cf 93       	push	r28
+    130c:	df 93       	push	r29
+    130e:	cd b7       	in	r28, 0x3d	; 61
+    1310:	de b7       	in	r29, 0x3e	; 62
+    1312:	26 97       	sbiw	r28, 0x06	; 6
+    1314:	0f b6       	in	r0, 0x3f	; 63
+    1316:	f8 94       	cli
+    1318:	de bf       	out	0x3e, r29	; 62
+    131a:	0f be       	out	0x3f, r0	; 63
+    131c:	cd bf       	out	0x3d, r28	; 61
+    131e:	9c 83       	std	Y+4, r25	; 0x04
+    1320:	8b 83       	std	Y+3, r24	; 0x03
+    1322:	80 91 d0 03 	lds	r24, 0x03D0
+    1326:	88 23       	and	r24, r24
+    1328:	19 f0       	breq	.+6      	; 0x1330 <OSMboxCreate+0x26>
+    132a:	1e 82       	std	Y+6, r1	; 0x06
+    132c:	1d 82       	std	Y+5, r1	; 0x05
+    132e:	32 c0       	rjmp	.+100    	; 0x1394 <OSMboxCreate+0x8a>
+    1330:	f8 94       	cli
+    1332:	80 91 cd 03 	lds	r24, 0x03CD
+    1336:	90 91 ce 03 	lds	r25, 0x03CE
+    133a:	9a 83       	std	Y+2, r25	; 0x02
+    133c:	89 83       	std	Y+1, r24	; 0x01
+    133e:	80 91 cd 03 	lds	r24, 0x03CD
+    1342:	90 91 ce 03 	lds	r25, 0x03CE
+    1346:	00 97       	sbiw	r24, 0x00	; 0
+    1348:	51 f0       	breq	.+20     	; 0x135e <OSMboxCreate+0x54>
+    134a:	e0 91 cd 03 	lds	r30, 0x03CD
+    134e:	f0 91 ce 03 	lds	r31, 0x03CE
+    1352:	84 81       	ldd	r24, Z+4	; 0x04
+    1354:	95 81       	ldd	r25, Z+5	; 0x05
+    1356:	90 93 ce 03 	sts	0x03CE, r25
+    135a:	80 93 cd 03 	sts	0x03CD, r24
+    135e:	78 94       	sei
+    1360:	89 81       	ldd	r24, Y+1	; 0x01
+    1362:	9a 81       	ldd	r25, Y+2	; 0x02
+    1364:	00 97       	sbiw	r24, 0x00	; 0
+    1366:	91 f0       	breq	.+36     	; 0x138c <OSMboxCreate+0x82>
+    1368:	e9 81       	ldd	r30, Y+1	; 0x01
+    136a:	fa 81       	ldd	r31, Y+2	; 0x02
+    136c:	81 e0       	ldi	r24, 0x01	; 1
+    136e:	80 83       	st	Z, r24
+    1370:	e9 81       	ldd	r30, Y+1	; 0x01
+    1372:	fa 81       	ldd	r31, Y+2	; 0x02
+    1374:	13 82       	std	Z+3, r1	; 0x03
+    1376:	12 82       	std	Z+2, r1	; 0x02
+    1378:	e9 81       	ldd	r30, Y+1	; 0x01
+    137a:	fa 81       	ldd	r31, Y+2	; 0x02
+    137c:	8b 81       	ldd	r24, Y+3	; 0x03
+    137e:	9c 81       	ldd	r25, Y+4	; 0x04
+    1380:	95 83       	std	Z+5, r25	; 0x05
+    1382:	84 83       	std	Z+4, r24	; 0x04
+    1384:	89 81       	ldd	r24, Y+1	; 0x01
+    1386:	9a 81       	ldd	r25, Y+2	; 0x02
+    1388:	0e 94 3c 06 	call	0xc78	; 0xc78 <OS_EventWaitListInit>
+    138c:	89 81       	ldd	r24, Y+1	; 0x01
+    138e:	9a 81       	ldd	r25, Y+2	; 0x02
+    1390:	9e 83       	std	Y+6, r25	; 0x06
+    1392:	8d 83       	std	Y+5, r24	; 0x05
+    1394:	8d 81       	ldd	r24, Y+5	; 0x05
+    1396:	9e 81       	ldd	r25, Y+6	; 0x06
+    1398:	26 96       	adiw	r28, 0x06	; 6
+    139a:	0f b6       	in	r0, 0x3f	; 63
+    139c:	f8 94       	cli
+    139e:	de bf       	out	0x3e, r29	; 62
+    13a0:	0f be       	out	0x3f, r0	; 63
+    13a2:	cd bf       	out	0x3d, r28	; 61
+    13a4:	df 91       	pop	r29
+    13a6:	cf 91       	pop	r28
+    13a8:	08 95       	ret
+
+000013aa <OSMboxPend>:
+    13aa:	cf 93       	push	r28
+    13ac:	df 93       	push	r29
+    13ae:	cd b7       	in	r28, 0x3d	; 61
+    13b0:	de b7       	in	r29, 0x3e	; 62
+    13b2:	2a 97       	sbiw	r28, 0x0a	; 10
+    13b4:	0f b6       	in	r0, 0x3f	; 63
+    13b6:	f8 94       	cli
+    13b8:	de bf       	out	0x3e, r29	; 62
+    13ba:	0f be       	out	0x3f, r0	; 63
+    13bc:	cd bf       	out	0x3d, r28	; 61
+    13be:	9c 83       	std	Y+4, r25	; 0x04
+    13c0:	8b 83       	std	Y+3, r24	; 0x03
+    13c2:	7e 83       	std	Y+6, r23	; 0x06
+    13c4:	6d 83       	std	Y+5, r22	; 0x05
+    13c6:	58 87       	std	Y+8, r21	; 0x08
+    13c8:	4f 83       	std	Y+7, r20	; 0x07
+    13ca:	80 91 d0 03 	lds	r24, 0x03D0
+    13ce:	88 23       	and	r24, r24
+    13d0:	39 f0       	breq	.+14     	; 0x13e0 <OSMboxPend+0x36>
+    13d2:	ef 81       	ldd	r30, Y+7	; 0x07
+    13d4:	f8 85       	ldd	r31, Y+8	; 0x08
+    13d6:	82 e0       	ldi	r24, 0x02	; 2
+    13d8:	80 83       	st	Z, r24
+    13da:	1a 86       	std	Y+10, r1	; 0x0a
+    13dc:	19 86       	std	Y+9, r1	; 0x09
+    13de:	65 c0       	rjmp	.+202    	; 0x14aa <OSMboxPend+0x100>
+    13e0:	f8 94       	cli
+    13e2:	eb 81       	ldd	r30, Y+3	; 0x03
+    13e4:	fc 81       	ldd	r31, Y+4	; 0x04
+    13e6:	84 81       	ldd	r24, Z+4	; 0x04
+    13e8:	95 81       	ldd	r25, Z+5	; 0x05
+    13ea:	9a 83       	std	Y+2, r25	; 0x02
+    13ec:	89 83       	std	Y+1, r24	; 0x01
+    13ee:	89 81       	ldd	r24, Y+1	; 0x01
+    13f0:	9a 81       	ldd	r25, Y+2	; 0x02
+    13f2:	00 97       	sbiw	r24, 0x00	; 0
+    13f4:	69 f0       	breq	.+26     	; 0x1410 <OSMboxPend+0x66>
+    13f6:	eb 81       	ldd	r30, Y+3	; 0x03
+    13f8:	fc 81       	ldd	r31, Y+4	; 0x04
+    13fa:	15 82       	std	Z+5, r1	; 0x05
+    13fc:	14 82       	std	Z+4, r1	; 0x04
+    13fe:	78 94       	sei
+    1400:	ef 81       	ldd	r30, Y+7	; 0x07
+    1402:	f8 85       	ldd	r31, Y+8	; 0x08
+    1404:	10 82       	st	Z, r1
+    1406:	89 81       	ldd	r24, Y+1	; 0x01
+    1408:	9a 81       	ldd	r25, Y+2	; 0x02
+    140a:	9a 87       	std	Y+10, r25	; 0x0a
+    140c:	89 87       	std	Y+9, r24	; 0x09
+    140e:	4d c0       	rjmp	.+154    	; 0x14aa <OSMboxPend+0x100>
+    1410:	a0 91 d1 03 	lds	r26, 0x03D1
+    1414:	b0 91 d2 03 	lds	r27, 0x03D2
+    1418:	e0 91 d1 03 	lds	r30, 0x03D1
+    141c:	f0 91 d2 03 	lds	r31, 0x03D2
+    1420:	84 85       	ldd	r24, Z+12	; 0x0c
+    1422:	82 60       	ori	r24, 0x02	; 2
+    1424:	fd 01       	movw	r30, r26
+    1426:	84 87       	std	Z+12, r24	; 0x0c
+    1428:	e0 91 d1 03 	lds	r30, 0x03D1
+    142c:	f0 91 d2 03 	lds	r31, 0x03D2
+    1430:	8d 81       	ldd	r24, Y+5	; 0x05
+    1432:	9e 81       	ldd	r25, Y+6	; 0x06
+    1434:	93 87       	std	Z+11, r25	; 0x0b
+    1436:	82 87       	std	Z+10, r24	; 0x0a
+    1438:	8b 81       	ldd	r24, Y+3	; 0x03
+    143a:	9c 81       	ldd	r25, Y+4	; 0x04
+    143c:	0e 94 64 05 	call	0xac8	; 0xac8 <OS_EventTaskWait>
+    1440:	78 94       	sei
+    1442:	0e 94 81 07 	call	0xf02	; 0xf02 <OS_Sched>
+    1446:	f8 94       	cli
+    1448:	e0 91 d1 03 	lds	r30, 0x03D1
+    144c:	f0 91 d2 03 	lds	r31, 0x03D2
+    1450:	80 85       	ldd	r24, Z+8	; 0x08
+    1452:	91 85       	ldd	r25, Z+9	; 0x09
+    1454:	9a 83       	std	Y+2, r25	; 0x02
+    1456:	89 83       	std	Y+1, r24	; 0x01
+    1458:	89 81       	ldd	r24, Y+1	; 0x01
+    145a:	9a 81       	ldd	r25, Y+2	; 0x02
+    145c:	00 97       	sbiw	r24, 0x00	; 0
+    145e:	d1 f0       	breq	.+52     	; 0x1494 <OSMboxPend+0xea>
+    1460:	e0 91 d1 03 	lds	r30, 0x03D1
+    1464:	f0 91 d2 03 	lds	r31, 0x03D2
+    1468:	11 86       	std	Z+9, r1	; 0x09
+    146a:	10 86       	std	Z+8, r1	; 0x08
+    146c:	e0 91 d1 03 	lds	r30, 0x03D1
+    1470:	f0 91 d2 03 	lds	r31, 0x03D2
+    1474:	14 86       	std	Z+12, r1	; 0x0c
+    1476:	e0 91 d1 03 	lds	r30, 0x03D1
+    147a:	f0 91 d2 03 	lds	r31, 0x03D2
+    147e:	17 82       	std	Z+7, r1	; 0x07
+    1480:	16 82       	std	Z+6, r1	; 0x06
+    1482:	78 94       	sei
+    1484:	ef 81       	ldd	r30, Y+7	; 0x07
+    1486:	f8 85       	ldd	r31, Y+8	; 0x08
+    1488:	10 82       	st	Z, r1
+    148a:	89 81       	ldd	r24, Y+1	; 0x01
+    148c:	9a 81       	ldd	r25, Y+2	; 0x02
+    148e:	9a 87       	std	Y+10, r25	; 0x0a
+    1490:	89 87       	std	Y+9, r24	; 0x09
+    1492:	0b c0       	rjmp	.+22     	; 0x14aa <OSMboxPend+0x100>
+    1494:	8b 81       	ldd	r24, Y+3	; 0x03
+    1496:	9c 81       	ldd	r25, Y+4	; 0x04
+    1498:	0e 94 e0 05 	call	0xbc0	; 0xbc0 <OS_EventTO>
+    149c:	78 94       	sei
+    149e:	ef 81       	ldd	r30, Y+7	; 0x07
+    14a0:	f8 85       	ldd	r31, Y+8	; 0x08
+    14a2:	8a e0       	ldi	r24, 0x0A	; 10
+    14a4:	80 83       	st	Z, r24
+    14a6:	1a 86       	std	Y+10, r1	; 0x0a
+    14a8:	19 86       	std	Y+9, r1	; 0x09
+    14aa:	89 85       	ldd	r24, Y+9	; 0x09
+    14ac:	9a 85       	ldd	r25, Y+10	; 0x0a
+    14ae:	2a 96       	adiw	r28, 0x0a	; 10
+    14b0:	0f b6       	in	r0, 0x3f	; 63
+    14b2:	f8 94       	cli
+    14b4:	de bf       	out	0x3e, r29	; 62
+    14b6:	0f be       	out	0x3f, r0	; 63
+    14b8:	cd bf       	out	0x3d, r28	; 61
+    14ba:	df 91       	pop	r29
+    14bc:	cf 91       	pop	r28
+    14be:	08 95       	ret
+
+000014c0 <OSMboxPost>:
+    14c0:	cf 93       	push	r28
+    14c2:	df 93       	push	r29
+    14c4:	cd b7       	in	r28, 0x3d	; 61
+    14c6:	de b7       	in	r29, 0x3e	; 62
+    14c8:	26 97       	sbiw	r28, 0x06	; 6
+    14ca:	0f b6       	in	r0, 0x3f	; 63
+    14cc:	f8 94       	cli
+    14ce:	de bf       	out	0x3e, r29	; 62
+    14d0:	0f be       	out	0x3f, r0	; 63
+    14d2:	cd bf       	out	0x3d, r28	; 61
+    14d4:	9a 83       	std	Y+2, r25	; 0x02
+    14d6:	89 83       	std	Y+1, r24	; 0x01
+    14d8:	7c 83       	std	Y+4, r23	; 0x04
+    14da:	6b 83       	std	Y+3, r22	; 0x03
+    14dc:	f8 94       	cli
+    14de:	e9 81       	ldd	r30, Y+1	; 0x01
+    14e0:	fa 81       	ldd	r31, Y+2	; 0x02
+    14e2:	81 81       	ldd	r24, Z+1	; 0x01
+    14e4:	88 23       	and	r24, r24
+    14e6:	79 f0       	breq	.+30     	; 0x1506 <OSMboxPost+0x46>
+    14e8:	8b 81       	ldd	r24, Y+3	; 0x03
+    14ea:	9c 81       	ldd	r25, Y+4	; 0x04
+    14ec:	29 81       	ldd	r18, Y+1	; 0x01
+    14ee:	3a 81       	ldd	r19, Y+2	; 0x02
+    14f0:	42 e0       	ldi	r20, 0x02	; 2
+    14f2:	bc 01       	movw	r22, r24
+    14f4:	c9 01       	movw	r24, r18
+    14f6:	0e 94 ab 04 	call	0x956	; 0x956 <OS_EventTaskRdy>
+    14fa:	78 94       	sei
+    14fc:	0e 94 81 07 	call	0xf02	; 0xf02 <OS_Sched>
+    1500:	1e 82       	std	Y+6, r1	; 0x06
+    1502:	1d 82       	std	Y+5, r1	; 0x05
+    1504:	15 c0       	rjmp	.+42     	; 0x1530 <OSMboxPost+0x70>
+    1506:	e9 81       	ldd	r30, Y+1	; 0x01
+    1508:	fa 81       	ldd	r31, Y+2	; 0x02
+    150a:	84 81       	ldd	r24, Z+4	; 0x04
+    150c:	95 81       	ldd	r25, Z+5	; 0x05
+    150e:	00 97       	sbiw	r24, 0x00	; 0
+    1510:	31 f0       	breq	.+12     	; 0x151e <OSMboxPost+0x5e>
+    1512:	78 94       	sei
+    1514:	84 e1       	ldi	r24, 0x14	; 20
+    1516:	90 e0       	ldi	r25, 0x00	; 0
+    1518:	9e 83       	std	Y+6, r25	; 0x06
+    151a:	8d 83       	std	Y+5, r24	; 0x05
+    151c:	09 c0       	rjmp	.+18     	; 0x1530 <OSMboxPost+0x70>
+    151e:	e9 81       	ldd	r30, Y+1	; 0x01
+    1520:	fa 81       	ldd	r31, Y+2	; 0x02
+    1522:	8b 81       	ldd	r24, Y+3	; 0x03
+    1524:	9c 81       	ldd	r25, Y+4	; 0x04
+    1526:	95 83       	std	Z+5, r25	; 0x05
+    1528:	84 83       	std	Z+4, r24	; 0x04
+    152a:	78 94       	sei
+    152c:	1e 82       	std	Y+6, r1	; 0x06
+    152e:	1d 82       	std	Y+5, r1	; 0x05
+    1530:	8d 81       	ldd	r24, Y+5	; 0x05
+    1532:	9e 81       	ldd	r25, Y+6	; 0x06
+    1534:	26 96       	adiw	r28, 0x06	; 6
+    1536:	0f b6       	in	r0, 0x3f	; 63
+    1538:	f8 94       	cli
+    153a:	de bf       	out	0x3e, r29	; 62
+    153c:	0f be       	out	0x3f, r0	; 63
+    153e:	cd bf       	out	0x3d, r28	; 61
+    1540:	df 91       	pop	r29
+    1542:	cf 91       	pop	r28
+    1544:	08 95       	ret
+
+00001546 <OSMutexCreate>:
+    1546:	cf 93       	push	r28
+    1548:	df 93       	push	r29
+    154a:	cd b7       	in	r28, 0x3d	; 61
+    154c:	de b7       	in	r29, 0x3e	; 62
+    154e:	27 97       	sbiw	r28, 0x07	; 7
+    1550:	0f b6       	in	r0, 0x3f	; 63
+    1552:	f8 94       	cli
+    1554:	de bf       	out	0x3e, r29	; 62
+    1556:	0f be       	out	0x3f, r0	; 63
+    1558:	cd bf       	out	0x3d, r28	; 61
+    155a:	8b 83       	std	Y+3, r24	; 0x03
+    155c:	7d 83       	std	Y+5, r23	; 0x05
+    155e:	6c 83       	std	Y+4, r22	; 0x04
+    1560:	80 91 d0 03 	lds	r24, 0x03D0
+    1564:	88 23       	and	r24, r24
+    1566:	39 f0       	breq	.+14     	; 0x1576 <OSMutexCreate+0x30>
+    1568:	ec 81       	ldd	r30, Y+4	; 0x04
+    156a:	fd 81       	ldd	r31, Y+5	; 0x05
+    156c:	8d e8       	ldi	r24, 0x8D	; 141
+    156e:	80 83       	st	Z, r24
+    1570:	1f 82       	std	Y+7, r1	; 0x07
+    1572:	1e 82       	std	Y+6, r1	; 0x06
+    1574:	67 c0       	rjmp	.+206    	; 0x1644 <OSMutexCreate+0xfe>
+    1576:	f8 94       	cli
+    1578:	8b 81       	ldd	r24, Y+3	; 0x03
+    157a:	88 2f       	mov	r24, r24
+    157c:	90 e0       	ldi	r25, 0x00	; 0
+    157e:	88 0f       	add	r24, r24
+    1580:	99 1f       	adc	r25, r25
+    1582:	fc 01       	movw	r30, r24
+    1584:	ed 59       	subi	r30, 0x9D	; 157
+    1586:	fa 4f       	sbci	r31, 0xFA	; 250
+    1588:	80 81       	ld	r24, Z
+    158a:	91 81       	ldd	r25, Z+1	; 0x01
+    158c:	00 97       	sbiw	r24, 0x00	; 0
+    158e:	41 f0       	breq	.+16     	; 0x15a0 <OSMutexCreate+0x5a>
+    1590:	78 94       	sei
+    1592:	ec 81       	ldd	r30, Y+4	; 0x04
+    1594:	fd 81       	ldd	r31, Y+5	; 0x05
+    1596:	88 e2       	ldi	r24, 0x28	; 40
+    1598:	80 83       	st	Z, r24
+    159a:	1f 82       	std	Y+7, r1	; 0x07
+    159c:	1e 82       	std	Y+6, r1	; 0x06
+    159e:	52 c0       	rjmp	.+164    	; 0x1644 <OSMutexCreate+0xfe>
+    15a0:	8b 81       	ldd	r24, Y+3	; 0x03
+    15a2:	88 2f       	mov	r24, r24
+    15a4:	90 e0       	ldi	r25, 0x00	; 0
+    15a6:	88 0f       	add	r24, r24
+    15a8:	99 1f       	adc	r25, r25
+    15aa:	fc 01       	movw	r30, r24
+    15ac:	ed 59       	subi	r30, 0x9D	; 157
+    15ae:	fa 4f       	sbci	r31, 0xFA	; 250
+    15b0:	81 e0       	ldi	r24, 0x01	; 1
+    15b2:	90 e0       	ldi	r25, 0x00	; 0
+    15b4:	91 83       	std	Z+1, r25	; 0x01
+    15b6:	80 83       	st	Z, r24
+    15b8:	80 91 cd 03 	lds	r24, 0x03CD
+    15bc:	90 91 ce 03 	lds	r25, 0x03CE
+    15c0:	9a 83       	std	Y+2, r25	; 0x02
+    15c2:	89 83       	std	Y+1, r24	; 0x01
+    15c4:	89 81       	ldd	r24, Y+1	; 0x01
+    15c6:	9a 81       	ldd	r25, Y+2	; 0x02
+    15c8:	00 97       	sbiw	r24, 0x00	; 0
+    15ca:	a1 f4       	brne	.+40     	; 0x15f4 <OSMutexCreate+0xae>
+    15cc:	8b 81       	ldd	r24, Y+3	; 0x03
+    15ce:	88 2f       	mov	r24, r24
+    15d0:	90 e0       	ldi	r25, 0x00	; 0
+    15d2:	88 0f       	add	r24, r24
+    15d4:	99 1f       	adc	r25, r25
+    15d6:	fc 01       	movw	r30, r24
+    15d8:	ed 59       	subi	r30, 0x9D	; 157
+    15da:	fa 4f       	sbci	r31, 0xFA	; 250
+    15dc:	11 82       	std	Z+1, r1	; 0x01
+    15de:	10 82       	st	Z, r1
+    15e0:	78 94       	sei
+    15e2:	ec 81       	ldd	r30, Y+4	; 0x04
+    15e4:	fd 81       	ldd	r31, Y+5	; 0x05
+    15e6:	84 e0       	ldi	r24, 0x04	; 4
+    15e8:	80 83       	st	Z, r24
+    15ea:	89 81       	ldd	r24, Y+1	; 0x01
+    15ec:	9a 81       	ldd	r25, Y+2	; 0x02
+    15ee:	9f 83       	std	Y+7, r25	; 0x07
+    15f0:	8e 83       	std	Y+6, r24	; 0x06
+    15f2:	28 c0       	rjmp	.+80     	; 0x1644 <OSMutexCreate+0xfe>
+    15f4:	e0 91 cd 03 	lds	r30, 0x03CD
+    15f8:	f0 91 ce 03 	lds	r31, 0x03CE
+    15fc:	84 81       	ldd	r24, Z+4	; 0x04
+    15fe:	95 81       	ldd	r25, Z+5	; 0x05
+    1600:	90 93 ce 03 	sts	0x03CE, r25
+    1604:	80 93 cd 03 	sts	0x03CD, r24
+    1608:	78 94       	sei
+    160a:	e9 81       	ldd	r30, Y+1	; 0x01
+    160c:	fa 81       	ldd	r31, Y+2	; 0x02
+    160e:	84 e0       	ldi	r24, 0x04	; 4
+    1610:	80 83       	st	Z, r24
+    1612:	8b 81       	ldd	r24, Y+3	; 0x03
+    1614:	88 2f       	mov	r24, r24
+    1616:	90 e0       	ldi	r25, 0x00	; 0
+    1618:	98 2f       	mov	r25, r24
+    161a:	88 27       	eor	r24, r24
+    161c:	8f 6f       	ori	r24, 0xFF	; 255
+    161e:	e9 81       	ldd	r30, Y+1	; 0x01
+    1620:	fa 81       	ldd	r31, Y+2	; 0x02
+    1622:	93 83       	std	Z+3, r25	; 0x03
+    1624:	82 83       	std	Z+2, r24	; 0x02
+    1626:	e9 81       	ldd	r30, Y+1	; 0x01
+    1628:	fa 81       	ldd	r31, Y+2	; 0x02
+    162a:	15 82       	std	Z+5, r1	; 0x05
+    162c:	14 82       	std	Z+4, r1	; 0x04
+    162e:	89 81       	ldd	r24, Y+1	; 0x01
+    1630:	9a 81       	ldd	r25, Y+2	; 0x02
+    1632:	0e 94 3c 06 	call	0xc78	; 0xc78 <OS_EventWaitListInit>
+    1636:	ec 81       	ldd	r30, Y+4	; 0x04
+    1638:	fd 81       	ldd	r31, Y+5	; 0x05
+    163a:	10 82       	st	Z, r1
+    163c:	89 81       	ldd	r24, Y+1	; 0x01
+    163e:	9a 81       	ldd	r25, Y+2	; 0x02
+    1640:	9f 83       	std	Y+7, r25	; 0x07
+    1642:	8e 83       	std	Y+6, r24	; 0x06
+    1644:	8e 81       	ldd	r24, Y+6	; 0x06
+    1646:	9f 81       	ldd	r25, Y+7	; 0x07
+    1648:	27 96       	adiw	r28, 0x07	; 7
+    164a:	0f b6       	in	r0, 0x3f	; 63
+    164c:	f8 94       	cli
+    164e:	de bf       	out	0x3e, r29	; 62
+    1650:	0f be       	out	0x3f, r0	; 63
+    1652:	cd bf       	out	0x3d, r28	; 61
+    1654:	df 91       	pop	r29
+    1656:	cf 91       	pop	r28
+    1658:	08 95       	ret
+
+0000165a <OSMutexPend>:
+    165a:	cf 93       	push	r28
+    165c:	df 93       	push	r29
+    165e:	cd b7       	in	r28, 0x3d	; 61
+    1660:	de b7       	in	r29, 0x3e	; 62
+    1662:	2b 97       	sbiw	r28, 0x0b	; 11
+    1664:	0f b6       	in	r0, 0x3f	; 63
+    1666:	f8 94       	cli
+    1668:	de bf       	out	0x3e, r29	; 62
+    166a:	0f be       	out	0x3f, r0	; 63
+    166c:	cd bf       	out	0x3d, r28	; 61
+    166e:	9f 83       	std	Y+7, r25	; 0x07
+    1670:	8e 83       	std	Y+6, r24	; 0x06
+    1672:	79 87       	std	Y+9, r23	; 0x09
+    1674:	68 87       	std	Y+8, r22	; 0x08
+    1676:	5b 87       	std	Y+11, r21	; 0x0b
+    1678:	4a 87       	std	Y+10, r20	; 0x0a
+    167a:	80 91 d0 03 	lds	r24, 0x03D0
+    167e:	88 23       	and	r24, r24
+    1680:	29 f0       	breq	.+10     	; 0x168c <OSMutexPend+0x32>
+    1682:	ea 85       	ldd	r30, Y+10	; 0x0a
+    1684:	fb 85       	ldd	r31, Y+11	; 0x0b
+    1686:	82 e0       	ldi	r24, 0x02	; 2
+    1688:	80 83       	st	Z, r24
+    168a:	1f c1       	rjmp	.+574    	; 0x18ca <OSMutexPend+0x270>
+    168c:	f8 94       	cli
+    168e:	ee 81       	ldd	r30, Y+6	; 0x06
+    1690:	ff 81       	ldd	r31, Y+7	; 0x07
+    1692:	82 81       	ldd	r24, Z+2	; 0x02
+    1694:	93 81       	ldd	r25, Z+3	; 0x03
+    1696:	8f 3f       	cpi	r24, 0xFF	; 255
+    1698:	39 f5       	brne	.+78     	; 0x16e8 <OSMutexPend+0x8e>
+    169a:	ee 81       	ldd	r30, Y+6	; 0x06
+    169c:	ff 81       	ldd	r31, Y+7	; 0x07
+    169e:	82 81       	ldd	r24, Z+2	; 0x02
+    16a0:	93 81       	ldd	r25, Z+3	; 0x03
+    16a2:	80 70       	andi	r24, 0x00	; 0
+    16a4:	ee 81       	ldd	r30, Y+6	; 0x06
+    16a6:	ff 81       	ldd	r31, Y+7	; 0x07
+    16a8:	93 83       	std	Z+3, r25	; 0x03
+    16aa:	82 83       	std	Z+2, r24	; 0x02
+    16ac:	ee 81       	ldd	r30, Y+6	; 0x06
+    16ae:	ff 81       	ldd	r31, Y+7	; 0x07
+    16b0:	22 81       	ldd	r18, Z+2	; 0x02
+    16b2:	33 81       	ldd	r19, Z+3	; 0x03
+    16b4:	e0 91 d1 03 	lds	r30, 0x03D1
+    16b8:	f0 91 d2 03 	lds	r31, 0x03D2
+    16bc:	85 85       	ldd	r24, Z+13	; 0x0d
+    16be:	88 2f       	mov	r24, r24
+    16c0:	90 e0       	ldi	r25, 0x00	; 0
+    16c2:	82 2b       	or	r24, r18
+    16c4:	93 2b       	or	r25, r19
+    16c6:	ee 81       	ldd	r30, Y+6	; 0x06
+    16c8:	ff 81       	ldd	r31, Y+7	; 0x07
+    16ca:	93 83       	std	Z+3, r25	; 0x03
+    16cc:	82 83       	std	Z+2, r24	; 0x02
+    16ce:	80 91 d1 03 	lds	r24, 0x03D1
+    16d2:	90 91 d2 03 	lds	r25, 0x03D2
+    16d6:	ee 81       	ldd	r30, Y+6	; 0x06
+    16d8:	ff 81       	ldd	r31, Y+7	; 0x07
+    16da:	95 83       	std	Z+5, r25	; 0x05
+    16dc:	84 83       	std	Z+4, r24	; 0x04
+    16de:	78 94       	sei
+    16e0:	ea 85       	ldd	r30, Y+10	; 0x0a
+    16e2:	fb 85       	ldd	r31, Y+11	; 0x0b
+    16e4:	10 82       	st	Z, r1
+    16e6:	f1 c0       	rjmp	.+482    	; 0x18ca <OSMutexPend+0x270>
+    16e8:	ee 81       	ldd	r30, Y+6	; 0x06
+    16ea:	ff 81       	ldd	r31, Y+7	; 0x07
+    16ec:	82 81       	ldd	r24, Z+2	; 0x02
+    16ee:	93 81       	ldd	r25, Z+3	; 0x03
+    16f0:	89 2f       	mov	r24, r25
+    16f2:	99 27       	eor	r25, r25
+    16f4:	8d 83       	std	Y+5, r24	; 0x05
+    16f6:	ee 81       	ldd	r30, Y+6	; 0x06
+    16f8:	ff 81       	ldd	r31, Y+7	; 0x07
+    16fa:	82 81       	ldd	r24, Z+2	; 0x02
+    16fc:	93 81       	ldd	r25, Z+3	; 0x03
+    16fe:	8c 83       	std	Y+4, r24	; 0x04
+    1700:	ee 81       	ldd	r30, Y+6	; 0x06
+    1702:	ff 81       	ldd	r31, Y+7	; 0x07
+    1704:	84 81       	ldd	r24, Z+4	; 0x04
+    1706:	95 81       	ldd	r25, Z+5	; 0x05
+    1708:	9a 83       	std	Y+2, r25	; 0x02
+    170a:	89 83       	std	Y+1, r24	; 0x01
+    170c:	e9 81       	ldd	r30, Y+1	; 0x01
+    170e:	fa 81       	ldd	r31, Y+2	; 0x02
+    1710:	95 85       	ldd	r25, Z+13	; 0x0d
+    1712:	8d 81       	ldd	r24, Y+5	; 0x05
+    1714:	98 17       	cp	r25, r24
+    1716:	09 f4       	brne	.+2      	; 0x171a <OSMutexPend+0xc0>
+    1718:	9d c0       	rjmp	.+314    	; 0x1854 <OSMutexPend+0x1fa>
+    171a:	e0 91 d1 03 	lds	r30, 0x03D1
+    171e:	f0 91 d2 03 	lds	r31, 0x03D2
+    1722:	95 85       	ldd	r25, Z+13	; 0x0d
+    1724:	8c 81       	ldd	r24, Y+4	; 0x04
+    1726:	98 17       	cp	r25, r24
+    1728:	08 f0       	brcs	.+2      	; 0x172c <OSMutexPend+0xd2>
+    172a:	94 c0       	rjmp	.+296    	; 0x1854 <OSMutexPend+0x1fa>
+    172c:	e9 81       	ldd	r30, Y+1	; 0x01
+    172e:	fa 81       	ldd	r31, Y+2	; 0x02
+    1730:	87 85       	ldd	r24, Z+15	; 0x0f
+    1732:	88 2f       	mov	r24, r24
+    1734:	90 e0       	ldi	r25, 0x00	; 0
+    1736:	fc 01       	movw	r30, r24
+    1738:	e5 53       	subi	r30, 0x35	; 53
+    173a:	fc 4f       	sbci	r31, 0xFC	; 252
+    173c:	90 81       	ld	r25, Z
+    173e:	e9 81       	ldd	r30, Y+1	; 0x01
+    1740:	fa 81       	ldd	r31, Y+2	; 0x02
+    1742:	80 89       	ldd	r24, Z+16	; 0x10
+    1744:	89 23       	and	r24, r25
+    1746:	88 23       	and	r24, r24
+    1748:	59 f1       	breq	.+86     	; 0x17a0 <OSMutexPend+0x146>
+    174a:	e9 81       	ldd	r30, Y+1	; 0x01
+    174c:	fa 81       	ldd	r31, Y+2	; 0x02
+    174e:	87 85       	ldd	r24, Z+15	; 0x0f
+    1750:	28 2f       	mov	r18, r24
+    1752:	30 e0       	ldi	r19, 0x00	; 0
+    1754:	e9 81       	ldd	r30, Y+1	; 0x01
+    1756:	fa 81       	ldd	r31, Y+2	; 0x02
+    1758:	87 85       	ldd	r24, Z+15	; 0x0f
+    175a:	88 2f       	mov	r24, r24
+    175c:	90 e0       	ldi	r25, 0x00	; 0
+    175e:	fc 01       	movw	r30, r24
+    1760:	e5 53       	subi	r30, 0x35	; 53
+    1762:	fc 4f       	sbci	r31, 0xFC	; 252
+    1764:	80 81       	ld	r24, Z
+    1766:	98 2f       	mov	r25, r24
+    1768:	e9 81       	ldd	r30, Y+1	; 0x01
+    176a:	fa 81       	ldd	r31, Y+2	; 0x02
+    176c:	80 89       	ldd	r24, Z+16	; 0x10
+    176e:	80 95       	com	r24
+    1770:	89 23       	and	r24, r25
+    1772:	f9 01       	movw	r30, r18
+    1774:	e5 53       	subi	r30, 0x35	; 53
+    1776:	fc 4f       	sbci	r31, 0xFC	; 252
+    1778:	80 83       	st	Z, r24
+    177a:	f9 01       	movw	r30, r18
+    177c:	e5 53       	subi	r30, 0x35	; 53
+    177e:	fc 4f       	sbci	r31, 0xFC	; 252
+    1780:	80 81       	ld	r24, Z
+    1782:	88 23       	and	r24, r24
+    1784:	51 f4       	brne	.+20     	; 0x179a <OSMutexPend+0x140>
+    1786:	e9 81       	ldd	r30, Y+1	; 0x01
+    1788:	fa 81       	ldd	r31, Y+2	; 0x02
+    178a:	81 89       	ldd	r24, Z+17	; 0x11
+    178c:	98 2f       	mov	r25, r24
+    178e:	90 95       	com	r25
+    1790:	80 91 ca 03 	lds	r24, 0x03CA
+    1794:	89 23       	and	r24, r25
+    1796:	80 93 ca 03 	sts	0x03CA, r24
+    179a:	81 e0       	ldi	r24, 0x01	; 1
+    179c:	8b 83       	std	Y+3, r24	; 0x03
+    179e:	01 c0       	rjmp	.+2      	; 0x17a2 <OSMutexPend+0x148>
+    17a0:	1b 82       	std	Y+3, r1	; 0x03
+    17a2:	e9 81       	ldd	r30, Y+1	; 0x01
+    17a4:	fa 81       	ldd	r31, Y+2	; 0x02
+    17a6:	8d 81       	ldd	r24, Y+5	; 0x05
+    17a8:	85 87       	std	Z+13, r24	; 0x0d
+    17aa:	e9 81       	ldd	r30, Y+1	; 0x01
+    17ac:	fa 81       	ldd	r31, Y+2	; 0x02
+    17ae:	85 85       	ldd	r24, Z+13	; 0x0d
+    17b0:	86 95       	lsr	r24
+    17b2:	86 95       	lsr	r24
+    17b4:	86 95       	lsr	r24
+    17b6:	e9 81       	ldd	r30, Y+1	; 0x01
+    17b8:	fa 81       	ldd	r31, Y+2	; 0x02
+    17ba:	87 87       	std	Z+15, r24	; 0x0f
+    17bc:	e9 81       	ldd	r30, Y+1	; 0x01
+    17be:	fa 81       	ldd	r31, Y+2	; 0x02
+    17c0:	87 85       	ldd	r24, Z+15	; 0x0f
+    17c2:	88 2f       	mov	r24, r24
+    17c4:	90 e0       	ldi	r25, 0x00	; 0
+    17c6:	fc 01       	movw	r30, r24
+    17c8:	eb 5d       	subi	r30, 0xDB	; 219
+    17ca:	fe 4f       	sbci	r31, 0xFE	; 254
+    17cc:	80 81       	ld	r24, Z
+    17ce:	e9 81       	ldd	r30, Y+1	; 0x01
+    17d0:	fa 81       	ldd	r31, Y+2	; 0x02
+    17d2:	81 8b       	std	Z+17, r24	; 0x11
+    17d4:	e9 81       	ldd	r30, Y+1	; 0x01
+    17d6:	fa 81       	ldd	r31, Y+2	; 0x02
+    17d8:	85 85       	ldd	r24, Z+13	; 0x0d
+    17da:	87 70       	andi	r24, 0x07	; 7
+    17dc:	e9 81       	ldd	r30, Y+1	; 0x01
+    17de:	fa 81       	ldd	r31, Y+2	; 0x02
+    17e0:	86 87       	std	Z+14, r24	; 0x0e
+    17e2:	e9 81       	ldd	r30, Y+1	; 0x01
+    17e4:	fa 81       	ldd	r31, Y+2	; 0x02
+    17e6:	86 85       	ldd	r24, Z+14	; 0x0e
+    17e8:	88 2f       	mov	r24, r24
+    17ea:	90 e0       	ldi	r25, 0x00	; 0
+    17ec:	fc 01       	movw	r30, r24
+    17ee:	eb 5d       	subi	r30, 0xDB	; 219
+    17f0:	fe 4f       	sbci	r31, 0xFE	; 254
+    17f2:	80 81       	ld	r24, Z
+    17f4:	e9 81       	ldd	r30, Y+1	; 0x01
+    17f6:	fa 81       	ldd	r31, Y+2	; 0x02
+    17f8:	80 8b       	std	Z+16, r24	; 0x10
+    17fa:	8b 81       	ldd	r24, Y+3	; 0x03
+    17fc:	81 30       	cpi	r24, 0x01	; 1
+    17fe:	f1 f4       	brne	.+60     	; 0x183c <OSMutexPend+0x1e2>
+    1800:	e9 81       	ldd	r30, Y+1	; 0x01
+    1802:	fa 81       	ldd	r31, Y+2	; 0x02
+    1804:	91 89       	ldd	r25, Z+17	; 0x11
+    1806:	80 91 ca 03 	lds	r24, 0x03CA
+    180a:	89 2b       	or	r24, r25
+    180c:	80 93 ca 03 	sts	0x03CA, r24
+    1810:	e9 81       	ldd	r30, Y+1	; 0x01
+    1812:	fa 81       	ldd	r31, Y+2	; 0x02
+    1814:	87 85       	ldd	r24, Z+15	; 0x0f
+    1816:	28 2f       	mov	r18, r24
+    1818:	30 e0       	ldi	r19, 0x00	; 0
+    181a:	e9 81       	ldd	r30, Y+1	; 0x01
+    181c:	fa 81       	ldd	r31, Y+2	; 0x02
+    181e:	87 85       	ldd	r24, Z+15	; 0x0f
+    1820:	88 2f       	mov	r24, r24
+    1822:	90 e0       	ldi	r25, 0x00	; 0
+    1824:	fc 01       	movw	r30, r24
+    1826:	e5 53       	subi	r30, 0x35	; 53
+    1828:	fc 4f       	sbci	r31, 0xFC	; 252
+    182a:	90 81       	ld	r25, Z
+    182c:	e9 81       	ldd	r30, Y+1	; 0x01
+    182e:	fa 81       	ldd	r31, Y+2	; 0x02
+    1830:	80 89       	ldd	r24, Z+16	; 0x10
+    1832:	89 2b       	or	r24, r25
+    1834:	f9 01       	movw	r30, r18
+    1836:	e5 53       	subi	r30, 0x35	; 53
+    1838:	fc 4f       	sbci	r31, 0xFC	; 252
+    183a:	80 83       	st	Z, r24
+    183c:	8d 81       	ldd	r24, Y+5	; 0x05
+    183e:	88 2f       	mov	r24, r24
+    1840:	90 e0       	ldi	r25, 0x00	; 0
+    1842:	88 0f       	add	r24, r24
+    1844:	99 1f       	adc	r25, r25
+    1846:	fc 01       	movw	r30, r24
+    1848:	ed 59       	subi	r30, 0x9D	; 157
+    184a:	fa 4f       	sbci	r31, 0xFA	; 250
+    184c:	89 81       	ldd	r24, Y+1	; 0x01
+    184e:	9a 81       	ldd	r25, Y+2	; 0x02
+    1850:	91 83       	std	Z+1, r25	; 0x01
+    1852:	80 83       	st	Z, r24
+    1854:	a0 91 d1 03 	lds	r26, 0x03D1
+    1858:	b0 91 d2 03 	lds	r27, 0x03D2
+    185c:	e0 91 d1 03 	lds	r30, 0x03D1
+    1860:	f0 91 d2 03 	lds	r31, 0x03D2
+    1864:	84 85       	ldd	r24, Z+12	; 0x0c
+    1866:	80 61       	ori	r24, 0x10	; 16
+    1868:	fd 01       	movw	r30, r26
+    186a:	84 87       	std	Z+12, r24	; 0x0c
+    186c:	e0 91 d1 03 	lds	r30, 0x03D1
+    1870:	f0 91 d2 03 	lds	r31, 0x03D2
+    1874:	88 85       	ldd	r24, Y+8	; 0x08
+    1876:	99 85       	ldd	r25, Y+9	; 0x09
+    1878:	93 87       	std	Z+11, r25	; 0x0b
+    187a:	82 87       	std	Z+10, r24	; 0x0a
+    187c:	8e 81       	ldd	r24, Y+6	; 0x06
+    187e:	9f 81       	ldd	r25, Y+7	; 0x07
+    1880:	0e 94 64 05 	call	0xac8	; 0xac8 <OS_EventTaskWait>
+    1884:	78 94       	sei
+    1886:	0e 94 81 07 	call	0xf02	; 0xf02 <OS_Sched>
+    188a:	f8 94       	cli
+    188c:	e0 91 d1 03 	lds	r30, 0x03D1
+    1890:	f0 91 d2 03 	lds	r31, 0x03D2
+    1894:	84 85       	ldd	r24, Z+12	; 0x0c
+    1896:	88 2f       	mov	r24, r24
+    1898:	90 e0       	ldi	r25, 0x00	; 0
+    189a:	80 71       	andi	r24, 0x10	; 16
+    189c:	90 70       	andi	r25, 0x00	; 0
+    189e:	00 97       	sbiw	r24, 0x00	; 0
+    18a0:	51 f0       	breq	.+20     	; 0x18b6 <OSMutexPend+0x25c>
+    18a2:	8e 81       	ldd	r24, Y+6	; 0x06
+    18a4:	9f 81       	ldd	r25, Y+7	; 0x07
+    18a6:	0e 94 e0 05 	call	0xbc0	; 0xbc0 <OS_EventTO>
+    18aa:	78 94       	sei
+    18ac:	ea 85       	ldd	r30, Y+10	; 0x0a
+    18ae:	fb 85       	ldd	r31, Y+11	; 0x0b
+    18b0:	8a e0       	ldi	r24, 0x0A	; 10
+    18b2:	80 83       	st	Z, r24
+    18b4:	0a c0       	rjmp	.+20     	; 0x18ca <OSMutexPend+0x270>
+    18b6:	e0 91 d1 03 	lds	r30, 0x03D1
+    18ba:	f0 91 d2 03 	lds	r31, 0x03D2
+    18be:	17 82       	std	Z+7, r1	; 0x07
+    18c0:	16 82       	std	Z+6, r1	; 0x06
+    18c2:	78 94       	sei
+    18c4:	ea 85       	ldd	r30, Y+10	; 0x0a
+    18c6:	fb 85       	ldd	r31, Y+11	; 0x0b
+    18c8:	10 82       	st	Z, r1
+    18ca:	2b 96       	adiw	r28, 0x0b	; 11
+    18cc:	0f b6       	in	r0, 0x3f	; 63
+    18ce:	f8 94       	cli
+    18d0:	de bf       	out	0x3e, r29	; 62
+    18d2:	0f be       	out	0x3f, r0	; 63
+    18d4:	cd bf       	out	0x3d, r28	; 61
+    18d6:	df 91       	pop	r29
+    18d8:	cf 91       	pop	r28
+    18da:	08 95       	ret
+
+000018dc <OSMutexPost>:
+    18dc:	cf 93       	push	r28
+    18de:	df 93       	push	r29
+    18e0:	cd b7       	in	r28, 0x3d	; 61
+    18e2:	de b7       	in	r29, 0x3e	; 62
+    18e4:	26 97       	sbiw	r28, 0x06	; 6
+    18e6:	0f b6       	in	r0, 0x3f	; 63
+    18e8:	f8 94       	cli
+    18ea:	de bf       	out	0x3e, r29	; 62
+    18ec:	0f be       	out	0x3f, r0	; 63
+    18ee:	cd bf       	out	0x3d, r28	; 61
+    18f0:	9c 83       	std	Y+4, r25	; 0x04
+    18f2:	8b 83       	std	Y+3, r24	; 0x03
+    18f4:	80 91 d0 03 	lds	r24, 0x03D0
+    18f8:	88 23       	and	r24, r24
+    18fa:	29 f0       	breq	.+10     	; 0x1906 <OSMutexPost+0x2a>
+    18fc:	85 e0       	ldi	r24, 0x05	; 5
+    18fe:	90 e0       	ldi	r25, 0x00	; 0
+    1900:	9e 83       	std	Y+6, r25	; 0x06
+    1902:	8d 83       	std	Y+5, r24	; 0x05
+    1904:	1b c1       	rjmp	.+566    	; 0x1b3c <OSMutexPost+0x260>
+    1906:	f8 94       	cli
+    1908:	eb 81       	ldd	r30, Y+3	; 0x03
+    190a:	fc 81       	ldd	r31, Y+4	; 0x04
+    190c:	82 81       	ldd	r24, Z+2	; 0x02
+    190e:	93 81       	ldd	r25, Z+3	; 0x03
+    1910:	89 2f       	mov	r24, r25
+    1912:	99 27       	eor	r25, r25
+    1914:	8a 83       	std	Y+2, r24	; 0x02
+    1916:	eb 81       	ldd	r30, Y+3	; 0x03
+    1918:	fc 81       	ldd	r31, Y+4	; 0x04
+    191a:	82 81       	ldd	r24, Z+2	; 0x02
+    191c:	93 81       	ldd	r25, Z+3	; 0x03
+    191e:	89 83       	std	Y+1, r24	; 0x01
+    1920:	e0 91 d1 03 	lds	r30, 0x03D1
+    1924:	f0 91 d2 03 	lds	r31, 0x03D2
+    1928:	95 85       	ldd	r25, Z+13	; 0x0d
+    192a:	8a 81       	ldd	r24, Y+2	; 0x02
+    192c:	98 17       	cp	r25, r24
+    192e:	71 f0       	breq	.+28     	; 0x194c <OSMutexPost+0x70>
+    1930:	e0 91 d1 03 	lds	r30, 0x03D1
+    1934:	f0 91 d2 03 	lds	r31, 0x03D2
+    1938:	95 85       	ldd	r25, Z+13	; 0x0d
+    193a:	89 81       	ldd	r24, Y+1	; 0x01
+    193c:	98 17       	cp	r25, r24
+    193e:	31 f0       	breq	.+12     	; 0x194c <OSMutexPost+0x70>
+    1940:	78 94       	sei
+    1942:	e8 e7       	ldi	r30, 0x78	; 120
+    1944:	f0 e0       	ldi	r31, 0x00	; 0
+    1946:	fe 83       	std	Y+6, r31	; 0x06
+    1948:	ed 83       	std	Y+5, r30	; 0x05
+    194a:	f8 c0       	rjmp	.+496    	; 0x1b3c <OSMutexPost+0x260>
+    194c:	e0 91 d1 03 	lds	r30, 0x03D1
+    1950:	f0 91 d2 03 	lds	r31, 0x03D2
+    1954:	95 85       	ldd	r25, Z+13	; 0x0d
+    1956:	8a 81       	ldd	r24, Y+2	; 0x02
+    1958:	98 17       	cp	r25, r24
+    195a:	09 f0       	breq	.+2      	; 0x195e <OSMutexPost+0x82>
+    195c:	9c c0       	rjmp	.+312    	; 0x1a96 <OSMutexPost+0x1ba>
+    195e:	e0 91 d1 03 	lds	r30, 0x03D1
+    1962:	f0 91 d2 03 	lds	r31, 0x03D2
+    1966:	87 85       	ldd	r24, Z+15	; 0x0f
+    1968:	28 2f       	mov	r18, r24
+    196a:	30 e0       	ldi	r19, 0x00	; 0
+    196c:	e0 91 d1 03 	lds	r30, 0x03D1
+    1970:	f0 91 d2 03 	lds	r31, 0x03D2
+    1974:	87 85       	ldd	r24, Z+15	; 0x0f
+    1976:	88 2f       	mov	r24, r24
+    1978:	90 e0       	ldi	r25, 0x00	; 0
+    197a:	fc 01       	movw	r30, r24
+    197c:	e5 53       	subi	r30, 0x35	; 53
+    197e:	fc 4f       	sbci	r31, 0xFC	; 252
+    1980:	80 81       	ld	r24, Z
+    1982:	98 2f       	mov	r25, r24
+    1984:	e0 91 d1 03 	lds	r30, 0x03D1
+    1988:	f0 91 d2 03 	lds	r31, 0x03D2
+    198c:	80 89       	ldd	r24, Z+16	; 0x10
+    198e:	80 95       	com	r24
+    1990:	89 23       	and	r24, r25
+    1992:	f9 01       	movw	r30, r18
+    1994:	e5 53       	subi	r30, 0x35	; 53
+    1996:	fc 4f       	sbci	r31, 0xFC	; 252
+    1998:	80 83       	st	Z, r24
+    199a:	f9 01       	movw	r30, r18
+    199c:	e5 53       	subi	r30, 0x35	; 53
+    199e:	fc 4f       	sbci	r31, 0xFC	; 252
+    19a0:	80 81       	ld	r24, Z
+    19a2:	88 23       	and	r24, r24
+    19a4:	61 f4       	brne	.+24     	; 0x19be <OSMutexPost+0xe2>
+    19a6:	e0 91 d1 03 	lds	r30, 0x03D1
+    19aa:	f0 91 d2 03 	lds	r31, 0x03D2
+    19ae:	81 89       	ldd	r24, Z+17	; 0x11
+    19b0:	98 2f       	mov	r25, r24
+    19b2:	90 95       	com	r25
+    19b4:	80 91 ca 03 	lds	r24, 0x03CA
+    19b8:	89 23       	and	r24, r25
+    19ba:	80 93 ca 03 	sts	0x03CA, r24
+    19be:	e0 91 d1 03 	lds	r30, 0x03D1
+    19c2:	f0 91 d2 03 	lds	r31, 0x03D2
+    19c6:	89 81       	ldd	r24, Y+1	; 0x01
+    19c8:	85 87       	std	Z+13, r24	; 0x0d
+    19ca:	e0 91 d1 03 	lds	r30, 0x03D1
+    19ce:	f0 91 d2 03 	lds	r31, 0x03D2
+    19d2:	89 81       	ldd	r24, Y+1	; 0x01
+    19d4:	86 95       	lsr	r24
+    19d6:	86 95       	lsr	r24
+    19d8:	86 95       	lsr	r24
+    19da:	87 87       	std	Z+15, r24	; 0x0f
+    19dc:	a0 91 d1 03 	lds	r26, 0x03D1
+    19e0:	b0 91 d2 03 	lds	r27, 0x03D2
+    19e4:	e0 91 d1 03 	lds	r30, 0x03D1
+    19e8:	f0 91 d2 03 	lds	r31, 0x03D2
+    19ec:	87 85       	ldd	r24, Z+15	; 0x0f
+    19ee:	88 2f       	mov	r24, r24
+    19f0:	90 e0       	ldi	r25, 0x00	; 0
+    19f2:	fc 01       	movw	r30, r24
+    19f4:	eb 5d       	subi	r30, 0xDB	; 219
+    19f6:	fe 4f       	sbci	r31, 0xFE	; 254
+    19f8:	80 81       	ld	r24, Z
+    19fa:	fd 01       	movw	r30, r26
+    19fc:	81 8b       	std	Z+17, r24	; 0x11
+    19fe:	e0 91 d1 03 	lds	r30, 0x03D1
+    1a02:	f0 91 d2 03 	lds	r31, 0x03D2
+    1a06:	89 81       	ldd	r24, Y+1	; 0x01
+    1a08:	87 70       	andi	r24, 0x07	; 7
+    1a0a:	86 87       	std	Z+14, r24	; 0x0e
+    1a0c:	a0 91 d1 03 	lds	r26, 0x03D1
+    1a10:	b0 91 d2 03 	lds	r27, 0x03D2
+    1a14:	e0 91 d1 03 	lds	r30, 0x03D1
+    1a18:	f0 91 d2 03 	lds	r31, 0x03D2
+    1a1c:	86 85       	ldd	r24, Z+14	; 0x0e
+    1a1e:	88 2f       	mov	r24, r24
+    1a20:	90 e0       	ldi	r25, 0x00	; 0
+    1a22:	fc 01       	movw	r30, r24
+    1a24:	eb 5d       	subi	r30, 0xDB	; 219
+    1a26:	fe 4f       	sbci	r31, 0xFE	; 254
+    1a28:	80 81       	ld	r24, Z
+    1a2a:	fd 01       	movw	r30, r26
+    1a2c:	80 8b       	std	Z+16, r24	; 0x10
+    1a2e:	e0 91 d1 03 	lds	r30, 0x03D1
+    1a32:	f0 91 d2 03 	lds	r31, 0x03D2
+    1a36:	91 89       	ldd	r25, Z+17	; 0x11
+    1a38:	80 91 ca 03 	lds	r24, 0x03CA
+    1a3c:	89 2b       	or	r24, r25
+    1a3e:	80 93 ca 03 	sts	0x03CA, r24
+    1a42:	e0 91 d1 03 	lds	r30, 0x03D1
+    1a46:	f0 91 d2 03 	lds	r31, 0x03D2
+    1a4a:	87 85       	ldd	r24, Z+15	; 0x0f
+    1a4c:	28 2f       	mov	r18, r24
+    1a4e:	30 e0       	ldi	r19, 0x00	; 0
+    1a50:	e0 91 d1 03 	lds	r30, 0x03D1
+    1a54:	f0 91 d2 03 	lds	r31, 0x03D2
+    1a58:	87 85       	ldd	r24, Z+15	; 0x0f
+    1a5a:	88 2f       	mov	r24, r24
+    1a5c:	90 e0       	ldi	r25, 0x00	; 0
+    1a5e:	fc 01       	movw	r30, r24
+    1a60:	e5 53       	subi	r30, 0x35	; 53
+    1a62:	fc 4f       	sbci	r31, 0xFC	; 252
+    1a64:	90 81       	ld	r25, Z
+    1a66:	e0 91 d1 03 	lds	r30, 0x03D1
+    1a6a:	f0 91 d2 03 	lds	r31, 0x03D2
+    1a6e:	80 89       	ldd	r24, Z+16	; 0x10
+    1a70:	89 2b       	or	r24, r25
+    1a72:	f9 01       	movw	r30, r18
+    1a74:	e5 53       	subi	r30, 0x35	; 53
+    1a76:	fc 4f       	sbci	r31, 0xFC	; 252
+    1a78:	80 83       	st	Z, r24
+    1a7a:	89 81       	ldd	r24, Y+1	; 0x01
+    1a7c:	88 2f       	mov	r24, r24
+    1a7e:	90 e0       	ldi	r25, 0x00	; 0
+    1a80:	20 91 d1 03 	lds	r18, 0x03D1
+    1a84:	30 91 d2 03 	lds	r19, 0x03D2
+    1a88:	88 0f       	add	r24, r24
+    1a8a:	99 1f       	adc	r25, r25
+    1a8c:	fc 01       	movw	r30, r24
+    1a8e:	ed 59       	subi	r30, 0x9D	; 157
+    1a90:	fa 4f       	sbci	r31, 0xFA	; 250
+    1a92:	31 83       	std	Z+1, r19	; 0x01
+    1a94:	20 83       	st	Z, r18
+    1a96:	8a 81       	ldd	r24, Y+2	; 0x02
+    1a98:	88 2f       	mov	r24, r24
+    1a9a:	90 e0       	ldi	r25, 0x00	; 0
+    1a9c:	88 0f       	add	r24, r24
+    1a9e:	99 1f       	adc	r25, r25
+    1aa0:	fc 01       	movw	r30, r24
+    1aa2:	ed 59       	subi	r30, 0x9D	; 157
+    1aa4:	fa 4f       	sbci	r31, 0xFA	; 250
+    1aa6:	81 e0       	ldi	r24, 0x01	; 1
+    1aa8:	90 e0       	ldi	r25, 0x00	; 0
+    1aaa:	91 83       	std	Z+1, r25	; 0x01
+    1aac:	80 83       	st	Z, r24
+    1aae:	eb 81       	ldd	r30, Y+3	; 0x03
+    1ab0:	fc 81       	ldd	r31, Y+4	; 0x04
+    1ab2:	81 81       	ldd	r24, Z+1	; 0x01
+    1ab4:	88 23       	and	r24, r24
+    1ab6:	91 f1       	breq	.+100    	; 0x1b1c <OSMutexPost+0x240>
+    1ab8:	8b 81       	ldd	r24, Y+3	; 0x03
+    1aba:	9c 81       	ldd	r25, Y+4	; 0x04
+    1abc:	40 e1       	ldi	r20, 0x10	; 16
+    1abe:	60 e0       	ldi	r22, 0x00	; 0
+    1ac0:	70 e0       	ldi	r23, 0x00	; 0
+    1ac2:	0e 94 ab 04 	call	0x956	; 0x956 <OS_EventTaskRdy>
+    1ac6:	89 83       	std	Y+1, r24	; 0x01
+    1ac8:	eb 81       	ldd	r30, Y+3	; 0x03
+    1aca:	fc 81       	ldd	r31, Y+4	; 0x04
+    1acc:	82 81       	ldd	r24, Z+2	; 0x02
+    1ace:	93 81       	ldd	r25, Z+3	; 0x03
+    1ad0:	80 70       	andi	r24, 0x00	; 0
+    1ad2:	eb 81       	ldd	r30, Y+3	; 0x03
+    1ad4:	fc 81       	ldd	r31, Y+4	; 0x04
+    1ad6:	93 83       	std	Z+3, r25	; 0x03
+    1ad8:	82 83       	std	Z+2, r24	; 0x02
+    1ada:	eb 81       	ldd	r30, Y+3	; 0x03
+    1adc:	fc 81       	ldd	r31, Y+4	; 0x04
+    1ade:	22 81       	ldd	r18, Z+2	; 0x02
+    1ae0:	33 81       	ldd	r19, Z+3	; 0x03
+    1ae2:	89 81       	ldd	r24, Y+1	; 0x01
+    1ae4:	88 2f       	mov	r24, r24
+    1ae6:	90 e0       	ldi	r25, 0x00	; 0
+    1ae8:	82 2b       	or	r24, r18
+    1aea:	93 2b       	or	r25, r19
+    1aec:	eb 81       	ldd	r30, Y+3	; 0x03
+    1aee:	fc 81       	ldd	r31, Y+4	; 0x04
+    1af0:	93 83       	std	Z+3, r25	; 0x03
+    1af2:	82 83       	std	Z+2, r24	; 0x02
+    1af4:	89 81       	ldd	r24, Y+1	; 0x01
+    1af6:	88 2f       	mov	r24, r24
+    1af8:	90 e0       	ldi	r25, 0x00	; 0
+    1afa:	88 0f       	add	r24, r24
+    1afc:	99 1f       	adc	r25, r25
+    1afe:	fc 01       	movw	r30, r24
+    1b00:	ed 59       	subi	r30, 0x9D	; 157
+    1b02:	fa 4f       	sbci	r31, 0xFA	; 250
+    1b04:	80 81       	ld	r24, Z
+    1b06:	91 81       	ldd	r25, Z+1	; 0x01
+    1b08:	eb 81       	ldd	r30, Y+3	; 0x03
+    1b0a:	fc 81       	ldd	r31, Y+4	; 0x04
+    1b0c:	95 83       	std	Z+5, r25	; 0x05
+    1b0e:	84 83       	std	Z+4, r24	; 0x04
+    1b10:	78 94       	sei
+    1b12:	0e 94 81 07 	call	0xf02	; 0xf02 <OS_Sched>
+    1b16:	1e 82       	std	Y+6, r1	; 0x06
+    1b18:	1d 82       	std	Y+5, r1	; 0x05
+    1b1a:	10 c0       	rjmp	.+32     	; 0x1b3c <OSMutexPost+0x260>
+    1b1c:	eb 81       	ldd	r30, Y+3	; 0x03
+    1b1e:	fc 81       	ldd	r31, Y+4	; 0x04
+    1b20:	82 81       	ldd	r24, Z+2	; 0x02
+    1b22:	93 81       	ldd	r25, Z+3	; 0x03
+    1b24:	8f 6f       	ori	r24, 0xFF	; 255
+    1b26:	eb 81       	ldd	r30, Y+3	; 0x03
+    1b28:	fc 81       	ldd	r31, Y+4	; 0x04
+    1b2a:	93 83       	std	Z+3, r25	; 0x03
+    1b2c:	82 83       	std	Z+2, r24	; 0x02
+    1b2e:	eb 81       	ldd	r30, Y+3	; 0x03
+    1b30:	fc 81       	ldd	r31, Y+4	; 0x04
+    1b32:	15 82       	std	Z+5, r1	; 0x05
+    1b34:	14 82       	std	Z+4, r1	; 0x04
+    1b36:	78 94       	sei
+    1b38:	1e 82       	std	Y+6, r1	; 0x06
+    1b3a:	1d 82       	std	Y+5, r1	; 0x05
+    1b3c:	8d 81       	ldd	r24, Y+5	; 0x05
+    1b3e:	9e 81       	ldd	r25, Y+6	; 0x06
+    1b40:	26 96       	adiw	r28, 0x06	; 6
+    1b42:	0f b6       	in	r0, 0x3f	; 63
+    1b44:	f8 94       	cli
+    1b46:	de bf       	out	0x3e, r29	; 62
+    1b48:	0f be       	out	0x3f, r0	; 63
+    1b4a:	cd bf       	out	0x3d, r28	; 61
+    1b4c:	df 91       	pop	r29
+    1b4e:	cf 91       	pop	r28
+    1b50:	08 95       	ret
+
+00001b52 <OSSemCreate>:
+    1b52:	cf 93       	push	r28
+    1b54:	df 93       	push	r29
+    1b56:	cd b7       	in	r28, 0x3d	; 61
+    1b58:	de b7       	in	r29, 0x3e	; 62
+    1b5a:	26 97       	sbiw	r28, 0x06	; 6
+    1b5c:	0f b6       	in	r0, 0x3f	; 63
+    1b5e:	f8 94       	cli
+    1b60:	de bf       	out	0x3e, r29	; 62
+    1b62:	0f be       	out	0x3f, r0	; 63
+    1b64:	cd bf       	out	0x3d, r28	; 61
+    1b66:	9c 83       	std	Y+4, r25	; 0x04
+    1b68:	8b 83       	std	Y+3, r24	; 0x03
+    1b6a:	80 91 d0 03 	lds	r24, 0x03D0
+    1b6e:	88 23       	and	r24, r24
+    1b70:	19 f0       	breq	.+6      	; 0x1b78 <OSSemCreate+0x26>
+    1b72:	1e 82       	std	Y+6, r1	; 0x06
+    1b74:	1d 82       	std	Y+5, r1	; 0x05
+    1b76:	32 c0       	rjmp	.+100    	; 0x1bdc <OSSemCreate+0x8a>
+    1b78:	f8 94       	cli
+    1b7a:	80 91 cd 03 	lds	r24, 0x03CD
+    1b7e:	90 91 ce 03 	lds	r25, 0x03CE
+    1b82:	9a 83       	std	Y+2, r25	; 0x02
+    1b84:	89 83       	std	Y+1, r24	; 0x01
+    1b86:	80 91 cd 03 	lds	r24, 0x03CD
+    1b8a:	90 91 ce 03 	lds	r25, 0x03CE
+    1b8e:	00 97       	sbiw	r24, 0x00	; 0
+    1b90:	51 f0       	breq	.+20     	; 0x1ba6 <OSSemCreate+0x54>
+    1b92:	e0 91 cd 03 	lds	r30, 0x03CD
+    1b96:	f0 91 ce 03 	lds	r31, 0x03CE
+    1b9a:	84 81       	ldd	r24, Z+4	; 0x04
+    1b9c:	95 81       	ldd	r25, Z+5	; 0x05
+    1b9e:	90 93 ce 03 	sts	0x03CE, r25
+    1ba2:	80 93 cd 03 	sts	0x03CD, r24
+    1ba6:	78 94       	sei
+    1ba8:	89 81       	ldd	r24, Y+1	; 0x01
+    1baa:	9a 81       	ldd	r25, Y+2	; 0x02
+    1bac:	00 97       	sbiw	r24, 0x00	; 0
+    1bae:	91 f0       	breq	.+36     	; 0x1bd4 <OSSemCreate+0x82>
+    1bb0:	e9 81       	ldd	r30, Y+1	; 0x01
+    1bb2:	fa 81       	ldd	r31, Y+2	; 0x02
+    1bb4:	83 e0       	ldi	r24, 0x03	; 3
+    1bb6:	80 83       	st	Z, r24
+    1bb8:	e9 81       	ldd	r30, Y+1	; 0x01
+    1bba:	fa 81       	ldd	r31, Y+2	; 0x02
+    1bbc:	8b 81       	ldd	r24, Y+3	; 0x03
+    1bbe:	9c 81       	ldd	r25, Y+4	; 0x04
+    1bc0:	93 83       	std	Z+3, r25	; 0x03
+    1bc2:	82 83       	std	Z+2, r24	; 0x02
+    1bc4:	e9 81       	ldd	r30, Y+1	; 0x01
+    1bc6:	fa 81       	ldd	r31, Y+2	; 0x02
+    1bc8:	15 82       	std	Z+5, r1	; 0x05
+    1bca:	14 82       	std	Z+4, r1	; 0x04
+    1bcc:	89 81       	ldd	r24, Y+1	; 0x01
+    1bce:	9a 81       	ldd	r25, Y+2	; 0x02
+    1bd0:	0e 94 3c 06 	call	0xc78	; 0xc78 <OS_EventWaitListInit>
+    1bd4:	89 81       	ldd	r24, Y+1	; 0x01
+    1bd6:	9a 81       	ldd	r25, Y+2	; 0x02
+    1bd8:	9e 83       	std	Y+6, r25	; 0x06
+    1bda:	8d 83       	std	Y+5, r24	; 0x05
+    1bdc:	8d 81       	ldd	r24, Y+5	; 0x05
+    1bde:	9e 81       	ldd	r25, Y+6	; 0x06
+    1be0:	26 96       	adiw	r28, 0x06	; 6
+    1be2:	0f b6       	in	r0, 0x3f	; 63
+    1be4:	f8 94       	cli
+    1be6:	de bf       	out	0x3e, r29	; 62
+    1be8:	0f be       	out	0x3f, r0	; 63
+    1bea:	cd bf       	out	0x3d, r28	; 61
+    1bec:	df 91       	pop	r29
+    1bee:	cf 91       	pop	r28
+    1bf0:	08 95       	ret
+
+00001bf2 <OSSemPend>:
+    1bf2:	cf 93       	push	r28
+    1bf4:	df 93       	push	r29
+    1bf6:	cd b7       	in	r28, 0x3d	; 61
+    1bf8:	de b7       	in	r29, 0x3e	; 62
+    1bfa:	26 97       	sbiw	r28, 0x06	; 6
+    1bfc:	0f b6       	in	r0, 0x3f	; 63
+    1bfe:	f8 94       	cli
+    1c00:	de bf       	out	0x3e, r29	; 62
+    1c02:	0f be       	out	0x3f, r0	; 63
+    1c04:	cd bf       	out	0x3d, r28	; 61
+    1c06:	9a 83       	std	Y+2, r25	; 0x02
+    1c08:	89 83       	std	Y+1, r24	; 0x01
+    1c0a:	7c 83       	std	Y+4, r23	; 0x04
+    1c0c:	6b 83       	std	Y+3, r22	; 0x03
+    1c0e:	5e 83       	std	Y+6, r21	; 0x06
+    1c10:	4d 83       	std	Y+5, r20	; 0x05
+    1c12:	80 91 d0 03 	lds	r24, 0x03D0
+    1c16:	88 23       	and	r24, r24
+    1c18:	29 f0       	breq	.+10     	; 0x1c24 <OSSemPend+0x32>
+    1c1a:	ed 81       	ldd	r30, Y+5	; 0x05
+    1c1c:	fe 81       	ldd	r31, Y+6	; 0x06
+    1c1e:	82 e0       	ldi	r24, 0x02	; 2
+    1c20:	80 83       	st	Z, r24
+    1c22:	50 c0       	rjmp	.+160    	; 0x1cc4 <OSSemPend+0xd2>
+    1c24:	f8 94       	cli
+    1c26:	e9 81       	ldd	r30, Y+1	; 0x01
+    1c28:	fa 81       	ldd	r31, Y+2	; 0x02
+    1c2a:	82 81       	ldd	r24, Z+2	; 0x02
+    1c2c:	93 81       	ldd	r25, Z+3	; 0x03
+    1c2e:	00 97       	sbiw	r24, 0x00	; 0
+    1c30:	71 f0       	breq	.+28     	; 0x1c4e <OSSemPend+0x5c>
+    1c32:	e9 81       	ldd	r30, Y+1	; 0x01
+    1c34:	fa 81       	ldd	r31, Y+2	; 0x02
+    1c36:	82 81       	ldd	r24, Z+2	; 0x02
+    1c38:	93 81       	ldd	r25, Z+3	; 0x03
+    1c3a:	01 97       	sbiw	r24, 0x01	; 1
+    1c3c:	e9 81       	ldd	r30, Y+1	; 0x01
+    1c3e:	fa 81       	ldd	r31, Y+2	; 0x02
+    1c40:	93 83       	std	Z+3, r25	; 0x03
+    1c42:	82 83       	std	Z+2, r24	; 0x02
+    1c44:	78 94       	sei
+    1c46:	ed 81       	ldd	r30, Y+5	; 0x05
+    1c48:	fe 81       	ldd	r31, Y+6	; 0x06
+    1c4a:	10 82       	st	Z, r1
+    1c4c:	3b c0       	rjmp	.+118    	; 0x1cc4 <OSSemPend+0xd2>
+    1c4e:	a0 91 d1 03 	lds	r26, 0x03D1
+    1c52:	b0 91 d2 03 	lds	r27, 0x03D2
+    1c56:	e0 91 d1 03 	lds	r30, 0x03D1
+    1c5a:	f0 91 d2 03 	lds	r31, 0x03D2
+    1c5e:	84 85       	ldd	r24, Z+12	; 0x0c
+    1c60:	81 60       	ori	r24, 0x01	; 1
+    1c62:	fd 01       	movw	r30, r26
+    1c64:	84 87       	std	Z+12, r24	; 0x0c
+    1c66:	e0 91 d1 03 	lds	r30, 0x03D1
+    1c6a:	f0 91 d2 03 	lds	r31, 0x03D2
+    1c6e:	8b 81       	ldd	r24, Y+3	; 0x03
+    1c70:	9c 81       	ldd	r25, Y+4	; 0x04
+    1c72:	93 87       	std	Z+11, r25	; 0x0b
+    1c74:	82 87       	std	Z+10, r24	; 0x0a
+    1c76:	89 81       	ldd	r24, Y+1	; 0x01
+    1c78:	9a 81       	ldd	r25, Y+2	; 0x02
+    1c7a:	0e 94 64 05 	call	0xac8	; 0xac8 <OS_EventTaskWait>
+    1c7e:	78 94       	sei
+    1c80:	0e 94 81 07 	call	0xf02	; 0xf02 <OS_Sched>
+    1c84:	f8 94       	cli
+    1c86:	e0 91 d1 03 	lds	r30, 0x03D1
+    1c8a:	f0 91 d2 03 	lds	r31, 0x03D2
+    1c8e:	84 85       	ldd	r24, Z+12	; 0x0c
+    1c90:	88 2f       	mov	r24, r24
+    1c92:	90 e0       	ldi	r25, 0x00	; 0
+    1c94:	81 70       	andi	r24, 0x01	; 1
+    1c96:	90 70       	andi	r25, 0x00	; 0
+    1c98:	88 23       	and	r24, r24
+    1c9a:	51 f0       	breq	.+20     	; 0x1cb0 <OSSemPend+0xbe>
+    1c9c:	89 81       	ldd	r24, Y+1	; 0x01
+    1c9e:	9a 81       	ldd	r25, Y+2	; 0x02
+    1ca0:	0e 94 e0 05 	call	0xbc0	; 0xbc0 <OS_EventTO>
+    1ca4:	78 94       	sei
+    1ca6:	ed 81       	ldd	r30, Y+5	; 0x05
+    1ca8:	fe 81       	ldd	r31, Y+6	; 0x06
+    1caa:	8a e0       	ldi	r24, 0x0A	; 10
+    1cac:	80 83       	st	Z, r24
+    1cae:	0a c0       	rjmp	.+20     	; 0x1cc4 <OSSemPend+0xd2>
+    1cb0:	e0 91 d1 03 	lds	r30, 0x03D1
+    1cb4:	f0 91 d2 03 	lds	r31, 0x03D2
+    1cb8:	17 82       	std	Z+7, r1	; 0x07
+    1cba:	16 82       	std	Z+6, r1	; 0x06
+    1cbc:	78 94       	sei
+    1cbe:	ed 81       	ldd	r30, Y+5	; 0x05
+    1cc0:	fe 81       	ldd	r31, Y+6	; 0x06
+    1cc2:	10 82       	st	Z, r1
+    1cc4:	26 96       	adiw	r28, 0x06	; 6
+    1cc6:	0f b6       	in	r0, 0x3f	; 63
+    1cc8:	f8 94       	cli
+    1cca:	de bf       	out	0x3e, r29	; 62
+    1ccc:	0f be       	out	0x3f, r0	; 63
+    1cce:	cd bf       	out	0x3d, r28	; 61
+    1cd0:	df 91       	pop	r29
+    1cd2:	cf 91       	pop	r28
+    1cd4:	08 95       	ret
+
+00001cd6 <OSSemPost>:
+    1cd6:	cf 93       	push	r28
+    1cd8:	df 93       	push	r29
+    1cda:	cd b7       	in	r28, 0x3d	; 61
+    1cdc:	de b7       	in	r29, 0x3e	; 62
+    1cde:	24 97       	sbiw	r28, 0x04	; 4
+    1ce0:	0f b6       	in	r0, 0x3f	; 63
+    1ce2:	f8 94       	cli
+    1ce4:	de bf       	out	0x3e, r29	; 62
+    1ce6:	0f be       	out	0x3f, r0	; 63
+    1ce8:	cd bf       	out	0x3d, r28	; 61
+    1cea:	9a 83       	std	Y+2, r25	; 0x02
+    1cec:	89 83       	std	Y+1, r24	; 0x01
+    1cee:	f8 94       	cli
+    1cf0:	e9 81       	ldd	r30, Y+1	; 0x01
+    1cf2:	fa 81       	ldd	r31, Y+2	; 0x02
+    1cf4:	81 81       	ldd	r24, Z+1	; 0x01
+    1cf6:	88 23       	and	r24, r24
+    1cf8:	69 f0       	breq	.+26     	; 0x1d14 <OSSemPost+0x3e>
+    1cfa:	89 81       	ldd	r24, Y+1	; 0x01
+    1cfc:	9a 81       	ldd	r25, Y+2	; 0x02
+    1cfe:	41 e0       	ldi	r20, 0x01	; 1
+    1d00:	60 e0       	ldi	r22, 0x00	; 0
+    1d02:	70 e0       	ldi	r23, 0x00	; 0
+    1d04:	0e 94 ab 04 	call	0x956	; 0x956 <OS_EventTaskRdy>
+    1d08:	78 94       	sei
+    1d0a:	0e 94 81 07 	call	0xf02	; 0xf02 <OS_Sched>
+    1d0e:	1c 82       	std	Y+4, r1	; 0x04
+    1d10:	1b 82       	std	Y+3, r1	; 0x03
+    1d12:	1a c0       	rjmp	.+52     	; 0x1d48 <OSSemPost+0x72>
+    1d14:	e9 81       	ldd	r30, Y+1	; 0x01
+    1d16:	fa 81       	ldd	r31, Y+2	; 0x02
+    1d18:	82 81       	ldd	r24, Z+2	; 0x02
+    1d1a:	93 81       	ldd	r25, Z+3	; 0x03
+    1d1c:	2f ef       	ldi	r18, 0xFF	; 255
+    1d1e:	8f 3f       	cpi	r24, 0xFF	; 255
+    1d20:	92 07       	cpc	r25, r18
+    1d22:	69 f0       	breq	.+26     	; 0x1d3e <OSSemPost+0x68>
+    1d24:	e9 81       	ldd	r30, Y+1	; 0x01
+    1d26:	fa 81       	ldd	r31, Y+2	; 0x02
+    1d28:	82 81       	ldd	r24, Z+2	; 0x02
+    1d2a:	93 81       	ldd	r25, Z+3	; 0x03
+    1d2c:	01 96       	adiw	r24, 0x01	; 1
+    1d2e:	e9 81       	ldd	r30, Y+1	; 0x01
+    1d30:	fa 81       	ldd	r31, Y+2	; 0x02
+    1d32:	93 83       	std	Z+3, r25	; 0x03
+    1d34:	82 83       	std	Z+2, r24	; 0x02
+    1d36:	78 94       	sei
+    1d38:	1c 82       	std	Y+4, r1	; 0x04
+    1d3a:	1b 82       	std	Y+3, r1	; 0x03
+    1d3c:	05 c0       	rjmp	.+10     	; 0x1d48 <OSSemPost+0x72>
+    1d3e:	78 94       	sei
+    1d40:	82 e3       	ldi	r24, 0x32	; 50
+    1d42:	90 e0       	ldi	r25, 0x00	; 0
+    1d44:	9c 83       	std	Y+4, r25	; 0x04
+    1d46:	8b 83       	std	Y+3, r24	; 0x03
+    1d48:	8b 81       	ldd	r24, Y+3	; 0x03
+    1d4a:	9c 81       	ldd	r25, Y+4	; 0x04
+    1d4c:	24 96       	adiw	r28, 0x04	; 4
+    1d4e:	0f b6       	in	r0, 0x3f	; 63
+    1d50:	f8 94       	cli
+    1d52:	de bf       	out	0x3e, r29	; 62
+    1d54:	0f be       	out	0x3f, r0	; 63
+    1d56:	cd bf       	out	0x3d, r28	; 61
+    1d58:	df 91       	pop	r29
+    1d5a:	cf 91       	pop	r28
+    1d5c:	08 95       	ret
+
+00001d5e <OSTaskCreate>:
+    1d5e:	af 92       	push	r10
+    1d60:	bf 92       	push	r11
+    1d62:	cf 92       	push	r12
+    1d64:	df 92       	push	r13
+    1d66:	ef 92       	push	r14
+    1d68:	ff 92       	push	r15
+    1d6a:	0f 93       	push	r16
+    1d6c:	1f 93       	push	r17
+    1d6e:	cf 93       	push	r28
+    1d70:	df 93       	push	r29
+    1d72:	cd b7       	in	r28, 0x3d	; 61
+    1d74:	de b7       	in	r29, 0x3e	; 62
+    1d76:	2c 97       	sbiw	r28, 0x0c	; 12
+    1d78:	0f b6       	in	r0, 0x3f	; 63
+    1d7a:	f8 94       	cli
+    1d7c:	de bf       	out	0x3e, r29	; 62
+    1d7e:	0f be       	out	0x3f, r0	; 63
+    1d80:	cd bf       	out	0x3d, r28	; 61
+    1d82:	9d 83       	std	Y+5, r25	; 0x05
+    1d84:	8c 83       	std	Y+4, r24	; 0x04
+    1d86:	7f 83       	std	Y+7, r23	; 0x07
+    1d88:	6e 83       	std	Y+6, r22	; 0x06
+    1d8a:	59 87       	std	Y+9, r21	; 0x09
+    1d8c:	48 87       	std	Y+8, r20	; 0x08
+    1d8e:	2a 87       	std	Y+10, r18	; 0x0a
+    1d90:	f8 94       	cli
+    1d92:	8a 85       	ldd	r24, Y+10	; 0x0a
+    1d94:	88 2f       	mov	r24, r24
+    1d96:	90 e0       	ldi	r25, 0x00	; 0
+    1d98:	88 0f       	add	r24, r24
+    1d9a:	99 1f       	adc	r25, r25
+    1d9c:	fc 01       	movw	r30, r24
+    1d9e:	ed 59       	subi	r30, 0x9D	; 157
+    1da0:	fa 4f       	sbci	r31, 0xFA	; 250
+    1da2:	80 81       	ld	r24, Z
+    1da4:	91 81       	ldd	r25, Z+1	; 0x01
+    1da6:	00 97       	sbiw	r24, 0x00	; 0
+    1da8:	09 f0       	breq	.+2      	; 0x1dac <OSTaskCreate+0x4e>
+    1daa:	50 c0       	rjmp	.+160    	; 0x1e4c <OSTaskCreate+0xee>
+    1dac:	8a 85       	ldd	r24, Y+10	; 0x0a
+    1dae:	88 2f       	mov	r24, r24
+    1db0:	90 e0       	ldi	r25, 0x00	; 0
+    1db2:	88 0f       	add	r24, r24
+    1db4:	99 1f       	adc	r25, r25
+    1db6:	fc 01       	movw	r30, r24
+    1db8:	ed 59       	subi	r30, 0x9D	; 157
+    1dba:	fa 4f       	sbci	r31, 0xFA	; 250
+    1dbc:	81 e0       	ldi	r24, 0x01	; 1
+    1dbe:	90 e0       	ldi	r25, 0x00	; 0
+    1dc0:	91 83       	std	Z+1, r25	; 0x01
+    1dc2:	80 83       	st	Z, r24
+    1dc4:	78 94       	sei
+    1dc6:	88 85       	ldd	r24, Y+8	; 0x08
+    1dc8:	99 85       	ldd	r25, Y+9	; 0x09
+    1dca:	6e 81       	ldd	r22, Y+6	; 0x06
+    1dcc:	7f 81       	ldd	r23, Y+7	; 0x07
+    1dce:	ec 81       	ldd	r30, Y+4	; 0x04
+    1dd0:	fd 81       	ldd	r31, Y+5	; 0x05
+    1dd2:	20 e0       	ldi	r18, 0x00	; 0
+    1dd4:	30 e0       	ldi	r19, 0x00	; 0
+    1dd6:	ac 01       	movw	r20, r24
+    1dd8:	cf 01       	movw	r24, r30
+    1dda:	0e 94 19 01 	call	0x232	; 0x232 <OSTaskStkInit>
+    1dde:	9b 83       	std	Y+3, r25	; 0x03
+    1de0:	8a 83       	std	Y+2, r24	; 0x02
+    1de2:	8a 81       	ldd	r24, Y+2	; 0x02
+    1de4:	9b 81       	ldd	r25, Y+3	; 0x03
+    1de6:	aa 24       	eor	r10, r10
+    1de8:	bb 24       	eor	r11, r11
+    1dea:	cc 24       	eor	r12, r12
+    1dec:	dd 24       	eor	r13, r13
+    1dee:	ee 24       	eor	r14, r14
+    1df0:	ff 24       	eor	r15, r15
+    1df2:	87 01       	movw	r16, r14
+    1df4:	20 e0       	ldi	r18, 0x00	; 0
+    1df6:	30 e0       	ldi	r19, 0x00	; 0
+    1df8:	40 e0       	ldi	r20, 0x00	; 0
+    1dfa:	50 e0       	ldi	r21, 0x00	; 0
+    1dfc:	bc 01       	movw	r22, r24
+    1dfe:	8a 85       	ldd	r24, Y+10	; 0x0a
+    1e00:	0e 94 a0 08 	call	0x1140	; 0x1140 <OS_TCBInit>
+    1e04:	89 83       	std	Y+1, r24	; 0x01
+    1e06:	89 81       	ldd	r24, Y+1	; 0x01
+    1e08:	88 23       	and	r24, r24
+    1e0a:	71 f4       	brne	.+28     	; 0x1e28 <OSTaskCreate+0xca>
+    1e0c:	f8 94       	cli
+    1e0e:	80 91 c7 03 	lds	r24, 0x03C7
+    1e12:	8f 5f       	subi	r24, 0xFF	; 255
+    1e14:	80 93 c7 03 	sts	0x03C7, r24
+    1e18:	78 94       	sei
+    1e1a:	80 91 33 03 	lds	r24, 0x0333
+    1e1e:	81 30       	cpi	r24, 0x01	; 1
+    1e20:	79 f4       	brne	.+30     	; 0x1e40 <OSTaskCreate+0xe2>
+    1e22:	0e 94 81 07 	call	0xf02	; 0xf02 <OS_Sched>
+    1e26:	0c c0       	rjmp	.+24     	; 0x1e40 <OSTaskCreate+0xe2>
+    1e28:	f8 94       	cli
+    1e2a:	8a 85       	ldd	r24, Y+10	; 0x0a
+    1e2c:	88 2f       	mov	r24, r24
+    1e2e:	90 e0       	ldi	r25, 0x00	; 0
+    1e30:	88 0f       	add	r24, r24
+    1e32:	99 1f       	adc	r25, r25
+    1e34:	fc 01       	movw	r30, r24
+    1e36:	ed 59       	subi	r30, 0x9D	; 157
+    1e38:	fa 4f       	sbci	r31, 0xFA	; 250
+    1e3a:	11 82       	std	Z+1, r1	; 0x01
+    1e3c:	10 82       	st	Z, r1
+    1e3e:	78 94       	sei
+    1e40:	89 81       	ldd	r24, Y+1	; 0x01
+    1e42:	28 2f       	mov	r18, r24
+    1e44:	30 e0       	ldi	r19, 0x00	; 0
+    1e46:	3c 87       	std	Y+12, r19	; 0x0c
+    1e48:	2b 87       	std	Y+11, r18	; 0x0b
+    1e4a:	05 c0       	rjmp	.+10     	; 0x1e56 <OSTaskCreate+0xf8>
+    1e4c:	78 94       	sei
+    1e4e:	88 e2       	ldi	r24, 0x28	; 40
+    1e50:	90 e0       	ldi	r25, 0x00	; 0
+    1e52:	9c 87       	std	Y+12, r25	; 0x0c
+    1e54:	8b 87       	std	Y+11, r24	; 0x0b
+    1e56:	8b 85       	ldd	r24, Y+11	; 0x0b
+    1e58:	9c 85       	ldd	r25, Y+12	; 0x0c
+    1e5a:	2c 96       	adiw	r28, 0x0c	; 12
+    1e5c:	0f b6       	in	r0, 0x3f	; 63
+    1e5e:	f8 94       	cli
+    1e60:	de bf       	out	0x3e, r29	; 62
+    1e62:	0f be       	out	0x3f, r0	; 63
+    1e64:	cd bf       	out	0x3d, r28	; 61
+    1e66:	df 91       	pop	r29
+    1e68:	cf 91       	pop	r28
+    1e6a:	1f 91       	pop	r17
+    1e6c:	0f 91       	pop	r16
+    1e6e:	ff 90       	pop	r15
+    1e70:	ef 90       	pop	r14
+    1e72:	df 90       	pop	r13
+    1e74:	cf 90       	pop	r12
+    1e76:	bf 90       	pop	r11
+    1e78:	af 90       	pop	r10
+    1e7a:	08 95       	ret
+
+00001e7c <OSTaskDel>:
+    1e7c:	cf 93       	push	r28
+    1e7e:	df 93       	push	r29
+    1e80:	cd b7       	in	r28, 0x3d	; 61
+    1e82:	de b7       	in	r29, 0x3e	; 62
+    1e84:	28 97       	sbiw	r28, 0x08	; 8
+    1e86:	0f b6       	in	r0, 0x3f	; 63
+    1e88:	f8 94       	cli
+    1e8a:	de bf       	out	0x3e, r29	; 62
+    1e8c:	0f be       	out	0x3f, r0	; 63
+    1e8e:	cd bf       	out	0x3d, r28	; 61
+    1e90:	8e 83       	std	Y+6, r24	; 0x06
+    1e92:	80 91 d0 03 	lds	r24, 0x03D0
+    1e96:	88 23       	and	r24, r24
+    1e98:	29 f0       	breq	.+10     	; 0x1ea4 <OSTaskDel+0x28>
+    1e9a:	8f e3       	ldi	r24, 0x3F	; 63
+    1e9c:	90 e0       	ldi	r25, 0x00	; 0
+    1e9e:	98 87       	std	Y+8, r25	; 0x08
+    1ea0:	8f 83       	std	Y+7, r24	; 0x07
+    1ea2:	f6 c0       	rjmp	.+492    	; 0x2090 <OSTaskDel+0x214>
+    1ea4:	f8 94       	cli
+    1ea6:	8e 81       	ldd	r24, Y+6	; 0x06
+    1ea8:	8f 3f       	cpi	r24, 0xFF	; 255
+    1eaa:	31 f4       	brne	.+12     	; 0x1eb8 <OSTaskDel+0x3c>
+    1eac:	e0 91 d1 03 	lds	r30, 0x03D1
+    1eb0:	f0 91 d2 03 	lds	r31, 0x03D2
+    1eb4:	85 85       	ldd	r24, Z+13	; 0x0d
+    1eb6:	8e 83       	std	Y+6, r24	; 0x06
+    1eb8:	8e 81       	ldd	r24, Y+6	; 0x06
+    1eba:	88 2f       	mov	r24, r24
+    1ebc:	90 e0       	ldi	r25, 0x00	; 0
+    1ebe:	88 0f       	add	r24, r24
+    1ec0:	99 1f       	adc	r25, r25
+    1ec2:	fc 01       	movw	r30, r24
+    1ec4:	ed 59       	subi	r30, 0x9D	; 157
+    1ec6:	fa 4f       	sbci	r31, 0xFA	; 250
+    1ec8:	80 81       	ld	r24, Z
+    1eca:	91 81       	ldd	r25, Z+1	; 0x01
+    1ecc:	9b 83       	std	Y+3, r25	; 0x03
+    1ece:	8a 83       	std	Y+2, r24	; 0x02
+    1ed0:	8a 81       	ldd	r24, Y+2	; 0x02
+    1ed2:	9b 81       	ldd	r25, Y+3	; 0x03
+    1ed4:	00 97       	sbiw	r24, 0x00	; 0
+    1ed6:	09 f4       	brne	.+2      	; 0x1eda <OSTaskDel+0x5e>
+    1ed8:	d6 c0       	rjmp	.+428    	; 0x2086 <OSTaskDel+0x20a>
+    1eda:	ea 81       	ldd	r30, Y+2	; 0x02
+    1edc:	fb 81       	ldd	r31, Y+3	; 0x03
+    1ede:	87 85       	ldd	r24, Z+15	; 0x0f
+    1ee0:	28 2f       	mov	r18, r24
+    1ee2:	30 e0       	ldi	r19, 0x00	; 0
+    1ee4:	ea 81       	ldd	r30, Y+2	; 0x02
+    1ee6:	fb 81       	ldd	r31, Y+3	; 0x03
+    1ee8:	87 85       	ldd	r24, Z+15	; 0x0f
+    1eea:	88 2f       	mov	r24, r24
+    1eec:	90 e0       	ldi	r25, 0x00	; 0
+    1eee:	fc 01       	movw	r30, r24
+    1ef0:	e5 53       	subi	r30, 0x35	; 53
+    1ef2:	fc 4f       	sbci	r31, 0xFC	; 252
+    1ef4:	80 81       	ld	r24, Z
+    1ef6:	98 2f       	mov	r25, r24
+    1ef8:	ea 81       	ldd	r30, Y+2	; 0x02
+    1efa:	fb 81       	ldd	r31, Y+3	; 0x03
+    1efc:	80 89       	ldd	r24, Z+16	; 0x10
+    1efe:	80 95       	com	r24
+    1f00:	89 23       	and	r24, r25
+    1f02:	f9 01       	movw	r30, r18
+    1f04:	e5 53       	subi	r30, 0x35	; 53
+    1f06:	fc 4f       	sbci	r31, 0xFC	; 252
+    1f08:	80 83       	st	Z, r24
+    1f0a:	f9 01       	movw	r30, r18
+    1f0c:	e5 53       	subi	r30, 0x35	; 53
+    1f0e:	fc 4f       	sbci	r31, 0xFC	; 252
+    1f10:	80 81       	ld	r24, Z
+    1f12:	88 23       	and	r24, r24
+    1f14:	51 f4       	brne	.+20     	; 0x1f2a <OSTaskDel+0xae>
+    1f16:	ea 81       	ldd	r30, Y+2	; 0x02
+    1f18:	fb 81       	ldd	r31, Y+3	; 0x03
+    1f1a:	81 89       	ldd	r24, Z+17	; 0x11
+    1f1c:	98 2f       	mov	r25, r24
+    1f1e:	90 95       	com	r25
+    1f20:	80 91 ca 03 	lds	r24, 0x03CA
+    1f24:	89 23       	and	r24, r25
+    1f26:	80 93 ca 03 	sts	0x03CA, r24
+    1f2a:	ea 81       	ldd	r30, Y+2	; 0x02
+    1f2c:	fb 81       	ldd	r31, Y+3	; 0x03
+    1f2e:	86 81       	ldd	r24, Z+6	; 0x06
+    1f30:	97 81       	ldd	r25, Z+7	; 0x07
+    1f32:	9d 83       	std	Y+5, r25	; 0x05
+    1f34:	8c 83       	std	Y+4, r24	; 0x04
+    1f36:	8c 81       	ldd	r24, Y+4	; 0x04
+    1f38:	9d 81       	ldd	r25, Y+5	; 0x05
+    1f3a:	00 97       	sbiw	r24, 0x00	; 0
+    1f3c:	a1 f1       	breq	.+104    	; 0x1fa6 <OSTaskDel+0x12a>
+    1f3e:	ea 81       	ldd	r30, Y+2	; 0x02
+    1f40:	fb 81       	ldd	r31, Y+3	; 0x03
+    1f42:	87 85       	ldd	r24, Z+15	; 0x0f
+    1f44:	48 2f       	mov	r20, r24
+    1f46:	50 e0       	ldi	r21, 0x00	; 0
+    1f48:	ea 81       	ldd	r30, Y+2	; 0x02
+    1f4a:	fb 81       	ldd	r31, Y+3	; 0x03
+    1f4c:	87 85       	ldd	r24, Z+15	; 0x0f
+    1f4e:	28 2f       	mov	r18, r24
+    1f50:	30 e0       	ldi	r19, 0x00	; 0
+    1f52:	8c 81       	ldd	r24, Y+4	; 0x04
+    1f54:	9d 81       	ldd	r25, Y+5	; 0x05
+    1f56:	82 0f       	add	r24, r18
+    1f58:	93 1f       	adc	r25, r19
+    1f5a:	fc 01       	movw	r30, r24
+    1f5c:	36 96       	adiw	r30, 0x06	; 6
+    1f5e:	80 81       	ld	r24, Z
+    1f60:	98 2f       	mov	r25, r24
+    1f62:	ea 81       	ldd	r30, Y+2	; 0x02
+    1f64:	fb 81       	ldd	r31, Y+3	; 0x03
+    1f66:	80 89       	ldd	r24, Z+16	; 0x10
+    1f68:	80 95       	com	r24
+    1f6a:	89 23       	and	r24, r25
+    1f6c:	28 2f       	mov	r18, r24
+    1f6e:	8c 81       	ldd	r24, Y+4	; 0x04
+    1f70:	9d 81       	ldd	r25, Y+5	; 0x05
+    1f72:	84 0f       	add	r24, r20
+    1f74:	95 1f       	adc	r25, r21
+    1f76:	fc 01       	movw	r30, r24
+    1f78:	36 96       	adiw	r30, 0x06	; 6
+    1f7a:	20 83       	st	Z, r18
+    1f7c:	8c 81       	ldd	r24, Y+4	; 0x04
+    1f7e:	9d 81       	ldd	r25, Y+5	; 0x05
+    1f80:	84 0f       	add	r24, r20
+    1f82:	95 1f       	adc	r25, r21
+    1f84:	fc 01       	movw	r30, r24
+    1f86:	36 96       	adiw	r30, 0x06	; 6
+    1f88:	80 81       	ld	r24, Z
+    1f8a:	88 23       	and	r24, r24
+    1f8c:	61 f4       	brne	.+24     	; 0x1fa6 <OSTaskDel+0x12a>
+    1f8e:	ec 81       	ldd	r30, Y+4	; 0x04
+    1f90:	fd 81       	ldd	r31, Y+5	; 0x05
+    1f92:	81 81       	ldd	r24, Z+1	; 0x01
+    1f94:	98 2f       	mov	r25, r24
+    1f96:	ea 81       	ldd	r30, Y+2	; 0x02
+    1f98:	fb 81       	ldd	r31, Y+3	; 0x03
+    1f9a:	81 89       	ldd	r24, Z+17	; 0x11
+    1f9c:	80 95       	com	r24
+    1f9e:	89 23       	and	r24, r25
+    1fa0:	ec 81       	ldd	r30, Y+4	; 0x04
+    1fa2:	fd 81       	ldd	r31, Y+5	; 0x05
+    1fa4:	81 83       	std	Z+1, r24	; 0x01
+    1fa6:	ea 81       	ldd	r30, Y+2	; 0x02
+    1fa8:	fb 81       	ldd	r31, Y+3	; 0x03
+    1faa:	13 86       	std	Z+11, r1	; 0x0b
+    1fac:	12 86       	std	Z+10, r1	; 0x0a
+    1fae:	ea 81       	ldd	r30, Y+2	; 0x02
+    1fb0:	fb 81       	ldd	r31, Y+3	; 0x03
+    1fb2:	14 86       	std	Z+12, r1	; 0x0c
+    1fb4:	80 91 32 03 	lds	r24, 0x0332
+    1fb8:	8f 3f       	cpi	r24, 0xFF	; 255
+    1fba:	29 f0       	breq	.+10     	; 0x1fc6 <OSTaskDel+0x14a>
+    1fbc:	80 91 32 03 	lds	r24, 0x0332
+    1fc0:	8f 5f       	subi	r24, 0xFF	; 255
+    1fc2:	80 93 32 03 	sts	0x0332, r24
+    1fc6:	78 94       	sei
+    1fc8:	0e 94 a4 04 	call	0x948	; 0x948 <OS_Dummy>
+    1fcc:	f8 94       	cli
+    1fce:	80 91 32 03 	lds	r24, 0x0332
+    1fd2:	88 23       	and	r24, r24
+    1fd4:	29 f0       	breq	.+10     	; 0x1fe0 <OSTaskDel+0x164>
+    1fd6:	80 91 32 03 	lds	r24, 0x0332
+    1fda:	81 50       	subi	r24, 0x01	; 1
+    1fdc:	80 93 32 03 	sts	0x0332, r24
+    1fe0:	8a 81       	ldd	r24, Y+2	; 0x02
+    1fe2:	9b 81       	ldd	r25, Y+3	; 0x03
+    1fe4:	0e 94 82 02 	call	0x504	; 0x504 <OSTaskDelHook>
+    1fe8:	80 91 c7 03 	lds	r24, 0x03C7
+    1fec:	81 50       	subi	r24, 0x01	; 1
+    1fee:	80 93 c7 03 	sts	0x03C7, r24
+    1ff2:	8e 81       	ldd	r24, Y+6	; 0x06
+    1ff4:	88 2f       	mov	r24, r24
+    1ff6:	90 e0       	ldi	r25, 0x00	; 0
+    1ff8:	88 0f       	add	r24, r24
+    1ffa:	99 1f       	adc	r25, r25
+    1ffc:	fc 01       	movw	r30, r24
+    1ffe:	ed 59       	subi	r30, 0x9D	; 157
+    2000:	fa 4f       	sbci	r31, 0xFA	; 250
+    2002:	11 82       	std	Z+1, r1	; 0x01
+    2004:	10 82       	st	Z, r1
+    2006:	ea 81       	ldd	r30, Y+2	; 0x02
+    2008:	fb 81       	ldd	r31, Y+3	; 0x03
+    200a:	84 81       	ldd	r24, Z+4	; 0x04
+    200c:	95 81       	ldd	r25, Z+5	; 0x05
+    200e:	00 97       	sbiw	r24, 0x00	; 0
+    2010:	81 f4       	brne	.+32     	; 0x2032 <OSTaskDel+0x1b6>
+    2012:	ea 81       	ldd	r30, Y+2	; 0x02
+    2014:	fb 81       	ldd	r31, Y+3	; 0x03
+    2016:	02 80       	ldd	r0, Z+2	; 0x02
+    2018:	f3 81       	ldd	r31, Z+3	; 0x03
+    201a:	e0 2d       	mov	r30, r0
+    201c:	15 82       	std	Z+5, r1	; 0x05
+    201e:	14 82       	std	Z+4, r1	; 0x04
+    2020:	ea 81       	ldd	r30, Y+2	; 0x02
+    2022:	fb 81       	ldd	r31, Y+3	; 0x03
+    2024:	82 81       	ldd	r24, Z+2	; 0x02
+    2026:	93 81       	ldd	r25, Z+3	; 0x03
+    2028:	90 93 3b 03 	sts	0x033B, r25
+    202c:	80 93 3a 03 	sts	0x033A, r24
+    2030:	16 c0       	rjmp	.+44     	; 0x205e <OSTaskDel+0x1e2>
+    2032:	ea 81       	ldd	r30, Y+2	; 0x02
+    2034:	fb 81       	ldd	r31, Y+3	; 0x03
+    2036:	a4 81       	ldd	r26, Z+4	; 0x04
+    2038:	b5 81       	ldd	r27, Z+5	; 0x05
+    203a:	ea 81       	ldd	r30, Y+2	; 0x02
+    203c:	fb 81       	ldd	r31, Y+3	; 0x03
+    203e:	82 81       	ldd	r24, Z+2	; 0x02
+    2040:	93 81       	ldd	r25, Z+3	; 0x03
+    2042:	fd 01       	movw	r30, r26
+    2044:	93 83       	std	Z+3, r25	; 0x03
+    2046:	82 83       	std	Z+2, r24	; 0x02
+    2048:	ea 81       	ldd	r30, Y+2	; 0x02
+    204a:	fb 81       	ldd	r31, Y+3	; 0x03
+    204c:	a2 81       	ldd	r26, Z+2	; 0x02
+    204e:	b3 81       	ldd	r27, Z+3	; 0x03
+    2050:	ea 81       	ldd	r30, Y+2	; 0x02
+    2052:	fb 81       	ldd	r31, Y+3	; 0x03
+    2054:	84 81       	ldd	r24, Z+4	; 0x04
+    2056:	95 81       	ldd	r25, Z+5	; 0x05
+    2058:	fd 01       	movw	r30, r26
+    205a:	95 83       	std	Z+5, r25	; 0x05
+    205c:	84 83       	std	Z+4, r24	; 0x04
+    205e:	80 91 c4 03 	lds	r24, 0x03C4
+    2062:	90 91 c5 03 	lds	r25, 0x03C5
+    2066:	ea 81       	ldd	r30, Y+2	; 0x02
+    2068:	fb 81       	ldd	r31, Y+3	; 0x03
+    206a:	93 83       	std	Z+3, r25	; 0x03
+    206c:	82 83       	std	Z+2, r24	; 0x02
+    206e:	8a 81       	ldd	r24, Y+2	; 0x02
+    2070:	9b 81       	ldd	r25, Y+3	; 0x03
+    2072:	90 93 c5 03 	sts	0x03C5, r25
+    2076:	80 93 c4 03 	sts	0x03C4, r24
+    207a:	78 94       	sei
+    207c:	0e 94 81 07 	call	0xf02	; 0xf02 <OS_Sched>
+    2080:	18 86       	std	Y+8, r1	; 0x08
+    2082:	1f 82       	std	Y+7, r1	; 0x07
+    2084:	05 c0       	rjmp	.+10     	; 0x2090 <OSTaskDel+0x214>
+    2086:	78 94       	sei
+    2088:	8c e3       	ldi	r24, 0x3C	; 60
+    208a:	90 e0       	ldi	r25, 0x00	; 0
+    208c:	98 87       	std	Y+8, r25	; 0x08
+    208e:	8f 83       	std	Y+7, r24	; 0x07
+    2090:	8f 81       	ldd	r24, Y+7	; 0x07
+    2092:	98 85       	ldd	r25, Y+8	; 0x08
+    2094:	28 96       	adiw	r28, 0x08	; 8
+    2096:	0f b6       	in	r0, 0x3f	; 63
+    2098:	f8 94       	cli
+    209a:	de bf       	out	0x3e, r29	; 62
+    209c:	0f be       	out	0x3f, r0	; 63
+    209e:	cd bf       	out	0x3d, r28	; 61
+    20a0:	df 91       	pop	r29
+    20a2:	cf 91       	pop	r28
+    20a4:	08 95       	ret
+
+000020a6 <OSTaskDelReq>:
+    20a6:	cf 93       	push	r28
+    20a8:	df 93       	push	r29
+    20aa:	cd b7       	in	r28, 0x3d	; 61
+    20ac:	de b7       	in	r29, 0x3e	; 62
+    20ae:	27 97       	sbiw	r28, 0x07	; 7
+    20b0:	0f b6       	in	r0, 0x3f	; 63
+    20b2:	f8 94       	cli
+    20b4:	de bf       	out	0x3e, r29	; 62
+    20b6:	0f be       	out	0x3f, r0	; 63
+    20b8:	cd bf       	out	0x3d, r28	; 61
+    20ba:	8d 83       	std	Y+5, r24	; 0x05
+    20bc:	8d 81       	ldd	r24, Y+5	; 0x05
+    20be:	8f 3f       	cpi	r24, 0xFF	; 255
+    20c0:	71 f4       	brne	.+28     	; 0x20de <OSTaskDelReq+0x38>
+    20c2:	f8 94       	cli
+    20c4:	e0 91 d1 03 	lds	r30, 0x03D1
+    20c8:	f0 91 d2 03 	lds	r31, 0x03D2
+    20cc:	82 89       	ldd	r24, Z+18	; 0x12
+    20ce:	8c 83       	std	Y+4, r24	; 0x04
+    20d0:	78 94       	sei
+    20d2:	8c 81       	ldd	r24, Y+4	; 0x04
+    20d4:	28 2f       	mov	r18, r24
+    20d6:	30 e0       	ldi	r19, 0x00	; 0
+    20d8:	3f 83       	std	Y+7, r19	; 0x07
+    20da:	2e 83       	std	Y+6, r18	; 0x06
+    20dc:	1f c0       	rjmp	.+62     	; 0x211c <OSTaskDelReq+0x76>
+    20de:	f8 94       	cli
+    20e0:	8d 81       	ldd	r24, Y+5	; 0x05
+    20e2:	88 2f       	mov	r24, r24
+    20e4:	90 e0       	ldi	r25, 0x00	; 0
+    20e6:	88 0f       	add	r24, r24
+    20e8:	99 1f       	adc	r25, r25
+    20ea:	fc 01       	movw	r30, r24
+    20ec:	ed 59       	subi	r30, 0x9D	; 157
+    20ee:	fa 4f       	sbci	r31, 0xFA	; 250
+    20f0:	80 81       	ld	r24, Z
+    20f2:	91 81       	ldd	r25, Z+1	; 0x01
+    20f4:	9a 83       	std	Y+2, r25	; 0x02
+    20f6:	89 83       	std	Y+1, r24	; 0x01
+    20f8:	89 81       	ldd	r24, Y+1	; 0x01
+    20fa:	9a 81       	ldd	r25, Y+2	; 0x02
+    20fc:	00 97       	sbiw	r24, 0x00	; 0
+    20fe:	31 f0       	breq	.+12     	; 0x210c <OSTaskDelReq+0x66>
+    2100:	e9 81       	ldd	r30, Y+1	; 0x01
+    2102:	fa 81       	ldd	r31, Y+2	; 0x02
+    2104:	8e e3       	ldi	r24, 0x3E	; 62
+    2106:	82 8b       	std	Z+18, r24	; 0x12
+    2108:	1b 82       	std	Y+3, r1	; 0x03
+    210a:	02 c0       	rjmp	.+4      	; 0x2110 <OSTaskDelReq+0x6a>
+    210c:	8b e0       	ldi	r24, 0x0B	; 11
+    210e:	8b 83       	std	Y+3, r24	; 0x03
+    2110:	78 94       	sei
+    2112:	8b 81       	ldd	r24, Y+3	; 0x03
+    2114:	28 2f       	mov	r18, r24
+    2116:	30 e0       	ldi	r19, 0x00	; 0
+    2118:	3f 83       	std	Y+7, r19	; 0x07
+    211a:	2e 83       	std	Y+6, r18	; 0x06
+    211c:	8e 81       	ldd	r24, Y+6	; 0x06
+    211e:	9f 81       	ldd	r25, Y+7	; 0x07
+    2120:	27 96       	adiw	r28, 0x07	; 7
+    2122:	0f b6       	in	r0, 0x3f	; 63
+    2124:	f8 94       	cli
+    2126:	de bf       	out	0x3e, r29	; 62
+    2128:	0f be       	out	0x3f, r0	; 63
+    212a:	cd bf       	out	0x3d, r28	; 61
+    212c:	df 91       	pop	r29
+    212e:	cf 91       	pop	r28
+    2130:	08 95       	ret
+
+00002132 <OSTaskResume>:
+    2132:	cf 93       	push	r28
+    2134:	df 93       	push	r29
+    2136:	cd b7       	in	r28, 0x3d	; 61
+    2138:	de b7       	in	r29, 0x3e	; 62
+    213a:	25 97       	sbiw	r28, 0x05	; 5
+    213c:	0f b6       	in	r0, 0x3f	; 63
+    213e:	f8 94       	cli
+    2140:	de bf       	out	0x3e, r29	; 62
+    2142:	0f be       	out	0x3f, r0	; 63
+    2144:	cd bf       	out	0x3d, r28	; 61
+    2146:	8b 83       	std	Y+3, r24	; 0x03
+    2148:	f8 94       	cli
+    214a:	8b 81       	ldd	r24, Y+3	; 0x03
+    214c:	88 2f       	mov	r24, r24
+    214e:	90 e0       	ldi	r25, 0x00	; 0
+    2150:	88 0f       	add	r24, r24
+    2152:	99 1f       	adc	r25, r25
+    2154:	fc 01       	movw	r30, r24
+    2156:	ed 59       	subi	r30, 0x9D	; 157
+    2158:	fa 4f       	sbci	r31, 0xFA	; 250
+    215a:	80 81       	ld	r24, Z
+    215c:	91 81       	ldd	r25, Z+1	; 0x01
+    215e:	9a 83       	std	Y+2, r25	; 0x02
+    2160:	89 83       	std	Y+1, r24	; 0x01
+    2162:	89 81       	ldd	r24, Y+1	; 0x01
+    2164:	9a 81       	ldd	r25, Y+2	; 0x02
+    2166:	00 97       	sbiw	r24, 0x00	; 0
+    2168:	31 f4       	brne	.+12     	; 0x2176 <OSTaskResume+0x44>
+    216a:	78 94       	sei
+    216c:	84 e6       	ldi	r24, 0x64	; 100
+    216e:	90 e0       	ldi	r25, 0x00	; 0
+    2170:	9d 83       	std	Y+5, r25	; 0x05
+    2172:	8c 83       	std	Y+4, r24	; 0x04
+    2174:	46 c0       	rjmp	.+140    	; 0x2202 <OSTaskResume+0xd0>
+    2176:	e9 81       	ldd	r30, Y+1	; 0x01
+    2178:	fa 81       	ldd	r31, Y+2	; 0x02
+    217a:	84 85       	ldd	r24, Z+12	; 0x0c
+    217c:	88 2f       	mov	r24, r24
+    217e:	90 e0       	ldi	r25, 0x00	; 0
+    2180:	88 70       	andi	r24, 0x08	; 8
+    2182:	90 70       	andi	r25, 0x00	; 0
+    2184:	00 97       	sbiw	r24, 0x00	; 0
+    2186:	c1 f1       	breq	.+112    	; 0x21f8 <OSTaskResume+0xc6>
+    2188:	e9 81       	ldd	r30, Y+1	; 0x01
+    218a:	fa 81       	ldd	r31, Y+2	; 0x02
+    218c:	84 85       	ldd	r24, Z+12	; 0x0c
+    218e:	87 7f       	andi	r24, 0xF7	; 247
+    2190:	e9 81       	ldd	r30, Y+1	; 0x01
+    2192:	fa 81       	ldd	r31, Y+2	; 0x02
+    2194:	84 87       	std	Z+12, r24	; 0x0c
+    2196:	e9 81       	ldd	r30, Y+1	; 0x01
+    2198:	fa 81       	ldd	r31, Y+2	; 0x02
+    219a:	84 85       	ldd	r24, Z+12	; 0x0c
+    219c:	88 23       	and	r24, r24
+    219e:	41 f5       	brne	.+80     	; 0x21f0 <OSTaskResume+0xbe>
+    21a0:	e9 81       	ldd	r30, Y+1	; 0x01
+    21a2:	fa 81       	ldd	r31, Y+2	; 0x02
+    21a4:	82 85       	ldd	r24, Z+10	; 0x0a
+    21a6:	93 85       	ldd	r25, Z+11	; 0x0b
+    21a8:	00 97       	sbiw	r24, 0x00	; 0
+    21aa:	11 f5       	brne	.+68     	; 0x21f0 <OSTaskResume+0xbe>
+    21ac:	e9 81       	ldd	r30, Y+1	; 0x01
+    21ae:	fa 81       	ldd	r31, Y+2	; 0x02
+    21b0:	91 89       	ldd	r25, Z+17	; 0x11
+    21b2:	80 91 ca 03 	lds	r24, 0x03CA
+    21b6:	89 2b       	or	r24, r25
+    21b8:	80 93 ca 03 	sts	0x03CA, r24
+    21bc:	e9 81       	ldd	r30, Y+1	; 0x01
+    21be:	fa 81       	ldd	r31, Y+2	; 0x02
+    21c0:	87 85       	ldd	r24, Z+15	; 0x0f
+    21c2:	28 2f       	mov	r18, r24
+    21c4:	30 e0       	ldi	r19, 0x00	; 0
+    21c6:	e9 81       	ldd	r30, Y+1	; 0x01
+    21c8:	fa 81       	ldd	r31, Y+2	; 0x02
+    21ca:	87 85       	ldd	r24, Z+15	; 0x0f
+    21cc:	88 2f       	mov	r24, r24
+    21ce:	90 e0       	ldi	r25, 0x00	; 0
+    21d0:	fc 01       	movw	r30, r24
+    21d2:	e5 53       	subi	r30, 0x35	; 53
+    21d4:	fc 4f       	sbci	r31, 0xFC	; 252
+    21d6:	90 81       	ld	r25, Z
+    21d8:	e9 81       	ldd	r30, Y+1	; 0x01
+    21da:	fa 81       	ldd	r31, Y+2	; 0x02
+    21dc:	80 89       	ldd	r24, Z+16	; 0x10
+    21de:	89 2b       	or	r24, r25
+    21e0:	f9 01       	movw	r30, r18
+    21e2:	e5 53       	subi	r30, 0x35	; 53
+    21e4:	fc 4f       	sbci	r31, 0xFC	; 252
+    21e6:	80 83       	st	Z, r24
+    21e8:	78 94       	sei
+    21ea:	0e 94 81 07 	call	0xf02	; 0xf02 <OS_Sched>
+    21ee:	01 c0       	rjmp	.+2      	; 0x21f2 <OSTaskResume+0xc0>
+    21f0:	78 94       	sei
+    21f2:	1d 82       	std	Y+5, r1	; 0x05
+    21f4:	1c 82       	std	Y+4, r1	; 0x04
+    21f6:	05 c0       	rjmp	.+10     	; 0x2202 <OSTaskResume+0xd0>
+    21f8:	78 94       	sei
+    21fa:	85 e6       	ldi	r24, 0x65	; 101
+    21fc:	90 e0       	ldi	r25, 0x00	; 0
+    21fe:	9d 83       	std	Y+5, r25	; 0x05
+    2200:	8c 83       	std	Y+4, r24	; 0x04
+    2202:	8c 81       	ldd	r24, Y+4	; 0x04
+    2204:	9d 81       	ldd	r25, Y+5	; 0x05
+    2206:	25 96       	adiw	r28, 0x05	; 5
+    2208:	0f b6       	in	r0, 0x3f	; 63
+    220a:	f8 94       	cli
+    220c:	de bf       	out	0x3e, r29	; 62
+    220e:	0f be       	out	0x3f, r0	; 63
+    2210:	cd bf       	out	0x3d, r28	; 61
+    2212:	df 91       	pop	r29
+    2214:	cf 91       	pop	r28
+    2216:	08 95       	ret
+
+00002218 <OSTaskSuspend>:
+    2218:	cf 93       	push	r28
+    221a:	df 93       	push	r29
+    221c:	cd b7       	in	r28, 0x3d	; 61
+    221e:	de b7       	in	r29, 0x3e	; 62
+    2220:	26 97       	sbiw	r28, 0x06	; 6
+    2222:	0f b6       	in	r0, 0x3f	; 63
+    2224:	f8 94       	cli
+    2226:	de bf       	out	0x3e, r29	; 62
+    2228:	0f be       	out	0x3f, r0	; 63
+    222a:	cd bf       	out	0x3d, r28	; 61
+    222c:	8c 83       	std	Y+4, r24	; 0x04
+    222e:	f8 94       	cli
+    2230:	8c 81       	ldd	r24, Y+4	; 0x04
+    2232:	8f 3f       	cpi	r24, 0xFF	; 255
+    2234:	49 f4       	brne	.+18     	; 0x2248 <OSTaskSuspend+0x30>
+    2236:	e0 91 d1 03 	lds	r30, 0x03D1
+    223a:	f0 91 d2 03 	lds	r31, 0x03D2
+    223e:	85 85       	ldd	r24, Z+13	; 0x0d
+    2240:	8c 83       	std	Y+4, r24	; 0x04
+    2242:	81 e0       	ldi	r24, 0x01	; 1
+    2244:	8b 83       	std	Y+3, r24	; 0x03
+    2246:	0c c0       	rjmp	.+24     	; 0x2260 <OSTaskSuspend+0x48>
+    2248:	e0 91 d1 03 	lds	r30, 0x03D1
+    224c:	f0 91 d2 03 	lds	r31, 0x03D2
+    2250:	95 85       	ldd	r25, Z+13	; 0x0d
+    2252:	8c 81       	ldd	r24, Y+4	; 0x04
+    2254:	98 17       	cp	r25, r24
+    2256:	19 f4       	brne	.+6      	; 0x225e <OSTaskSuspend+0x46>
+    2258:	81 e0       	ldi	r24, 0x01	; 1
+    225a:	8b 83       	std	Y+3, r24	; 0x03
+    225c:	01 c0       	rjmp	.+2      	; 0x2260 <OSTaskSuspend+0x48>
+    225e:	1b 82       	std	Y+3, r1	; 0x03
+    2260:	8c 81       	ldd	r24, Y+4	; 0x04
+    2262:	88 2f       	mov	r24, r24
+    2264:	90 e0       	ldi	r25, 0x00	; 0
+    2266:	88 0f       	add	r24, r24
+    2268:	99 1f       	adc	r25, r25
+    226a:	fc 01       	movw	r30, r24
+    226c:	ed 59       	subi	r30, 0x9D	; 157
+    226e:	fa 4f       	sbci	r31, 0xFA	; 250
+    2270:	80 81       	ld	r24, Z
+    2272:	91 81       	ldd	r25, Z+1	; 0x01
+    2274:	9a 83       	std	Y+2, r25	; 0x02
+    2276:	89 83       	std	Y+1, r24	; 0x01
+    2278:	89 81       	ldd	r24, Y+1	; 0x01
+    227a:	9a 81       	ldd	r25, Y+2	; 0x02
+    227c:	00 97       	sbiw	r24, 0x00	; 0
+    227e:	31 f4       	brne	.+12     	; 0x228c <OSTaskSuspend+0x74>
+    2280:	78 94       	sei
+    2282:	8a e5       	ldi	r24, 0x5A	; 90
+    2284:	90 e0       	ldi	r25, 0x00	; 0
+    2286:	9e 83       	std	Y+6, r25	; 0x06
+    2288:	8d 83       	std	Y+5, r24	; 0x05
+    228a:	37 c0       	rjmp	.+110    	; 0x22fa <OSTaskSuspend+0xe2>
+    228c:	e9 81       	ldd	r30, Y+1	; 0x01
+    228e:	fa 81       	ldd	r31, Y+2	; 0x02
+    2290:	87 85       	ldd	r24, Z+15	; 0x0f
+    2292:	28 2f       	mov	r18, r24
+    2294:	30 e0       	ldi	r19, 0x00	; 0
+    2296:	e9 81       	ldd	r30, Y+1	; 0x01
+    2298:	fa 81       	ldd	r31, Y+2	; 0x02
+    229a:	87 85       	ldd	r24, Z+15	; 0x0f
+    229c:	88 2f       	mov	r24, r24
+    229e:	90 e0       	ldi	r25, 0x00	; 0
+    22a0:	fc 01       	movw	r30, r24
+    22a2:	e5 53       	subi	r30, 0x35	; 53
+    22a4:	fc 4f       	sbci	r31, 0xFC	; 252
+    22a6:	80 81       	ld	r24, Z
+    22a8:	98 2f       	mov	r25, r24
+    22aa:	e9 81       	ldd	r30, Y+1	; 0x01
+    22ac:	fa 81       	ldd	r31, Y+2	; 0x02
+    22ae:	80 89       	ldd	r24, Z+16	; 0x10
+    22b0:	80 95       	com	r24
+    22b2:	89 23       	and	r24, r25
+    22b4:	f9 01       	movw	r30, r18
+    22b6:	e5 53       	subi	r30, 0x35	; 53
+    22b8:	fc 4f       	sbci	r31, 0xFC	; 252
+    22ba:	80 83       	st	Z, r24
+    22bc:	f9 01       	movw	r30, r18
+    22be:	e5 53       	subi	r30, 0x35	; 53
+    22c0:	fc 4f       	sbci	r31, 0xFC	; 252
+    22c2:	80 81       	ld	r24, Z
+    22c4:	88 23       	and	r24, r24
+    22c6:	51 f4       	brne	.+20     	; 0x22dc <OSTaskSuspend+0xc4>
+    22c8:	e9 81       	ldd	r30, Y+1	; 0x01
+    22ca:	fa 81       	ldd	r31, Y+2	; 0x02
+    22cc:	81 89       	ldd	r24, Z+17	; 0x11
+    22ce:	98 2f       	mov	r25, r24
+    22d0:	90 95       	com	r25
+    22d2:	80 91 ca 03 	lds	r24, 0x03CA
+    22d6:	89 23       	and	r24, r25
+    22d8:	80 93 ca 03 	sts	0x03CA, r24
+    22dc:	e9 81       	ldd	r30, Y+1	; 0x01
+    22de:	fa 81       	ldd	r31, Y+2	; 0x02
+    22e0:	84 85       	ldd	r24, Z+12	; 0x0c
+    22e2:	88 60       	ori	r24, 0x08	; 8
+    22e4:	e9 81       	ldd	r30, Y+1	; 0x01
+    22e6:	fa 81       	ldd	r31, Y+2	; 0x02
+    22e8:	84 87       	std	Z+12, r24	; 0x0c
+    22ea:	78 94       	sei
+    22ec:	8b 81       	ldd	r24, Y+3	; 0x03
+    22ee:	81 30       	cpi	r24, 0x01	; 1
+    22f0:	11 f4       	brne	.+4      	; 0x22f6 <OSTaskSuspend+0xde>
+    22f2:	0e 94 81 07 	call	0xf02	; 0xf02 <OS_Sched>
+    22f6:	1e 82       	std	Y+6, r1	; 0x06
+    22f8:	1d 82       	std	Y+5, r1	; 0x05
+    22fa:	8d 81       	ldd	r24, Y+5	; 0x05
+    22fc:	9e 81       	ldd	r25, Y+6	; 0x06
+    22fe:	26 96       	adiw	r28, 0x06	; 6
+    2300:	0f b6       	in	r0, 0x3f	; 63
+    2302:	f8 94       	cli
+    2304:	de bf       	out	0x3e, r29	; 62
+    2306:	0f be       	out	0x3f, r0	; 63
+    2308:	cd bf       	out	0x3d, r28	; 61
+    230a:	df 91       	pop	r29
+    230c:	cf 91       	pop	r28
+    230e:	08 95       	ret
+
+00002310 <OSTimeDly>:
+    2310:	cf 93       	push	r28
+    2312:	df 93       	push	r29
+    2314:	cd b7       	in	r28, 0x3d	; 61
+    2316:	de b7       	in	r29, 0x3e	; 62
+    2318:	22 97       	sbiw	r28, 0x02	; 2
+    231a:	0f b6       	in	r0, 0x3f	; 63
+    231c:	f8 94       	cli
+    231e:	de bf       	out	0x3e, r29	; 62
+    2320:	0f be       	out	0x3f, r0	; 63
+    2322:	cd bf       	out	0x3d, r28	; 61
+    2324:	9a 83       	std	Y+2, r25	; 0x02
+    2326:	89 83       	std	Y+1, r24	; 0x01
+    2328:	89 81       	ldd	r24, Y+1	; 0x01
+    232a:	9a 81       	ldd	r25, Y+2	; 0x02
+    232c:	00 97       	sbiw	r24, 0x00	; 0
+    232e:	09 f4       	brne	.+2      	; 0x2332 <OSTimeDly+0x22>
+    2330:	3c c0       	rjmp	.+120    	; 0x23aa <OSTimeDly+0x9a>
+    2332:	f8 94       	cli
+    2334:	e0 91 d1 03 	lds	r30, 0x03D1
+    2338:	f0 91 d2 03 	lds	r31, 0x03D2
+    233c:	87 85       	ldd	r24, Z+15	; 0x0f
+    233e:	28 2f       	mov	r18, r24
+    2340:	30 e0       	ldi	r19, 0x00	; 0
+    2342:	e0 91 d1 03 	lds	r30, 0x03D1
+    2346:	f0 91 d2 03 	lds	r31, 0x03D2
+    234a:	87 85       	ldd	r24, Z+15	; 0x0f
+    234c:	88 2f       	mov	r24, r24
+    234e:	90 e0       	ldi	r25, 0x00	; 0
+    2350:	fc 01       	movw	r30, r24
+    2352:	e5 53       	subi	r30, 0x35	; 53
+    2354:	fc 4f       	sbci	r31, 0xFC	; 252
+    2356:	80 81       	ld	r24, Z
+    2358:	98 2f       	mov	r25, r24
+    235a:	e0 91 d1 03 	lds	r30, 0x03D1
+    235e:	f0 91 d2 03 	lds	r31, 0x03D2
+    2362:	80 89       	ldd	r24, Z+16	; 0x10
+    2364:	80 95       	com	r24
+    2366:	89 23       	and	r24, r25
+    2368:	f9 01       	movw	r30, r18
+    236a:	e5 53       	subi	r30, 0x35	; 53
+    236c:	fc 4f       	sbci	r31, 0xFC	; 252
+    236e:	80 83       	st	Z, r24
+    2370:	f9 01       	movw	r30, r18
+    2372:	e5 53       	subi	r30, 0x35	; 53
+    2374:	fc 4f       	sbci	r31, 0xFC	; 252
+    2376:	80 81       	ld	r24, Z
+    2378:	88 23       	and	r24, r24
+    237a:	61 f4       	brne	.+24     	; 0x2394 <OSTimeDly+0x84>
+    237c:	e0 91 d1 03 	lds	r30, 0x03D1
+    2380:	f0 91 d2 03 	lds	r31, 0x03D2
+    2384:	81 89       	ldd	r24, Z+17	; 0x11
+    2386:	98 2f       	mov	r25, r24
+    2388:	90 95       	com	r25
+    238a:	80 91 ca 03 	lds	r24, 0x03CA
+    238e:	89 23       	and	r24, r25
+    2390:	80 93 ca 03 	sts	0x03CA, r24
+    2394:	e0 91 d1 03 	lds	r30, 0x03D1
+    2398:	f0 91 d2 03 	lds	r31, 0x03D2
+    239c:	89 81       	ldd	r24, Y+1	; 0x01
+    239e:	9a 81       	ldd	r25, Y+2	; 0x02
+    23a0:	93 87       	std	Z+11, r25	; 0x0b
+    23a2:	82 87       	std	Z+10, r24	; 0x0a
+    23a4:	78 94       	sei
+    23a6:	0e 94 81 07 	call	0xf02	; 0xf02 <OS_Sched>
+    23aa:	22 96       	adiw	r28, 0x02	; 2
+    23ac:	0f b6       	in	r0, 0x3f	; 63
+    23ae:	f8 94       	cli
+    23b0:	de bf       	out	0x3e, r29	; 62
+    23b2:	0f be       	out	0x3f, r0	; 63
+    23b4:	cd bf       	out	0x3d, r28	; 61
+    23b6:	df 91       	pop	r29
+    23b8:	cf 91       	pop	r28
+    23ba:	08 95       	ret
+
+000023bc <OSTimeDlyHMSM>:
+    23bc:	ef 92       	push	r14
+    23be:	ff 92       	push	r15
+    23c0:	0f 93       	push	r16
+    23c2:	1f 93       	push	r17
+    23c4:	cf 93       	push	r28
+    23c6:	df 93       	push	r29
+    23c8:	cd b7       	in	r28, 0x3d	; 61
+    23ca:	de b7       	in	r29, 0x3e	; 62
+    23cc:	2d 97       	sbiw	r28, 0x0d	; 13
+    23ce:	0f b6       	in	r0, 0x3f	; 63
+    23d0:	f8 94       	cli
+    23d2:	de bf       	out	0x3e, r29	; 62
+    23d4:	0f be       	out	0x3f, r0	; 63
+    23d6:	cd bf       	out	0x3d, r28	; 61
+    23d8:	8f 83       	std	Y+7, r24	; 0x07
+    23da:	68 87       	std	Y+8, r22	; 0x08
+    23dc:	49 87       	std	Y+9, r20	; 0x09
+    23de:	3b 87       	std	Y+11, r19	; 0x0b
+    23e0:	2a 87       	std	Y+10, r18	; 0x0a
+    23e2:	8f 81       	ldd	r24, Y+7	; 0x07
+    23e4:	88 23       	and	r24, r24
+    23e6:	59 f4       	brne	.+22     	; 0x23fe <OSTimeDlyHMSM+0x42>
+    23e8:	88 85       	ldd	r24, Y+8	; 0x08
+    23ea:	88 23       	and	r24, r24
+    23ec:	41 f4       	brne	.+16     	; 0x23fe <OSTimeDlyHMSM+0x42>
+    23ee:	89 85       	ldd	r24, Y+9	; 0x09
+    23f0:	88 23       	and	r24, r24
+    23f2:	29 f4       	brne	.+10     	; 0x23fe <OSTimeDlyHMSM+0x42>
+    23f4:	8a 85       	ldd	r24, Y+10	; 0x0a
+    23f6:	9b 85       	ldd	r25, Y+11	; 0x0b
+    23f8:	00 97       	sbiw	r24, 0x00	; 0
+    23fa:	09 f4       	brne	.+2      	; 0x23fe <OSTimeDlyHMSM+0x42>
+    23fc:	a3 c0       	rjmp	.+326    	; 0x2544 <OSTimeDlyHMSM+0x188>
+    23fe:	88 85       	ldd	r24, Y+8	; 0x08
+    2400:	8c 33       	cpi	r24, 0x3C	; 60
+    2402:	28 f0       	brcs	.+10     	; 0x240e <OSTimeDlyHMSM+0x52>
+    2404:	81 e5       	ldi	r24, 0x51	; 81
+    2406:	90 e0       	ldi	r25, 0x00	; 0
+    2408:	9d 87       	std	Y+13, r25	; 0x0d
+    240a:	8c 87       	std	Y+12, r24	; 0x0c
+    240c:	9f c0       	rjmp	.+318    	; 0x254c <OSTimeDlyHMSM+0x190>
+    240e:	89 85       	ldd	r24, Y+9	; 0x09
+    2410:	8c 33       	cpi	r24, 0x3C	; 60
+    2412:	28 f0       	brcs	.+10     	; 0x241e <OSTimeDlyHMSM+0x62>
+    2414:	82 e5       	ldi	r24, 0x52	; 82
+    2416:	90 e0       	ldi	r25, 0x00	; 0
+    2418:	9d 87       	std	Y+13, r25	; 0x0d
+    241a:	8c 87       	std	Y+12, r24	; 0x0c
+    241c:	97 c0       	rjmp	.+302    	; 0x254c <OSTimeDlyHMSM+0x190>
+    241e:	8a 85       	ldd	r24, Y+10	; 0x0a
+    2420:	9b 85       	ldd	r25, Y+11	; 0x0b
+    2422:	23 e0       	ldi	r18, 0x03	; 3
+    2424:	88 3e       	cpi	r24, 0xE8	; 232
+    2426:	92 07       	cpc	r25, r18
+    2428:	28 f0       	brcs	.+10     	; 0x2434 <OSTimeDlyHMSM+0x78>
+    242a:	83 e5       	ldi	r24, 0x53	; 83
+    242c:	90 e0       	ldi	r25, 0x00	; 0
+    242e:	9d 87       	std	Y+13, r25	; 0x0d
+    2430:	8c 87       	std	Y+12, r24	; 0x0c
+    2432:	8c c0       	rjmp	.+280    	; 0x254c <OSTimeDlyHMSM+0x190>
+    2434:	8f 81       	ldd	r24, Y+7	; 0x07
+    2436:	88 2f       	mov	r24, r24
+    2438:	90 e0       	ldi	r25, 0x00	; 0
+    243a:	a0 e0       	ldi	r26, 0x00	; 0
+    243c:	b0 e0       	ldi	r27, 0x00	; 0
+    243e:	20 e1       	ldi	r18, 0x10	; 16
+    2440:	3e e0       	ldi	r19, 0x0E	; 14
+    2442:	40 e0       	ldi	r20, 0x00	; 0
+    2444:	50 e0       	ldi	r21, 0x00	; 0
+    2446:	bc 01       	movw	r22, r24
+    2448:	cd 01       	movw	r24, r26
+    244a:	0e 94 e6 13 	call	0x27cc	; 0x27cc <__mulsi3>
+    244e:	7b 01       	movw	r14, r22
+    2450:	8c 01       	movw	r16, r24
+    2452:	88 85       	ldd	r24, Y+8	; 0x08
+    2454:	88 2f       	mov	r24, r24
+    2456:	90 e0       	ldi	r25, 0x00	; 0
+    2458:	a0 e0       	ldi	r26, 0x00	; 0
+    245a:	b0 e0       	ldi	r27, 0x00	; 0
+    245c:	2c e3       	ldi	r18, 0x3C	; 60
+    245e:	30 e0       	ldi	r19, 0x00	; 0
+    2460:	40 e0       	ldi	r20, 0x00	; 0
+    2462:	50 e0       	ldi	r21, 0x00	; 0
+    2464:	bc 01       	movw	r22, r24
+    2466:	cd 01       	movw	r24, r26
+    2468:	0e 94 e6 13 	call	0x27cc	; 0x27cc <__mulsi3>
+    246c:	dc 01       	movw	r26, r24
+    246e:	cb 01       	movw	r24, r22
+    2470:	a8 01       	movw	r20, r16
+    2472:	97 01       	movw	r18, r14
+    2474:	28 0f       	add	r18, r24
+    2476:	39 1f       	adc	r19, r25
+    2478:	4a 1f       	adc	r20, r26
+    247a:	5b 1f       	adc	r21, r27
+    247c:	89 85       	ldd	r24, Y+9	; 0x09
+    247e:	88 2f       	mov	r24, r24
+    2480:	90 e0       	ldi	r25, 0x00	; 0
+    2482:	a0 e0       	ldi	r26, 0x00	; 0
+    2484:	b0 e0       	ldi	r27, 0x00	; 0
+    2486:	82 0f       	add	r24, r18
+    2488:	93 1f       	adc	r25, r19
+    248a:	a4 1f       	adc	r26, r20
+    248c:	b5 1f       	adc	r27, r21
+    248e:	2d e3       	ldi	r18, 0x3D	; 61
+    2490:	30 e0       	ldi	r19, 0x00	; 0
+    2492:	40 e0       	ldi	r20, 0x00	; 0
+    2494:	50 e0       	ldi	r21, 0x00	; 0
+    2496:	bc 01       	movw	r22, r24
+    2498:	cd 01       	movw	r24, r26
+    249a:	0e 94 e6 13 	call	0x27cc	; 0x27cc <__mulsi3>
+    249e:	7b 01       	movw	r14, r22
+    24a0:	8c 01       	movw	r16, r24
+    24a2:	8a 85       	ldd	r24, Y+10	; 0x0a
+    24a4:	9b 85       	ldd	r25, Y+11	; 0x0b
+    24a6:	cc 01       	movw	r24, r24
+    24a8:	a0 e0       	ldi	r26, 0x00	; 0
+    24aa:	b0 e0       	ldi	r27, 0x00	; 0
+    24ac:	2d e3       	ldi	r18, 0x3D	; 61
+    24ae:	30 e0       	ldi	r19, 0x00	; 0
+    24b0:	40 e0       	ldi	r20, 0x00	; 0
+    24b2:	50 e0       	ldi	r21, 0x00	; 0
+    24b4:	bc 01       	movw	r22, r24
+    24b6:	cd 01       	movw	r24, r26
+    24b8:	0e 94 e6 13 	call	0x27cc	; 0x27cc <__mulsi3>
+    24bc:	dc 01       	movw	r26, r24
+    24be:	cb 01       	movw	r24, r22
+    24c0:	88 51       	subi	r24, 0x18	; 24
+    24c2:	9e 4f       	sbci	r25, 0xFE	; 254
+    24c4:	af 4f       	sbci	r26, 0xFF	; 255
+    24c6:	bf 4f       	sbci	r27, 0xFF	; 255
+    24c8:	28 ee       	ldi	r18, 0xE8	; 232
+    24ca:	33 e0       	ldi	r19, 0x03	; 3
+    24cc:	40 e0       	ldi	r20, 0x00	; 0
+    24ce:	50 e0       	ldi	r21, 0x00	; 0
+    24d0:	bc 01       	movw	r22, r24
+    24d2:	cd 01       	movw	r24, r26
+    24d4:	0e 94 05 14 	call	0x280a	; 0x280a <__udivmodsi4>
+    24d8:	da 01       	movw	r26, r20
+    24da:	c9 01       	movw	r24, r18
+    24dc:	8e 0d       	add	r24, r14
+    24de:	9f 1d       	adc	r25, r15
+    24e0:	a0 1f       	adc	r26, r16
+    24e2:	b1 1f       	adc	r27, r17
+    24e4:	8b 83       	std	Y+3, r24	; 0x03
+    24e6:	9c 83       	std	Y+4, r25	; 0x04
+    24e8:	ad 83       	std	Y+5, r26	; 0x05
+    24ea:	be 83       	std	Y+6, r27	; 0x06
+    24ec:	8b 81       	ldd	r24, Y+3	; 0x03
+    24ee:	9c 81       	ldd	r25, Y+4	; 0x04
+    24f0:	ad 81       	ldd	r26, Y+5	; 0x05
+    24f2:	be 81       	ldd	r27, Y+6	; 0x06
+    24f4:	cd 01       	movw	r24, r26
+    24f6:	aa 27       	eor	r26, r26
+    24f8:	bb 27       	eor	r27, r27
+    24fa:	9a 83       	std	Y+2, r25	; 0x02
+    24fc:	89 83       	std	Y+1, r24	; 0x01
+    24fe:	8b 81       	ldd	r24, Y+3	; 0x03
+    2500:	9c 81       	ldd	r25, Y+4	; 0x04
+    2502:	ad 81       	ldd	r26, Y+5	; 0x05
+    2504:	be 81       	ldd	r27, Y+6	; 0x06
+    2506:	a0 70       	andi	r26, 0x00	; 0
+    2508:	b0 70       	andi	r27, 0x00	; 0
+    250a:	8b 83       	std	Y+3, r24	; 0x03
+    250c:	9c 83       	std	Y+4, r25	; 0x04
+    250e:	ad 83       	std	Y+5, r26	; 0x05
+    2510:	be 83       	std	Y+6, r27	; 0x06
+    2512:	8b 81       	ldd	r24, Y+3	; 0x03
+    2514:	9c 81       	ldd	r25, Y+4	; 0x04
+    2516:	0e 94 88 11 	call	0x2310	; 0x2310 <OSTimeDly>
+    251a:	0d c0       	rjmp	.+26     	; 0x2536 <OSTimeDlyHMSM+0x17a>
+    251c:	80 e0       	ldi	r24, 0x00	; 0
+    251e:	90 e8       	ldi	r25, 0x80	; 128
+    2520:	0e 94 88 11 	call	0x2310	; 0x2310 <OSTimeDly>
+    2524:	80 e0       	ldi	r24, 0x00	; 0
+    2526:	90 e8       	ldi	r25, 0x80	; 128
+    2528:	0e 94 88 11 	call	0x2310	; 0x2310 <OSTimeDly>
+    252c:	89 81       	ldd	r24, Y+1	; 0x01
+    252e:	9a 81       	ldd	r25, Y+2	; 0x02
+    2530:	01 97       	sbiw	r24, 0x01	; 1
+    2532:	9a 83       	std	Y+2, r25	; 0x02
+    2534:	89 83       	std	Y+1, r24	; 0x01
+    2536:	89 81       	ldd	r24, Y+1	; 0x01
+    2538:	9a 81       	ldd	r25, Y+2	; 0x02
+    253a:	00 97       	sbiw	r24, 0x00	; 0
+    253c:	79 f7       	brne	.-34     	; 0x251c <OSTimeDlyHMSM+0x160>
+    253e:	1d 86       	std	Y+13, r1	; 0x0d
+    2540:	1c 86       	std	Y+12, r1	; 0x0c
+    2542:	04 c0       	rjmp	.+8      	; 0x254c <OSTimeDlyHMSM+0x190>
+    2544:	84 e5       	ldi	r24, 0x54	; 84
+    2546:	90 e0       	ldi	r25, 0x00	; 0
+    2548:	9d 87       	std	Y+13, r25	; 0x0d
+    254a:	8c 87       	std	Y+12, r24	; 0x0c
+    254c:	8c 85       	ldd	r24, Y+12	; 0x0c
+    254e:	9d 85       	ldd	r25, Y+13	; 0x0d
+    2550:	2d 96       	adiw	r28, 0x0d	; 13
+    2552:	0f b6       	in	r0, 0x3f	; 63
+    2554:	f8 94       	cli
+    2556:	de bf       	out	0x3e, r29	; 62
+    2558:	0f be       	out	0x3f, r0	; 63
+    255a:	cd bf       	out	0x3d, r28	; 61
+    255c:	df 91       	pop	r29
+    255e:	cf 91       	pop	r28
+    2560:	1f 91       	pop	r17
+    2562:	0f 91       	pop	r16
+    2564:	ff 90       	pop	r15
+    2566:	ef 90       	pop	r14
+    2568:	08 95       	ret
+
+0000256a <OSStartHighRdy>:
+    256a:	0e 94 97 02 	call	0x52e	; 0x52e <OSTaskSwHook>
+    256e:	00 91 33 03 	lds	r16, 0x0333
+    2572:	03 95       	inc	r16
+    2574:	00 93 33 03 	sts	0x0333, r16
+    2578:	e0 91 c8 03 	lds	r30, 0x03C8
+    257c:	f0 91 c9 03 	lds	r31, 0x03C9
+    2580:	c1 91       	ld	r28, Z+
+    2582:	cd bf       	out	0x3d, r28	; 61
+    2584:	d1 91       	ld	r29, Z+
+    2586:	de bf       	out	0x3e, r29	; 62
+    2588:	0f 91       	pop	r16
+    258a:	0f bf       	out	0x3f, r16	; 63
+    258c:	0f 91       	pop	r16
+    258e:	0b bf       	out	0x3b, r16	; 59
+    2590:	ff 91       	pop	r31
+    2592:	ef 91       	pop	r30
+    2594:	df 91       	pop	r29
+    2596:	cf 91       	pop	r28
+    2598:	bf 91       	pop	r27
+    259a:	af 91       	pop	r26
+    259c:	9f 91       	pop	r25
+    259e:	8f 91       	pop	r24
+    25a0:	7f 91       	pop	r23
+    25a2:	6f 91       	pop	r22
+    25a4:	5f 91       	pop	r21
+    25a6:	4f 91       	pop	r20
+    25a8:	3f 91       	pop	r19
+    25aa:	2f 91       	pop	r18
+    25ac:	1f 91       	pop	r17
+    25ae:	0f 91       	pop	r16
+    25b0:	ff 90       	pop	r15
+    25b2:	ef 90       	pop	r14
+    25b4:	df 90       	pop	r13
+    25b6:	cf 90       	pop	r12
+    25b8:	bf 90       	pop	r11
+    25ba:	af 90       	pop	r10
+    25bc:	9f 90       	pop	r9
+    25be:	8f 90       	pop	r8
+    25c0:	7f 90       	pop	r7
+    25c2:	6f 90       	pop	r6
+    25c4:	5f 90       	pop	r5
+    25c6:	4f 90       	pop	r4
+    25c8:	3f 90       	pop	r3
+    25ca:	2f 90       	pop	r2
+    25cc:	1f 90       	pop	r1
+    25ce:	0f 90       	pop	r0
+    25d0:	08 95       	ret
+
+000025d2 <OSCtxSw>:
+    25d2:	0f 92       	push	r0
+    25d4:	1f 92       	push	r1
+    25d6:	2f 92       	push	r2
+    25d8:	3f 92       	push	r3
+    25da:	4f 92       	push	r4
+    25dc:	5f 92       	push	r5
+    25de:	6f 92       	push	r6
+    25e0:	7f 92       	push	r7
+    25e2:	8f 92       	push	r8
+    25e4:	9f 92       	push	r9
+    25e6:	af 92       	push	r10
+    25e8:	bf 92       	push	r11
+    25ea:	cf 92       	push	r12
+    25ec:	df 92       	push	r13
+    25ee:	ef 92       	push	r14
+    25f0:	ff 92       	push	r15
+    25f2:	0f 93       	push	r16
+    25f4:	1f 93       	push	r17
+    25f6:	2f 93       	push	r18
+    25f8:	3f 93       	push	r19
+    25fa:	4f 93       	push	r20
+    25fc:	5f 93       	push	r21
+    25fe:	6f 93       	push	r22
+    2600:	7f 93       	push	r23
+    2602:	8f 93       	push	r24
+    2604:	9f 93       	push	r25
+    2606:	af 93       	push	r26
+    2608:	bf 93       	push	r27
+    260a:	cf 93       	push	r28
+    260c:	df 93       	push	r29
+    260e:	ef 93       	push	r30
+    2610:	ff 93       	push	r31
+    2612:	0b b7       	in	r16, 0x3b	; 59
+    2614:	0f 93       	push	r16
+    2616:	0f b7       	in	r16, 0x3f	; 63
+    2618:	0f 93       	push	r16
+    261a:	e0 91 d1 03 	lds	r30, 0x03D1
+    261e:	f0 91 d2 03 	lds	r31, 0x03D2
+    2622:	cd b7       	in	r28, 0x3d	; 61
+    2624:	c1 93       	st	Z+, r28
+    2626:	de b7       	in	r29, 0x3e	; 62
+    2628:	d1 93       	st	Z+, r29
+    262a:	0e 94 97 02 	call	0x52e	; 0x52e <OSTaskSwHook>
+    262e:	00 91 38 03 	lds	r16, 0x0338
+    2632:	00 93 39 03 	sts	0x0339, r16
+    2636:	e0 91 c8 03 	lds	r30, 0x03C8
+    263a:	f0 91 c9 03 	lds	r31, 0x03C9
+    263e:	e0 93 d1 03 	sts	0x03D1, r30
+    2642:	f0 93 d2 03 	sts	0x03D2, r31
+    2646:	c1 91       	ld	r28, Z+
+    2648:	cd bf       	out	0x3d, r28	; 61
+    264a:	d1 91       	ld	r29, Z+
+    264c:	de bf       	out	0x3e, r29	; 62
+    264e:	0f 91       	pop	r16
+    2650:	0f bf       	out	0x3f, r16	; 63
+    2652:	0f 91       	pop	r16
+    2654:	0b bf       	out	0x3b, r16	; 59
+    2656:	ff 91       	pop	r31
+    2658:	ef 91       	pop	r30
+    265a:	df 91       	pop	r29
+    265c:	cf 91       	pop	r28
+    265e:	bf 91       	pop	r27
+    2660:	af 91       	pop	r26
+    2662:	9f 91       	pop	r25
+    2664:	8f 91       	pop	r24
+    2666:	7f 91       	pop	r23
+    2668:	6f 91       	pop	r22
+    266a:	5f 91       	pop	r21
+    266c:	4f 91       	pop	r20
+    266e:	3f 91       	pop	r19
+    2670:	2f 91       	pop	r18
+    2672:	1f 91       	pop	r17
+    2674:	0f 91       	pop	r16
+    2676:	ff 90       	pop	r15
+    2678:	ef 90       	pop	r14
+    267a:	df 90       	pop	r13
+    267c:	cf 90       	pop	r12
+    267e:	bf 90       	pop	r11
+    2680:	af 90       	pop	r10
+    2682:	9f 90       	pop	r9
+    2684:	8f 90       	pop	r8
+    2686:	7f 90       	pop	r7
+    2688:	6f 90       	pop	r6
+    268a:	5f 90       	pop	r5
+    268c:	4f 90       	pop	r4
+    268e:	3f 90       	pop	r3
+    2690:	2f 90       	pop	r2
+    2692:	1f 90       	pop	r1
+    2694:	0f 90       	pop	r0
+    2696:	08 95       	ret
+
+00002698 <OSIntCtxSw>:
+    2698:	0e 94 97 02 	call	0x52e	; 0x52e <OSTaskSwHook>
+    269c:	00 91 38 03 	lds	r16, 0x0338
+    26a0:	00 93 39 03 	sts	0x0339, r16
+    26a4:	e0 91 c8 03 	lds	r30, 0x03C8
+    26a8:	f0 91 c9 03 	lds	r31, 0x03C9
+    26ac:	e0 93 d1 03 	sts	0x03D1, r30
+    26b0:	f0 93 d2 03 	sts	0x03D2, r31
+    26b4:	c1 91       	ld	r28, Z+
+    26b6:	cd bf       	out	0x3d, r28	; 61
+    26b8:	d1 91       	ld	r29, Z+
+    26ba:	de bf       	out	0x3e, r29	; 62
+    26bc:	0f 91       	pop	r16
+    26be:	0f bf       	out	0x3f, r16	; 63
+    26c0:	0f 91       	pop	r16
+    26c2:	0b bf       	out	0x3b, r16	; 59
+    26c4:	ff 91       	pop	r31
+    26c6:	ef 91       	pop	r30
+    26c8:	df 91       	pop	r29
+    26ca:	cf 91       	pop	r28
+    26cc:	bf 91       	pop	r27
+    26ce:	af 91       	pop	r26
+    26d0:	9f 91       	pop	r25
+    26d2:	8f 91       	pop	r24
+    26d4:	7f 91       	pop	r23
+    26d6:	6f 91       	pop	r22
+    26d8:	5f 91       	pop	r21
+    26da:	4f 91       	pop	r20
+    26dc:	3f 91       	pop	r19
+    26de:	2f 91       	pop	r18
+    26e0:	1f 91       	pop	r17
+    26e2:	0f 91       	pop	r16
+    26e4:	ff 90       	pop	r15
+    26e6:	ef 90       	pop	r14
+    26e8:	df 90       	pop	r13
+    26ea:	cf 90       	pop	r12
+    26ec:	bf 90       	pop	r11
+    26ee:	af 90       	pop	r10
+    26f0:	9f 90       	pop	r9
+    26f2:	8f 90       	pop	r8
+    26f4:	7f 90       	pop	r7
+    26f6:	6f 90       	pop	r6
+    26f8:	5f 90       	pop	r5
+    26fa:	4f 90       	pop	r4
+    26fc:	3f 90       	pop	r3
+    26fe:	2f 90       	pop	r2
+    2700:	1f 90       	pop	r1
+    2702:	0f 90       	pop	r0
+    2704:	08 95       	ret
+
+00002706 <OSTickISR>:
+    2706:	0f 92       	push	r0
+    2708:	1f 92       	push	r1
+    270a:	2f 92       	push	r2
+    270c:	3f 92       	push	r3
+    270e:	4f 92       	push	r4
+    2710:	5f 92       	push	r5
+    2712:	6f 92       	push	r6
+    2714:	7f 92       	push	r7
+    2716:	8f 92       	push	r8
+    2718:	9f 92       	push	r9
+    271a:	af 92       	push	r10
+    271c:	bf 92       	push	r11
+    271e:	cf 92       	push	r12
+    2720:	df 92       	push	r13
+    2722:	ef 92       	push	r14
+    2724:	ff 92       	push	r15
+    2726:	0f 93       	push	r16
+    2728:	1f 93       	push	r17
+    272a:	2f 93       	push	r18
+    272c:	3f 93       	push	r19
+    272e:	4f 93       	push	r20
+    2730:	5f 93       	push	r21
+    2732:	6f 93       	push	r22
+    2734:	7f 93       	push	r23
+    2736:	8f 93       	push	r24
+    2738:	9f 93       	push	r25
+    273a:	af 93       	push	r26
+    273c:	bf 93       	push	r27
+    273e:	cf 93       	push	r28
+    2740:	df 93       	push	r29
+    2742:	ef 93       	push	r30
+    2744:	ff 93       	push	r31
+    2746:	0b b7       	in	r16, 0x3b	; 59
+    2748:	0f 93       	push	r16
+    274a:	0f b7       	in	r16, 0x3f	; 63
+    274c:	00 68       	ori	r16, 0x80	; 128
+    274e:	0f 93       	push	r16
+    2750:	00 91 d0 03 	lds	r16, 0x03D0
+    2754:	03 95       	inc	r16
+    2756:	00 93 d0 03 	sts	0x03D0, r16
+    275a:	01 30       	cpi	r16, 0x01	; 1
+    275c:	41 f4       	brne	.+16     	; 0x276e <_not_first_int>
+    275e:	cd b7       	in	r28, 0x3d	; 61
+    2760:	de b7       	in	r29, 0x3e	; 62
+    2762:	e0 91 d1 03 	lds	r30, 0x03D1
+    2766:	f0 91 d2 03 	lds	r31, 0x03D2
+    276a:	c1 93       	st	Z+, r28
+    276c:	d1 93       	st	Z+, r29
+
+0000276e <_not_first_int>:
+    276e:	00 e0       	ldi	r16, 0x00	; 0
+    2770:	02 bf       	out	0x32, r16	; 50
+    2772:	f0 e0       	ldi	r31, 0x00	; 0
+    2774:	1f 2e       	mov	r1, r31
+    2776:	78 94       	sei
+    2778:	0e 94 29 04 	call	0x852	; 0x852 <OSTimeTick>
+    277c:	00 00       	nop
+    277e:	0e 94 01 03 	call	0x602	; 0x602 <OSIntExit>
+    2782:	0f 91       	pop	r16
+    2784:	0f bf       	out	0x3f, r16	; 63
+    2786:	0f 91       	pop	r16
+    2788:	0b bf       	out	0x3b, r16	; 59
+    278a:	ff 91       	pop	r31
+    278c:	ef 91       	pop	r30
+    278e:	df 91       	pop	r29
+    2790:	cf 91       	pop	r28
+    2792:	bf 91       	pop	r27
+    2794:	af 91       	pop	r26
+    2796:	9f 91       	pop	r25
+    2798:	8f 91       	pop	r24
+    279a:	7f 91       	pop	r23
+    279c:	6f 91       	pop	r22
+    279e:	5f 91       	pop	r21
+    27a0:	4f 91       	pop	r20
+    27a2:	3f 91       	pop	r19
+    27a4:	2f 91       	pop	r18
+    27a6:	1f 91       	pop	r17
+    27a8:	0f 91       	pop	r16
+    27aa:	ff 90       	pop	r15
+    27ac:	ef 90       	pop	r14
+    27ae:	df 90       	pop	r13
+    27b0:	cf 90       	pop	r12
+    27b2:	bf 90       	pop	r11
+    27b4:	af 90       	pop	r10
+    27b6:	9f 90       	pop	r9
+    27b8:	8f 90       	pop	r8
+    27ba:	7f 90       	pop	r7
+    27bc:	6f 90       	pop	r6
+    27be:	5f 90       	pop	r5
+    27c0:	4f 90       	pop	r4
+    27c2:	3f 90       	pop	r3
+    27c4:	2f 90       	pop	r2
+    27c6:	1f 90       	pop	r1
+    27c8:	0f 90       	pop	r0
+    27ca:	08 95       	ret
+
+000027cc <__mulsi3>:
+    27cc:	62 9f       	mul	r22, r18
+    27ce:	d0 01       	movw	r26, r0
+    27d0:	73 9f       	mul	r23, r19
+    27d2:	f0 01       	movw	r30, r0
+    27d4:	82 9f       	mul	r24, r18
+    27d6:	e0 0d       	add	r30, r0
+    27d8:	f1 1d       	adc	r31, r1
+    27da:	64 9f       	mul	r22, r20
+    27dc:	e0 0d       	add	r30, r0
+    27de:	f1 1d       	adc	r31, r1
+    27e0:	92 9f       	mul	r25, r18
+    27e2:	f0 0d       	add	r31, r0
+    27e4:	83 9f       	mul	r24, r19
+    27e6:	f0 0d       	add	r31, r0
+    27e8:	74 9f       	mul	r23, r20
+    27ea:	f0 0d       	add	r31, r0
+    27ec:	65 9f       	mul	r22, r21
+    27ee:	f0 0d       	add	r31, r0
+    27f0:	99 27       	eor	r25, r25
+    27f2:	72 9f       	mul	r23, r18
+    27f4:	b0 0d       	add	r27, r0
+    27f6:	e1 1d       	adc	r30, r1
+    27f8:	f9 1f       	adc	r31, r25
+    27fa:	63 9f       	mul	r22, r19
+    27fc:	b0 0d       	add	r27, r0
+    27fe:	e1 1d       	adc	r30, r1
+    2800:	f9 1f       	adc	r31, r25
+    2802:	bd 01       	movw	r22, r26
+    2804:	cf 01       	movw	r24, r30
+    2806:	11 24       	eor	r1, r1
+    2808:	08 95       	ret
+
+0000280a <__udivmodsi4>:
+    280a:	a1 e2       	ldi	r26, 0x21	; 33
+    280c:	1a 2e       	mov	r1, r26
+    280e:	aa 1b       	sub	r26, r26
+    2810:	bb 1b       	sub	r27, r27
+    2812:	fd 01       	movw	r30, r26
+    2814:	0d c0       	rjmp	.+26     	; 0x2830 <__udivmodsi4_ep>
+
+00002816 <__udivmodsi4_loop>:
+    2816:	aa 1f       	adc	r26, r26
+    2818:	bb 1f       	adc	r27, r27
+    281a:	ee 1f       	adc	r30, r30
+    281c:	ff 1f       	adc	r31, r31
+    281e:	a2 17       	cp	r26, r18
+    2820:	b3 07       	cpc	r27, r19
+    2822:	e4 07       	cpc	r30, r20
+    2824:	f5 07       	cpc	r31, r21
+    2826:	20 f0       	brcs	.+8      	; 0x2830 <__udivmodsi4_ep>
+    2828:	a2 1b       	sub	r26, r18
+    282a:	b3 0b       	sbc	r27, r19
+    282c:	e4 0b       	sbc	r30, r20
+    282e:	f5 0b       	sbc	r31, r21
+
+00002830 <__udivmodsi4_ep>:
+    2830:	66 1f       	adc	r22, r22
+    2832:	77 1f       	adc	r23, r23
+    2834:	88 1f       	adc	r24, r24
+    2836:	99 1f       	adc	r25, r25
+    2838:	1a 94       	dec	r1
+    283a:	69 f7       	brne	.-38     	; 0x2816 <__udivmodsi4_loop>
+    283c:	60 95       	com	r22
+    283e:	70 95       	com	r23
+    2840:	80 95       	com	r24
+    2842:	90 95       	com	r25
+    2844:	9b 01       	movw	r18, r22
+    2846:	ac 01       	movw	r20, r24
+    2848:	bd 01       	movw	r22, r26
+    284a:	cf 01       	movw	r24, r30
+    284c:	08 95       	ret
+
+0000284e <_exit>:
+    284e:	ff cf       	rjmp	.-2      	; 0x284e <_exit>

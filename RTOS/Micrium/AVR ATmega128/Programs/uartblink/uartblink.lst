@@ -1,0 +1,191 @@
+GAS LISTING C:\Users\hp\AppData\Local\Temp/cc6LJ8DZ.s 			page 1
+
+
+   1               		.file	"uartblink.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               	.global	a
+  10               	.global	a
+  11               		.section .bss
+  12               		.type	a, @object
+  13               		.size	a, 1
+  14               	a:
+  15 0000 00        		.skip 1,0
+  16               		.text
+  17               	.global	main
+  18               		.type	main, @function
+  19               	main:
+  20               	/* prologue: frame size=1 */
+  21 0000 CF93      		push r28
+  22 0002 DF93      		push r29
+  23 0004 CDB7      		in r28,__SP_L__
+  24 0006 DEB7      		in r29,__SP_H__
+  25 0008 2197      		sbiw r28,1
+  26 000a 0FB6      		in __tmp_reg__,__SREG__
+  27 000c F894      		cli
+  28 000e DEBF      		out __SP_H__,r29
+  29 0010 0FBE      		out __SREG__,__tmp_reg__
+  30 0012 CDBF      		out __SP_L__,r28
+  31               	/* prologue end (size=10) */
+  32 0014 EAE3      		ldi r30,lo8(58)
+  33 0016 F0E0      		ldi r31,hi8(58)
+  34 0018 8FEF      		ldi r24,lo8(-1)
+  35 001a 8083      		st Z,r24
+  36 001c EBE3      		ldi r30,lo8(59)
+  37 001e F0E0      		ldi r31,hi8(59)
+  38 0020 1082      		st Z,__zero_reg__
+  39 0022 E3E5      		ldi r30,lo8(83)
+  40 0024 F0E0      		ldi r31,hi8(83)
+  41 0026 87E0      		ldi r24,lo8(7)
+  42 0028 8083      		st Z,r24
+  43 002a E7E5      		ldi r30,lo8(87)
+  44 002c F0E0      		ldi r31,hi8(87)
+  45 002e 81E0      		ldi r24,lo8(1)
+  46 0030 8083      		st Z,r24
+  47 0032 E9E2      		ldi r30,lo8(41)
+  48 0034 F0E0      		ldi r31,hi8(41)
+  49 0036 87E6      		ldi r24,lo8(103)
+  50 0038 8083      		st Z,r24
+  51 003a EBE2      		ldi r30,lo8(43)
+  52 003c F0E0      		ldi r31,hi8(43)
+  53 003e 1082      		st Z,__zero_reg__
+  54 0040 EAE2      		ldi r30,lo8(42)
+  55 0042 F0E0      		ldi r31,hi8(42)
+  56 0044 88E1      		ldi r24,lo8(24)
+  57 0046 8083      		st Z,r24
+GAS LISTING C:\Users\hp\AppData\Local\Temp/cc6LJ8DZ.s 			page 2
+
+
+  58 0048 E5E9      		ldi r30,lo8(149)
+  59 004a F0E0      		ldi r31,hi8(149)
+  60 004c 86E0      		ldi r24,lo8(6)
+  61 004e 8083      		st Z,r24
+  62 0050 0E94 0000 		call OSInit
+  63 0054 80E0      		ldi r24,lo8(s1+127)
+  64 0056 90E0      		ldi r25,hi8(s1+127)
+  65 0058 E0E0      		ldi r30,lo8(gs(blink))
+  66 005a F0E0      		ldi r31,hi8(gs(blink))
+  67 005c 24E0      		ldi r18,lo8(4)
+  68 005e AC01      		movw r20,r24
+  69 0060 6FEF      		ldi r22,lo8(255)
+  70 0062 70E0      		ldi r23,hi8(255)
+  71 0064 CF01      		movw r24,r30
+  72 0066 0E94 0000 		call OSTaskCreate
+  73 006a 80E0      		ldi r24,lo8(s2+127)
+  74 006c 90E0      		ldi r25,hi8(s2+127)
+  75 006e E0E0      		ldi r30,lo8(gs(uart))
+  76 0070 F0E0      		ldi r31,hi8(gs(uart))
+  77 0072 25E0      		ldi r18,lo8(5)
+  78 0074 AC01      		movw r20,r24
+  79 0076 6FEF      		ldi r22,lo8(255)
+  80 0078 70E0      		ldi r23,hi8(255)
+  81 007a CF01      		movw r24,r30
+  82 007c 0E94 0000 		call OSTaskCreate
+  83 0080 0E94 0000 		call OSStart
+  84               	/* epilogue: frame size=1 */
+  85 0084 2196      		adiw r28,1
+  86 0086 0FB6      		in __tmp_reg__,__SREG__
+  87 0088 F894      		cli
+  88 008a DEBF      		out __SP_H__,r29
+  89 008c 0FBE      		out __SREG__,__tmp_reg__
+  90 008e CDBF      		out __SP_L__,r28
+  91 0090 DF91      		pop r29
+  92 0092 CF91      		pop r28
+  93 0094 0895      		ret
+  94               	/* epilogue end (size=9) */
+  95               	/* function main size 75 (56) */
+  96               		.size	main, .-main
+  97               	.global	blink
+  98               		.type	blink, @function
+  99               	blink:
+ 100               	/* prologue: frame size=0 */
+ 101 0096 CF93      		push r28
+ 102 0098 DF93      		push r29
+ 103 009a CDB7      		in r28,__SP_L__
+ 104 009c DEB7      		in r29,__SP_H__
+ 105               	/* prologue end (size=4) */
+ 106               	.L4:
+ 107 009e 8091 0000 		lds r24,a
+ 108 00a2 8095      		com r24
+ 109 00a4 8093 0000 		sts a,r24
+ 110 00a8 EBE3      		ldi r30,lo8(59)
+ 111 00aa F0E0      		ldi r31,hi8(59)
+ 112 00ac 8091 0000 		lds r24,a
+ 113 00b0 8083      		st Z,r24
+ 114 00b2 8DE3      		ldi r24,lo8(61)
+GAS LISTING C:\Users\hp\AppData\Local\Temp/cc6LJ8DZ.s 			page 3
+
+
+ 115 00b4 90E0      		ldi r25,hi8(61)
+ 116 00b6 0E94 0000 		call OSTimeDly
+ 117 00ba 00C0      		rjmp .L4
+ 118               	/* epilogue: frame size=0 */
+ 119               	/* epilogue: noreturn */
+ 120               	/* epilogue end (size=0) */
+ 121               	/* function blink size 19 (15) */
+ 122               		.size	blink, .-blink
+ 123               	.global	uart
+ 124               		.type	uart, @function
+ 125               	uart:
+ 126               	/* prologue: frame size=0 */
+ 127 00bc CF93      		push r28
+ 128 00be DF93      		push r29
+ 129 00c0 CDB7      		in r28,__SP_L__
+ 130 00c2 DEB7      		in r29,__SP_H__
+ 131               	/* prologue end (size=4) */
+ 132               	.L7:
+ 133 00c4 ECE2      		ldi r30,lo8(44)
+ 134 00c6 F0E0      		ldi r31,hi8(44)
+ 135 00c8 81E4      		ldi r24,lo8(65)
+ 136 00ca 8083      		st Z,r24
+ 137               	.L8:
+ 138 00cc EBE2      		ldi r30,lo8(43)
+ 139 00ce F0E0      		ldi r31,hi8(43)
+ 140 00d0 8081      		ld r24,Z
+ 141 00d2 882F      		mov r24,r24
+ 142 00d4 90E0      		ldi r25,lo8(0)
+ 143 00d6 8074      		andi r24,lo8(64)
+ 144 00d8 9070      		andi r25,hi8(64)
+ 145 00da 0097      		sbiw r24,0
+ 146 00dc 01F0      		breq .L8
+ 147 00de 8DE3      		ldi r24,lo8(61)
+ 148 00e0 90E0      		ldi r25,hi8(61)
+ 149 00e2 0E94 0000 		call OSTimeDly
+ 150 00e6 00C0      		rjmp .L7
+ 151               	/* epilogue: frame size=0 */
+ 152               	/* epilogue: noreturn */
+ 153               	/* epilogue end (size=0) */
+ 154               	/* function uart size 22 (18) */
+ 155               		.size	uart, .-uart
+ 156               		.comm s1,128,1
+ 157               		.comm s2,128,1
+ 158               	/* File "uartblink.c": code  116 = 0x0074 (  89), prologues  18, epilogues   9 */
+GAS LISTING C:\Users\hp\AppData\Local\Temp/cc6LJ8DZ.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 uartblink.c
+C:\Users\hp\AppData\Local\Temp/cc6LJ8DZ.s:2      *ABS*:0000003f __SREG__
+C:\Users\hp\AppData\Local\Temp/cc6LJ8DZ.s:3      *ABS*:0000003e __SP_H__
+C:\Users\hp\AppData\Local\Temp/cc6LJ8DZ.s:4      *ABS*:0000003d __SP_L__
+C:\Users\hp\AppData\Local\Temp/cc6LJ8DZ.s:5      *ABS*:00000000 __tmp_reg__
+C:\Users\hp\AppData\Local\Temp/cc6LJ8DZ.s:6      *ABS*:00000001 __zero_reg__
+C:\Users\hp\AppData\Local\Temp/cc6LJ8DZ.s:14     .bss:00000000 a
+C:\Users\hp\AppData\Local\Temp/cc6LJ8DZ.s:19     .text:00000000 main
+                            *COM*:00000080 s1
+C:\Users\hp\AppData\Local\Temp/cc6LJ8DZ.s:99     .text:00000096 blink
+                            *COM*:00000080 s2
+C:\Users\hp\AppData\Local\Temp/cc6LJ8DZ.s:125    .text:000000bc uart
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+OSInit
+OSTaskCreate
+OSStart
+OSTimeDly
