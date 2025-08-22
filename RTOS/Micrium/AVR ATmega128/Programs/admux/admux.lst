@@ -1,0 +1,377 @@
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s 			page 1
+
+
+   1               		.file	"admux.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.text
+  10               	.global	main
+  11               		.type	main, @function
+  12               	main:
+  13               	/* prologue: frame size=0 */
+  14 0000 CF93      		push r28
+  15 0002 DF93      		push r29
+  16 0004 CDB7      		in r28,__SP_L__
+  17 0006 DEB7      		in r29,__SP_H__
+  18               	/* prologue end (size=4) */
+  19 0008 E7E2      		ldi r30,lo8(39)
+  20 000a F0E0      		ldi r31,hi8(39)
+  21 000c 1082      		st Z,__zero_reg__
+  22 000e E6E2      		ldi r30,lo8(38)
+  23 0010 F0E0      		ldi r31,hi8(38)
+  24 0012 87E8      		ldi r24,lo8(-121)
+  25 0014 8083      		st Z,r24
+  26 0016 E9E2      		ldi r30,lo8(41)
+  27 0018 F0E0      		ldi r31,hi8(41)
+  28 001a 87E6      		ldi r24,lo8(103)
+  29 001c 8083      		st Z,r24
+  30 001e EBE2      		ldi r30,lo8(43)
+  31 0020 F0E0      		ldi r31,hi8(43)
+  32 0022 1082      		st Z,__zero_reg__
+  33 0024 EAE2      		ldi r30,lo8(42)
+  34 0026 F0E0      		ldi r31,hi8(42)
+  35 0028 88E1      		ldi r24,lo8(24)
+  36 002a 8083      		st Z,r24
+  37 002c E5E9      		ldi r30,lo8(149)
+  38 002e F0E0      		ldi r31,hi8(149)
+  39 0030 86E0      		ldi r24,lo8(6)
+  40 0032 8083      		st Z,r24
+  41 0034 E3E5      		ldi r30,lo8(83)
+  42 0036 F0E0      		ldi r31,hi8(83)
+  43 0038 87E0      		ldi r24,lo8(7)
+  44 003a 8083      		st Z,r24
+  45 003c E7E5      		ldi r30,lo8(87)
+  46 003e F0E0      		ldi r31,hi8(87)
+  47 0040 81E0      		ldi r24,lo8(1)
+  48 0042 8083      		st Z,r24
+  49 0044 0E94 0000 		call OSInit
+  50 0048 80E0      		ldi r24,lo8(s1+127)
+  51 004a 90E0      		ldi r25,hi8(s1+127)
+  52 004c E0E0      		ldi r30,lo8(gs(adc1))
+  53 004e F0E0      		ldi r31,hi8(gs(adc1))
+  54 0050 24E0      		ldi r18,lo8(4)
+  55 0052 AC01      		movw r20,r24
+  56 0054 6FEF      		ldi r22,lo8(255)
+  57 0056 70E0      		ldi r23,hi8(255)
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s 			page 2
+
+
+  58 0058 CF01      		movw r24,r30
+  59 005a 0E94 0000 		call OSTaskCreate
+  60 005e 80E0      		ldi r24,lo8(s2+127)
+  61 0060 90E0      		ldi r25,hi8(s2+127)
+  62 0062 E0E0      		ldi r30,lo8(gs(adc2))
+  63 0064 F0E0      		ldi r31,hi8(gs(adc2))
+  64 0066 25E0      		ldi r18,lo8(5)
+  65 0068 AC01      		movw r20,r24
+  66 006a 6FEF      		ldi r22,lo8(255)
+  67 006c 70E0      		ldi r23,hi8(255)
+  68 006e CF01      		movw r24,r30
+  69 0070 0E94 0000 		call OSTaskCreate
+  70 0074 0E94 0000 		call OSStart
+  71               	/* epilogue: frame size=0 */
+  72 0078 DF91      		pop r29
+  73 007a CF91      		pop r28
+  74 007c 0895      		ret
+  75               	/* epilogue end (size=3) */
+  76               	/* function main size 63 (56) */
+  77               		.size	main, .-main
+  78               		.data
+  79               	.LC0:
+  80 0000 6164 6331 		.string	"adc1=%d\r"
+  80      3D25 640D 
+  80      00
+  81               		.text
+  82               	.global	adc1
+  83               		.type	adc1, @function
+  84               	adc1:
+  85               	/* prologue: frame size=2 */
+  86 007e CF93      		push r28
+  87 0080 DF93      		push r29
+  88 0082 CDB7      		in r28,__SP_L__
+  89 0084 DEB7      		in r29,__SP_H__
+  90 0086 2297      		sbiw r28,2
+  91 0088 0FB6      		in __tmp_reg__,__SREG__
+  92 008a F894      		cli
+  93 008c DEBF      		out __SP_H__,r29
+  94 008e 0FBE      		out __SREG__,__tmp_reg__
+  95 0090 CDBF      		out __SP_L__,r28
+  96               	/* prologue end (size=10) */
+  97               	.L4:
+  98 0092 E7E2      		ldi r30,lo8(39)
+  99 0094 F0E0      		ldi r31,hi8(39)
+ 100 0096 1082      		st Z,__zero_reg__
+ 101 0098 A6E2      		ldi r26,lo8(38)
+ 102 009a B0E0      		ldi r27,hi8(38)
+ 103 009c E6E2      		ldi r30,lo8(38)
+ 104 009e F0E0      		ldi r31,hi8(38)
+ 105 00a0 8081      		ld r24,Z
+ 106 00a2 8064      		ori r24,lo8(64)
+ 107 00a4 8C93      		st X,r24
+ 108               	.L5:
+ 109 00a6 E6E2      		ldi r30,lo8(38)
+ 110 00a8 F0E0      		ldi r31,hi8(38)
+ 111 00aa 8081      		ld r24,Z
+ 112 00ac 882F      		mov r24,r24
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s 			page 3
+
+
+ 113 00ae 90E0      		ldi r25,lo8(0)
+ 114 00b0 8074      		andi r24,lo8(64)
+ 115 00b2 9070      		andi r25,hi8(64)
+ 116 00b4 0097      		sbiw r24,0
+ 117 00b6 01F4      		brne .L5
+ 118 00b8 E4E2      		ldi r30,lo8(36)
+ 119 00ba F0E0      		ldi r31,hi8(36)
+ 120 00bc 8081      		ld r24,Z
+ 121 00be 282F      		mov r18,r24
+ 122 00c0 30E0      		ldi r19,lo8(0)
+ 123 00c2 E5E2      		ldi r30,lo8(37)
+ 124 00c4 F0E0      		ldi r31,hi8(37)
+ 125 00c6 8081      		ld r24,Z
+ 126 00c8 882F      		mov r24,r24
+ 127 00ca 90E0      		ldi r25,lo8(0)
+ 128 00cc 982F      		mov r25,r24
+ 129 00ce 8827      		clr r24
+ 130 00d0 822B      		or r24,r18
+ 131 00d2 932B      		or r25,r19
+ 132 00d4 9093 0000 		sts (result)+1,r25
+ 133 00d8 8093 0000 		sts result,r24
+ 134 00dc 8091 0000 		lds r24,result
+ 135 00e0 9091 0000 		lds r25,(result)+1
+ 136 00e4 9F93      		push r25
+ 137 00e6 8F93      		push r24
+ 138 00e8 80E0      		ldi r24,lo8(.LC0)
+ 139 00ea 90E0      		ldi r25,hi8(.LC0)
+ 140 00ec 9F93      		push r25
+ 141 00ee 8F93      		push r24
+ 142 00f0 80E0      		ldi r24,lo8(d)
+ 143 00f2 90E0      		ldi r25,hi8(d)
+ 144 00f4 9F93      		push r25
+ 145 00f6 8F93      		push r24
+ 146 00f8 0E94 0000 		call sprintf
+ 147 00fc 8DB7      		in r24,__SP_L__
+ 148 00fe 9EB7      		in r25,__SP_H__
+ 149 0100 0696      		adiw r24,6
+ 150 0102 0FB6      		in __tmp_reg__,__SREG__
+ 151 0104 F894      		cli
+ 152 0106 9EBF      		out __SP_H__,r25
+ 153 0108 0FBE      		out __SREG__,__tmp_reg__
+ 154 010a 8DBF      		out __SP_L__,r24
+ 155 010c 8DE3      		ldi r24,lo8(61)
+ 156 010e 90E0      		ldi r25,hi8(61)
+ 157 0110 0E94 0000 		call OSTimeDly
+ 158 0114 1A82      		std Y+2,__zero_reg__
+ 159 0116 1982      		std Y+1,__zero_reg__
+ 160 0118 00C0      		rjmp .L7
+ 161               	.L8:
+ 162 011a ACE2      		ldi r26,lo8(44)
+ 163 011c B0E0      		ldi r27,hi8(44)
+ 164 011e 8981      		ldd r24,Y+1
+ 165 0120 9A81      		ldd r25,Y+2
+ 166 0122 FC01      		movw r30,r24
+ 167 0124 E050      		subi r30,lo8(-(d))
+ 168 0126 F040      		sbci r31,hi8(-(d))
+ 169 0128 8081      		ld r24,Z
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s 			page 4
+
+
+ 170 012a 8C93      		st X,r24
+ 171               	.L9:
+ 172 012c EBE2      		ldi r30,lo8(43)
+ 173 012e F0E0      		ldi r31,hi8(43)
+ 174 0130 8081      		ld r24,Z
+ 175 0132 882F      		mov r24,r24
+ 176 0134 90E0      		ldi r25,lo8(0)
+ 177 0136 8072      		andi r24,lo8(32)
+ 178 0138 9070      		andi r25,hi8(32)
+ 179 013a 0097      		sbiw r24,0
+ 180 013c 01F0      		breq .L9
+ 181 013e 8981      		ldd r24,Y+1
+ 182 0140 9A81      		ldd r25,Y+2
+ 183 0142 0196      		adiw r24,1
+ 184 0144 9A83      		std Y+2,r25
+ 185 0146 8983      		std Y+1,r24
+ 186               	.L7:
+ 187 0148 8981      		ldd r24,Y+1
+ 188 014a 9A81      		ldd r25,Y+2
+ 189 014c FC01      		movw r30,r24
+ 190 014e E050      		subi r30,lo8(-(d))
+ 191 0150 F040      		sbci r31,hi8(-(d))
+ 192 0152 8081      		ld r24,Z
+ 193 0154 8823      		tst r24
+ 194 0156 01F4      		brne .L8
+ 195 0158 00C0      		rjmp .L4
+ 196               	/* epilogue: frame size=2 */
+ 197               	/* epilogue: noreturn */
+ 198               	/* epilogue end (size=0) */
+ 199               	/* function adc1 size 110 (100) */
+ 200               		.size	adc1, .-adc1
+ 201               		.data
+ 202               	.LC1:
+ 203 0009 6164 6332 		.string	"adc2=%d\r"
+ 203      3D25 640D 
+ 203      00
+ 204               		.text
+ 205               	.global	adc2
+ 206               		.type	adc2, @function
+ 207               	adc2:
+ 208               	/* prologue: frame size=2 */
+ 209 015a CF93      		push r28
+ 210 015c DF93      		push r29
+ 211 015e CDB7      		in r28,__SP_L__
+ 212 0160 DEB7      		in r29,__SP_H__
+ 213 0162 2297      		sbiw r28,2
+ 214 0164 0FB6      		in __tmp_reg__,__SREG__
+ 215 0166 F894      		cli
+ 216 0168 DEBF      		out __SP_H__,r29
+ 217 016a 0FBE      		out __SREG__,__tmp_reg__
+ 218 016c CDBF      		out __SP_L__,r28
+ 219               	/* prologue end (size=10) */
+ 220               	.L14:
+ 221 016e E7E2      		ldi r30,lo8(39)
+ 222 0170 F0E0      		ldi r31,hi8(39)
+ 223 0172 81E0      		ldi r24,lo8(1)
+ 224 0174 8083      		st Z,r24
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s 			page 5
+
+
+ 225 0176 A6E2      		ldi r26,lo8(38)
+ 226 0178 B0E0      		ldi r27,hi8(38)
+ 227 017a E6E2      		ldi r30,lo8(38)
+ 228 017c F0E0      		ldi r31,hi8(38)
+ 229 017e 8081      		ld r24,Z
+ 230 0180 8064      		ori r24,lo8(64)
+ 231 0182 8C93      		st X,r24
+ 232               	.L15:
+ 233 0184 E6E2      		ldi r30,lo8(38)
+ 234 0186 F0E0      		ldi r31,hi8(38)
+ 235 0188 8081      		ld r24,Z
+ 236 018a 882F      		mov r24,r24
+ 237 018c 90E0      		ldi r25,lo8(0)
+ 238 018e 8074      		andi r24,lo8(64)
+ 239 0190 9070      		andi r25,hi8(64)
+ 240 0192 0097      		sbiw r24,0
+ 241 0194 01F4      		brne .L15
+ 242 0196 E4E2      		ldi r30,lo8(36)
+ 243 0198 F0E0      		ldi r31,hi8(36)
+ 244 019a 8081      		ld r24,Z
+ 245 019c 282F      		mov r18,r24
+ 246 019e 30E0      		ldi r19,lo8(0)
+ 247 01a0 E5E2      		ldi r30,lo8(37)
+ 248 01a2 F0E0      		ldi r31,hi8(37)
+ 249 01a4 8081      		ld r24,Z
+ 250 01a6 882F      		mov r24,r24
+ 251 01a8 90E0      		ldi r25,lo8(0)
+ 252 01aa 982F      		mov r25,r24
+ 253 01ac 8827      		clr r24
+ 254 01ae 822B      		or r24,r18
+ 255 01b0 932B      		or r25,r19
+ 256 01b2 9093 0000 		sts (result)+1,r25
+ 257 01b6 8093 0000 		sts result,r24
+ 258 01ba 8091 0000 		lds r24,result
+ 259 01be 9091 0000 		lds r25,(result)+1
+ 260 01c2 9F93      		push r25
+ 261 01c4 8F93      		push r24
+ 262 01c6 80E0      		ldi r24,lo8(.LC1)
+ 263 01c8 90E0      		ldi r25,hi8(.LC1)
+ 264 01ca 9F93      		push r25
+ 265 01cc 8F93      		push r24
+ 266 01ce 80E0      		ldi r24,lo8(d)
+ 267 01d0 90E0      		ldi r25,hi8(d)
+ 268 01d2 9F93      		push r25
+ 269 01d4 8F93      		push r24
+ 270 01d6 0E94 0000 		call sprintf
+ 271 01da 8DB7      		in r24,__SP_L__
+ 272 01dc 9EB7      		in r25,__SP_H__
+ 273 01de 0696      		adiw r24,6
+ 274 01e0 0FB6      		in __tmp_reg__,__SREG__
+ 275 01e2 F894      		cli
+ 276 01e4 9EBF      		out __SP_H__,r25
+ 277 01e6 0FBE      		out __SREG__,__tmp_reg__
+ 278 01e8 8DBF      		out __SP_L__,r24
+ 279 01ea 8DE3      		ldi r24,lo8(61)
+ 280 01ec 90E0      		ldi r25,hi8(61)
+ 281 01ee 0E94 0000 		call OSTimeDly
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s 			page 6
+
+
+ 282 01f2 1A82      		std Y+2,__zero_reg__
+ 283 01f4 1982      		std Y+1,__zero_reg__
+ 284 01f6 00C0      		rjmp .L17
+ 285               	.L18:
+ 286 01f8 ACE2      		ldi r26,lo8(44)
+ 287 01fa B0E0      		ldi r27,hi8(44)
+ 288 01fc 8981      		ldd r24,Y+1
+ 289 01fe 9A81      		ldd r25,Y+2
+ 290 0200 FC01      		movw r30,r24
+ 291 0202 E050      		subi r30,lo8(-(d))
+ 292 0204 F040      		sbci r31,hi8(-(d))
+ 293 0206 8081      		ld r24,Z
+ 294 0208 8C93      		st X,r24
+ 295               	.L19:
+ 296 020a EBE2      		ldi r30,lo8(43)
+ 297 020c F0E0      		ldi r31,hi8(43)
+ 298 020e 8081      		ld r24,Z
+ 299 0210 882F      		mov r24,r24
+ 300 0212 90E0      		ldi r25,lo8(0)
+ 301 0214 8072      		andi r24,lo8(32)
+ 302 0216 9070      		andi r25,hi8(32)
+ 303 0218 0097      		sbiw r24,0
+ 304 021a 01F0      		breq .L19
+ 305 021c 8981      		ldd r24,Y+1
+ 306 021e 9A81      		ldd r25,Y+2
+ 307 0220 0196      		adiw r24,1
+ 308 0222 9A83      		std Y+2,r25
+ 309 0224 8983      		std Y+1,r24
+ 310               	.L17:
+ 311 0226 8981      		ldd r24,Y+1
+ 312 0228 9A81      		ldd r25,Y+2
+ 313 022a FC01      		movw r30,r24
+ 314 022c E050      		subi r30,lo8(-(d))
+ 315 022e F040      		sbci r31,hi8(-(d))
+ 316 0230 8081      		ld r24,Z
+ 317 0232 8823      		tst r24
+ 318 0234 01F4      		brne .L18
+ 319 0236 00C0      		rjmp .L14
+ 320               	/* epilogue: frame size=2 */
+ 321               	/* epilogue: noreturn */
+ 322               	/* epilogue end (size=0) */
+ 323               	/* function adc2 size 111 (101) */
+ 324               		.size	adc2, .-adc2
+ 325               		.comm s1,128,1
+ 326               		.comm s2,128,1
+ 327               		.comm d,20,1
+ 328               		.comm result,2,1
+ 329               	/* File "admux.c": code  284 = 0x011c ( 257), prologues  24, epilogues   3 */
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 admux.c
+C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s:2      *ABS*:0000003f __SREG__
+C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s:3      *ABS*:0000003e __SP_H__
+C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s:4      *ABS*:0000003d __SP_L__
+C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s:5      *ABS*:00000000 __tmp_reg__
+C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s:6      *ABS*:00000001 __zero_reg__
+C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s:12     .text:00000000 main
+                            *COM*:00000080 s1
+C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s:84     .text:0000007e adc1
+                            *COM*:00000080 s2
+C:\Users\hp\AppData\Local\Temp/ccx0Z6bg.s:207    .text:0000015a adc2
+                            *COM*:00000002 result
+                            *COM*:00000014 d
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+OSInit
+OSTaskCreate
+OSStart
+sprintf
+OSTimeDly

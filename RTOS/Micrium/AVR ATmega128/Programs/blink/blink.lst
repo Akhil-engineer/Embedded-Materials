@@ -1,0 +1,118 @@
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccyAEJex.s 			page 1
+
+
+   1               		.file	"blink.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               	.global	a
+  10               	.global	a
+  11               		.section .bss
+  12               		.type	a, @object
+  13               		.size	a, 1
+  14               	a:
+  15 0000 00        		.skip 1,0
+  16               		.text
+  17               	.global	main
+  18               		.type	main, @function
+  19               	main:
+  20               	/* prologue: frame size=0 */
+  21 0000 CF93      		push r28
+  22 0002 DF93      		push r29
+  23 0004 CDB7      		in r28,__SP_L__
+  24 0006 DEB7      		in r29,__SP_H__
+  25               	/* prologue end (size=4) */
+  26 0008 EAE3      		ldi r30,lo8(58)
+  27 000a F0E0      		ldi r31,hi8(58)
+  28 000c 8FEF      		ldi r24,lo8(-1)
+  29 000e 8083      		st Z,r24
+  30 0010 EBE3      		ldi r30,lo8(59)
+  31 0012 F0E0      		ldi r31,hi8(59)
+  32 0014 1082      		st Z,__zero_reg__
+  33 0016 E3E5      		ldi r30,lo8(83)
+  34 0018 F0E0      		ldi r31,hi8(83)
+  35 001a 87E0      		ldi r24,lo8(7)
+  36 001c 8083      		st Z,r24
+  37 001e E7E5      		ldi r30,lo8(87)
+  38 0020 F0E0      		ldi r31,hi8(87)
+  39 0022 81E0      		ldi r24,lo8(1)
+  40 0024 8083      		st Z,r24
+  41 0026 0E94 0000 		call OSInit
+  42 002a 80E0      		ldi r24,lo8(s1+127)
+  43 002c 90E0      		ldi r25,hi8(s1+127)
+  44 002e E0E0      		ldi r30,lo8(gs(blink))
+  45 0030 F0E0      		ldi r31,hi8(gs(blink))
+  46 0032 24E0      		ldi r18,lo8(4)
+  47 0034 AC01      		movw r20,r24
+  48 0036 6FEF      		ldi r22,lo8(255)
+  49 0038 70E0      		ldi r23,hi8(255)
+  50 003a CF01      		movw r24,r30
+  51 003c 0E94 0000 		call OSTaskCreate
+  52 0040 0E94 0000 		call OSStart
+  53               	/* epilogue: frame size=0 */
+  54 0044 DF91      		pop r29
+  55 0046 CF91      		pop r28
+  56 0048 0895      		ret
+  57               	/* epilogue end (size=3) */
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccyAEJex.s 			page 2
+
+
+  58               	/* function main size 37 (30) */
+  59               		.size	main, .-main
+  60               	.global	blink
+  61               		.type	blink, @function
+  62               	blink:
+  63               	/* prologue: frame size=0 */
+  64 004a CF93      		push r28
+  65 004c DF93      		push r29
+  66 004e CDB7      		in r28,__SP_L__
+  67 0050 DEB7      		in r29,__SP_H__
+  68               	/* prologue end (size=4) */
+  69               	.L4:
+  70 0052 8091 0000 		lds r24,a
+  71 0056 8095      		com r24
+  72 0058 8093 0000 		sts a,r24
+  73 005c EBE3      		ldi r30,lo8(59)
+  74 005e F0E0      		ldi r31,hi8(59)
+  75 0060 8091 0000 		lds r24,a
+  76 0064 8083      		st Z,r24
+  77 0066 20E0      		ldi r18,lo8(0)
+  78 0068 30E0      		ldi r19,hi8(0)
+  79 006a 41E0      		ldi r20,lo8(1)
+  80 006c 60E0      		ldi r22,lo8(0)
+  81 006e 80E0      		ldi r24,lo8(0)
+  82 0070 0E94 0000 		call OSTimeDlyHMSM
+  83 0074 00C0      		rjmp .L4
+  84               	/* epilogue: frame size=0 */
+  85               	/* epilogue: noreturn */
+  86               	/* epilogue end (size=0) */
+  87               	/* function blink size 22 (18) */
+  88               		.size	blink, .-blink
+  89               		.comm s1,128,1
+  90               	/* File "blink.c": code   59 = 0x003b (  48), prologues   8, epilogues   3 */
+GAS LISTING C:\Users\hp\AppData\Local\Temp/ccyAEJex.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 blink.c
+C:\Users\hp\AppData\Local\Temp/ccyAEJex.s:2      *ABS*:0000003f __SREG__
+C:\Users\hp\AppData\Local\Temp/ccyAEJex.s:3      *ABS*:0000003e __SP_H__
+C:\Users\hp\AppData\Local\Temp/ccyAEJex.s:4      *ABS*:0000003d __SP_L__
+C:\Users\hp\AppData\Local\Temp/ccyAEJex.s:5      *ABS*:00000000 __tmp_reg__
+C:\Users\hp\AppData\Local\Temp/ccyAEJex.s:6      *ABS*:00000001 __zero_reg__
+C:\Users\hp\AppData\Local\Temp/ccyAEJex.s:14     .bss:00000000 a
+C:\Users\hp\AppData\Local\Temp/ccyAEJex.s:19     .text:00000000 main
+                            *COM*:00000080 s1
+C:\Users\hp\AppData\Local\Temp/ccyAEJex.s:62     .text:0000004a blink
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+OSInit
+OSTaskCreate
+OSStart
+OSTimeDlyHMSM
