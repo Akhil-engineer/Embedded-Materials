@@ -1,0 +1,36 @@
+/*
+1.Select the PWM function for the PIN on which you need the PWM output using PINSEL0/1 register.
+2.Select Single Edge or Double Edge Mode using PWMPCR. By default its Single Edge Mode.
+3.Assign the Calculated value to PR.
+4.Set the Value for PWM Period in PWMMR0.
+5.Set the Values for other Match Registers i.e the Pulse Widths.
+6.Set appropriate bit values in PWMMCR .. like for e.g. resetting PWMTC for PWMMR0 match and optionally generate interrupts if required
+7.Set Latch Enable Bits for the Match Registers that you have used. This is important!
+8.Then Enable PWM outputs using PWMPCR.
+9.Now Reset PWM Timer using PWMTCR.
+10.Finally .. Enable Timer Counter and PWM Mode using PWMTCR.*/
+
+
+#include <LPC214X.H>
+
+
+void main()
+{
+ LPC_SC->PCONP|=(1<<1);
+ LPC_SC->PCLKSEL0&=~(1<<2) & ~(1<<3);
+ LPC_PINCON->PINSEL1|=(1<<14);
+ LPC_PINCON->PINSEL1&=~(1<<15);
+ PINSEL0=0X00008000;			 
+ PWMPCR=0x0400; 
+ PWMPR=14999;
+ PWMMR0=1000;
+ PWMMR2=500;
+ PWMMCR=0X00000002;
+ PWMLER=0X02;  
+
+ PWMTCR=0X02;
+ PWMTCR=0X09;
+ while(1);
+}
+
+

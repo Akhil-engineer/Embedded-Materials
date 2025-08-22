@@ -1,0 +1,23 @@
+#include <LPC17xx.H>
+
+
+
+int main()
+{
+
+ LPC_SC->PCONP|=(1<<6);
+ LPC_SC->PCLKSEL0&=~(1<<12) & ~(1<<13);
+ LPC_PINCON->PINSEL4|=(1<<0);
+ LPC_PINCON->PINSEL4&=~(1<<1);
+			 
+ LPC_PWM1->PCR=(1<<9); 
+ LPC_PWM1->PR=12999;
+ LPC_PWM1->MR0=1000;
+ LPC_PWM1->MR1=500;
+ LPC_PWM1->MCR=0X02;
+ LPC_PWM1->LER=0X03;  
+
+ LPC_PWM1->TCR=0X02;
+ LPC_PWM1->TCR=0X09;
+ while(1);
+}
