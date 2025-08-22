@@ -1,0 +1,239 @@
+LARM LINKER/LOCATER V2.53                                                               11/04/2014  13:47:15  PAGE 1
+
+
+LARM LINKER/LOCATER V2.53, INVOKED BY:
+C:\KEIL\ARM\BIN\LA.EXE Startup.obj, slave.obj TO vehivleslave CASE CLASSES (DATA (0X40000000-0X40003FFF), CODE (0X0-0X3F
+>> FFF), CONST (0X0-0X3FFFF))
+
+
+CPU MODE: LITTLE ENDIAN
+USING FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  Startup.obj (STARTUP)
+         COMMENT TYPE 0: AA V2.50
+  slave.obj (slave)
+         COMMENT TYPE 0: CARM V2.53
+  C:\KEIL\ARM\LIB\CALFP.LIB (sprintf)
+         COMMENT TYPE 0: CARM V2.53
+  C:\KEIL\ARM\LIB\CALFP.LIB (prnfmt)
+         COMMENT TYPE 0: CARM V2.53
+  C:\KEIL\ARM\LIB\CALFP.LIB (FPCONV)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CALFP.LIB (FPMUL)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CALFP.LIB (FPDIV)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CALFP.LIB (FTNPWR)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CAL.LIB (FIQ)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CAL.LIB (IRQ)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CAL.LIB (DABT)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CAL.LIB (PABT)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CAL.LIB (SWI)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CAL.LIB (UNDEF)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CAL.LIB (strlen)
+         COMMENT TYPE 0: CARM V2.53
+  C:\KEIL\ARM\LIB\CALFP.LIB (FCAST)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CALFP.LIB (CASTF)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CAL.LIB (?C?ICALL)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CAL.LIB (UDIV)
+         COMMENT TYPE 0: AA V2.50
+  C:\KEIL\ARM\LIB\CAL.LIB (SDIV)
+         COMMENT TYPE 0: AA V2.50
+
+
+ACTIVE MEMORY CLASSES OF MODULE:  vehivleslave (STARTUP)
+
+BASE       START      END        USED       MEMORY CLASS
+========================================================
+00000000H  40000000H  40003FFFH  00000490H  DATA
+00000000H  00000000H  0003FFFFH  000017E4H  CODE
+00000000H  00000000H  0003FFFFH  00000130H  CONST
+
+
+
+MEMORY MAP OF MODULE:  vehivleslave (STARTUP)
+
+START      STOP       LENGTH    ALIGN  RELOC  MEMORY CLASS   SEGMENT NAME
+=========================================================================
+LARM LINKER/LOCATER V2.53                                                             11/04/2014  13:47:15  PAGE 2
+
+
+00000000H  0000010FH  00000110H     4  AT..   CODE           STARTUPCODE
+00000110H  00000228H  00000119H     4  UNIT   CONST          ?CON?slave
+00000229H  0000022BH  00000003H   ---  ---    **GAP**
+0000022CH  00000232H  00000007H     4  UNIT   CONST          ?CON?prnfmt
+00000233H  00000233H  00000001H   ---  ---    **GAP**
+00000234H  0000023BH  00000008H     4  UNIT   CONST          ?C_CLRSEG
+0000023CH  00000243H  00000008H     4  UNIT   CONST          ?C_INITSEG
+00000244H  0000025FH  0000001CH     4  UNIT   CODE           ?PR?delay_10us?T?slave
+00000260H  00000287H  00000028H     4  UNIT   CODE           ?PR?delay_ms?T?slave
+00000288H  000002DBH  00000054H     4  UNIT   CODE           ?PR?command4bit?T?slave
+000002DCH  00000363H  00000088H     4  UNIT   CODE           ?PR?command?T?slave
+00000364H  000003EBH  00000088H     4  UNIT   CODE           ?PR?init_4bit_lcd?T?slave
+000003ECH  0000047BH  00000090H     4  UNIT   CODE           ?PR?display?T?slave
+0000047CH  000004BFH  00000044H     4  UNIT   CODE           ?PR?disp_string?T?slave
+000004C0H  00000513H  00000054H     4  UNIT   CODE           ?PR?Can_Init?T?slave
+00000514H  0000057BH  00000068H     4  UNIT   CODE           ?PR?SendMessage2?T?slave
+0000057CH  000005EFH  00000074H     4  UNIT   CODE           ?PR?SendMessage1?T?slave
+000005F0H  00000637H  00000048H     4  UNIT   CODE           ?PR?Init_UART0?T?slave
+00000638H  00000667H  00000030H     4  UNIT   CODE           ?PR?send_string_u0?T?slave
+00000668H  0000068BH  00000024H     4  UNIT   CODE           ?PR?init_ADC?T?slave
+0000068CH  000006AFH  00000024H     4  UNIT   CODE           ?PR?init_ADC1?T?slave
+000006B0H  000006D3H  00000024H     4  UNIT   CODE           ?PR?init_ADC2?T?slave
+000006D4H  000006F7H  00000024H     4  UNIT   CODE           ?PR?init_ADC3?T?slave
+000006F8H  0000074BH  00000054H     4  UNIT   CODE           ?PR?temp?T?slave
+0000074CH  0000076FH  00000024H     4  UNIT   CODE           ?PR?fire?T?slave
+00000770H  00000793H  00000024H     4  UNIT   CODE           ?PR?obstacle?T?slave
+00000794H  00000A3BH  000002A8H     4  UNIT   CODE           ?PR?main?slave
+00000A3CH  00000A57H  0000001CH     4  UNIT   CODE           ?PR?out?T?sprintf
+00000A58H  00000A97H  00000040H     4  UNIT   CODE           ?PR?sprintf?T?sprintf
+00000A98H  00000AC7H  00000030H     4  UNIT   CODE           ?PR?charout?T?prnfmt
+00000AC8H  00000B03H  0000003CH     4  UNIT   CODE           ?PR?numout?T?prnfmt
+00000B04H  00000BC3H  000000C0H     4  UNIT   CODE           ?PR?signout?T?prnfmt
+00000BC4H  00000BE3H  00000020H     4  UNIT   CODE           ?PR?punktout?T?prnfmt
+00000BE4H  000012B3H  000006D0H     4  UNIT   CODE           ?PR?__prnfmt?T?prnfmt
+000012B4H  00001443H  00000190H     4  UNIT   CODE           ?PR?C?FPCONV
+00001444H  000015ABH  00000168H     4  UNIT   CODE           ?PR?C?FPMUL
+000015ACH  0000173BH  00000190H     4  UNIT   CODE           ?PR?C?FPDIV
+0000173CH  0000178FH  00000054H     4  UNIT   CODE           ?PR?C?FTNPWR
+00001790H  00001793H  00000004H     4  UNIT   CODE           ?C?FIQ
+00001794H  00001797H  00000004H     4  UNIT   CODE           ?C?IRQ
+00001798H  0000179BH  00000004H     4  UNIT   CODE           ?C?DABT
+0000179CH  0000179FH  00000004H     4  UNIT   CODE           ?C?PABT
+000017A0H  000017A7H  00000008H     4  UNIT   CODE           ?C?UNDEF
+000017A8H  000017C7H  00000020H     4  UNIT   CODE           ?PR?strlen?T?strlen
+000017C8H  00001823H  0000005CH     4  UNIT   CODE           ?PR?C?FCAST
+00001824H  0000185FH  0000003CH     4  UNIT   CODE           ?PR?C?CASTF
+00001860H  0000186FH  00000010H     4  UNIT   CODE           ?PR?C?ICALL
+00001870H  000018B7H  00000048H     4  UNIT   CODE           ?PR?C?UDIV
+000018B8H  00001917H  00000060H     4  UNIT   CODE           ?PR?C?SDIV
+00001918H  3FFFFFFFH  3FFFE6E8H   ---  ---    **GAP**
+40000000H  4000048FH  00000490H     4  UNIT   DATA           STACK
+
+
+
+REMOVED FUNCTIONS OF MODULE:  vehivleslave (STARTUP)
+
+      ATTRIBUTE  FUNCTION NAME
+      ========================
+       unused    send_remote_frame?T
+       unused    Wait_for_data_frame?T
+       unused    Wait_for_remote_frame?T
+       unused    ReceiveMessage?T
+       unused    Init_UART1?T
+       unused    read_byte_u1?T
+       unused    read_byte_u0?T
+LARM LINKER/LOCATER V2.53                                                             11/04/2014  13:47:15  PAGE 3
+
+
+       unused    send_byte_u0?T
+       unused    send_wait_u0?T
+       unused    clear_buffer_u1?T
+       unused    clear_buffer_u0?T
+       unused    read_adc?T
+
+
+
+PUBLIC SYMBOLS OF MODULE:  vehivleslave (STARTUP)
+
+      VALUE      CLASS    TYPE      PUBLIC SYMBOL NAME
+      ================================================
+      00001828H  CODE     ---       ?C?CASTF?A
+      00001824H  CODE     ---       ?C?CASTF?T
+      00000234H  ---      ---       ?C?CLRTAB
+      000017CCH  CODE     ---       ?C?FCAST?A
+      000017C8H  CODE     ---       ?C?FCAST?T
+      000015B0H  CODE     ---       ?C?FPDIV?A
+      000015ACH  CODE     ---       ?C?FPDIV?T
+      00001448H  CODE     ---       ?C?FPMUL?A
+      00001444H  CODE     ---       ?C?FPMUL?T
+      00001740H  CODE     ---       ?C?FTNPWR?A
+      00001860H  CODE     ---       ?C?ICALL0?T
+      00001862H  CODE     ---       ?C?ICALL1?T
+      00001864H  CODE     ---       ?C?ICALL2?T
+      00001866H  CODE     ---       ?C?ICALL3?T
+      00001868H  CODE     ---       ?C?ICALL4?T
+      0000186AH  CODE     ---       ?C?ICALL5?T
+      0000186CH  CODE     ---       ?C?ICALL6?T
+      0000186EH  CODE     ---       ?C?ICALL7?T
+      00000794H  ---      ---       ?C?INIT
+      0000023CH  ---      ---       ?C?INITTAB
+      000018BCH  CODE     ---       ?C?SDIV?A
+      000018B8H  CODE     ---       ?C?SDIV?T
+      00001874H  CODE     ---       ?C?UDIV?A
+      00001870H  CODE     ---       ?C?UDIV?T
+      000004C0H  CODE     ---       Can_Init?T
+      00001798H  CODE     ---       DAbt_Handler?A
+      00001790H  CODE     ---       FIQ_Handler?A
+      00001794H  CODE     ---       IRQ_Handler?A
+      000005F0H  CODE     ---       Init_UART0?T
+      00000000H  CODE     ---       Init_UART1?T
+      0000179CH  CODE     ---       PAbt_Handler?A
+      00000000H  CODE     ---       ReceiveMessage?T
+      000017A0H  CODE     ---       SWI_Handler?A
+      0000057CH  CODE     ---       SendMessage1?T
+      00000514H  CODE     ---       SendMessage2?T
+      000017A4H  CODE     ---       Undef_Handler?A
+      00000000H  CODE     ---       Wait_for_data_frame?T
+      00000000H  CODE     ---       Wait_for_remote_frame?T
+      000012BCH  CODE     ---       __fpconvert?A
+      000012B4H  CODE     ---       __fpconvert?T
+      000013D0H  CODE     ---       __fpround?A
+      000013CCH  CODE     ---       __fpround?T
+      00001740H  CODE     ---       __ftnpwr?A
+      0000173CH  CODE     ---       __ftnpwr?T
+      00000BE4H  CODE     ---       __prnfmt?A
+      00000BF0H  CODE     ---       __prnfmt?T
+      00000000H  CODE     ---       __startup
+      00000000H  CODE     ---       clear_buffer_u0?T
+      00000000H  CODE     ---       clear_buffer_u1?T
+      00000288H  CODE     ---       command4bit?T
+      000002DCH  CODE     ---       command?T
+      00000244H  CODE     ---       delay_10us?T
+      00000260H  CODE     ---       delay_ms?T
+LARM LINKER/LOCATER V2.53                                                             11/04/2014  13:47:15  PAGE 4
+
+
+      0000047CH  CODE     ---       disp_string?T
+      000003ECH  CODE     ---       display?T
+      000018BCH  CODE     ---       div?A
+      000018B8H  CODE     ---       div?T
+      000000F0H  CODE     ---       exit?A
+      000000F4H  CODE     ---       exit?T
+      0000074CH  CODE     ---       fire?T
+      00000364H  CODE     ---       init_4bit_lcd?T
+      0000068CH  CODE     ---       init_ADC1?T
+      000006B0H  CODE     ---       init_ADC2?T
+      000006D4H  CODE     ---       init_ADC3?T
+      00000668H  CODE     ---       init_ADC?T
+      000018BCH  CODE     ---       ldiv?A
+      000018B8H  CODE     ---       ldiv?T
+      000007C8H  CODE     ---       main
+      00000770H  CODE     ---       obstacle?T
+      00000000H  CODE     ---       read_adc?T
+      00000000H  CODE     ---       read_byte_u0?T
+      00000000H  CODE     ---       read_byte_u1?T
+      00000000H  CODE     ---       send_byte_u0?T
+      00000000H  CODE     ---       send_remote_frame?T
+      00000638H  CODE     ---       send_string_u0?T
+      00000000H  CODE     ---       send_wait_u0?T
+      00000A58H  CODE     ---       sprintf?A
+      00000A64H  CODE     ---       sprintf?T
+      000017A8H  CODE     ---       strlen?A
+      000017B4H  CODE     ---       strlen?T
+      000006F8H  CODE     ---       temp?T
+
+Program Size: data=1168 const=304 code=6116
+LARM RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
